@@ -1,22 +1,30 @@
 package com.structures;
 
 public class Node {
-    int data;
-    Node next;
+    private int data;
+    private Node next;
 
-    public Node(int data) {
+    Node(int data) {
         this.data = data;
     }
 
-    public int getData() {
+    int getData() {
         return this.data;
     }
 
-    public String convertToString() {
+    Node getNext() {
+        return this.next;
+    }
+
+    void setNext(Node node) {
+        this.next = node;
+    }
+
+    String convertToString() {
         return Integer.toString(this.data);
     }
 
-    public void setData(int newData) {
+    void setData(int newData) {
         this.data = newData;
     }
 }

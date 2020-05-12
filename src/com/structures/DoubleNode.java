@@ -1,23 +1,40 @@
 package com.structures;
 
 public class DoubleNode {
-    int data;
-    DoubleNode next;
-    DoubleNode prev;
+    private int data;
+    private DoubleNode next;
+    private DoubleNode prev;
 
-    public DoubleNode(int data) {
+    DoubleNode(int data) {
         this.data = data;
     }
 
-    public int getData() {
+    int getData() {
         return this.data;
     }
 
-    public String convertToString() {
+    void setData(int newData) {
+        this.data = newData;
+    }
+
+    DoubleNode getNext() {
+        return this.next;
+    }
+
+    void setNext(DoubleNode node) {
+        this.next = node;
+    }
+
+    DoubleNode getPrev() {
+        return this.prev;
+    }
+
+    void setPrev(DoubleNode node) {
+        this.prev = node;
+    }
+
+    String convertToString() {
         return Integer.toString(this.data);
     }
 
-    public void setData(int newData) {
-        this.data = newData;
-    }
 }

@@ -15,11 +15,11 @@ public class DoublyLinkedList {
         }
         else {
             DoubleNode tmp = this.head;
-            while (tmp.next != null) {
-                tmp = tmp.next;
+            while (tmp.getNext() != null) {
+                tmp = tmp.getNext();
             }
-            node.prev = tmp;
-            tmp.next = node;
+            node.setPrev(tmp);
+            tmp.setNext(node);
         }
         this.length++;
     }
@@ -31,21 +31,21 @@ public class DoublyLinkedList {
         else if (i < length && i >= 0) {
             DoubleNode node = new DoubleNode(data);
             if (i == 0) {
-                node.next = this.head;
-                this.head.prev = node;
+                node.setNext(this.head);
+                this.head.setPrev(node);
                 this.head = node;
             }
             else {
                 int count = 0;
                 DoubleNode tmp = this.head;
                 while (count < i - 1) {
-                    tmp = tmp.next;
+                    tmp = tmp.getNext();
                     count++;
                 }
-                node.next = tmp.next;
-                tmp.next.prev = node;
-                tmp.next = node;
-                node.prev = tmp;
+                node.setNext(tmp.getNext());
+                tmp.getNext().setPrev(node);
+                tmp.setNext(node);
+                node.setPrev(tmp);
             }
             this.length++;
         }
@@ -57,19 +57,19 @@ public class DoublyLinkedList {
     public void delete(int i) {
         if (i >= 0 && i < this.length) {
             if (i == 0) {
-                this.head = this.head.next;
-                this.head.prev = null;
+                this.head = this.head.getNext();
+                this.head.setPrev(null);
             }
             else {
                 int count = 0;
                 DoubleNode tmp = this.head;
                 while (count < i - 1) {
-                    tmp = tmp.next;
+                    tmp = tmp.getNext();
                     count++;
                 }
-                tmp.next = tmp.next.next;
+                tmp.setNext(tmp.getNext().getNext());
                 if (i != this.length - 1) {
-                    tmp.next.prev = tmp;
+                    tmp.getNext().setPrev(tmp);
                 }
             }
             this.length--;
@@ -84,20 +84,20 @@ public class DoublyLinkedList {
         if (i >= 0 && i < this.length) {
             if (i == 0) {
                 value = this.head.getData();
-                this.head = this.head.next;
-                this.head.prev = null;
+                this.head = this.head.getNext();
+                this.head.setPrev(null);
             }
             else {
                 int count = 0;
                 DoubleNode tmp = this.head;
                 while (count < i - 1) {
-                    tmp = tmp.next;
+                    tmp = tmp.getNext();
                     count++;
                 }
-                value = tmp.next.getData();
-                tmp.next = tmp.next.next;
+                value = tmp.getNext().getData();
+                tmp.setNext(tmp.getNext().getNext());
                 if (i != this.length - 1) {
-                    tmp.next.prev = tmp;
+                    tmp.getNext().setPrev(tmp);
                 }
             }
             this.length--;
@@ -114,10 +114,10 @@ public class DoublyLinkedList {
         DoubleNode tmp = this.head;
         while (tmp != null) {
             list.append(tmp.convertToString());
-            if (tmp.next != null) {
+            if (tmp.getNext() != null) {
                 list.append(", ");
             }
-            tmp = tmp.next;
+            tmp = tmp.getNext();
         }
         list.append("]");
         System.out.println(list);
@@ -125,13 +125,13 @@ public class DoublyLinkedList {
 
     public void printPrev() {
         StringBuilder list = new StringBuilder("[");
-        DoubleNode tmp = this.head.next;
+        DoubleNode tmp = this.head.getNext();
         while (tmp != null) {
-            list.append(tmp.prev.convertToString());
-            if (tmp.next != null) {
+            list.append(tmp.getPrev().convertToString());
+            if (tmp.getNext() != null) {
                 list.append(", ");
             }
-            tmp = tmp.next;
+            tmp = tmp.getNext();
         }
         list.append("]");
         System.out.println(list);

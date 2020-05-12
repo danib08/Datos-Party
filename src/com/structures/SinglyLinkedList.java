@@ -1,8 +1,8 @@
 package com.structures;
 
 public class SinglyLinkedList {
-    Node head;
-    int length = 0;
+    private Node head;
+    private int length = 0;
 
     public int getLength() {
         return this.length;
@@ -15,10 +15,10 @@ public class SinglyLinkedList {
         }
         else {
             Node tmp = this.head;
-            while (tmp.next != null) {
-                tmp = tmp.next;
+            while (tmp.getNext() != null) {
+                tmp = tmp.getNext();
             }
-            tmp.next = node;
+            tmp.setNext(node);
         }
         this.length++;
     }
@@ -30,18 +30,18 @@ public class SinglyLinkedList {
         else if (i < length && i >= 0) {
             Node node = new Node(data);
             if (i == 0) {
-                node.next = this.head;
+                node.setNext(this.head);
                 this.head = node;
             }
             else {
                 int count = 0;
                 Node tmp = this.head;
                 while (count < i - 1) {
-                    tmp = tmp.next;
+                    tmp = tmp.getNext();
                     count++;
                 }
-                node.next = tmp.next;
-                tmp.next = node;
+                node.setNext(tmp.getNext());
+                tmp.setNext(node);
             }
             this.length++;
         }
@@ -53,16 +53,16 @@ public class SinglyLinkedList {
     public void delete(int i) {
         if (i >= 0 && i < this.length) {
             if (i == 0) {
-                this.head = this.head.next;
+                this.head = this.head.getNext();
             }
             else {
                 int count = 0;
                 Node tmp = this.head;
                 while (count < i - 1) {
-                    tmp = tmp.next;
+                    tmp = tmp.getNext();
                     count++;
                 }
-                tmp.next = tmp.next.next;
+                tmp.setNext(tmp.getNext().getNext());
             }
             this.length--;
         }
@@ -76,17 +76,17 @@ public class SinglyLinkedList {
         if (i >= 0 && i < this.length) {
             if (i == 0) {
                 value = this.head.getData();
-                this.head = this.head.next;
+                this.head = this.head.getNext();
             }
             else {
                 int count = 0;
                 Node tmp = this.head;
                 while (count < i - 1) {
-                    tmp = tmp.next;
+                    tmp = tmp.getNext();
                     count++;
                 }
-                value = tmp.next.getData();
-                tmp.next = tmp.next.next;
+                value = tmp.getNext().getData();
+                tmp.setNext(tmp.getNext().getNext());
             }
             this.length--;
         }
@@ -102,10 +102,10 @@ public class SinglyLinkedList {
         Node tmp = this.head;
         while (tmp != null) {
             list.append(tmp.convertToString());
-            if (tmp.next != null) {
+            if (tmp.getNext() != null) {
                 list.append(", ");
             }
-            tmp = tmp.next;
+            tmp = tmp.getNext();
         }
         list.append("]");
         System.out.println(list);
