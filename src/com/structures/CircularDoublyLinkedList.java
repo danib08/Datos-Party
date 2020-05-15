@@ -1,28 +1,23 @@
 package com.structures;
 
-public class CircularDoublyLinkedList {
-    DoubleNode head;
-    int length = 0;
-
-    public int getLength() {
-        return this.length;
-    }
+public class CircularDoublyLinkedList extends List {
+    DoubleSquare head;
 
     public void append(int data) {
-        DoubleNode node = new DoubleNode(data);
+        DoubleSquare doubleSquare = new DoubleSquare(data);
         if (this.head == null) {
-            this.head = node;
+            this.head = doubleSquare;
         }
         else {
-            DoubleNode tmp = this.head;
+            DoubleSquare tmp = this.head;
             while (tmp.getNext() != this.head) {
                 tmp = tmp.getNext();
             }
-            node.setPrev(tmp);
-            tmp.setNext(node);
+            doubleSquare.setPrev(tmp);
+            tmp.setNext(doubleSquare);
         }
-        node.setNext(this.head);
-        this.head.setPrev(node);
+        doubleSquare.setNext(this.head);
+        this.head.setPrev(doubleSquare);
         this.length++;
     }
 
@@ -31,29 +26,29 @@ public class CircularDoublyLinkedList {
             this.append(data);
         }
         else if (i <= length && i >= 0) {
-            DoubleNode node = new DoubleNode(data);
+            DoubleSquare doubleSquare = new DoubleSquare(data);
             if (i == 0) {
-                DoubleNode tmp = this.head;
+                DoubleSquare tmp = this.head;
                 while (tmp.getNext() != this.head) {
                     tmp = tmp.getNext();
                 }
-                node.setNext(this.head);
-                node.setPrev(tmp);
-                node.getNext().setPrev(node);
-                tmp.setNext(node);
-                this.head = node;
+                doubleSquare.setNext(this.head);
+                doubleSquare.setPrev(tmp);
+                doubleSquare.getNext().setPrev(doubleSquare);
+                tmp.setNext(doubleSquare);
+                this.head = doubleSquare;
             }
             else {
                 int count = 0;
-                DoubleNode tmp = this.head;
+                DoubleSquare tmp = this.head;
                 while (count < i - 1) {
                     tmp = tmp.getNext();
                     count++;
                 }
-                node.setNext(tmp.getNext());
-                tmp.getNext().setPrev(node);
-                tmp.setNext(node);
-                node.setPrev(tmp);
+                doubleSquare.setNext(tmp.getNext());
+                tmp.getNext().setPrev(doubleSquare);
+                tmp.setNext(doubleSquare);
+                doubleSquare.setPrev(tmp);
             }
             this.length++;
         }
@@ -65,7 +60,7 @@ public class CircularDoublyLinkedList {
     public void delete(int i) {
         if (i >= 0 && i < this.length) {
             if (i == 0) {
-                DoubleNode tmp = this.head;
+                DoubleSquare tmp = this.head;
                 while (tmp.getNext() != this.head) {
                     tmp = tmp.getNext();
                 }
@@ -75,7 +70,7 @@ public class CircularDoublyLinkedList {
             }
             else {
                 int count = 0;
-                DoubleNode tmp = this.head;
+                DoubleSquare tmp = this.head;
                 while (count < i - 1) {
                     tmp = tmp.getNext();
                     count++;
@@ -94,7 +89,7 @@ public class CircularDoublyLinkedList {
         int value;
         if (i >= 0 && i < this.length) {
             if (i == 0) {
-                DoubleNode tmp = this.head;
+                DoubleSquare tmp = this.head;
                 while (tmp.getNext() != this.head) {
                     tmp = tmp.getNext();
                 }
@@ -105,7 +100,7 @@ public class CircularDoublyLinkedList {
             }
             else {
                 int count = 0;
-                DoubleNode tmp = this.head;
+                DoubleSquare tmp = this.head;
                 while (count < i - 1) {
                     tmp = tmp.getNext();
                     count++;
@@ -125,7 +120,7 @@ public class CircularDoublyLinkedList {
 
     public void printList() {
         StringBuilder list = new StringBuilder("[");
-        DoubleNode tmp = this.head;
+        DoubleSquare tmp = this.head;
         while (tmp.getNext() != this.head) {
             list.append(tmp.convertToString());
             list.append(", ");
@@ -140,7 +135,7 @@ public class CircularDoublyLinkedList {
         StringBuilder list = new StringBuilder("[");
         list.append(this.head.getPrev().convertToString());
         list.append(", ");
-        DoubleNode tmp = this.head.getNext();
+        DoubleSquare tmp = this.head.getNext();
         while (tmp != this.head) {
             list.append(tmp.getPrev().convertToString());
             if (tmp.getNext() != this.head) {

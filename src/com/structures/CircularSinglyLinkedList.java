@@ -1,26 +1,25 @@
 package com.structures;
 
-public class CircularSinglyLinkedList {
-    private Node head;
-    private int length = 0;
+public class CircularSinglyLinkedList extends List {
+    private Square head;
 
-    public int getLength() {
-        return this.length;
+    public CircularSinglyLinkedList() {
+        this.head = null;
     }
 
     public void append(int data) {
-        Node node = new Node(data);
+        Square square = new Square(data);
         if (this.head == null) {
-            this.head = node;
+            this.head = square;
         }
         else {
-            Node tmp = this.head;
+            Square tmp = this.head;
             while (tmp.getNext() != this.head) {
                 tmp = tmp.getNext();
             }
-            tmp.setNext(node);
+            tmp.setNext(square);
         }
-        node.setNext(this.head);
+        square.setNext(this.head);
         this.length++;
     }
 
@@ -29,25 +28,25 @@ public class CircularSinglyLinkedList {
             this.append(data);
         }
         else if (i <= length && i >= 0) {
-            Node node = new Node(data);
-            if (i == 0) {
-                Node tmp = this.head;
-                while (tmp.getNext() != this.head) {
-                    tmp = tmp.getNext();
-                }
-                node.setNext(this.head);
-                tmp.setNext(node);
-                this.head = node;
+            Square square = new Square(data);
+                if (i == 0) {
+                    Square tmp = this.head;
+                    while (tmp.getNext() != this.head) {
+                        tmp = tmp.getNext();
+                    }
+                    square.setNext(this.head);
+                    tmp.setNext(square);
+                this.head = square;
             }
             else {
                 int count = 0;
-                Node tmp = this.head;
+                Square tmp = this.head;
                 while (count < i - 1) {
                     tmp = tmp.getNext();
                     count++;
                 }
-                node.setNext(tmp.getNext());
-                tmp.setNext(node);
+                square.setNext(tmp.getNext());
+                tmp.setNext(square);
             }
             this.length++;
         }
@@ -59,7 +58,7 @@ public class CircularSinglyLinkedList {
     public void delete(int i) {
         if (i >= 0 && i < this.length) {
             if (i == 0) {
-                Node tmp = this.head;
+                Square tmp = this.head;
                 while (tmp.getNext() != this.head) {
                     tmp = tmp.getNext();
                 }
@@ -68,7 +67,7 @@ public class CircularSinglyLinkedList {
             }
             else {
                 int count = 0;
-                Node tmp = this.head;
+                Square tmp = this.head;
                 while (count < i - 1) {
                     tmp = tmp.getNext();
                     count++;
@@ -86,7 +85,7 @@ public class CircularSinglyLinkedList {
         int value;
         if (i >= 0 && i < this.length) {
             if (i == 0) {
-                Node tmp = this.head;
+                Square tmp = this.head;
                 while (tmp.getNext() != this.head) {
                     tmp = tmp.getNext();
                 }
@@ -96,7 +95,7 @@ public class CircularSinglyLinkedList {
             }
             else {
                 int count = 0;
-                Node tmp = this.head;
+                Square tmp = this.head;
                 while (count < i - 1) {
                     tmp = tmp.getNext();
                     count++;
@@ -114,7 +113,7 @@ public class CircularSinglyLinkedList {
 
     public void printList() {
         StringBuilder list = new StringBuilder("[");
-        Node tmp = this.head;
+        Square tmp = this.head;
         while (tmp.getNext() != this.head) {
             list.append(tmp.convertToString());
             list.append(", ");

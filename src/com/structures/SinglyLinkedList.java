@@ -1,24 +1,23 @@
 package com.structures;
 
-public class SinglyLinkedList {
-    private Node head;
-    private int length = 0;
+public class SinglyLinkedList extends List {
+    private Square head;
 
-    public int getLength() {
-        return this.length;
+    public SinglyLinkedList() {
+        this.head = null;
     }
 
     public void append(int data) {
-        Node node = new Node(data);
+        Square square = new Square(data);
         if (this.head == null) {
-            this.head = node;
+            this.head = square;
         }
         else {
-            Node tmp = this.head;
+            Square tmp = this.head;
             while (tmp.getNext() != null) {
                 tmp = tmp.getNext();
             }
-            tmp.setNext(node);
+            tmp.setNext(square);
         }
         this.length++;
     }
@@ -28,20 +27,20 @@ public class SinglyLinkedList {
             this.append(data);
         }
         else if (i < length && i >= 0) {
-            Node node = new Node(data);
+            Square square = new Square(data);
             if (i == 0) {
-                node.setNext(this.head);
-                this.head = node;
+                square.setNext(this.head);
+                this.head = square;
             }
             else {
                 int count = 0;
-                Node tmp = this.head;
+                Square tmp = this.head;
                 while (count < i - 1) {
                     tmp = tmp.getNext();
                     count++;
                 }
-                node.setNext(tmp.getNext());
-                tmp.setNext(node);
+                square.setNext(tmp.getNext());
+                tmp.setNext(square);
             }
             this.length++;
         }
@@ -57,7 +56,7 @@ public class SinglyLinkedList {
             }
             else {
                 int count = 0;
-                Node tmp = this.head;
+                Square tmp = this.head;
                 while (count < i - 1) {
                     tmp = tmp.getNext();
                     count++;
@@ -80,7 +79,7 @@ public class SinglyLinkedList {
             }
             else {
                 int count = 0;
-                Node tmp = this.head;
+                Square tmp = this.head;
                 while (count < i - 1) {
                     tmp = tmp.getNext();
                     count++;
@@ -99,7 +98,7 @@ public class SinglyLinkedList {
 
     public void printList() {
         StringBuilder list = new StringBuilder("[");
-        Node tmp = this.head;
+        Square tmp = this.head;
         while (tmp != null) {
             list.append(tmp.convertToString());
             if (tmp.getNext() != null) {
