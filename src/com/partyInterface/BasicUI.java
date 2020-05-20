@@ -11,6 +11,7 @@ public class BasicUI extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        //TODO utilize the javaFX application with SceneBuilder to format the basic interface for the project
+        /* TODO utilize the javaFX application with SceneBuilder to
+            format the basic interface for the project */
     }
 }
