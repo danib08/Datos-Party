@@ -1,4 +1,4 @@
-package com.structures;
+package structures;
 
 public class Square {
     private int data;

@@ -1,4 +1,4 @@
-package com.structures;
+package structures;
 
 public class DoubleSquare {
     private int data;
@@ -7,6 +7,7 @@ public class DoubleSquare {
 
     public DoubleSquare(int data) {
         this.data = data;
+        this.next = null;
         this.prev = null;
     }
 
@@ -26,15 +27,15 @@ public class DoubleSquare {
         this.next = square;
     }
 
-    public String convertToString() {
-        return Integer.toString(this.data);
-    }
-
     public DoubleSquare getPrev() {
         return this.prev;
     }
 
     public void setPrev(DoubleSquare node) {
         this.prev = node;
+    }
+
+    public String convertToString() {
+        return Integer.toString(this.data);
     }
 }
