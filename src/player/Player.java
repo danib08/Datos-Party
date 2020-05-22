@@ -1,3 +1,5 @@
+package player;
+
 import com.structures.*;
 import java.util.Random;
 // JavaDoc Link: https://www.dummies.com/programming/java/how-to-use-javadoc-to-document-your-classes/
