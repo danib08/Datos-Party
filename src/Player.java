@@ -1,4 +1,5 @@
 import com.structures.*;
+import java.util.Random;
 // JavaDoc Link: https://www.dummies.com/programming/java/how-to-use-javadoc-to-document-your-classes/
 /** Represents a player.
  */
@@ -31,7 +32,15 @@ public class Player {
 
     // TODO: move(){}
 
-    // TODO: roll(){}
+    /** Rolls two six-died dice adds them and returns the total.
+     * @return An integer containing the total of the roll.
+     */
+    public int roll(){
+        Random random = new Random();
+        int result = random.nextInt(6) + 1;
+        result += random.nextInt(6) + 1;
+        return result;
+    }
 
     // TODO: buyStar(){}
 
@@ -97,5 +106,4 @@ public class Player {
     public void setPath(List path){
         this.path = path;
     }
-
 }
