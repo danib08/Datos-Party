@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< Updated upstream
       <module fileurl="file://$PROJECT_DIR$/Datos-Party.iml" filepath="$PROJECT_DIR$/Datos-Party.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/Datos-Party.iml" filepath="$PROJECT_DIR$/.idea/Datos-Party.iml" />
+>>>>>>> Stashed changes
     </modules>
   </component>
 </project>
