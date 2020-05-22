@@ -1,16 +1,16 @@
-package structures;
+package com.structures;
 
 /**
- * A list formed by Square objects
+ * A list formed by Square objects, in which the last element is linked to the first
  */
-public class SinglyLinkedList extends List {
+public class CircularSinglyLinkedList extends List {
     private Square head;
     private Square tail;
 
     /**
-     * Creates a SinglyLinkedList
+     * Creates a CircularSinglyLinkedList
      */
-    public SinglyLinkedList() {
+    public CircularSinglyLinkedList() {
         this.head = null;
         this.tail = null;
     }
@@ -24,19 +24,19 @@ public class SinglyLinkedList extends List {
             this.tail.setNext(square);
             this.tail = square;
         }
+        this.tail.setNext(this.head);
         this.length++;
     }
 
     public void printList() {
         StringBuilder list = new StringBuilder("[");
         Square tmp = this.head;
-        while (tmp != null) {
+        while (tmp != this.tail) {
             list.append(tmp.convertToString());
-            if (tmp != this.tail) {
-                list.append(", ");
-            }
+            list.append(", ");
             tmp = tmp.getNext();
         }
+        list.append(tmp.convertToString());
         list.append("]");
         System.out.println(list);
     }

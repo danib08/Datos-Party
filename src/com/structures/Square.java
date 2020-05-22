@@ -1,21 +1,19 @@
-package structures;
+package com.structures;
 
 /**
- * Node for the doubly linked lists that acts as a square for the game board
+ * Node for the simply linked lists that acts as a square for the game board
  */
-public class DoubleSquare {
+public class Square {
     private int data;
-    private DoubleSquare next;
-    private DoubleSquare prev;
+    private Square next;
 
     /**
-     * Creates a DoubleSquare object
-     * @param data This is the value that the DoubleSquare will contain
+     * Creates a Square object
+     * @param data This is the value that the Square will contain
      */
-    public DoubleSquare(int data) {
+    public Square(int data) {
         this.data = data;
         this.next = null;
-        this.prev = null;
     }
 
     /**
@@ -38,7 +36,7 @@ public class DoubleSquare {
      * This method is used to access the next attribute
      * @return A pointer to the next Square
      */
-    public DoubleSquare getNext() {
+    public Square getNext() {
         return this.next;
     }
 
@@ -46,24 +44,8 @@ public class DoubleSquare {
      * This method is used to change the value of the next attribute
      * @param square The new next pointer that will be assigned
      */
-    public void setNext(DoubleSquare square) {
+    public void setNext(Square square) {
         this.next = square;
-    }
-
-    /**
-     * This method is used to access the prev attribute
-     * @return A pointer to the previous Square
-     */
-    public DoubleSquare getPrev() {
-        return this.prev;
-    }
-
-    /**
-     * This method is used to change the value of the prev attribute
-     * @param node The new prev pointer that will be assigned
-     */
-    public void setPrev(DoubleSquare node) {
-        this.prev = node;
     }
 
     /**

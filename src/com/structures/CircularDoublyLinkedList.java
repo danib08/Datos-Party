@@ -1,4 +1,4 @@
-package structures;
+package com.structures;
 
 /**
  * A list formed by DoubleSquare objects, in which the last element is linked to the first

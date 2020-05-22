@@ -1,4 +1,4 @@
-package structures;
+package com.structures;
 
 /**
  * Abstract class that serves as a mold for the many type of lists in this package

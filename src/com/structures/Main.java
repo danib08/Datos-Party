@@ -1,4 +1,4 @@
-package structures;
+package com.structures;
 
 /**
  * This class will be the one in charge to create all of the lists
