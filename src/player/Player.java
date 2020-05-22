@@ -2,6 +2,7 @@ package player;
 
 import com.structures.*;
 import java.util.Random;
+import java.util.Scanner;
 // JavaDoc Link: https://www.dummies.com/programming/java/how-to-use-javadoc-to-document-your-classes/
 /** Represents a player.
  */
@@ -16,13 +17,13 @@ public class Player {
     /** Creates a player with a specified name
      * @param name The player's name in game.
      */
-    public Player(String name){
+    public Player(String name, Square position, List path){
         this.coins = 0;
         this.stars = 0;
-        // TODO: add first Square as position
+        this.position = position;
         this.placement = 1;
         this.name = name;
-        // TODO: add Main Path as path
+        this.path = path;
     }
 
     /** Adds or substracts a certain amount of coins to the player.
@@ -44,7 +45,20 @@ public class Player {
         return result;
     }
 
-    // TODO: buyStar(){}
+    /** Checks if player has the money to buy a star, then asks if he wants to buy it
+     *  if the player says yes, a star is added and the star position gets changed.
+     */
+    public void buyStar(){
+        Scanner scan = new Scanner(System.in);
+        if (this.coins >= 15){
+            System.out.println("Do you want to buy a Star: YES/NO");
+            String response = scan.nextLine();
+            if (response.equals("YES")){
+                this.stars ++;
+                // TODO: Change star position.
+            }
+        }
+    }
 
     /** Gets the player's current amount of coins
      * @return An integer representing the player's current amount of coins.
