@@ -1,5 +1,8 @@
 package structures;
 
+/**
+ * A list formed by DoubleSquare objects, in which the last element is linked to the first
+ */
 public class CircularDoublyLinkedList extends List {
     DoubleSquare head;
     DoubleSquare tail;
@@ -32,6 +35,10 @@ public class CircularDoublyLinkedList extends List {
         System.out.println(list);
     }
 
+    /**
+     * Shows all of the elements that are the previous of another, as a list
+     * in the console in an organized way
+     */
     public void printPrev() {
         StringBuilder list = new StringBuilder("[");
         list.append(this.head.getPrev().convertToString());

@@ -1,9 +1,15 @@
 package structures;
 
+/**
+ * A list formed by Square objects
+ */
 public class SinglyLinkedList extends List {
     private Square head;
     private Square tail;
 
+    /**
+     * Creates a SinglyLinkedList
+     */
     public SinglyLinkedList() {
         this.head = null;
         this.tail = null;

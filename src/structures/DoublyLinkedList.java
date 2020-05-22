@@ -1,9 +1,15 @@
 package structures;
 
+/**
+ * A list formed by DoubleSquare objects
+ */
 public class DoublyLinkedList extends List {
     DoubleSquare head;
     DoubleSquare tail;
 
+    /**
+     * Creates a DoublyLinkedList
+     */
     public DoublyLinkedList() {
         this.head = null;
         this.tail = null;
@@ -36,6 +42,10 @@ public class DoublyLinkedList extends List {
         System.out.println(list);
     }
 
+    /**
+     * Shows all of the elements that are the previous of another, as a list
+     * in the console in an organized way
+     */
     public void printPrev() {
         StringBuilder list = new StringBuilder("[");
         DoubleSquare tmp = this.head.getNext();
