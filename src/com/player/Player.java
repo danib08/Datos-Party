@@ -1,4 +1,4 @@
-package player;
+package com.player;
 
 import com.structures.*;
 import java.util.Random;
@@ -16,6 +16,7 @@ public class Player {
 
     /** Creates a player with a specified name
      * @param name The player's name in game.
+     * @param path The player's initial path on the board.
      */
     public Player(String name, Square position, List path){
         this.coins = 0;
@@ -33,12 +34,56 @@ public class Player {
         this.coins += coins;
     }
 
-    // TODO: move(){}
+    /** Moves the player's position the number of squares rolled by the dice
+     * @param playerArray Array of players, is used to check if two players share a square.
+     */
+    public void move(Player[] playerArray){
+        int movement = this.roll();
+        while (movement > 1){
+            System.out.println("Remaining movement: " + movement);
+            // if (this.position.isConnected) {}
+            // if star.position = this.position {buyStar()}
+            this.position = position.getNext();
+            movement--;
+        }
+        System.out.println("Remaining movement: " + movement);
+        Square tmp = this.position;
+        this.position = position.getNext();
+        movement--;
+        System.out.println("Remaining movement: " + movement);
+        System.out.println("PREV: " + tmp.getData());
+        System.out.println("CURR: " + this.position.getData());
+        for (int i = 0; i < playerArray.length; i++){
+            if (playerArray[i].getPosition() == this.position && playerArray[i].name != this.name){
+                System.out.println("Start Duel");
+                // TODO: call Duel(prevSquare) event
+            }
+        }
+        switch(position.getData()){
+            case 1:
+                System.out.println("Blue Square");
+                break;
+            case 2:
+                System.out.println("Green Square");
+                this.updateCoins(+5);
+                break;
+            case 3:
+                System.out.println("Red Square");
+                this.updateCoins(-5);
+                break;
+            case 4:
+                System.out.println("Yellow Square");
+                //TODO: Call events
+                break;
+        }
+    }
+
+    // TODO: void changePath
 
     /** Rolls two six-died dice adds them and returns the total.
      * @return An integer containing the total of the roll.
      */
-    public int roll(){
+    private int roll(){
         Random random = new Random();
         int result = random.nextInt(6) + 1;
         result += random.nextInt(6) + 1;
@@ -48,7 +93,7 @@ public class Player {
     /** Checks if player has the money to buy a star, then asks if he wants to buy it
      *  if the player says yes, a star is added and the star position gets changed.
      */
-    public void buyStar(){
+    private void buyStar(){
         Scanner scan = new Scanner(System.in);
         if (this.coins >= 15){
             System.out.println("Do you want to buy a Star: YES/NO");
