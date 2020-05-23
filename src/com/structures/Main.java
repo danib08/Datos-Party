@@ -1,5 +1,9 @@
 package com.structures;
 
+import java.util.ArrayList;
+
+import java.util.Collections;
+
 /**
  * This class will be the one in charge to create all of the lists
  */
@@ -11,6 +15,8 @@ public class Main {
         SinglyLinkedList pathB = new SinglyLinkedList();
         DoublyLinkedList pathC = new DoublyLinkedList();
         CircularDoublyLinkedList pathD = new CircularDoublyLinkedList();
+        SinglyLinkedList eventStack = new SinglyLinkedList();
+        ArrayList<Integer> eventList = new ArrayList<>();
 
         mainBoard.append(1);
         mainBoard.append(2);
@@ -75,5 +81,67 @@ public class Main {
         pathD.append(4);
         pathD.append(4);
         pathD.append(4);
+
+        eventList.add(1);
+        eventList.add(1);
+        eventList.add(1);
+        eventList.add(1);
+        eventList.add(1);
+        eventList.add(1);
+        eventList.add(1);
+        eventList.add(1);
+        eventList.add(1);
+        eventList.add(1);
+        eventList.add(2);
+        eventList.add(2);
+        eventList.add(2);
+        eventList.add(2);
+        eventList.add(2);
+        eventList.add(2);
+        eventList.add(2);
+        eventList.add(2);
+        eventList.add(2);
+        eventList.add(2);
+        eventList.add(3);
+        eventList.add(3);
+        eventList.add(3);
+        eventList.add(3);
+        eventList.add(3);
+        eventList.add(3);
+        eventList.add(3);
+        eventList.add(3);
+        eventList.add(3);
+        eventList.add(3);
+        eventList.add(4);
+        eventList.add(4);
+        eventList.add(4);
+        eventList.add(5);
+        eventList.add(5);
+        eventList.add(5);
+        eventList.add(6);
+        eventList.add(7);
+        eventList.add(7);
+        eventList.add(7);
+        eventList.add(8);
+        eventList.add(8);
+        eventList.add(8);
+        eventList.add(8);
+        eventList.add(8);
+        eventList.add(8);
+        eventList.add(8);
+        eventList.add(8);
+        eventList.add(8);
+        eventList.add(8);
+        eventList.add(9);
+        eventList.add(9);
+        eventList.add(9);
+        eventList.add(9);
+        eventList.add(9);
+        Collections.shuffle(eventList);
+
+        for (Integer event : eventList) {
+            eventStack.prepend(event);
+        }
+        eventStack.printList();
     }
 }

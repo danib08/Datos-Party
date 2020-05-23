@@ -40,4 +40,28 @@ public class SinglyLinkedList extends List {
         list.append("]");
         System.out.println(list);
     }
+
+    /**
+     * This method will add a new element to the top of the list
+     * @param data The value that the new element will contain
+     */
+    public void prepend(int data) {
+        Square square = new Square(data);
+        if (this.head == null) {
+            this.tail = square;
+        }
+        square.setNext(this.head);
+        this.head = square;
+        this.length++;
+    }
+
+    /**
+     * Deletes the first element of the list and returns the value contained in it
+     * @return The value that the recently popped element contained
+     */
+    public int popHead() {
+        int head = this.head.getData();
+        this.head = this.head.getNext();
+        return head;
+    }
 }
