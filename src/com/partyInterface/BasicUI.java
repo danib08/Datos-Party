@@ -37,5 +37,6 @@ public class BasicUI extends Application {
         primaryStage.setTitle("Main Board");
         //display the stage
         primaryStage.show();
+        //TODO add the menu interface and script the .fxml file to make it follow the nodes and update the showed screen as expected.
     }
 }
