@@ -1,25 +1,34 @@
 package com.structures;
 
+/**
+ * Abstract class that serves as a mold for the many type of lists in this package
+ */
 public abstract class List {
     protected int length;
 
+    /**
+     * Creates a List abstract class
+     */
     List() {
         this.length = 0;
     }
 
+    /**
+     * This method is used to access the length attribute
+     * @return An integer that represents the length of the list
+     */
     public int getLength() {
         return this.length;
     }
 
+    /**
+     * This abstract method will add an element to the back of the list
+     * @param data The value that the new element will contain
+     */
     public abstract void append(int data);
 
-    public abstract void insert(int data, int i);
-
-    public abstract void delete(int i);
-
-    public abstract int pop(int i);
-
+    /**
+     * Shows the list in the console in an organized way
+     */
     public abstract void printList();
 }
-
-
