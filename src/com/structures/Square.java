@@ -4,8 +4,8 @@ package com.structures;
  * Node for the simply linked lists that acts as a square for the game board
  */
 public class Square {
-    private int data;
-    private Square next;
+    protected int data;
+    protected Square next;
 
     /**
      * Creates a Square object
@@ -46,6 +46,15 @@ public class Square {
      */
     public void setNext(Square square) {
         this.next = square;
+    }
+
+    /**
+     * This method returns null when called
+     * Its purpose is to make the Square and DoubleSquare classes compatible
+     * @return null
+     */
+    public Square getPrev() {
+        return null;
     }
 
     /**

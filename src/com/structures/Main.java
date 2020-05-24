@@ -1,7 +1,6 @@
 package com.structures;
 
 import java.util.ArrayList;
-
 import java.util.Collections;
 
 /**
@@ -72,8 +71,8 @@ public class Main {
         pathC.append(3);
         pathC.append(1);
         pathC.append(2);
-        pathC.append(2);
         pathC.append(4);
+        pathC.append(2);
         pathC.append(1);
         pathC.append(3);
 
@@ -142,6 +141,5 @@ public class Main {
         for (Integer event : eventList) {
             eventStack.prepend(event);
         }
-        eventStack.printList();
     }
 }

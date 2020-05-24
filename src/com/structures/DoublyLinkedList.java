@@ -30,7 +30,7 @@ public class DoublyLinkedList extends List {
 
     public void printList() {
         StringBuilder list = new StringBuilder("[");
-        DoubleSquare tmp = this.head;
+        Square tmp = this.head;
         while (tmp != null) {
             list.append(tmp.convertToString());
             if (tmp != this.tail) {
@@ -48,7 +48,7 @@ public class DoublyLinkedList extends List {
      */
     public void printPrev() {
         StringBuilder list = new StringBuilder("[");
-        DoubleSquare tmp = this.head.getNext();
+        Square tmp = this.head.getNext();
         while (tmp != null) {
             list.append(tmp.getPrev().convertToString());
             if (tmp != this.tail) {

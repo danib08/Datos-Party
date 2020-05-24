@@ -24,7 +24,7 @@ public class CircularDoublyLinkedList extends List {
 
     public void printList() {
         StringBuilder list = new StringBuilder("[");
-        DoubleSquare tmp = this.head;
+        Square tmp = this.head;
         while (tmp != this.tail) {
             list.append(tmp.convertToString());
             list.append(", ");
@@ -43,7 +43,7 @@ public class CircularDoublyLinkedList extends List {
         StringBuilder list = new StringBuilder("[");
         list.append(this.head.getPrev().convertToString());
         list.append(", ");
-        DoubleSquare tmp = this.head.getNext();
+        Square tmp = this.head.getNext();
         while (tmp != this.head) {
             list.append(tmp.getPrev().convertToString());
             if (tmp != this.tail) {

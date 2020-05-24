@@ -62,6 +62,7 @@ public class SinglyLinkedList extends List {
     public int popHead() {
         int head = this.head.getData();
         this.head = this.head.getNext();
+        this.length--;
         return head;
     }
 }
