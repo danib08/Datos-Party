@@ -1,99 +1,30 @@
 package com.structures;
 
+/**
+ * A list formed by Square objects
+ */
 public class SinglyLinkedList extends List {
     private Square head;
+    private Square tail;
 
+    /**
+     * Creates a SinglyLinkedList
+     */
     public SinglyLinkedList() {
         this.head = null;
+        this.tail = null;
     }
 
     public void append(int data) {
         Square square = new Square(data);
         if (this.head == null) {
-            this.head = square;
+            this.head = this.tail = square;
         }
         else {
-            Square tmp = this.head;
-            while (tmp.getNext() != null) {
-                tmp = tmp.getNext();
-            }
-            tmp.setNext(square);
+            this.tail.setNext(square);
+            this.tail = square;
         }
         this.length++;
-    }
-
-    public void insert(int data, int i) {
-        if (i == this.length) {
-            this.append(data);
-        }
-        else if (i < length && i >= 0) {
-            Square square = new Square(data);
-            if (i == 0) {
-                square.setNext(this.head);
-                this.head = square;
-            }
-            else {
-                int count = 0;
-                Square tmp = this.head;
-                while (count < i - 1) {
-                    tmp = tmp.getNext();
-                    count++;
-                }
-                square.setNext(tmp.getNext());
-                tmp.setNext(square);
-            }
-            this.length++;
-        }
-        else {
-            System.out.println("Invalid index");
-        }
-    }
-
-    public void delete(int i) {
-        if (i >= 0 && i < this.length) {
-            if (i == 0) {
-                this.head = this.head.getNext();
-            }
-            else {
-                int count = 0;
-                Square tmp = this.head;
-                while (count < i - 1) {
-                    tmp = tmp.getNext();
-                    count++;
-                }
-                tmp.setNext(tmp.getNext().getNext());
-            }
-            this.length--;
-        }
-        else {
-            System.out.println("Invalid index");
-        }
-    }
-
-    public int pop(int i) {
-        int value;
-        if (i >= 0 && i < this.length) {
-            if (i == 0) {
-                value = this.head.getData();
-                this.head = this.head.getNext();
-            }
-            else {
-                int count = 0;
-                Square tmp = this.head;
-                while (count < i - 1) {
-                    tmp = tmp.getNext();
-                    count++;
-                }
-                value = tmp.getNext().getData();
-                tmp.setNext(tmp.getNext().getNext());
-            }
-            this.length--;
-        }
-        else {
-            System.out.println("Invalid index");
-            value = -1;
-        }
-        return value;
     }
 
     public void printList() {
@@ -101,12 +32,37 @@ public class SinglyLinkedList extends List {
         Square tmp = this.head;
         while (tmp != null) {
             list.append(tmp.convertToString());
-            if (tmp.getNext() != null) {
+            if (tmp != this.tail) {
                 list.append(", ");
             }
             tmp = tmp.getNext();
         }
         list.append("]");
         System.out.println(list);
+    }
+
+    /**
+     * This method will add a new element to the top of the list
+     * @param data The value that the new element will contain
+     */
+    public void prepend(int data) {
+        Square square = new Square(data);
+        if (this.head == null) {
+            this.tail = square;
+        }
+        square.setNext(this.head);
+        this.head = square;
+        this.length++;
+    }
+
+    /**
+     * Deletes the first element of the list and returns the value contained in it
+     * @return The value that the recently popped element contained
+     */
+    public int popHead() {
+        int head = this.head.getData();
+        this.head = this.head.getNext();
+        this.length--;
+        return head;
     }
 }
