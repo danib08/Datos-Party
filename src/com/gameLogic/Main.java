@@ -1,5 +1,6 @@
-package com.structures;
+package com.gameLogic;
 
+import com.structures.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -143,3 +144,4 @@ public class Main {
         }
     }
 }
+
