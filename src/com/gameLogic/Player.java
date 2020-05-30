@@ -1,4 +1,4 @@
-package com.player;
+package com.gameLogic;
 
 import com.structures.*;
 import java.util.Random;
