@@ -31,13 +31,13 @@ final class Star {
     }
 
     public void positionStar(List[] listArray) {
-        //TODO: make sure the circular closed path isn't in the array
+        //TODO: make sure pathD isn't in the array
         Random random = new Random();
-        int index = random.nextInt(listArray.length);
-        this.path = listArray[index];
+        int arrayIndex = random.nextInt(listArray.length);
+        this.path = listArray[arrayIndex];
 
         int pathIndex = random.nextInt(this.path.getLength());
-
+        this.position = this.path.getElement(pathIndex);
     }
 
     /**
