@@ -3,6 +3,7 @@ package com.gameLogic;
 import com.structures.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 /**
  * This class will be the one in charge to create all of the lists
@@ -141,6 +142,35 @@ public class Main {
 
         for (Integer event : eventList) {
             eventStack.prepend(event);
+        }
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Choose number of players: 2, 3 o 4");
+        int numberPlayer = scan.nextInt();
+
+        Player[] playerArray = new Player[numberPlayer];
+        for (int i = 0; i < numberPlayer; i++){
+            System.out.println("Enter the name of the player #" + (i+1) +" : ");
+            if (i == 0){
+                scan.nextLine();
+            }
+            String name = scan.nextLine();
+            playerArray[i] = new Player(name, mainBoard.getHead(), mainBoard);
+        }
+        int roundsPlayed = 0;
+        System.out.println("Enter number of rounds: ");
+        int roundsTotal = scan.nextInt();
+        while (roundsPlayed < roundsTotal ){
+            for (Player player : playerArray){
+                // Player round logic goes here
+                System.out.println(player.getName());
+                System.out.println("Press enter to move");
+                if (player == playerArray[0]){
+                    scan.nextLine();
+                }
+                scan.nextLine();
+                player.move(playerArray);
+            }
+            roundsPlayed++;
         }
     }
 }
