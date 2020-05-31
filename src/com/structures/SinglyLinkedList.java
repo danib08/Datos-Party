@@ -65,8 +65,4 @@ public class SinglyLinkedList extends List {
         this.length--;
         return head;
     }
-
-    public Square getHead() {
-        return head;
-    }
 }
