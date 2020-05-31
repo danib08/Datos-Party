@@ -3,6 +3,7 @@ package com.gameLogic;
 import com.structures.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -159,6 +160,8 @@ public class Main {
         int roundsPlayed = 0;
         System.out.println("Enter number of rounds: ");
         int roundsTotal = scan.nextInt();
+        int lastPlayed = 0;
+        int chooseMinigame = 0;
         while (roundsPlayed < roundsTotal ){
             for (Player player : playerArray){
                 // Player round logic goes here
@@ -169,6 +172,33 @@ public class Main {
                 }
                 scan.nextLine();
                 player.move(playerArray);
+            }
+            Random random = new Random();
+            chooseMinigame = random.nextInt(6) + 1;
+            while (lastPlayed == chooseMinigame){
+                System.out.println("Selecting another minigame");
+                chooseMinigame = random.nextInt(6) + 1;
+            }
+            lastPlayed = chooseMinigame;
+            switch (chooseMinigame){
+                case 1:
+                    System.out.println("Play 1st Minigame");
+                    break;
+                case 2:
+                    System.out.println("Play 2nd Minigame");
+                    break;
+                case 3:
+                    System.out.println("Play 3rd Minigame");
+                    break;
+                case 4:
+                    System.out.println("Play 4th Minigame");
+                    break;
+                case 5:
+                    System.out.println("Play 5th Minigame");
+                    break;
+                case 6:
+                    System.out.println("Play 6th Minigame");
+                    break;
             }
             roundsPlayed++;
         }
