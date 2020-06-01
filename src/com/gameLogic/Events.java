@@ -66,4 +66,17 @@ public class Events {
         System.out.println("player1 n player2 swapped positions!");
     }
 
+    public boolean duel(Player p1, Player p2, Player p3, Player p4){
+        Square pos1= p1.getPosition();
+        Square pos2= p2.getPosition();
+        Square pos3= p3.getPosition();
+        Square pos4= p4.getPosition();
+        return checkForDuel(p1,p2,p3,p4);
+    }
+
+    private boolean checkForDuel(Square p1,Square p2,Square p3,Square p4){
+        //TODO check players position as they move
+        return false;
+    }
+
 }
