@@ -4,7 +4,6 @@ package com.structures;
  * A list formed by DoubleSquare objects
  */
 public class DoublyLinkedList extends List {
-    DoubleSquare head;
     DoubleSquare tail;
 
     /**
@@ -17,7 +16,7 @@ public class DoublyLinkedList extends List {
 
     public void append(int data) {
         DoubleSquare doubleSquare = new DoubleSquare(data);
-        if (this.head == null){
+        if (this.head == null) {
             this.head = this.tail = doubleSquare;
         }
         else {

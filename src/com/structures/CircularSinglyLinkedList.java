@@ -4,7 +4,6 @@ package com.structures;
  * A list formed by Square objects, in which the last element is linked to the first
  */
 public class CircularSinglyLinkedList extends List {
-    private Square head;
     private Square tail;
 
     /**
