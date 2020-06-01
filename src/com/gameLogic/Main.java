@@ -147,8 +147,8 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Choose number of players: 2, 3 o 4");
         int numberPlayer = scan.nextInt();
-
         Player[] playerArray = new Player[numberPlayer];
+
         for (int i = 0; i < numberPlayer; i++){
             System.out.println("Enter the name of the player #" + (i+1) +" : ");
             if (i == 0){
@@ -157,11 +157,15 @@ public class Main {
             String name = scan.nextLine();
             playerArray[i] = new Player(name, mainBoard.getHead(), mainBoard);
         }
+
         int roundsPlayed = 0;
         System.out.println("Enter number of rounds: ");
         int roundsTotal = scan.nextInt();
+
+        // For the minigame
         int lastPlayed = 0;
         int chooseMinigame = 0;
+
         while (roundsPlayed < roundsTotal ){
             for (Player player : playerArray){
                 // Player round logic goes here
@@ -173,13 +177,17 @@ public class Main {
                 scan.nextLine();
                 player.move(playerArray);
             }
+
             Random random = new Random();
             chooseMinigame = random.nextInt(6) + 1;
+
             while (lastPlayed == chooseMinigame){
                 System.out.println("Selecting another minigame");
                 chooseMinigame = random.nextInt(6) + 1;
             }
+
             lastPlayed = chooseMinigame;
+
             switch (chooseMinigame){
                 case 1:
                     System.out.println("Play 1st Minigame");

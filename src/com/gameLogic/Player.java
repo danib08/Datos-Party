@@ -59,7 +59,7 @@ public class Player {
                 // TODO: call Duel(prevSquare) event
             }
         }
-        switch(position.getData()){
+        switch(this.position.getData()){
             case 1:
                 System.out.println("Blue Square");
                 break;
