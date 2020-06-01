@@ -13,8 +13,8 @@
             <Image url="@Menupic.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="77.0" layoutY="302.0" mnemonicParsing="false" text="Button1" />
-      <Button layoutX="274.0" layoutY="302.0" mnemonicParsing="false" text="Button2" />
-      <Button layoutX="444.0" layoutY="302.0" mnemonicParsing="false" text="Button3" />
+      <Button layoutX="77.0" layoutY="302.0" mnemonicParsing="false" text="Info" />
+      <Button layoutX="274.0" layoutY="302.0" mnemonicParsing="false" text="Game" />
+      <Button layoutX="444.0" layoutY="302.0" mnemonicParsing="false" text="Basics" />
    </children>
 </AnchorPane>
