@@ -26,9 +26,8 @@ public class BasicUI extends Application {
         // Set resizable options
         primaryStage.setResizable(false);
 
-        // Displays the stage
-        primaryStage.show();
-
+        // doesn't display stage until method invoked
+        primaryStage.hide();
         //TODO add the menu interface and script the .fxml file to make it follow the nodes and update the showed screen as expected.
     }
 }

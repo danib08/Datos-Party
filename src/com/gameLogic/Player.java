@@ -119,6 +119,14 @@ public class Player {
         return this.stars;
     }
 
+    /**
+     * updates the player's current ammount of stars.
+     * @param stars an integer value to increment or decrement the player's star ammount.
+     */
+    public void updateStars(int stars){
+        this.stars += stars;
+    }
+
     /** Gets the player's current position on the board.
      * @return A Square representing the player's position on the board.
      */
