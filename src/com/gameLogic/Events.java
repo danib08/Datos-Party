@@ -1,12 +1,13 @@
 package com.gameLogic;
 import com.gameLogic.Player;
+import com.structures.List;
 import com.structures.Square;
-
+import java.util.Random;
 public class Events {
 
-    public void winStars(Player player){
-        player.updateStars(1);
-        System.out.println("player won a star!");
+    public void winStars(Player player,int stars){
+        player.updateStars(stars);
+        System.out.println("player won stars!");
     }
 
     public void loseStars(Player player){
@@ -53,9 +54,15 @@ public class Events {
         }
     }
 
-    public void teleport(Player player, Square position){
-        player.setPosition(position);
-        System.out.println("player teleported to new square!");
+    public void teleport(Player player, List[] pathArr){
+        Random index = new Random();
+        int pathInd = index.nextInt(pathArr.length);
+        List destination = pathArr[pathInd];
+        player.setPath(destination);
+        int pos = index.nextInt(destination.getLength());
+        //Square newPos = destination.getElement(pos);
+        //player.setPosition(newPos);
+        System.out.println("player teleported!");
     }
 
     public void swap(Player player1, Player player2){
