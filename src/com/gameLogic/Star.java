@@ -33,7 +33,7 @@ final class Star {
     public void positionStar(List[] listArray) {
         //TODO: make sure pathD isn't in the array
         Random random = new Random();
-        int arrayIndex = random.nextInt(listArray.length);
+        int arrayIndex = random.nextInt(listArray.length - 1);
         this.path = listArray[arrayIndex];
 
         int pathIndex = random.nextInt(this.path.getLength());
