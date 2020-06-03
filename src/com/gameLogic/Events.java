@@ -29,7 +29,7 @@ public class Events {
 
         switch (event) {
             case 1:
-                System.out.println("Duel!");
+                this.eventDuel(playerUnleasher, playerTarget);
                 break;
             case 2:
                 this.stealCoins(playerUnleasher, playerTarget);
@@ -128,19 +128,31 @@ public class Events {
         player2.setPosition(p1Pos);
         System.out.println("player1 n player2 swapped positions!");
     }
-    //TODO trigger duel
-    /*
-    public boolean duel(Player p1, Player p2, Player p3, Player p4){
-        Square pos1= p1.getPosition();
-        Square pos2= p2.getPosition();
-        Square pos3= p3.getPosition();
-        Square pos4= p4.getPosition();
-        return checkForDuel(p1,p2,p3,p4);
-    }
+    //TODO duel minigame
 
-    private boolean checkForDuel(Square p1,Square p2,Square p3,Square p4){
-        //TODO check players position as they move
-        return false;
+    /*
+
+     */
+
+    public void eventDuel(Player p1, Player p2){
+        /*
+        Instantiate the minigame class
+        Player winner = minigame.play(p1, p2);
+        Player loser;
+        if (winner == p1) {
+            loser = p2;
+        }
+        else {
+            loser = p1;
+        }
+        winner.updateCoins(10);
+            if (loser.getCoins() >= 10) {
+                loser.updateCoins(-10);
+            }
+            else {
+                loser.updateCoins(-loser.getCoins());
+            }
+        */
+
     }
-    */
 }
