@@ -134,12 +134,18 @@ public class Events {
         System.out.println("player1 n player2 swapped positions!");
     }
 
+    /**
+     * Checks if the stack is empty, if it its it calls the stackRefill method.
+     */
     public void checkLength(){
         if (this.stack.getLength() == 0){
             this.stackRefill();
         }
     }
 
+    /**
+     * Refills the stack with a new randomized order of events.
+     */
     public void stackRefill(){
         Collections.shuffle(this.eventList);
 
@@ -148,6 +154,11 @@ public class Events {
         }
     }
 
+    /**
+     * Starts a duel between two players for the prize of coins.
+     * @param p1 the player that triggers the event.
+     * @param p2 the player selected randomly to duel the other player.
+     */
     public void eventDuel(Player p1, Player p2){
         /*
         Instantiate the minigame class
