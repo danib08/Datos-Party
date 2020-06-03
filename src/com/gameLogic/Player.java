@@ -86,6 +86,7 @@ public class Player {
             case 4:
                 System.out.println("Yellow Square");
                 this.eventHandler.eventSelecter(this);
+                this.eventHandler.checkLength();
                 break;
         }
     }
