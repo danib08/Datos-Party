@@ -47,24 +47,27 @@ public class Player {
             System.out.println("Remaining movement: " + movement);
             // if (this.position.isConnected) {}
 
-            //if (this.star.getPosition() = this.position {buyStar()}
+            if (this.star.getPosition() == this.position) {this.buyStar();}
 
             this.position = position.getNext();
             movement--;
         }
 
         System.out.println("Remaining movement: " + movement);
-        Square tmp = this.position;
+        Square prevSquare = this.position;
         this.position = position.getNext();
         movement--;
         System.out.println("Remaining movement: " + movement);
-        System.out.println("PREV: " + tmp.getData());
-        System.out.println("CURR: " + this.position.getData());
+
+        if (this.star.getPosition() == this.position) {this.buyStar();}
+
+        //System.out.println("PREV: " + tmp.getData());
+        //System.out.println("CURR: " + this.position.getData());
 
         for (Player player : playerArray) {
-            if (player.getPosition() == this.position && player.name.equals(this.name)) {
+            if (player.getPosition() == this.position && !player.name.equals(this.name)) {
                 System.out.println("Start Duel");
-                // TODO: call Duel(prevSquare) event
+                duel(prevSquare, player);
             }
         }
 
@@ -108,11 +111,29 @@ public class Player {
             System.out.println("Do you want to buy a Star: YES/NO");
             String response = scan.nextLine();
             if (response.equals("YES")) {
+                this.updateCoins(-15);
                 this.stars ++;
                 this.star.positionStar();
             }
         }
     }
+
+
+    private void duel(Square prevSquare, Player p2){
+        /*
+        Instantiate the minigame class
+        Player winner = minigame.play(p1, p2);
+        Player loser;
+        if (winner == p1) {
+            loser = p2;
+        }
+        else {
+            loser = p1;
+        }
+        loser.setPosition(prevSquare);
+         */
+    }
+
 
     /** Gets the player's current amount of coins
      * @return An integer representing the player's current amount of coins.
