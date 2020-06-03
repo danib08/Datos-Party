@@ -36,6 +36,14 @@ public abstract class List {
     }
 
     /**
+     * This method returns the first element in the list
+     * @return the head attribute
+     */
+    public Square getHead() {
+        return this.head;
+    }
+
+    /**
      * This abstract method will add an element to the back of the list
      * @param data The value that the new element will contain
      */
