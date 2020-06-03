@@ -166,7 +166,7 @@ public class Main {
 
         //shuffle method is used to "randomize" the eventList.
         Collections.shuffle(eventList);
-        
+    
         for (Integer event : eventList) {
             eventStack.prepend(event);
         }
