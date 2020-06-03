@@ -10,7 +10,7 @@
       <Canvas height="338.0" width="600.0" />
       <ImageView fitHeight="388.0" fitWidth="600.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Menupic.jpg" />
+            <Image url="@../images/Menupic.jpg" />
          </image>
       </ImageView>
       <Button layoutX="77.0" layoutY="302.0" mnemonicParsing="false" text="Info" />
