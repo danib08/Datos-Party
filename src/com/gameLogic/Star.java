@@ -12,16 +12,19 @@ final class Star {
     private static Star star;
     private List path;
     private Square position;
+    private List[] listArray;
 
-    private Star() { }
+    private Star(List[] listArray) {
+        this.listArray = listArray;
+    }
 
     /**
      * Checks if a Star object is created. If it is, it does nothing. If not, it creates it.
      * @return the unique Star instance
      */
-    public static synchronized Star getStar() {
+    public static synchronized Star getStar(List[] listArray) {
         if (star == null) {
-            star = new Star();
+            star = new Star(listArray);
             System.out.println("Star instantiated");
         }
         else {
@@ -30,11 +33,10 @@ final class Star {
         return star;
     }
 
-    public void positionStar(List[] listArray) {
-        //TODO: make sure pathD isn't in the array
+    public void positionStar() {
         Random random = new Random();
-        int arrayIndex = random.nextInt(listArray.length - 1);
-        this.path = listArray[arrayIndex];
+        int arrayIndex = random.nextInt(this.listArray.length - 1);
+        this.path = this.listArray[arrayIndex];
 
         int pathIndex = random.nextInt(this.path.getLength());
         this.position = this.path.getElement(pathIndex);

@@ -17,6 +17,10 @@ public class Main {
         SinglyLinkedList pathB = new SinglyLinkedList();
         DoublyLinkedList pathC = new DoublyLinkedList();
         CircularDoublyLinkedList pathD = new CircularDoublyLinkedList();
+        List[] pathArray = {mainBoard, pathA, pathB, pathC, pathD};
+
+        Star star = Star.getStar(pathArray);
+
         SinglyLinkedList eventStack = new SinglyLinkedList();
         ArrayList<Integer> eventList = new ArrayList<>();
 
@@ -144,10 +148,15 @@ public class Main {
         for (Integer event : eventList) {
             eventStack.prepend(event);
         }
+
+        // TODO check for event stack length
+
         Scanner scan = new Scanner(System.in);
         System.out.println("Choose number of players: 2, 3 o 4");
         int numberPlayer = scan.nextInt();
         Player[] playerArray = new Player[numberPlayer];
+
+        Events eventHandler = new Events(playerArray, pathArray, eventStack);
 
         for (int i = 0; i < numberPlayer; i++){
             System.out.println("Enter the name of the player #" + (i+1) +" : ");
@@ -155,7 +164,7 @@ public class Main {
                 scan.nextLine();
             }
             String name = scan.nextLine();
-            playerArray[i] = new Player(name, mainBoard.getHead(), mainBoard);
+            playerArray[i] = new Player(name, mainBoard.getHead(), mainBoard, eventHandler, star);
         }
 
         int roundsPlayed = 0;

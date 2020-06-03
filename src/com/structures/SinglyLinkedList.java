@@ -59,10 +59,10 @@ public class SinglyLinkedList extends List {
      * @return The value that the recently popped element contained
      */
     public int popHead() {
-        int head = this.head.getData();
+        int headData = this.head.getData();
         this.head = this.head.getNext();
         this.length--;
-        return head;
+        return headData;
     }
 
     public Square getHead() {
