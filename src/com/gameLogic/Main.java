@@ -173,7 +173,7 @@ public class Main {
 
         // For the minigame
         int lastPlayed = 0;
-        int chooseMinigame = 0;
+        int chooseMinigame;
 
         while (roundsPlayed < roundsTotal ){
             for (Player player : playerArray){

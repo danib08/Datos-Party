@@ -54,8 +54,4 @@ public class CircularDoublyLinkedList extends List {
         list.append("]");
         System.out.println(list);
     }
-
-    public DoubleSquare getHead() {
-        return head;
-    }
 }

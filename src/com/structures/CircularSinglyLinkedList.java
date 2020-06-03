@@ -39,8 +39,4 @@ public class CircularSinglyLinkedList extends List {
         list.append("]");
         System.out.println(list);
     }
-
-    public Square getHead() {
-        return head;
-    }
 }

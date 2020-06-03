@@ -58,8 +58,4 @@ public class DoublyLinkedList extends List {
         list.append("]");
         System.out.println(list);
     }
-
-    public DoubleSquare getHead() {
-        return head;
-    }
 }
