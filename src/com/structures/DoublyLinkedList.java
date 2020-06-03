@@ -59,7 +59,7 @@ public class DoublyLinkedList extends List {
         System.out.println(list);
     }
 
-    public DoubleSquare getHead() {
+    public Square getHead() {
         return head;
     }
 }

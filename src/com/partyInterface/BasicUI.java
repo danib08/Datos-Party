@@ -16,7 +16,6 @@ public class BasicUI extends Application {
     public void start(Stage primaryStage) throws Exception {
         // Creating the loader, the pane and all details
         Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
-
         // Create scene
         primaryStage.setScene(new Scene(root));
 
