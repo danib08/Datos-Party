@@ -2,17 +2,22 @@ package com.gameLogic;
 import com.structures.List;
 import com.structures.SinglyLinkedList;
 import com.structures.Square;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Events {
     private Player[] playerArray;
     private List[] listArray;
     private SinglyLinkedList stack;
+    private ArrayList<Integer> eventList;
 
-    public Events(Player[] playerArray, List[] listArray, SinglyLinkedList stack) {
+    public Events(Player[] playerArray, List[] listArray, SinglyLinkedList stack, ArrayList<Integer> eventList) {
         this.playerArray = playerArray;
         this.listArray = listArray;
         this.stack = stack;
+        this.eventList = eventList;
     }
 
     public void eventSelecter(Player playerUnleasher) {
@@ -128,11 +133,20 @@ public class Events {
         player2.setPosition(p1Pos);
         System.out.println("player1 n player2 swapped positions!");
     }
-    //TODO duel minigame
 
-    /*
+    public void checkLength(){
+        if (this.stack.getLength() == 0){
+            this.stackRefill();
+        }
+    }
 
-     */
+    public void stackRefill(){
+        Collections.shuffle(this.eventList);
+
+        for (Integer event : this.eventList) {
+            this.stack.prepend(event);
+        }
+    }
 
     public void eventDuel(Player p1, Player p2){
         /*

@@ -149,14 +149,12 @@ public class Main {
             eventStack.prepend(event);
         }
 
-        // TODO check for event stack length
-
         Scanner scan = new Scanner(System.in);
         System.out.println("Choose number of players: 2, 3 o 4");
         int numberPlayer = scan.nextInt();
         Player[] playerArray = new Player[numberPlayer];
 
-        Events eventHandler = new Events(playerArray, pathArray, eventStack);
+        Events eventHandler = new Events(playerArray, pathArray, eventStack, eventList);
 
         for (int i = 0; i < numberPlayer; i++){
             System.out.println("Enter the name of the player #" + (i+1) +" : ");
