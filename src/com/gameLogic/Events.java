@@ -7,12 +7,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+/**
+ * This class will be in charge of the events in the game
+ */
 public class Events {
     private Player[] playerArray;
     private List[] listArray;
     private SinglyLinkedList stack;
     private ArrayList<Integer> eventList;
 
+    /**
+     * Creates a new Events class
+     * @param playerArray An array containing all of the players in the game
+     * @param listArray An array containing all of the paths
+     * @param stack A stack containing all of the events, in a randomized order
+     * @param eventList An ArrayList that contains all of the events (used to refill the stack)
+     */
     public Events(Player[] playerArray, List[] listArray, SinglyLinkedList stack, ArrayList<Integer> eventList) {
         this.playerArray = playerArray;
         this.listArray = listArray;
@@ -20,6 +30,10 @@ public class Events {
         this.eventList = eventList;
     }
 
+    /**
+     * Grabs the first element in the stack and executes the corresponding event
+     * @param playerUnleasher The Player that activated the event
+     */
     public void eventSelecter(Player playerUnleasher) {
         int event = this.stack.popHead();
 
@@ -63,11 +77,21 @@ public class Events {
         }
     }
 
+    /**
+     * Add stars to the specified Player
+     * @param player The Player that will win stars
+     * @param stars The amount of stars won
+     */
     private void winStars(Player player, int stars) {
         player.updateStars(stars);
         System.out.println("Player won stars!");
     }
 
+    /**
+     * Removes a star from the player that activated the event and gives it to another player
+     * @param donor The Player that will lose the star
+     * @param target The Player that will win a star
+     */
     private void loseStar(Player donor, Player target) {
         if (donor.getStars() > 0) {
             donor.updateStars(-1);
@@ -78,6 +102,11 @@ public class Events {
         }
     }
 
+    /**
+     * The player that activated the event steals a star from another one
+     * @param stealer The Player that will steal a star
+     * @param target The Player that will be robbed
+     */
     private void stealStar(Player stealer, Player target) {
         if (target.getStars() > 0){
             stealer.updateStars(1);
@@ -88,6 +117,11 @@ public class Events {
         }
     }
 
+    /**
+     * The player that activated the event loses coins, which are given to another player
+     * @param donor The Player that loses coins
+     * @param target The Player that wins coins
+     */
     private void donateCoins(Player donor, Player target){
         if (donor.getCoins() > 0) {
             Random random = new Random();
@@ -101,6 +135,11 @@ public class Events {
         }
     }
 
+    /**
+     * The player that activated the event steals coin from another one
+     * @param stealer The Player that steals coins
+     * @param target The Player that loses coins
+     */
     private void stealCoins(Player stealer, Player target) {
         if (target.getCoins() > 0) {
             Random random = new Random();
@@ -114,6 +153,11 @@ public class Events {
         }
     }
 
+    /**
+     * Teleports the player to a random position
+     * @param player The Player that will be teleported
+     * @param pathArr An array containing all of the paths
+     */
     private void teleport(Player player, List[] pathArr){
         Random index = new Random();
         int pathInd = index.nextInt(pathArr.length);
@@ -126,6 +170,11 @@ public class Events {
         System.out.println("Player teleported!");
     }
 
+    /**
+     * Swaps the positions of two players
+     * @param player1 One of the players that will be swapped
+     * @param player2 The other player that will be swapped
+     */
     private void swap(Player player1, Player player2){
         Square p1Pos= player1.getPosition();
         Square p2Pos = player2.getPosition();

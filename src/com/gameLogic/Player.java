@@ -4,6 +4,7 @@ import com.structures.*;
 import java.util.Random;
 import java.util.Scanner;
 // JavaDoc Link: https://www.dummies.com/programming/java/how-to-use-javadoc-to-document-your-classes/
+
 /** Represents a player.
  */
 public class Player {
@@ -119,7 +120,11 @@ public class Player {
         }
     }
 
-
+    /**
+     * This method starts a duel
+     * @param prevSquare This is the Square that is positioned before the current Square of both players
+     * @param p2 The Player that will be the opponent
+     */
     private void duel(Square prevSquare, Player p2){
         /*
         Instantiate the minigame class
@@ -134,7 +139,6 @@ public class Player {
         loser.setPosition(prevSquare);
          */
     }
-
 
     /** Gets the player's current amount of coins
      * @return An integer representing the player's current amount of coins.
