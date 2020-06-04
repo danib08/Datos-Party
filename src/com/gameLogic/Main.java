@@ -198,7 +198,7 @@ public class Main {
                 scan.nextLine();
             }
             String name = scan.nextLine();
-            playerArray[i] = new Player(name, mainBoard.getHead(), mainBoard, eventHandler, star);
+            playerArray[i] = new Player(name, mainBoard.getHead(), eventHandler, star);
         }
 
         // Selects the number of rounds to be played
