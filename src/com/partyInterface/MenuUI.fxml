@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="337.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.MenuController">
    <children>
@@ -13,8 +14,37 @@
             <Image url="@../images/Menupic.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="77.0" layoutY="302.0" mnemonicParsing="false" text="Info" />
-      <Button layoutX="274.0" layoutY="302.0" mnemonicParsing="false" text="Game" />
-      <Button layoutX="444.0" layoutY="302.0" mnemonicParsing="false" text="Basics" />
+      <Button layoutX="462.0" layoutY="49.0" mnemonicParsing="false" text="Info">
+         <font>
+            <Font name="Consolas Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="462.0" layoutY="143.0" mnemonicParsing="false" text="Game">
+         <font>
+            <Font name="Consolas Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="458.0" layoutY="227.0" mnemonicParsing="false" text="Basics">
+         <font>
+            <Font name="Consolas Bold" size="12.0" />
+         </font></Button>
+      <TextField fx:id="plyr1_nameField" layoutX="25.0" layoutY="238.0" prefHeight="22.0" prefWidth="139.0" promptText="Insert player1 name">
+         <font>
+            <Font name="Consolas Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="plyr3_nameField" layoutX="25.0" layoutY="294.0" prefHeight="22.0" prefWidth="139.0" promptText="Insert player3 name">
+         <font>
+            <Font name="Consolas Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="plyr2_nameField" layoutX="199.0" layoutY="238.0" prefHeight="22.0" prefWidth="139.0" promptText="Insert player2 name">
+         <font>
+            <Font name="Consolas Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="plyr4_nameField" layoutX="199.0" layoutY="294.0" prefHeight="22.0" prefWidth="139.0" promptText="Insert player4 name">
+         <font>
+            <Font name="Consolas Bold" size="12.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
