@@ -8,14 +8,15 @@ import java.util.Scanner;
 /** Represents a player.
  */
 public class Player {
-    private int coins;
-    private int stars;
-    private Square position;
-    private int placement;
     private String name;
-    private Boolean backwards;
+    private Square position;
     private Events eventHandler;
     private Star star;
+    private int coins;
+    private int stars;
+    private int placement;
+    private boolean backwards;
+    private boolean onMain;
 
     /**
      * Creates a player
@@ -25,14 +26,15 @@ public class Player {
      * @param star A buyable star
      */
     public Player(String name, Square position, Events eventHandler, Star star) {
-        this.coins = 0;
-        this.stars = 0;
-        this.position = position;
-        this.placement = 1;
         this.name = name;
-        this.backwards = false;
+        this.position = position;
         this.eventHandler = eventHandler;
         this.star = star;
+        this.coins = 0;
+        this.stars = 0;
+        this.placement = 1;
+        this.backwards = false;
+        this.onMain = true;
     }
 
     /**
@@ -59,23 +61,30 @@ public class Player {
             }
 
             if (this.position.getPathLink() != null) {
-                Scanner scan = new Scanner(System.in);
-                System.out.println("Want to change direction: Y/N");
-                String resp = scan.nextLine();
-                if (resp.equals("Y")) {
-                    this.position = this.position.getPathLink();
-                }
+                //TODO this condition is entered although the player already picked paths, and goes back and forth forever
+                System.out.println(this.position.getData());
+                this.changePath();
             }
-            if (this.backwards) {
-                System.out.println("select previous");
+
+            else if (this.backwards) {
+                this.position = position.getPrev();
             }
-            this.position = position.getNext();
+
+            else {
+                this.position = position.getNext();
+            }
             movement--;
         }
 
         System.out.println("Remaining movement: " + movement);
         Square prevSquare = this.position;
-        this.position = position.getNext();
+
+        if (this.position.getPathLink() != null) {
+            this.changePath();
+        }
+        else {
+            this.position = this.position.getNext();
+        }
         movement--;
         System.out.println("Remaining movement: " + movement);
 
@@ -113,7 +122,31 @@ public class Player {
         }
     }
 
-    // TODO: void changePath
+    /**
+     * This method executes the logic used when a player encounters a bifurcation
+     */
+    private void changePath() {
+        if (this.onMain) {
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Want to change direction: Y/N");
+            String resp = scan.nextLine();
+            if (resp.equals("Y")) {
+                this.position = this.position.getPathLink();
+                if (this.position.getData() == 3) {
+                    this.backwards = true;
+                }
+                this.onMain = false;
+            }
+            else {
+                this.position = this.position.getNext();
+            }
+        }
+        else {
+            this.onMain = true;
+            this.backwards = false;
+            this.position = this.position.getPathLink();
+        }
+    }
 
     /**
      * Rolls two six-died dice adds them and returns the total.
@@ -184,8 +217,7 @@ public class Player {
     }
 
     /**
-     * updates the player's current ammount of stars.
-     *
+     * Updates the player's current ammount of stars.
      * @param stars an integer value to increment or decrement the player's star ammount.
      */
     public void updateStars(int stars) {
@@ -236,6 +268,5 @@ public class Player {
     public String getName() {
         return this.name;
     }
-
 }
 

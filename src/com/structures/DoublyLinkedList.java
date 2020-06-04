@@ -4,7 +4,7 @@ package com.structures;
  * A list formed by DoubleSquare objects
  */
 public class DoublyLinkedList extends List {
-    DoubleSquare tail;
+    private DoubleSquare tail;
 
     /**
      * Creates a DoublyLinkedList
@@ -39,6 +39,11 @@ public class DoublyLinkedList extends List {
         }
         list.append("]");
         System.out.println(list);
+    }
+
+    @Override
+    public Square getTail() {
+        return this.tail;
     }
 
     /**

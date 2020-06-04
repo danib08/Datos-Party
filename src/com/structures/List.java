@@ -5,8 +5,8 @@ package com.structures;
  */
 public abstract class List {
     protected Square head;
-    protected int length;
     protected Square tail;
+    protected int length;
 
     /**
      * Creates a List abstract class

@@ -162,7 +162,6 @@ public class Events {
         Random index = new Random();
         int pathInd = index.nextInt(pathArr.length);
         List destination = pathArr[pathInd];
-        player.setPath(destination);
 
         int pos = index.nextInt(destination.getLength());
         Square newPos = destination.getElement(pos);
