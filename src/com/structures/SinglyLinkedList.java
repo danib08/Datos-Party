@@ -4,7 +4,6 @@ package com.structures;
  * A list formed by Square objects
  */
 public class SinglyLinkedList extends List {
-    private Square tail;
 
     /**
      * Creates a SinglyLinkedList

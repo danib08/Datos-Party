@@ -6,6 +6,7 @@ package com.structures;
 public class Square {
     protected int data;
     protected Square next;
+    protected Square pathLink;
 
     /**
      * Creates a Square object
@@ -14,6 +15,7 @@ public class Square {
     public Square(int data) {
         this.data = data;
         this.next = null;
+        this.pathLink = null;
     }
 
     /**
@@ -64,4 +66,21 @@ public class Square {
     public String convertToString() {
         return Integer.toString(this.data);
     }
+
+    /**
+     * This method is used to access the pathLink attribute
+     * @return A pointer to the pathLink Square
+     */
+    public Square getPathLink() {
+        return pathLink;
+    }
+
+    /**
+     * This method is used to change the pathLink attribute
+     * @param pathLink The pointer to be asigned.
+     */
+    public void setPathLink(Square pathLink) {
+        this.pathLink = pathLink;
+    }
 }
+

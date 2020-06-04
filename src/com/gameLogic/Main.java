@@ -13,35 +13,35 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //here the different lists are created
-        //the mainBoard represents the outer border for the path players will see.
+        // Here the different lists are created
+        // the mainBoard represents the outer border for the path players will see.
         CircularSinglyLinkedList mainBoard = new CircularSinglyLinkedList();
 
-        //pathA,B and C are the secondary paths that players can opt to cross over to.
+        // PathA, B and C are the secondary paths that players can opt to cross over to.
         SinglyLinkedList pathA = new SinglyLinkedList();
         SinglyLinkedList pathB = new SinglyLinkedList();
         DoublyLinkedList pathC = new DoublyLinkedList();
 
-        //the path D is the one that can only be accessed through 'teleporting'.
+        // The path D is the one that can only be accessed through 'teleporting'.
         CircularDoublyLinkedList pathD = new CircularDoublyLinkedList();
 
-        //a List-type array is made with the five paths.
+        // A List-type array is made with the five paths.
         List[] pathArray = {mainBoard, pathA, pathB, pathC, pathD};
 
-        //the star is created with a specific method, not regularly instantiated
-        //because this object is accessed through a Singleton design pattern
+        // The star is created with a specific method, not regularly instantiated
+        // because this object is accessed through a Singleton design pattern
         Star star = Star.getStar(pathArray);
 
-        //A stack is implemented using the SinglyLinkedList structure, this is meant to
-        //hold the representation of events to be accessed by the game logic.
+        // A stack is implemented using the SinglyLinkedList structure, this is meant to
+        // hold the representation of events to be accessed by the game logic.
         SinglyLinkedList eventStack = new SinglyLinkedList();
 
-        //The collections class ArrayList is used to create a randomizable structure that can
-        //later be accessed by the main() method to add the random-ordered elements to the event stack.
+        // The collections class ArrayList is used to create a randomizable structure that can
+        // later be accessed by the main() method to add the random-ordered elements to the event stack.
         ArrayList<Integer> eventList = new ArrayList<>();
 
-        //As the game board follows a strictly defined order, the paths are filled with the respective
-        //element that will tell the game logic what type of "Square" or position the players are on.
+        // As the game board follows a strictly defined order, the paths are filled with the respective
+        // element that will tell the game logic what type of "Square" or position the players are on.
         mainBoard.append(1);
         mainBoard.append(2);
         mainBoard.append(3);
@@ -106,8 +106,18 @@ public class Main {
         pathD.append(4);
         pathD.append(4);
 
-        //the ArrayList object is used as described previously, to add a certain amount of numbers
-        //from 1 to 9 that will sequentially be randomized
+        // Sets the Squares that have links between paths
+        mainBoard.getElement(3).setPathLink(pathB.getHead());
+        mainBoard.getElement(12).setPathLink(pathC.getHead());
+        mainBoard.getElement(15).setPathLink(pathA.getHead());
+        mainBoard.getElement(31).setPathLink(pathC.getTail());
+        pathA.getTail().setPathLink(mainBoard.getElement(21));
+        pathB.getTail().setPathLink(mainBoard.getElement(34));
+        pathC.getHead().setPathLink(mainBoard.getElement(12));
+        pathC.getTail().setPathLink(mainBoard.getElement(31));
+
+        // The ArrayList object is used as described previously, to add a certain amount of numbers
+        // from 1 to 9 that will sequentially be randomized
         eventList.add(1);
         eventList.add(1);
         eventList.add(1);
@@ -164,7 +174,7 @@ public class Main {
         eventList.add(9);
         eventList.add(9);
 
-        //shuffle method is used to "randomize" the eventList.
+        // Shuffle method is used to "randomize" the eventList.
         Collections.shuffle(eventList);
 
         // Adds the events to the stack.
