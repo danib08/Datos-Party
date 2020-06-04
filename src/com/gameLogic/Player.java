@@ -13,7 +13,7 @@ public class Player {
     private Square position;
     private int placement;
     private String name;
-    private List path;
+    private Boolean backwards;
     private Events eventHandler;
     private Star star;
 
@@ -21,13 +21,13 @@ public class Player {
      * @param name The player's name in game.
      * @param path The player's initial path on the board.
      */
-    public Player(String name, Square position, List path, Events eventHandler, Star star){
+    public Player(String name, Square position, Events eventHandler, Star star){
         this.coins = 0;
         this.stars = 0;
         this.position = position;
         this.placement = 1;
         this.name = name;
-        this.path = path;
+        this.backwards = false;
         this.eventHandler = eventHandler;
         this.star = star;
     }
@@ -46,10 +46,20 @@ public class Player {
         int movement = this.roll();
         while (movement > 1){
             System.out.println("Remaining movement: " + movement);
-            // if (this.position.isConnected) {}
 
             if (this.star.getPosition() == this.position) {this.buyStar();}
 
+            if (this.position.getPathLink() != null) {
+                Scanner scan = new Scanner(System.in);
+                System.out.println("Want to change direction: Y/N");
+                String resp = scan.nextLine();
+                if (resp.equals("Y")){
+                    this.position = this.position.getPathLink();
+                }
+            }
+            if (this.backwards){
+                
+            }
             this.position = position.getNext();
             movement--;
         }

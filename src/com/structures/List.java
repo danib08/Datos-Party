@@ -6,6 +6,7 @@ package com.structures;
 public abstract class List {
     protected Square head;
     protected int length;
+    protected Square tail;
 
     /**
      * Creates a List abstract class
@@ -53,4 +54,12 @@ public abstract class List {
      * Shows the list in the console in an organized way
      */
     public abstract void printList();
+
+    /**
+     * This method is used to access the tail attribute
+     * @return A pointer to the tail Square
+     */
+    public Square getTail() {
+        return this.tail;
+    }
 }
