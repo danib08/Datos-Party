@@ -6,6 +6,7 @@ import com.structures.Square;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * This class will be in charge of the events in the game
@@ -167,6 +168,14 @@ public class Events {
         Square newPos = destination.getElement(pos);
         player.setPosition(newPos);
         System.out.println("Player teleported!");
+        if (pathInd == 3 || pathInd == 4){
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Left or Right: ");
+            String resp = scan.nextLine();
+            if (resp.equals("R")){
+                player.setBackwards(true);
+            }
+        }
     }
 
     /**
@@ -226,6 +235,9 @@ public class Events {
                 loser.updateCoins(-loser.getCoins());
             }
         */
+    }
+
+    public void selectMovement(){
 
     }
 }

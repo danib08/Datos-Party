@@ -3,7 +3,6 @@ package com.gameLogic;
 import com.structures.*;
 import java.util.Random;
 import java.util.Scanner;
-// JavaDoc Link: https://www.dummies.com/programming/java/how-to-use-javadoc-to-document-your-classes/
 
 /** Represents a player.
  */
@@ -17,6 +16,7 @@ public class Player {
     private int placement;
     private boolean backwards;
     private boolean onMain;
+    private boolean pathChanged;
 
     /**
      * Creates a player
@@ -35,6 +35,7 @@ public class Player {
         this.placement = 1;
         this.backwards = false;
         this.onMain = true;
+        this.pathChanged = false;
     }
 
     /**
@@ -60,18 +61,18 @@ public class Player {
                 this.buyStar();
             }
 
-            if (this.position.getPathLink() != null) {
-                //TODO this condition is entered although the player already picked paths, and goes back and forth forever
-                System.out.println(this.position.getData());
+            if (this.position.getPathLink() != null && !pathChanged) {
                 this.changePath();
             }
 
             else if (this.backwards) {
                 this.position = position.getPrev();
+                this.pathChanged = false;
             }
 
             else {
                 this.position = position.getNext();
+                this.pathChanged = false;
             }
             movement--;
         }
@@ -81,9 +82,13 @@ public class Player {
 
         if (this.position.getPathLink() != null) {
             this.changePath();
+        } else if (this.backwards){
+            this.position = this.position.getPrev();
+            this.pathChanged = false;
         }
         else {
             this.position = this.position.getNext();
+            this.pathChanged = false;
         }
         movement--;
         System.out.println("Remaining movement: " + movement);
@@ -136,6 +141,7 @@ public class Player {
                     this.backwards = true;
                 }
                 this.onMain = false;
+                this.pathChanged = true;
             }
             else {
                 this.position = this.position.getNext();
@@ -145,6 +151,7 @@ public class Player {
             this.onMain = true;
             this.backwards = false;
             this.position = this.position.getPathLink();
+            this.pathChanged = true;
         }
     }
 
@@ -267,6 +274,10 @@ public class Player {
      */
     public String getName() {
         return this.name;
+    }
+
+    public void setBackwards(boolean backwards) {
+        this.backwards = backwards;
     }
 }
 

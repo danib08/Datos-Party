@@ -9,17 +9,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="325.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Text layoutX="32.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Would you like to buy it?" textAlignment="CENTER" wrappingWidth="259.7366943359374">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Text>
       <Text layoutX="33.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You've reached the star!" textAlignment="CENTER" wrappingWidth="259.7366943359375">
          <font>
             <Font name="Consolas" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="50.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Its cost is 15 coins." textAlignment="CENTER" wrappingWidth="226.13671112060547">
-         <font>
-            <Font name="Consolas" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="32.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Would you like to buy it?" textAlignment="CENTER" wrappingWidth="259.7366943359374">
+      <Text layoutX="50.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cost: 15 coins" textAlignment="CENTER" wrappingWidth="226.13671112060547">
          <font>
             <Font name="Consolas" size="18.0" />
          </font>
