@@ -4,11 +4,11 @@ import javafx.scene.input.KeyEvent;
 
 import java.time.Duration;
 import java.time.Instant;
-public class PlayerThread extends Thread{
+public class TimeThread extends Thread{
     private long totalTime;
     final String keyAssigned;
 
-    public PlayerThread(String key){
+    public TimeThread(String key){
         this.keyAssigned = key;
     }
 
