@@ -3,7 +3,7 @@ import com.gameLogic.Player;
 public abstract class Minigame{
     Player[] players;
 
-    public void Minigame(Player[] players){
+    public Minigame(Player[] players){
         this.players = players;
     }
 

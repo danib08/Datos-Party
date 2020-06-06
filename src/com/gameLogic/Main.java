@@ -1,6 +1,7 @@
 package com.gameLogic;
 
 import com.structures.*;
+import com.minigames.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
