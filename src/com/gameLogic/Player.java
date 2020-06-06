@@ -113,11 +113,11 @@ public class Player {
                 break;
             case 2:
                 System.out.println("Green Square");
-                this.updateCoins(+5);
+                this.updateCoins(3);
                 break;
             case 3:
                 System.out.println("Red Square");
-                this.updateCoins(-5);
+                this.updateCoins(-3);
                 break;
             case 4:
                 System.out.println("Yellow Square");
