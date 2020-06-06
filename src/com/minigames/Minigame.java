@@ -1,4 +1,4 @@
-package minigames;
+package com.minigames;
 import com.gameLogic.Player;
 public abstract class Minigame{
     Player[] players;
