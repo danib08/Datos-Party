@@ -56,7 +56,7 @@ public class MenuController extends Application {
             public void handle(ActionEvent event) {
                 stage.hide();
                 try{
-                    Parent game = FXMLLoader.load(getClass().getResource("Sample.fxml"));
+                    Parent game = FXMLLoader.load(getClass().getResource("gameBoard.fxml"));
                     Stage gameSt = new Stage();
                     gameSt.setScene(new Scene(game));
                     gameSt.setTitle("gameboard");
@@ -73,7 +73,7 @@ public class MenuController extends Application {
 
     public void ButtonClick(){
         try{
-            Parent game = FXMLLoader.load(getClass().getResource("Sample.fxml"));
+            Parent game = FXMLLoader.load(getClass().getResource("gameBoard.fxml"));
             Stage gameSt = new Stage();
             gameSt.setScene(new Scene(game));
             gameSt.setTitle("gameboard");

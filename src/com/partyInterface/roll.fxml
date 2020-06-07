@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="213.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="213.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.partyInterface.DiceController" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="151.0" layoutY="135.0" mnemonicParsing="false" text="Roll Dice" textAlignment="CENTER" />
       <Label layoutX="149.0" layoutY="169.0" text="Dice number" />
