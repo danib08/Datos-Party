@@ -18,8 +18,13 @@ public class MenuController {
     @FXML
     Button basicsButton;
 
+    /**
+     * This method is called when the Info button is clicked, and shows the new Info scene
+     * @param event Receives a click on the button
+     * @throws IOException
+     */
     public void changeToInfo(ActionEvent event) throws IOException {
-        Parent infoParent = FXMLLoader.load(getClass().getResource("GameInfo.fxml"));
+        Parent infoParent = FXMLLoader.load(getClass().getResource("Info.fxml"));
         Scene infoScene = new Scene(infoParent);
 
         // This gets the stage information.
@@ -29,14 +34,19 @@ public class MenuController {
         window.show();
     }
 
+    /**
+     * This method is called when the Basics button is clicked, and shows the new Basics scene
+     * @param event Receives a click on the button
+     * @throws IOException
+     */
     public void changeToBasic(ActionEvent event) throws IOException{
-        Parent basicParent = FXMLLoader.load(getClass().getResource("BasicInfo.fxml"));
-        Scene basicScene = new Scene(basicParent);
+        Parent basicParent = FXMLLoader.load(getClass().getResource("Basics.fxml"));
+        Scene basicsScene = new Scene(basicParent);
 
         // This gets the stage information.
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-        window.setScene(basicScene);
+        window.setScene(basicsScene);
         window.show();
     }
 }
