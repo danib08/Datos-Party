@@ -5,14 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.InfoController">
    <children>
       <TextArea editable="false" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #000000;" text="Welcome to the Datos Party project! This window displays the basic information about the solution for this project case. &#10;As you should already know, this is not a self-produced application, &#10;rather an assignment for the first &quot;CE-1103 Algorithms and Data Structures&quot; programming project.&#10;The assignee team was commanded to implement Abstract Data Types (such as linked lists) while using this implementation to form a board-based&#10; videogame. &#10;Returning to the main menu, you will be able to access both the &quot;basics&quot; window, which shows a simple explanation of the how-to-play stuff; &#10;the following text is just credit-related for the project assignment.&#10;&#10;&#10;Costa Rican Institute of Technology&#10;&#10;Academic Area of Computer Engineering&#10;&#10;CE-1103, Algorithms and Data Structures.&#10;&#10;Assignee team:&#10;*Brenes Otarola Daniela&#10;*Gondrez Villafuerte Jean Franco&#10;*Quesada Calderon Alejandro&#10;&#10;Assigner teacher: &#10;*Noguera Mena Luis Diego&#10;&#10;Year of Production:&#10;2020&#10;&#10;Version Released:&#10;1.0.0">
          <font>
             <Font name="Consolas Bold Italic" size="17.0" />
          </font>
       </TextArea>
-      <Button alignment="TOP_LEFT" layoutX="1252.0" layoutY="728.0" mnemonicParsing="false" text="Return to Menu" textAlignment="CENTER">
+      <Button alignment="TOP_LEFT" layoutX="1252.0" layoutY="728.0" mnemonicParsing="false" onAction="#changeToMenu" text="Return to Menu" textAlignment="CENTER">
          <font>
             <Font name="Consolas Bold Italic" size="12.0" />
          </font>

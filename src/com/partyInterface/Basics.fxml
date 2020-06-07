@@ -5,14 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.BasicsController">
    <children>
       <TextArea prefHeight="768.0" prefWidth="1366.0" text="Basics&#10;&#10;Welcome to Datos Party!&#10;&#10;This is a multiplayer local game for up to four players, where each player will travel across the game board, &#10;compete in minigames to win coins and buy stars.&#10;&#10;Choose the amount of players (2-4), their names and the length of the game (10-50 rounds), and let the fun being!&#10;&#10;A star will be generated in a random position in the game board, and the players will race to buy it with coins. &#10;Once a star is bought, a new one will appear in a different spot.&#10;&#10;Each player will take turns and roll two dice, and the result will be the amount of steps they take, &#10;and according to the square they fell an unexpected experience will happen:&#10;&#10;- Blue Square: neutral square&#10;- Red Square: lose coins :(&#10;- Green Square: win coins :)&#10;- Yellow Square: activate an event&#10;&#10;When all of the players have moved, the round finishes and they will compete in a minigame. &#10;According to their placement, they'll win a certain amount of coins. &#10;&#10;Beware if you land in the same square as another player, you'll have to compete in a duel!&#10;&#10;Once all of the rounds are played, a winner will be chosen according to the most amount of stars and coins gathered.&#10;&#10;Good luck and have fun!">
          <font>
             <Font name="Consolas" size="18.0" />
          </font>
       </TextArea>
-      <Button layoutX="1193.0" layoutY="704.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="129.0" text="Return to Menu">
+      <Button layoutX="1210.0" layoutY="708.0" mnemonicParsing="false" onAction="#changeToMenu" prefHeight="34.0" prefWidth="129.0" text="Return to Menu">
          <font>
             <Font name="System Italic" size="14.0" />
          </font>
