@@ -35,8 +35,7 @@ public class MenuController extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         // Creating the loader, the pane and all details
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MenuUI.fxml"));
-        Parent menu = loader.load();
+        Parent menu = FXMLLoader.load(getClass().getResource("MenuUI.fxml"));
         // Create scene
         stage.setScene(new Scene(menu));
 
