@@ -5,6 +5,11 @@ import java.util.Random;
 
 public class BombDetonator extends Minigame {
     int pAmount;
+
+    /**
+     *  this method is the only constructor this class consists of.
+     * @param players the main player array used in the game logic.
+     */
     public BombDetonator(Player[] players) {
         super(players);
         pAmount = players.length;
