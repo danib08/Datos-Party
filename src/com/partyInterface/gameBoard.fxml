@@ -17,9 +17,9 @@
    <children>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="1366.0">
          <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
                <children>
-                  <TextField editable="false" prefHeight="44.0" prefWidth="255.0" text="current round: ">
+                  <TextField editable="false" prefHeight="44.0" prefWidth="255.0" style="-fx-background-color: #000000;" text="current round: ">
                      <font>
                         <Font name="Consolas Bold Italic" size="24.0" />
                      </font>
@@ -27,7 +27,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField editable="false" layoutX="15.0" layoutY="15.0" prefHeight="44.0" prefWidth="352.0" text="current player: ">
+                  <TextField editable="false" layoutX="15.0" layoutY="15.0" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: #000000; -fx-font-style: white;" text="current player: ">
                      <font>
                         <Font name="Consolas Bold Italic" size="24.0" />
                      </font>
@@ -50,77 +50,77 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player ID" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player ID" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                            <font>
                               <Font name="Consolas Bold Italic" size="14.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                            <font>
                               <Font name="Consolas Bold Italic" size="14.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stars" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Stars" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                            <font>
                               <Font name="Consolas Bold Italic" size="14.0" />
                            </font>
                         </Text>
-                        <TextField editable="false" GridPane.rowIndex="1">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="asdfasd" GridPane.rowIndex="1">
                            <font>
                               <Font name="Consolas Italic" size="12.0" />
                            </font>
                         </TextField>
-                        <TextField editable="false" GridPane.rowIndex="2">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="asdfasdf" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" GridPane.rowIndex="3">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="aasdf" GridPane.rowIndex="3">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" GridPane.rowIndex="4">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="asdfasdf" GridPane.rowIndex="4">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="asdfasdf" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="asfdafsd" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="asfdasdf" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="asfasfd" GridPane.columnIndex="1" GridPane.rowIndex="4">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="asasdf" GridPane.columnIndex="2" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="asdfafds" GridPane.columnIndex="2" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="asdfasdf" GridPane.columnIndex="2" GridPane.rowIndex="3">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                        <TextField editable="false" style="-fx-background-color: #000000;" text="asdfasdf" GridPane.columnIndex="2" GridPane.rowIndex="4">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
