@@ -1,4 +1,4 @@
-package com.minigames;
+package com.minigames.mentalGame;
 
 import java.time.Duration;
 import java.time.Instant;

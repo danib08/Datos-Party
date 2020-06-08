@@ -1,7 +1,7 @@
 package com.minigames;
 import com.gameLogic.Player;
 public abstract class Minigame{
-    Player[] players;
+    protected Player[] players;
 
     public Minigame(Player[] players){
         this.players = players;

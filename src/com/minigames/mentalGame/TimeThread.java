@@ -1,9 +1,10 @@
-package com.minigames;
+package com.minigames.mentalGame;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
 import java.time.Duration;
 import java.time.Instant;
+
 public class TimeThread extends Thread{
     private long totalTime;
     final String keyAssigned;
@@ -11,8 +12,6 @@ public class TimeThread extends Thread{
     public TimeThread(String key){
         this.keyAssigned = key;
     }
-
-
 
     @Override
     public void run() {

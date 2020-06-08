@@ -1,8 +1,9 @@
-package com.minigames;
+package com.minigames.mentalGame;
 
 import com.gameLogic.Player;
+import com.minigames.Minigame;
 
-public class AmountPress extends Minigame{
+public class AmountPress extends Minigame {
 
     double time = 0;
     public AmountPress(Player[] arr){

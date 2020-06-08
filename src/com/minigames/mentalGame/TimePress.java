@@ -1,8 +1,11 @@
-package com.minigames;
+package com.minigames.mentalGame;
 import com.gameLogic.Player;
+import com.minigames.Minigame;
+import com.minigames.mentalGame.TimeThread;
+
 import java.util.Random;
 
-public class TimePress extends Minigame{
+public class TimePress extends Minigame {
 
     double time = 0;
     public TimePress(Player[] arr){
