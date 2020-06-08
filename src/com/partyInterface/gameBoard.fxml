@@ -1,100 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="boardAnch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="boardAnch" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Canvas fx:id="Canvas" height="400.0" layoutX="285.0" width="600.0" AnchorPane.rightAnchor="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <GridPane fx:id="boardGrid" gridLinesVisible="true" layoutY="87.0" prefHeight="313.0" prefWidth="600.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="127.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.20000381469725" minWidth="10.0" prefWidth="110.19999999999999" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.60000000000002" minWidth="0.0" prefWidth="114.19999999999999" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.60000000000002" minWidth="10.0" prefWidth="139.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label fx:id="label00" prefHeight="80.0" prefWidth="144.0" style="-fx-background-color: yellow;" />
-            <Label prefHeight="42.0" prefWidth="58.0" style="-fx-background-color: red;" GridPane.columnIndex="1" />
-            <Label prefHeight="43.0" prefWidth="68.0" style="-fx-background-color: cyan;" GridPane.columnIndex="2" />
-            <Label prefHeight="65.0" prefWidth="92.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="3" />
-            <Label prefHeight="43.0" prefWidth="84.0" style="-fx-background-color: yellow;" GridPane.columnIndex="4" />
-            <Label prefHeight="50.0" prefWidth="83.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="5" />
-            <Label prefHeight="45.0" prefWidth="75.0" style="-fx-background-color: cyan;" GridPane.columnIndex="6" />
-            <Label prefHeight="51.0" prefWidth="71.0" style="-fx-background-color: red;" GridPane.columnIndex="7" />
-            <Label prefHeight="54.0" prefWidth="81.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="8" />
-            <Label prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: red;" GridPane.columnIndex="9" />
-            <Label prefHeight="34.0" prefWidth="72.0" style="-fx-background-color: yellow;" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-            <Label prefHeight="59.0" prefWidth="91.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="9" GridPane.rowIndex="2" />
-            <Label prefHeight="46.0" prefWidth="70.0" style="-fx-background-color: cyan;" GridPane.columnIndex="9" GridPane.rowIndex="3" />
-            <Label prefHeight="48.0" prefWidth="85.0" style="-fx-background-color: red;" GridPane.columnIndex="9" GridPane.rowIndex="4" />
-            <Label prefHeight="45.0" prefWidth="71.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="9" GridPane.rowIndex="5" />
-            <Label prefHeight="57.0" prefWidth="82.0" style="-fx-background-color: cyan;" GridPane.columnIndex="9" GridPane.rowIndex="6" />
-            <Label prefHeight="64.0" prefWidth="104.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="9" GridPane.rowIndex="7" />
-            <Label prefHeight="60.0" prefWidth="74.0" style="-fx-background-color: yellow;" GridPane.columnIndex="9" GridPane.rowIndex="8" />
-            <Label prefHeight="52.0" prefWidth="73.0" style="-fx-background-color: red;" GridPane.columnIndex="9" GridPane.rowIndex="9" />
-            <Label prefHeight="56.0" prefWidth="65.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="8" GridPane.rowIndex="9" />
-            <Label prefHeight="70.0" prefWidth="68.0" style="-fx-background-color: cyan;" GridPane.columnIndex="7" GridPane.rowIndex="9" />
-            <Label prefHeight="60.0" prefWidth="91.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="6" GridPane.rowIndex="9" />
-            <Label prefHeight="49.0" prefWidth="88.0" style="-fx-background-color: yellow;" GridPane.columnIndex="5" GridPane.rowIndex="9" />
-            <Label prefHeight="76.0" prefWidth="82.0" style="-fx-background-color: red;" GridPane.columnIndex="4" GridPane.rowIndex="9" />
-            <Label prefHeight="68.0" prefWidth="105.0" style="-fx-background-color: cyan;" GridPane.columnIndex="3" GridPane.rowIndex="9" />
-            <Label prefHeight="40.0" prefWidth="66.0" style="-fx-background-color: red;" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-            <Label prefHeight="85.0" prefWidth="98.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Label prefHeight="39.0" prefWidth="89.0" style="-fx-background-color: cyan;" GridPane.rowIndex="9" />
-            <Label prefHeight="80.0" prefWidth="128.0" style="-fx-background-color: yellow;" GridPane.rowIndex="8" />
-            <Label prefHeight="98.0" prefWidth="107.0" style="-fx-background-color: red;" GridPane.rowIndex="7" />
-            <Label prefHeight="80.0" prefWidth="176.0" style="-fx-background-color: #00ff00;" GridPane.rowIndex="6" />
-            <Label prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #00ff00;" GridPane.rowIndex="5" />
-            <Label prefHeight="41.0" prefWidth="77.0" style="-fx-background-color: cyan;" GridPane.rowIndex="4" />
-            <Label prefHeight="68.0" prefWidth="168.0" style="-fx-background-color: yellow;" GridPane.rowIndex="3" />
-            <Label prefHeight="72.0" prefWidth="110.0" style="-fx-background-color: red;" GridPane.rowIndex="2" />
-            <Label prefHeight="40.0" prefWidth="78.0" style="-fx-background-color: #00ff00;" GridPane.rowIndex="1" />
-            <Label prefHeight="40.0" prefWidth="73.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="8" GridPane.rowIndex="3" />
-            <Label prefHeight="34.0" prefWidth="62.0" style="-fx-background-color: cyan;" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-            <Label prefHeight="61.0" prefWidth="110.0" style="-fx-background-color: red;" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <Label prefHeight="46.0" prefWidth="78.0" style="-fx-background-color: yellow;" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-            <Label prefHeight="40.0" prefWidth="98.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-            <Label prefHeight="42.0" prefWidth="83.0" style="-fx-background-color: yellow;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Label prefHeight="45.0" prefWidth="101.0" style="-fx-background-color: yellow;" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Label prefHeight="57.0" prefWidth="81.0" style="-fx-background-color: yellow;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Label prefHeight="49.0" prefWidth="99.0" style="-fx-background-color: yellow;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <Label prefHeight="67.0" prefWidth="83.0" style="-fx-background-color: yellow;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Label prefHeight="70.0" prefWidth="98.0" style="-fx-background-color: yellow;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <Label prefHeight="62.0" prefWidth="102.0" style="-fx-background-color: yellow;" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <Label prefHeight="96.0" prefWidth="95.0" style="-fx-background-color: yellow;" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-            <Label prefHeight="42.0" prefWidth="82.0" style="-fx-background-color: red;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label prefHeight="34.0" prefWidth="66.0" style="-fx-background-color: cyan;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label prefHeight="55.0" prefWidth="106.0" style="-fx-background-color: yellow;" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <Label prefHeight="40.0" prefWidth="72.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <Label prefHeight="53.0" prefWidth="123.0" style="-fx-background-color: cyan;" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-            <Label prefHeight="35.0" prefWidth="82.0" style="-fx-background-color: red;" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-            <Label prefHeight="48.0" prefWidth="69.0" style="-fx-background-color: yellow;" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-            <Label prefHeight="47.0" prefWidth="90.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-            <Label prefHeight="39.0" prefWidth="64.0" style="-fx-background-color: cyan;" GridPane.columnIndex="8" GridPane.rowIndex="6" />
-            <Label prefHeight="56.0" prefWidth="119.0" style="-fx-background-color: #00ff00;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-         </children>
-      </GridPane>
-      <TextField editable="false" layoutX="27.0" layoutY="37.0" prefHeight="32.0" prefWidth="149.0" text="Current player: " />
-      <TextField editable="false" layoutX="200.0" layoutY="40.0" text="current round: " />
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #000000;">
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField editable="false" prefHeight="44.0" prefWidth="255.0" text="current round: ">
+                     <font>
+                        <Font name="Consolas Bold Italic" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField editable="false" layoutX="15.0" layoutY="15.0" prefHeight="44.0" prefWidth="352.0" text="current player: ">
+                     <font>
+                        <Font name="Consolas Bold Italic" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <ListView prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <GridPane fx:id="boardGrid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="313.0" prefWidth="600.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="127.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.20000381469725" minWidth="10.0" prefWidth="110.19999999999999" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.60000000000002" minWidth="0.0" prefWidth="114.19999999999999" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.60000000000002" minWidth="10.0" prefWidth="139.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="lbl00" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" />
+                  <Label fx:id="lbl10" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="1" />
+                  <Label fx:id="lbl20" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="2" />
+                  <Label fx:id="lbl30" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="3" />
+                  <Label fx:id="lbl40" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="4" />
+                  <Label fx:id="lbl50" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="5" />
+                  <Label fx:id="lbl60" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="6" />
+                  <Label fx:id="lbl70" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="7" />
+                  <Label fx:id="lbl80" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="8" />
+                  <Label fx:id="lbl90" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="9" />
+                  <Label fx:id="lbl91" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                  <Label fx:id="lbl92" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+                  <Label fx:id="lbl93" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl94" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+                  <Label fx:id="lbl95" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+                  <Label fx:id="lbl96" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="6" />
+                  <Label fx:id="lbl97" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="7" />
+                  <Label fx:id="lbl98" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="8" />
+                  <Label fx:id="lbl99" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="9" />
+                  <Label fx:id="lbl89" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="8" GridPane.rowIndex="9" />
+                  <Label fx:id="lbl79" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="7" GridPane.rowIndex="9" />
+                  <Label fx:id="lbl69" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="6" GridPane.rowIndex="9" />
+                  <Label fx:id="lbl59" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                  <Label fx:id="lbl49" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+                  <Label fx:id="lbl39" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                  <Label fx:id="lbl29" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                  <Label fx:id="lbl19" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <Label fx:id="lbl09" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.rowIndex="9" />
+                  <Label fx:id="lbl08" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.rowIndex="8" />
+                  <Label fx:id="lbl07" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.rowIndex="7" />
+                  <Label fx:id="lbl06" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.rowIndex="6" />
+                  <Label fx:id="lbl05" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.rowIndex="5" />
+                  <Label fx:id="lbl04" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.rowIndex="4" />
+                  <Label fx:id="lbl03" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl02" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.rowIndex="2" />
+                  <Label fx:id="lbl01" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.rowIndex="1" />
+                  <Label fx:id="lbl83" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl73" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl63" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl62" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                  <Label fx:id="lbl61" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                  <Label fx:id="lbl32" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label fx:id="lbl42" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Label fx:id="lbl33" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl43" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl17" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label fx:id="lbl27" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                  <Label fx:id="lbl37" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                  <Label fx:id="lbl38" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                  <Label fx:id="lbl14" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="lbl24" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Label fx:id="lbl35" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                  <Label fx:id="lbl45" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                  <Label fx:id="lbl55" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                  <Label fx:id="lbl56" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                  <Label fx:id="lbl66" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                  <Label fx:id="lbl76" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+                  <Label fx:id="lbl86" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+                  <Label fx:id="lbl25" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </GridPane>
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>
