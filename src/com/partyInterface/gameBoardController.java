@@ -15,7 +15,7 @@ public class gameBoardController {
     /**
      * This opens a new window so the player can make a choice to change directions
      * @return The choice of the player as a boolean
-     * @throws IOException
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public boolean pathSel() throws IOException {
         Stage pathWindow = new Stage();
