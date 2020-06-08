@@ -1,4 +1,4 @@
-package com.minigames.mentalGame;
+package com.minigames.pressGame;
 
 import com.gameLogic.Player;
 import com.minigames.Minigame;
