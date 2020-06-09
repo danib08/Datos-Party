@@ -7,12 +7,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.BombController">
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minigames.bombGame.BombController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
          <items>
             <Region prefHeight="0.0" prefWidth="522.0" />
-            <Button fx:id="helpButton" mnemonicParsing="false" onAction="#showHelp" text="Help" textAlignment="CENTER">
+            <Button fx:id="helpButton" mnemonicParsing="false" text="Help" onAction="#showHelp" textAlignment="CENTER">
                <font>
                   <Font name="Consolas Bold" size="13.0" />
                </font>
@@ -24,7 +25,7 @@
             <Font name="Consolas Bold Italic" size="14.0" />
          </font>
       </TextArea>
-      <TextArea fx:id="helpText" editable="false" prefHeight="197.0" prefWidth="600.0" text="Additional help: the bomb timers are randomly predetermined when the game starts.&#10;&#10;The player interaction only shows the result to give the game an element of surprise.&#10;&#10;The last player to have their bomb detonanted will be 1st place, the rest will follow.">
+      <TextArea fx:id="helpText" visible= "false" editable="false" prefHeight="197.0" prefWidth="600.0" text="Additional help: the bomb timers are randomly predetermined when the game starts.&#10;&#10;The player interaction only shows the result to give the game an element of surprise.&#10;&#10;The last player to have their bomb detonanted will be 1st place, the rest will follow.">
          <font>
             <Font name="Consolas Bold" size="12.0" />
          </font>
