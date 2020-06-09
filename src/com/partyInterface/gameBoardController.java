@@ -10,12 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 
-public class gameBoardController {
+public class GameBoardController {
 
     /**
      * This opens a new window so the player can make a choice to change directions
@@ -29,6 +26,7 @@ public class gameBoardController {
 
         pathWindow.initModality(Modality.APPLICATION_MODAL);
         pathWindow.setTitle("Select Path");
+        pathWindow.setResizable(false);
 
         pathWindow.setOnCloseRequest(Event::consume);
 
@@ -58,6 +56,7 @@ public class gameBoardController {
 
         starWindow.initModality(Modality.APPLICATION_MODAL);
         starWindow.setTitle("Buying a Star");
+        starWindow.setResizable(false);
 
         starWindow.setOnCloseRequest(Event::consume);
 
