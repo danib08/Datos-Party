@@ -1,5 +1,8 @@
 package com.partyInterface;
 
+import com.minigames.bombGame.BombController;
+import com.minigames.*;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 public class gameBoardController {
@@ -64,5 +69,31 @@ public class gameBoardController {
         System.out.println(response);
 
         return response;
+    }
+
+    /**
+     * this opens a new window when the bomb minigame is executed.
+     * @throws IOException if the file to load cannot be accessed.
+     */
+
+    public void startBombGame() throws IOException{
+        Stage bombWindow = new Stage();
+
+        FXMLLoader bombLoader = new FXMLLoader();
+        bombLoader.setLocation(getClass().getResource("minigames/bombGame.fxml"));
+        Parent bombParent = bombLoader.load();
+        Scene bombScene = new Scene(bombParent);
+
+        BombController bombController = bombLoader.getController();
+
+        //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
+        //thus the players can only exit the window by playing the minigame.
+        bombWindow.initModality(Modality.APPLICATION_MODAL);
+        bombWindow.setTitle("Detonators Minigame");
+
+        bombWindow.setOnCloseRequest(Event :: consume);
+
+        bombWindow.setScene(bombScene);
+
     }
 }
