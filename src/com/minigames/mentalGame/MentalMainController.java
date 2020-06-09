@@ -18,7 +18,7 @@ public class MentalMainController {
      * @throws IOException
      */
     public void changeToGame(ActionEvent event) throws IOException{
-        Parent mentalParent = FXMLLoader.load(getClass().getResource("mentalGame/MentalGame.fxml"));
+        Parent mentalParent = FXMLLoader.load(getClass().getResource("MentalGame.fxml"));
         Scene mentalScene = new Scene(mentalParent);
 
         // This gets the stage information.
