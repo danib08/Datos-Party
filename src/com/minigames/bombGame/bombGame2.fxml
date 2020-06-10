@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minigames.bombGame.BombGame2">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minigames.bombGame.BombGame2">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -32,7 +32,7 @@
             </ImageView>
             <ImageView fx:id="player4bomb" fitHeight="124.0" fitWidth="141.0" layoutX="293.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/bomb.png" />
+                  <Image url="@../../images/bomb.png"/>
                </image>
             </ImageView>
          </children>
