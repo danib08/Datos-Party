@@ -14,7 +14,7 @@ public class BasicsController {
     /**
      * This method is called when the Return to Menu button is clicked, and shows the Menu scene
      * @param event Receives a click on the button
-     * @throws IOException
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void changeToMenu(ActionEvent event) throws IOException{
         Parent menuParent = FXMLLoader.load(getClass().getResource("MenuUI.fxml"));

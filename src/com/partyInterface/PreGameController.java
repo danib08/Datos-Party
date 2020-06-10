@@ -89,7 +89,7 @@ public class PreGameController {
     /**
      * Changes the scene to the GameBoard one, and passes information to it
      * @param event
-     * @throws IOException
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void changeScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -109,7 +109,7 @@ public class PreGameController {
 
     /**
      * If the user does not enter the correct data, this method displays an alert window
-     * @throws IOException
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void showError() throws IOException {
         Stage errorWindow = new Stage();

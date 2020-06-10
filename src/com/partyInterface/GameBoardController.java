@@ -5,6 +5,7 @@ import com.gameLogic.Player;
 import com.gameLogic.Star;
 import com.minigames.bombGame.BombController;
 import com.structures.*;
+import com.structures.List;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,9 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class GameBoardController implements Initializable {
 
@@ -55,6 +54,7 @@ public class GameBoardController implements Initializable {
 
     int numberOfPlayers;
     int numberOfRounds;
+    int roundsPlayed = 0;
 
     String playerName1;
     String playerName2;
@@ -66,6 +66,7 @@ public class GameBoardController implements Initializable {
 
     /**
      * This methods adds all of the Squares to each Path and creates the Event Stack
+     * The method is run as soon as this scene is displayed
      * @param url The location used to resolve relative paths for the root object (null if the location is not known)
      * @param resourceBundle The resources used to localize the root object (null if the root object was not localized)
      */
@@ -229,6 +230,7 @@ public class GameBoardController implements Initializable {
                 this.playerArray[3] = new Player(name4, this.mainBoard.getHead(), this.eventHandler, this.star);
             }
         }
+        this.mainGame();
     }
 
     /**
@@ -257,6 +259,11 @@ public class GameBoardController implements Initializable {
         return response;
     }
 
+    /**
+     * This opens a new window so the player can make a choice to buy a star
+     * @return The choice of the player as a boolean
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
+     */
     public boolean starBuy() throws IOException{
         int coins = 15;
 
@@ -288,8 +295,8 @@ public class GameBoardController implements Initializable {
     }
 
     /**
-     * this opens a new window when the bomb minigame is executed.
-     * @throws IOException if the file to load cannot be accessed.
+     * This opens a new window when the bomb minigame is executed
+     * @throws IOException if the file to load cannot be accessed
      */
 
     public void startBombGame() throws IOException{
@@ -311,5 +318,59 @@ public class GameBoardController implements Initializable {
 
         bombWindow.setScene(bombScene);
 
+    }
+
+    public void mainGame() {
+        Scanner scanner = new Scanner(System.in);
+        while (this.roundsPlayed < this.numberOfRounds ){
+            for (Player player : playerArray){
+
+                // Player round logic goes here
+                System.out.println(player.getName());
+                System.out.println("Press enter to move");
+                if (player == playerArray[0]){
+                    scanner.nextLine();
+                }
+                scanner.nextLine();
+
+                // Rolls the die and moves the player accordingly
+                player.move(playerArray);
+            }
+
+            // Selects a random integer that will be the next minigame to be played.
+            Random random = new Random();
+            chooseMinigame = random.nextInt(6) + 1;
+
+            // Checks that the chosen minigame isn't the same that was last played.
+            while (lastPlayed == chooseMinigame){
+                System.out.println("Selecting another minigame");
+                chooseMinigame = random.nextInt(6) + 1;
+            }
+
+            lastPlayed = chooseMinigame;
+
+            // This is a switch to select the next minigame to be played.
+            switch (chooseMinigame){
+                case 1:
+                    System.out.println("Play 1st Minigame");
+                    break;
+                case 2:
+                    System.out.println("Play 2nd Minigame");
+                    break;
+                case 3:
+                    System.out.println("Play 3rd Minigame");
+                    break;
+                case 4:
+                    System.out.println("Play 4th Minigame");
+                    break;
+                case 5:
+                    System.out.println("Play 5th Minigame");
+                    break;
+                case 6:
+                    System.out.println("Play 6th Minigame");
+                    break;
+            }
+            roundsPlayed++;
+        }
     }
 }
