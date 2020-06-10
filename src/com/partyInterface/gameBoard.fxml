@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="boardAnch" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.GameBoardController">
+<AnchorPane fx:id="boardAnch" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="1366.0">
          <top>
@@ -27,7 +27,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField editable="false" layoutX="15.0" layoutY="15.0" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: #000000;" text="current player: ">
+                  <TextField editable="false" layoutX="15.0" layoutY="15.0" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: #000000; -fx-font-style: white;" text="current player: ">
                      <font>
                         <Font name="Consolas Bold Italic" size="24.0" />
                      </font>

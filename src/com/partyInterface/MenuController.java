@@ -23,7 +23,7 @@ public class MenuController {
     /**
      * This method is called when the infoButton is clicked and shows the Info scene
      * @param event Receives a click on the button
-     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
+     * @throws IOException
      */
     public void changeToInfo(ActionEvent event) throws IOException {
         Parent infoParent = FXMLLoader.load(getClass().getResource("Info.fxml"));
@@ -39,7 +39,7 @@ public class MenuController {
     /**
      * This method is called when the basicsButton is clicked and shows the Basics scene
      * @param event Receives a click on the button
-     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
+     * @throws IOException
      */
     public void changeToBasic(ActionEvent event) throws IOException{
         Parent basicParent = FXMLLoader.load(getClass().getResource("Basics.fxml"));
@@ -56,7 +56,7 @@ public class MenuController {
     /**
      * This method is called when the gameButton is clicked, and shows the PreGame scene
      * @param event Receives a click on the button
-     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
+     * @throws IOException
      */
     public void changeToPreGame(ActionEvent event) throws IOException{
         Parent preGameParent = FXMLLoader.load(getClass().getResource("preGameMenu.fxml"));

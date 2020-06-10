@@ -30,7 +30,7 @@ public class MentalGameController implements Initializable {
             e.printStackTrace();
         }
 
-        Task<Void> task = new Task<Void>() {
+        Task<Void> task = new Task<>() {
             @Override
             protected Void call() {
                 for (int i = 0; i < 9; i++) {

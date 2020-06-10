@@ -8,7 +8,7 @@ import java.util.Random;
  * This class represents an in-game Star
  * The Singleton pattern is applied here
  */
-public final class Star {
+final class Star {
     private static Star star;
     private List path;
     private Square position;
