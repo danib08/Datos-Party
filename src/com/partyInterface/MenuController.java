@@ -17,11 +17,9 @@ public class MenuController {
     Button infoButton;
     @FXML
     Button basicsButton;
-    @FXML
-    Button gameButton;
 
     /**
-     * This method is called when the infoButton is clicked and shows the Info scene
+     * This method is called when the Info button is clicked, and shows the new Info scene
      * @param event Receives a click on the button
      * @throws IOException
      */
@@ -37,7 +35,7 @@ public class MenuController {
     }
 
     /**
-     * This method is called when the basicsButton is clicked and shows the Basics scene
+     * This method is called when the Basics button is clicked, and shows the new Basics scene
      * @param event Receives a click on the button
      * @throws IOException
      */
@@ -49,23 +47,6 @@ public class MenuController {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
         window.setScene(basicsScene);
-        window.show();
-    }
-
-
-    /**
-     * This method is called when the gameButton is clicked, and shows the PreGame scene
-     * @param event Receives a click on the button
-     * @throws IOException
-     */
-    public void changeToPreGame(ActionEvent event) throws IOException{
-        Parent preGameParent = FXMLLoader.load(getClass().getResource("preGameMenu.fxml"));
-        Scene preGameScene = new Scene(preGameParent);
-
-        // This gets the stage information.
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-        window.setScene(preGameScene);
         window.show();
     }
 }

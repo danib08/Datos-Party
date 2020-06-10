@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.Integer?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -14,8 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.PreGameController">
+<?import javafx.collections.FXCollections?>
+<?import java.lang.Integer?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
             <ToolBar prefHeight="43.0" prefWidth="649.0">
               <items>
@@ -24,7 +23,7 @@
                         <Font name="Consolas Bold Italic" size="15.0" />
                      </font>
                   </Text>
-                <Button fx:id="startGameButton" mnemonicParsing="false" onAction="#startGame" text="Start Game">
+                <Button mnemonicParsing="false" text="Start Game">
                      <font>
                         <Font name="Consolas Bold Italic" size="13.0" />
                      </font>
@@ -33,7 +32,7 @@
             </ToolBar>
             <Pane>
                <children>
-                  <RadioButton fx:id="radio2" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="2 players">
+                  <RadioButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="2 players">
                       <toggleGroup>
                           <ToggleGroup fx:id="playerGroup" />
                       </toggleGroup>
@@ -44,7 +43,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton fx:id="radio3" layoutX="137.0" layoutY="14.0" mnemonicParsing="false" text="3 players" toggleGroup="$playerGroup">
+                  <RadioButton layoutX="137.0" layoutY="14.0" mnemonicParsing="false" text="3 players" toggleGroup="$playerGroup">
                      <font>
                         <Font name="Consolas Bold Italic" size="14.0" />
                      </font>
@@ -52,7 +51,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton fx:id="radio4" layoutX="261.0" layoutY="14.0" mnemonicParsing="false" text="4 players" toggleGroup="$playerGroup">
+                  <RadioButton layoutX="261.0" layoutY="14.0" mnemonicParsing="false" text="4 players" toggleGroup="$playerGroup">
                      <font>
                         <Font name="Consolas Bold Italic" size="14.0" />
                      </font>
@@ -68,42 +67,37 @@
                </children>
             </Pane>
             <Region prefHeight="28.0" prefWidth="600.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Now, in these spaces, you must type in the player names!*">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Now, in these spaces, you must type in the player names!">
                <font>
                   <Font name="Consolas Bold Italic" size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="player1" prefHeight="26.0" prefWidth="221.0" promptText="player #1 name" />
-            <TextField fx:id="player2" promptText="player #2 name">
+            <TextField prefHeight="26.0" prefWidth="221.0" promptText="player #1 name" />
+            <TextField promptText="player #2 name">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="player3" promptText="player #3 name">
+            <TextField promptText="player #3 name">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="player4" promptText="player #4 name">
+            <TextField promptText="player #4 name">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
             </TextField>
-      <ComboBox fx:id="roundBox" prefWidth="150.0" promptText="Number of Rounds">
+      <ComboBox prefWidth="150.0" promptText="Number of Rounds">
           <items>
               <FXCollections fx:factory="observableArrayList">
-                  <Integer fx:value="10" />
-                  <Integer fx:value="20" />
-                  <Integer fx:value="30" />
-                  <Integer fx:value="40" />
-                  <Integer fx:value="50" />
+                  <Integer fx:value="10"/>
+                  <Integer fx:value="20"/>
+                  <Integer fx:value="30"/>
+                  <Integer fx:value="40"/>
+                  <Integer fx:value="50"/>
               </FXCollections>
           </items>
       </ComboBox>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="*NOTE: if you chose 2 players, you have to type their names in the corresponding field (player #1 and player #2 fields). Same if you choose three or four players." wrappingWidth="544.5367126464844">
-         <font>
-            <Font name="Consolas Bold Italic" size="14.0" />
-         </font>
-      </Text>
     </children>
 </VBox>
