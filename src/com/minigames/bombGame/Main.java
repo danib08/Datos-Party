@@ -1,4 +1,4 @@
-package com.partyInterface;
+package com.minigames.bombGame;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         // Creating the loader, the pane and all details
-        Parent menu = FXMLLoader.load(getClass().getResource("MenuUI.fxml"));
+        Parent menu = FXMLLoader.load(getClass().getResource("bombGame.fxml"));
 
         // Create scene
         Scene menuScene = new Scene(menu, 1024, 512);
