@@ -100,7 +100,7 @@
               </FXCollections>
           </items>
       </ComboBox>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="*If you chose 2 players, you have to type their names in the corresponding field (player #1 and player #2 fields)." wrappingWidth="544.5367126464844">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="*NOTE: if you chose 2 players, you have to type their names in the corresponding field (player #1 and player #2 fields). Same if you choose three or four players." wrappingWidth="544.5367126464844">
          <font>
             <Font name="Consolas Bold Italic" size="14.0" />
          </font>

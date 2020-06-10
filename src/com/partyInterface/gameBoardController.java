@@ -1,18 +1,238 @@
 package com.partyInterface;
 
+import com.gameLogic.Events;
+import com.gameLogic.Player;
+import com.gameLogic.Star;
 import com.minigames.bombGame.BombController;
-import com.minigames.*;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
+import com.structures.*;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.ResourceBundle;
 
-public class GameBoardController {
+public class GameBoardController implements Initializable {
+
+    // Here the different lists are created
+    // The mainBoard represents the outer border for the path players will see.
+    CircularSinglyLinkedList mainBoard = new CircularSinglyLinkedList();
+
+    // PathA, B and C are the secondary paths that players can opt to cross over to.
+    SinglyLinkedList pathA = new SinglyLinkedList();
+    SinglyLinkedList pathB = new SinglyLinkedList();
+    DoublyLinkedList pathC = new DoublyLinkedList();
+
+    // The path D is the one that can only be accessed through 'teleporting'.
+    CircularDoublyLinkedList pathD = new CircularDoublyLinkedList();
+
+    // A List-type array is made with the five paths.
+    List[] pathArray = {mainBoard, pathA, pathB, pathC, pathD};
+
+    // The star is created with a specific method, not regularly instantiated
+    // because this object is accessed through a Singleton design pattern
+    Star star = Star.getStar(pathArray);
+
+    // A stack is implemented using the SinglyLinkedList structure, this is meant to
+    // hold the representation of events to be accessed by the game logic.
+    SinglyLinkedList eventStack = new SinglyLinkedList();
+
+    // The collections class ArrayList is used to create a randomizable structure that can
+    // later be accessed by the main() method to add the random-ordered elements to the event stack.
+    ArrayList<Integer> eventList = new ArrayList<>();
+
+    // This array will contain all of the players
+    Player[] playerArray;
+
+    // The EventHandler is declared
+    Events eventHandler = new Events(this.playerArray, this.pathArray, this.eventStack, this.eventList);
+
+    int numberOfPlayers;
+    int numberOfRounds;
+
+    String playerName1;
+    String playerName2;
+    String playerName3;
+    String playerName4;
+
+    int lastPlayed = 0;
+    int chooseMinigame;
+
+    /**
+     * This methods adds all of the Squares to each Path and creates the Event Stack
+     * @param url The location used to resolve relative paths for the root object (null if the location is not known)
+     * @param resourceBundle The resources used to localize the root object (null if the root object was not localized)
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.mainBoard.append(1);
+        this.mainBoard.append(2);
+        this.mainBoard.append(3);
+        this.mainBoard.append(1);
+        this.mainBoard.append(3);
+        this.mainBoard.append(4);
+        this.mainBoard.append(2);
+        this.mainBoard.append(1);
+        this.mainBoard.append(2);
+        this.mainBoard.append(3);
+        this.mainBoard.append(4);
+        this.mainBoard.append(2);
+        this.mainBoard.append(1);
+        this.mainBoard.append(2);
+        this.mainBoard.append(3);
+        this.mainBoard.append(1);
+        this.mainBoard.append(2);
+        this.mainBoard.append(4);
+        this.mainBoard.append(3);
+        this.mainBoard.append(2);
+        this.mainBoard.append(3);
+        this.mainBoard.append(1);
+        this.mainBoard.append(2);
+        this.mainBoard.append(4);
+        this.mainBoard.append(2);
+        this.mainBoard.append(1);
+        this.mainBoard.append(3);
+        this.mainBoard.append(4);
+        this.mainBoard.append(2);
+        this.mainBoard.append(3);
+        this.mainBoard.append(4);
+        this.mainBoard.append(1);
+        this.mainBoard.append(2);
+        this.mainBoard.append(2);
+        this.mainBoard.append(3);
+        this.mainBoard.append(4);
+
+        this.pathA.append(2);
+        this.pathA.append(1);
+        this.pathA.append(3);
+        this.pathA.append(4);
+        this.pathA.append(2);
+
+        this.pathB.append(4);
+        this.pathB.append(4);
+        this.pathB.append(4);
+        this.pathB.append(4);
+
+        this.pathC.append(1);
+        this.pathC.append(2);
+        this.pathC.append(4);
+        this.pathC.append(3);
+        this.pathC.append(1);
+        this.pathC.append(2);
+        this.pathC.append(4);
+        this.pathC.append(2);
+        this.pathC.append(1);
+        this.pathC.append(3);
+
+        this.pathD.append(4);
+        this.pathD.append(4);
+        this.pathD.append(4);
+        this.pathD.append(4);
+
+        // Sets the Squares that have links between paths
+        this.mainBoard.getElement(3).setPathLink(pathB.getHead());
+        this.mainBoard.getElement(12).setPathLink(pathC.getHead());
+        this.mainBoard.getElement(15).setPathLink(pathA.getHead());
+        this.mainBoard.getElement(31).setPathLink(pathC.getTail());
+        this.pathA.getTail().setPathLink(this.mainBoard.getElement(21));
+        this.pathB.getTail().setPathLink(this.mainBoard.getElement(34));
+        this.pathC.getHead().setPathLink(this.mainBoard.getElement(12));
+        this.pathC.getTail().setPathLink(this.mainBoard.getElement(31));
+
+        // The ArrayList object is used as described previously, to add a certain amount of numbers
+        // from 1 to 9 that will sequentially be randomized
+        this.eventList.add(1);
+        this.eventList.add(1);
+        this.eventList.add(1);
+        this.eventList.add(1);
+        this.eventList.add(1);
+        this.eventList.add(1);
+        this.eventList.add(1);
+        this.eventList.add(1);
+        this.eventList.add(1);
+        this.eventList.add(1);
+        this.eventList.add(2);
+        this.eventList.add(2);
+        this.eventList.add(2);
+        this.eventList.add(2);
+        this.eventList.add(2);
+        this.eventList.add(2);
+        this.eventList.add(2);
+        this.eventList.add(2);
+        this.eventList.add(2);
+        this.eventList.add(3);
+        this.eventList.add(3);
+        this.eventList.add(3);
+        this.eventList.add(3);
+        this.eventList.add(3);
+        this.eventList.add(3);
+        this.eventList.add(3);
+        this.eventList.add(3);
+        this.eventList.add(3);
+        this.eventList.add(3);
+        this.eventList.add(4);
+        this.eventList.add(4);
+        this.eventList.add(4);
+        this.eventList.add(5);
+        this.eventList.add(5);
+        this.eventList.add(5);
+        this.eventList.add(6);
+        this.eventList.add(7);
+        this.eventList.add(7);
+        this.eventList.add(7);
+        this.eventList.add(8);
+        this.eventList.add(8);
+        this.eventList.add(8);
+        this.eventList.add(8);
+        this.eventList.add(8);
+        this.eventList.add(8);
+        this.eventList.add(8);
+        this.eventList.add(8);
+        this.eventList.add(8);
+        this.eventList.add(8);
+        this.eventList.add(9);
+        this.eventList.add(9);
+        this.eventList.add(9);
+        this.eventList.add(9);
+        this.eventList.add(9);
+
+        // Shuffle method is used to "randomize" the eventList.
+        Collections.shuffle(this.eventList);
+
+        // Adds the events to the stack.
+        for (Integer event : this.eventList) {
+            this.eventStack.prepend(event);
+        }
+    }
+
+    public void initData(int numPlayers, int numRounds, String name1, String name2, String name3, String name4) {
+        this.numberOfPlayers = numPlayers;
+        this.numberOfRounds = numRounds;
+        this.playerName1 = name1;
+        this.playerName2 = name2;
+        this.playerName3 = name3;
+        this.playerName4 = name4;
+        this.playerArray = new Player[this.numberOfPlayers];
+
+        this.playerArray[0] = new Player(name1, this.mainBoard.getHead(), this.eventHandler, this.star);
+        this.playerArray[1] = new Player(name2, this.mainBoard.getHead(), this.eventHandler, this.star);
+        if (!name3.equals("")) {
+            this.playerArray[2] = new Player(name3, this.mainBoard.getHead(), this.eventHandler, this.star);
+
+            if (!name4.equals("")) {
+                this.playerArray[3] = new Player(name4, this.mainBoard.getHead(), this.eventHandler, this.star);
+            }
+        }
+        for (Player player: this.playerArray) {
+            System.out.println(player.getName());
+        }
+    }
 
     /**
      * This opens a new window so the player can make a choice to change directions
