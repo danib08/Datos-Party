@@ -19,10 +19,10 @@ public class PreGameController {
     int numberOfPlayers;
     int numberOfRounds;
 
-    String playerName1;
-    String playerName2;
-    String playerName3;
-    String playerName4;
+    String playerName1 = "";
+    String playerName2 = "";
+    String playerName3 = "";
+    String playerName4 = "";
 
     boolean canChange = true;
 
@@ -43,7 +43,12 @@ public class PreGameController {
     @FXML
     private ComboBox<Integer> roundBox;
 
-
+    /**
+     * This method check that all of the correct values are entered on the PreGame Menu and
+     * loads the GameBoard scene
+     * @param event Receives a click on the button located in the PreGame Menu
+     * @throws IOException
+     */
     public void startGame(ActionEvent event) throws IOException {
         if (!roundBox.getSelectionModel().isEmpty() && !player1.getText().equals("") && !player2.getText().equals("")){
             this.numberOfRounds = roundBox.getValue();
@@ -81,6 +86,11 @@ public class PreGameController {
         }
     }
 
+    /**
+     * Changes the scene to the GameBoard one, and passes information to it
+     * @param event
+     * @throws IOException
+     */
     public void changeScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("GameBoard.fxml"));
@@ -91,11 +101,16 @@ public class PreGameController {
 
         // Accessing the Interface controller
         GameBoardController controller = loader.getController();
+        controller.initData(this.numberOfPlayers, this.numberOfRounds, this.playerName1, this.playerName2, this.playerName3, this.playerName4);
 
         window.setScene(gameBoardScene);
         window.show();
     }
 
+    /**
+     * If the user does not enter the correct data, this method displays an alert window
+     * @throws IOException
+     */
     public void showError() throws IOException {
         Stage errorWindow = new Stage();
         Parent errorParent = FXMLLoader.load(getClass().getResource("DataError.fxml"));
