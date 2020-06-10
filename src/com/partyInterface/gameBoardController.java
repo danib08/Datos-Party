@@ -229,9 +229,6 @@ public class GameBoardController implements Initializable {
                 this.playerArray[3] = new Player(name4, this.mainBoard.getHead(), this.eventHandler, this.star);
             }
         }
-        for (Player player: this.playerArray) {
-            System.out.println(player.getName());
-        }
     }
 
     /**
