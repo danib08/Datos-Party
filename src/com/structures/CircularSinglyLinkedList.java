@@ -13,8 +13,8 @@ public class CircularSinglyLinkedList extends List {
         this.tail = null;
     }
 
-    public void append(int data) {
-        Square square = new Square(data);
+    public void append(int data, int row, int column) {
+        Square square = new Square(data, row, column);
         if (this.head == null) {
             this.head = this.tail = square;
         }

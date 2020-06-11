@@ -7,15 +7,19 @@ public class Square {
     protected int data;
     protected Square next;
     protected Square pathLink;
+    protected int row;
+    protected int col;
 
     /**
      * Creates a Square object
      * @param data This is the value that the Square will contain
      */
-    public Square(int data) {
+    public Square(int data, int row, int col) {
         this.data = data;
         this.next = null;
         this.pathLink = null;
+        this.row = row;
+        this.col = col;
     }
 
     /**
@@ -24,14 +28,6 @@ public class Square {
      */
     public int getData() {
         return this.data;
-    }
-
-    /**
-     * This method is used to change the value of the data attribute
-     * @param newData The new value for the data attribute
-     */
-    public void setData(int newData) {
-        this.data = newData;
     }
 
     /**
@@ -81,6 +77,22 @@ public class Square {
      */
     public void setPathLink(Square pathLink) {
         this.pathLink = pathLink;
+    }
+
+    /**
+     * This method is used to access the row attribute
+     * @return A pointer to the pathLink Square
+     */
+    public int getRow() {
+        return this.row;
+    }
+
+    /**
+     * This method is used to access the column attribute
+     * @return A pointer to the pathLink Square
+     */
+    public int getCol() {
+        return this.col;
     }
 }
 

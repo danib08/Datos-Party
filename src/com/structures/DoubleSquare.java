@@ -10,8 +10,8 @@ public class DoubleSquare extends Square {
      * Creates a DoubleSquare object
      * @param data This is the value that the DoubleSquare will contain
      */
-    public DoubleSquare(int data) {
-        super(data);
+    public DoubleSquare(int data, int row, int column) {
+        super(data, row, column);
         this.prev = null;
     }
 

@@ -1,6 +1,5 @@
 package com.partyInterface;
 
-import com.gameLogic.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -9,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class StarController {
-    private static boolean response;
+    private boolean response;
 
     @FXML Label buyText;
     @FXML Button noStarB;
@@ -28,8 +27,8 @@ public class StarController {
         }
     }
 
-    public static boolean isResponse() {
-        return response;
+    public boolean isResponse() {
+        return this.response;
     }
 
     public void pressNo(ActionEvent event){

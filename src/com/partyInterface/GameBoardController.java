@@ -6,7 +6,6 @@ import com.gameLogic.Star;
 import com.minigames.bombGame.BombController;
 import com.structures.*;
 import com.structures.List;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,7 +53,7 @@ public class GameBoardController implements Initializable {
     Player[] playerArray;
 
     // The EventHandler is declared
-    Events eventHandler = new Events(this.playerArray, this.pathArray, this.eventStack, this.eventList);
+    Events eventHandler = new Events(playerArray, this.pathArray, this.eventStack, this.eventList);
 
     int numberOfPlayers;
     int currentPlayer = 0;
@@ -90,69 +89,69 @@ public class GameBoardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.mainBoard.append(1);
-        this.mainBoard.append(2);
-        this.mainBoard.append(3);
-        this.mainBoard.append(1);
-        this.mainBoard.append(3);
-        this.mainBoard.append(4);
-        this.mainBoard.append(2);
-        this.mainBoard.append(1);
-        this.mainBoard.append(2);
-        this.mainBoard.append(3);
-        this.mainBoard.append(4);
-        this.mainBoard.append(2);
-        this.mainBoard.append(1);
-        this.mainBoard.append(2);
-        this.mainBoard.append(3);
-        this.mainBoard.append(1);
-        this.mainBoard.append(2);
-        this.mainBoard.append(4);
-        this.mainBoard.append(3);
-        this.mainBoard.append(2);
-        this.mainBoard.append(3);
-        this.mainBoard.append(1);
-        this.mainBoard.append(2);
-        this.mainBoard.append(4);
-        this.mainBoard.append(2);
-        this.mainBoard.append(1);
-        this.mainBoard.append(3);
-        this.mainBoard.append(4);
-        this.mainBoard.append(2);
-        this.mainBoard.append(3);
-        this.mainBoard.append(4);
-        this.mainBoard.append(1);
-        this.mainBoard.append(2);
-        this.mainBoard.append(2);
-        this.mainBoard.append(3);
-        this.mainBoard.append(4);
+        this.mainBoard.append(1, 9, 0);
+        this.mainBoard.append(2, 9, 1);
+        this.mainBoard.append(3, 9, 2);
+        this.mainBoard.append(1, 9, 3);
+        this.mainBoard.append(3, 9, 4);
+        this.mainBoard.append(4, 9, 5);
+        this.mainBoard.append(2, 9, 6);
+        this.mainBoard.append(1, 9, 7);
+        this.mainBoard.append(2, 9, 8);
+        this.mainBoard.append(3, 9, 9);
+        this.mainBoard.append(4, 8, 9);
+        this.mainBoard.append(2, 7, 9);
+        this.mainBoard.append(1, 6, 9);
+        this.mainBoard.append(2, 5, 9);
+        this.mainBoard.append(3, 4, 9);
+        this.mainBoard.append(1, 3, 9);
+        this.mainBoard.append(2, 2, 9);
+        this.mainBoard.append(4, 1, 9);
+        this.mainBoard.append(3, 0, 9);
+        this.mainBoard.append(2, 0, 8);
+        this.mainBoard.append(3, 0, 7);
+        this.mainBoard.append(1, 0, 6);
+        this.mainBoard.append(2, 0, 5);
+        this.mainBoard.append(4, 0, 4);
+        this.mainBoard.append(2, 0, 3);
+        this.mainBoard.append(1, 0, 2);
+        this.mainBoard.append(3, 0, 1);
+        this.mainBoard.append(4, 0, 0);
+        this.mainBoard.append(2, 1, 0);
+        this.mainBoard.append(3, 2, 0);
+        this.mainBoard.append(4, 3, 0);
+        this.mainBoard.append(1, 4, 0);
+        this.mainBoard.append(2, 5, 0);
+        this.mainBoard.append(2, 6, 0);
+        this.mainBoard.append(3, 7, 0);
+        this.mainBoard.append(4, 8, 0);
 
-        this.pathA.append(2);
-        this.pathA.append(1);
-        this.pathA.append(3);
-        this.pathA.append(4);
-        this.pathA.append(2);
+        this.pathA.append(2, 3, 8);
+        this.pathA.append(1, 3, 7);
+        this.pathA.append(3, 3, 6);
+        this.pathA.append(4, 2, 6);
+        this.pathA.append(2, 1, 6);
 
-        this.pathB.append(4);
-        this.pathB.append(4);
-        this.pathB.append(4);
-        this.pathB.append(4);
+        this.pathB.append(4, 8, 3);
+        this.pathB.append(4, 7, 3);
+        this.pathB.append(4, 7, 2);
+        this.pathB.append(4, 7, 1);
 
-        this.pathC.append(1);
-        this.pathC.append(2);
-        this.pathC.append(4);
-        this.pathC.append(3);
-        this.pathC.append(1);
-        this.pathC.append(2);
-        this.pathC.append(4);
-        this.pathC.append(2);
-        this.pathC.append(1);
-        this.pathC.append(3);
+        this.pathC.append(1, 6, 8);
+        this.pathC.append(2, 6, 7);
+        this.pathC.append(4, 6, 6);
+        this.pathC.append(3, 6, 5);
+        this.pathC.append(1, 5, 5);
+        this.pathC.append(2, 5, 4);
+        this.pathC.append(4, 5, 3);
+        this.pathC.append(2, 5, 2);
+        this.pathC.append(1, 4, 2);
+        this.pathC.append(3, 4, 1);
 
-        this.pathD.append(4);
-        this.pathD.append(4);
-        this.pathD.append(4);
-        this.pathD.append(4);
+        this.pathD.append(4, 2, 3);
+        this.pathD.append(4, 3, 3);
+        this.pathD.append(4, 3, 4);
+        this.pathD.append(4, 2, 4);
 
         // Sets the Squares that have links between paths
         this.mainBoard.getElement(3).setPathLink(pathB.getHead());
@@ -226,7 +225,14 @@ public class GameBoardController implements Initializable {
 
         // Adds the events to the stack.
         for (Integer event : this.eventList) {
-            this.eventStack.prepend(event);
+            this.eventStack.prepend(event, 0,0 );
+        }
+    }
+
+    public void move() {
+        System.out.println("Move");
+        if (this.roundsPlayed < this.numberOfPlayers) {
+            int roll = this.playerArray[0].roll();
         }
     }
 
@@ -265,8 +271,12 @@ public class GameBoardController implements Initializable {
      */
     public boolean pathSel() throws IOException {
         Stage pathWindow = new Stage();
-        Parent pathParent = FXMLLoader.load(getClass().getResource("PathSelection.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("PathSelection.fxml"));
+        Parent pathParent = loader.load();
         Scene pathScene = new Scene(pathParent);
+
+        PathSelController controller = loader.getController();
 
         pathWindow.initModality(Modality.APPLICATION_MODAL);
         pathWindow.setTitle("Select Path");
@@ -277,7 +287,7 @@ public class GameBoardController implements Initializable {
         pathWindow.setScene(pathScene);
         pathWindow.showAndWait();
 
-        boolean response = PathSelController.isResponse();
+        boolean response = controller.isResponse();
 
         System.out.println(response);
 
@@ -312,7 +322,7 @@ public class GameBoardController implements Initializable {
         starWindow.setScene(starScene);
         starWindow.showAndWait();
 
-        boolean response = StarController.isResponse();
+        boolean response = controller.isResponse();
 
         System.out.println(response);
 

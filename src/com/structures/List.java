@@ -48,7 +48,7 @@ public abstract class List {
      * This abstract method will add an element to the back of the list
      * @param data The value that the new element will contain
      */
-    public abstract void append(int data);
+    public abstract void append(int data, int row, int column);
 
     /**
      * Shows the list in the console in an organized way

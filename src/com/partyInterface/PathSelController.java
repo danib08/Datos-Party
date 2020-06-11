@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 
 public class PathSelController  {
-    private static boolean response;
+    private boolean response;
     @FXML
     Button yesButton;
     @FXML
@@ -27,7 +27,7 @@ public class PathSelController  {
         window.close();
     }
 
-    public static boolean isResponse() {
+    public boolean isResponse() {
         return response;
     }
 }

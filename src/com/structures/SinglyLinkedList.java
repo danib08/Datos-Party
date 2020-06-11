@@ -13,8 +13,8 @@ public class SinglyLinkedList extends List {
         this.tail = null;
     }
 
-    public void append(int data) {
-        Square square = new Square(data);
+    public void append(int data, int row, int column) {
+        Square square = new Square(data, row, column);
         if (this.head == null) {
             this.head = this.tail = square;
         }
@@ -43,8 +43,8 @@ public class SinglyLinkedList extends List {
      * This method will add a new element to the top of the list
      * @param data The value that the new element will contain
      */
-    public void prepend(int data) {
-        Square square = new Square(data);
+    public void prepend(int data, int row, int column) {
+        Square square = new Square(data, row, column);
         if (this.head == null) {
             this.tail = square;
         }

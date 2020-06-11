@@ -101,12 +101,10 @@ public class PreGameController {
 
         // Accessing the Interface controller
         GameBoardController controller = loader.getController();
-        window.setScene(gameBoardScene);
-        window.show();
         controller.initData(this.numberOfPlayers, this.numberOfRounds, this.playerName1, this.playerName2, this.playerName3, this.playerName4);
 
-//        window.setScene(gameBoardScene);
-//        window.show();
+        window.setScene(gameBoardScene);
+        window.show();
     }
 
     /**

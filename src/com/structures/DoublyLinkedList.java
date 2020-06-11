@@ -14,8 +14,8 @@ public class DoublyLinkedList extends List {
         this.tail = null;
     }
 
-    public void append(int data) {
-        DoubleSquare doubleSquare = new DoubleSquare(data);
+    public void append(int data, int row, int column) {
+        DoubleSquare doubleSquare = new DoubleSquare(data, row, column);
         if (this.head == null) {
             this.head = this.tail = doubleSquare;
         }

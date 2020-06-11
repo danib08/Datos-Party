@@ -52,10 +52,9 @@ public class Player {
      *
      * @param playerArray Array of players, is used to check if two players share a square.
      */
-    public void move(Player[] playerArray) {
-        int movement = this.roll();
-        while (movement > 1) {
-            System.out.println("Remaining movement: " + movement);
+    public void move(int roll, Player[] playerArray) {
+        while (roll > 1) {
+            System.out.println("Remaining movement: " + roll);
 
             if (this.star.getPosition() == this.position) {
                 this.buyStar();
@@ -74,10 +73,10 @@ public class Player {
                 this.position = position.getNext();
                 this.pathChanged = false;
             }
-            movement--;
+            roll--;
         }
 
-        System.out.println("Remaining movement: " + movement);
+        System.out.println("Remaining movement: " + roll);
         Square prevSquare = this.position;
 
         if (this.position.getPathLink() != null) {
@@ -90,8 +89,8 @@ public class Player {
             this.position = this.position.getNext();
             this.pathChanged = false;
         }
-        movement--;
-        System.out.println("Remaining movement: " + movement);
+        roll--;
+        System.out.println("Remaining movement: " + roll);
 
         if (this.star.getPosition() == this.position) {
             this.buyStar();
@@ -160,7 +159,7 @@ public class Player {
      *
      * @return An integer containing the total of the roll.
      */
-    private int roll() {
+    public int roll() {
         Random random = new Random();
         int result = random.nextInt(6) + 1;
         result += random.nextInt(6) + 1;
