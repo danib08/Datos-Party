@@ -4,6 +4,7 @@ import com.gameLogic.Events;
 import com.gameLogic.Player;
 import com.gameLogic.Star;
 import com.minigames.bombGame.BombController;
+import com.minigames.reactGame.reactGameController;
 import com.structures.*;
 import com.structures.List;
 import javafx.event.Event;
@@ -15,6 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -89,6 +92,8 @@ public class GameBoardController implements Initializable {
     Label roundsText;
     @FXML
     Label playerText;
+    @FXML
+    GridPane boardGrid;
 
     /**
      * This methods adds all of the Squares to each Path and creates the Event Stack
@@ -239,17 +244,24 @@ public class GameBoardController implements Initializable {
     }
 
     public void loadImages() throws FileNotFoundException {
-        FileInputStream image1 = new FileInputStream("src/images/dino.png");
+        FileInputStream image1 = new FileInputStream("src/com/images/dino.png");
         playerImage1 = new Image(image1);
 
-        FileInputStream image2 = new FileInputStream("src/images/girl.png");
+        FileInputStream image2 = new FileInputStream("src/com/images/girl.png");
         playerImage2 = new Image(image2);
 
-        FileInputStream image3 = new FileInputStream("src/images/dog.png");
-        playerImage3 = new Image(image3);
+        if (this.numberOfPlayers >= 3) {
+            FileInputStream image3 = new FileInputStream("src/com/images/dog.png");
+            playerImage3 = new Image(image3);
 
-        FileInputStream image4 = new FileInputStream("src/images/boy.png");
-        playerImage4 = new Image(image4);
+            if (this.numberOfPlayers == 4) {
+                FileInputStream image4 = new FileInputStream("src/com/images/boy.png");
+                playerImage4 = new Image(image4);
+            }
+        }
+
+        Ima
+        this.boardGrid.add(new ImageView(playerImage1), 0, 9);
     }
 
     public void initData(int numPlayers, int numRounds, String name1, String name2, String name3, String name4) throws FileNotFoundException {
@@ -360,12 +372,12 @@ public class GameBoardController implements Initializable {
         Stage bombWindow = new Stage();
 
         FXMLLoader bombLoader = new FXMLLoader();
-        bombLoader.setLocation(getClass().getResource("minigames/bombGame.fxml"));
+        bombLoader.setLocation(getClass().getResource("com/minigames/bombGame/bombGame.fxml"));
         Parent bombParent = bombLoader.load();
         Scene bombScene = new Scene(bombParent);
 
         BombController bombController = bombLoader.getController();
-
+        bombController.initData(playerArray);
         //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
         //thus the players can only exit the window by playing the minigame.
         bombWindow.initModality(Modality.APPLICATION_MODAL);
@@ -374,6 +386,27 @@ public class GameBoardController implements Initializable {
         bombWindow.setOnCloseRequest(Event :: consume);
 
         bombWindow.setScene(bombScene);
+
+    }
+    public void startReactionGame() throws IOException{
+        Stage reactWindow = new Stage();
+
+        FXMLLoader reactLoader = new FXMLLoader();
+        reactLoader.setLocation(getClass().getResource("com/minigames/reactGame/reactGame.fxml"));
+        Parent reactParent = reactLoader.load();
+        Scene reactScene = new Scene(reactParent);
+
+        reactGameController reactController = reactLoader.getController();
+        reactController.initData(playerArray);
+
+        //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
+        //thus the players can only exit the window by playing the minigame.
+        reactWindow.initModality(Modality.APPLICATION_MODAL);
+        reactWindow.setTitle("Detonators Minigame");
+
+        reactWindow.setOnCloseRequest(Event :: consume);
+
+        reactWindow.setScene(reactScene);
 
     }
 }

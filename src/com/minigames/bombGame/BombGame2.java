@@ -90,7 +90,7 @@ public class BombGame2 implements Initializable{
     }
 
     public void updateData(ActionEvent event) throws FileNotFoundException{
-        FileInputStream image = new FileInputStream("src/images/explosion.png");
+        FileInputStream image = new FileInputStream("src/com/images/explosion.png");
         Image xplode = new Image(image);
         switch (call){
             case 1:
