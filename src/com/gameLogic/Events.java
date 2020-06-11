@@ -207,7 +207,7 @@ public class Events {
         Collections.shuffle(this.eventList);
 
         for (Integer event : this.eventList) {
-            this.stack.prepend(event);
+            this.stack.prepend(event, 0 , 0);
         }
     }
 
@@ -235,9 +235,5 @@ public class Events {
                 loser.updateCoins(-loser.getCoins());
             }
         */
-    }
-
-    public void selectMovement(){
-
     }
 }

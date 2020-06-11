@@ -15,6 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -89,6 +91,8 @@ public class GameBoardController implements Initializable {
     Label roundsText;
     @FXML
     Label playerText;
+    @FXML
+    GridPane boardGrid;
 
     /**
      * This methods adds all of the Squares to each Path and creates the Event Stack
@@ -239,17 +243,24 @@ public class GameBoardController implements Initializable {
     }
 
     public void loadImages() throws FileNotFoundException {
-        FileInputStream image1 = new FileInputStream("src/images/dino.png");
+        FileInputStream image1 = new FileInputStream("src/com/images/dino.png");
         playerImage1 = new Image(image1);
 
-        FileInputStream image2 = new FileInputStream("src/images/girl.png");
+        FileInputStream image2 = new FileInputStream("src/com/images/girl.png");
         playerImage2 = new Image(image2);
 
-        FileInputStream image3 = new FileInputStream("src/images/dog.png");
-        playerImage3 = new Image(image3);
+        if (this.numberOfPlayers >= 3) {
+            FileInputStream image3 = new FileInputStream("src/com/images/dog.png");
+            playerImage3 = new Image(image3);
 
-        FileInputStream image4 = new FileInputStream("src/images/boy.png");
-        playerImage4 = new Image(image4);
+            if (this.numberOfPlayers == 4) {
+                FileInputStream image4 = new FileInputStream("src/com/images/boy.png");
+                playerImage4 = new Image(image4);
+            }
+        }
+
+        Ima
+        this.boardGrid.add(new ImageView(playerImage1), 0, 9);
     }
 
     public void initData(int numPlayers, int numRounds, String name1, String name2, String name3, String name4) throws FileNotFoundException {
