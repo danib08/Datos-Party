@@ -366,10 +366,46 @@ public class GameBoardController implements Initializable {
         this.moveButton.setLayoutY(36);
     }
 
+    /**
+     * This method manages the movement of the players, and the interface changes according
+     * to situations that happen if they land on a certain path, buy starts or change paths
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded
+     */
     public void move() throws IOException {
         Player player = this.playerArray[currentPlayer];
-        player.setPosition(player.getPosition().getNext());
-        this.currentMove--;
+        if (this.currentMove > 1) {
+            System.out.println("normal");
+            //TODO star
+            if (player.getPosition().getPathLink() != null && !player.getPathChanged()) {
+                this.pathSel(player);
+            }
+            else if (player.getBackwards()) {
+                player.setPosition(player.getPosition().getPrev());
+                player.setPathChanged(false);
+            }
+            else {
+                player.setPosition(player.getPosition().getNext());
+                player.setPathChanged(false);
+            }
+            this.currentMove--;
+        }
+
+        else if (this.currentMove == 1) {
+            System.out.println("falta 1");
+            Square prevSquare = player.getPosition();
+            if (player.getPosition().getPathLink() != null) {
+                this.pathSel(player);
+            }
+            else if (player.getBackwards()) {
+                player.setPosition(player.getPosition().getPrev());
+                player.setPathChanged(false);
+            }
+            else {
+                player.setPosition(player.getPosition().getNext());
+                player.setPathChanged(false);
+            }
+            this.currentMove--;
+        }
 
         int row = player.getPosition().getRow();
         int col = player.getPosition().getCol();
@@ -378,27 +414,24 @@ public class GameBoardController implements Initializable {
 
         rollLabel.setText(Integer.toString(currentMove));
 
-        if (this.currentMove == 0) {
-            this.moveButton.setLayoutY(-100);
+       if (this.currentMove == 0) {
+           System.out.println("finisheo");
+           //TODO star
+           //TODO duel check
+           this.moveButton.setLayoutY(-100);
 
-            switch (player.getPosition().getData()) {
-                case 1:
-                    System.out.println("Blue Square");
-                    break;
-                case 2:
-                    System.out.println("Green Square");
+           switch (player.getPosition().getData()) {
+               case 2:
                     this.changeCoins(true);
                     player.updateCoins(3);
                     this.coinsArray[this.currentPlayer].setText(Integer.toString(player.getCoins()));
                     break;
-                case 3:
-                    System.out.println("Red Square");
+               case 3:
                     this.changeCoins(false);
                     player.updateCoins(-3);
                     this.coinsArray[this.currentPlayer].setText(Integer.toString(player.getCoins()));
                     break;
             }
-
             if (this.currentPlayer == this.numberOfPlayers - 1) {
                 this.currentPlayer = 0;
                 this.roundsPlayed++;
@@ -438,38 +471,52 @@ public class GameBoardController implements Initializable {
 
     /**
      * Opens a new window so the player can make a choice to change directions
-     * @return The choice of the player as a boolean
      * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
-    public boolean pathSel() throws IOException {
-        Stage pathWindow = new Stage();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("PathSelection.fxml"));
-        Parent pathParent = loader.load();
-        Scene pathScene = new Scene(pathParent);
+    public void pathSel(Player player) throws IOException {
+        if (player.getOnMain()) {
+            Stage pathWindow = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("PathSelection.fxml"));
+            Parent pathParent = loader.load();
+            Scene pathScene = new Scene(pathParent);
 
-        PathSelController controller = loader.getController();
+            PathSelController controller = loader.getController();
 
-        pathWindow.initModality(Modality.APPLICATION_MODAL);
-        pathWindow.setTitle("Select Path");
-        pathWindow.setResizable(false);
+            pathWindow.initModality(Modality.APPLICATION_MODAL);
+            pathWindow.setTitle("Select Path");
+            pathWindow.setResizable(false);
 
-        pathWindow.setOnCloseRequest(Event::consume);
+            pathWindow.setOnCloseRequest(Event::consume);
 
-        pathWindow.setScene(pathScene);
-        pathWindow.showAndWait();
+            pathWindow.setScene(pathScene);
+            pathWindow.showAndWait();
 
-        boolean response = controller.isResponse();
-
-        System.out.println(response);
-
-        return response;
+            boolean response = controller.isResponse();
+            if (response) {
+                player.setPosition(player.getPosition().getPathLink());
+                if (player.getPosition().getData() == 3) {
+                    player.setBackwards(true);
+                }
+                player.setOnMain(false);
+                player.setPathChanged(true);
+            }
+            else {
+                player.setPosition(player.getPosition().getNext());
+            }
+        }
+        else {
+            player.setOnMain(true);
+            player.setBackwards(false);
+            player.setPosition(player.getPosition().getPathLink());
+            player.setPathChanged(true);
+        }
     }
 
     /**
      * Opens a new window so the player can make a choice to buy a star
      * @return The choice of the player as a boolean
-     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded
      */
     public boolean starBuy() throws IOException{
         int coins = 15;
@@ -515,8 +562,8 @@ public class GameBoardController implements Initializable {
 
         BombController bombController = bombLoader.getController();
         bombController.initData(playerArray);
-        //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
-        //thus the players can only exit the window by playing the minigame.
+        //this modality is meant to transform the minigame window into the only interaction-allowed one for the user
+        //thus the players can only exit the window by playing the minigame
         bombWindow.initModality(Modality.APPLICATION_MODAL);
         bombWindow.setTitle("Detonators Minigame");
 
