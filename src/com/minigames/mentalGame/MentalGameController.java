@@ -26,6 +26,7 @@ import java.util.ResourceBundle;
 
 public class MentalGameController implements Initializable {
 
+    // This classes are used to update data in the interface.
     IntegerProperty milisecondsProperty = new SimpleIntegerProperty(this, "Miliseconds", 0);
     IntegerProperty secondsProperty = new SimpleIntegerProperty(this, "Seconds", 0);
 
@@ -56,11 +57,18 @@ public class MentalGameController implements Initializable {
     private Player[] playerArr;
     private int secondsToGo;
 
+    /**
+     * Gets data from another interface
+     * @param playerArr the player array created in the game interface
+     */
     public void initData(Player[] playerArr){
         this.playerArr = playerArr;
     }
 
     @Override
+    /**
+     * The player
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.pressA = false;
         this.pressN = false;
@@ -157,6 +165,7 @@ public class MentalGameController implements Initializable {
         }
     }
 
+    //TODO: Test this
     public Player[] sortLowestIndex(Player[] playerArr,long[] res){
         Player[] winners = new Player[playerArr.length];
         for (int i = 0; i < playerArr.length; i++) {

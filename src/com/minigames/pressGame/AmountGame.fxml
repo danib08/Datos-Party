@@ -6,42 +6,82 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minigames.mentalGame.MentalGameController">
+<AnchorPane fx:id="scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" onKeyReleased="#keyReleased" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minigames.pressGame.AmountGameController">
     <children>
-        <Label fx:id="secondsLabel" layoutX="646.0" layoutY="291.0" text="0">
+        <Label fx:id="secondsLabel" layoutX="646.0" layoutY="206.0" text="0">
             <font>
                 <Font name="Consolas" size="24.0" />
             </font>
         </Label>
-        <Label fx:id="milisecondsLabel" layoutX="703.0" layoutY="289.0" text="00">
+        <Label fx:id="milisecondsLabel" layoutX="710.0" layoutY="206.0" text="00">
             <font>
                 <Font name="Consolas" size="24.0" />
             </font>
         </Label>
-        <Label fx:id="secondsFirstZero" layoutX="632.0" layoutY="291.0" text="0">
+        <Label fx:id="secondsFirstZero" layoutX="632.0" layoutY="206.0" text="1">
             <font>
                 <Font name="Consolas" size="24.0" />
             </font>
         </Label>
-        <Label fx:id="timeSetLabel" layoutX="484.0" layoutY="148.0" prefHeight="58.0" prefWidth="451.0" text="Press the key as fast as you can.">
+        <Label layoutX="484.0" layoutY="148.0" prefHeight="58.0" prefWidth="451.0" text="Press the key as fast as you can.">
             <font>
                 <Font name="Consolas" size="24.0" />
             </font>
         </Label>
-        <Button fx:id="timerButton" layoutX="594.0" layoutY="416.0" mnemonicParsing="false" onAction="#startGameButton" text="Start Timer">
+        <Button fx:id="timerButton" layoutX="600.0" layoutY="597.0" mnemonicParsing="false" onAction="#startGameButton" text="Start Timer">
             <font>
                 <Font name="Consolas" size="24.0" />
             </font>
         </Button>
-        <Button fx:id="finishButton" disable="true" layoutX="594.0" layoutY="416.0" mnemonicParsing="false" onAction="#finishedGameWindow" text="Finish Game" visible="false">
+        <Button fx:id="finishButton" disable="true" layoutX="600.0" layoutY="597.0" mnemonicParsing="false" onAction="#finishedGameWindow" text="Finish Game" visible="false">
             <font>
                 <Font name="Consolas" size="24.0" />
             </font>
         </Button>
-        <Text fx:id="textTime" layoutX="676.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+        <Text fx:id="textTime" layoutX="676.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
             <font>
                 <Font name="Consolas" size="24.0" />
             </font>
         </Text>
+      <Label fx:id="player1Label" layoutX="337.0" layoutY="328.0" text="Player 1">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="presses1Label" layoutX="376.0" layoutY="446.0" prefHeight="0.0" prefWidth="0.0" text="0">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="player2Label" layoutX="526.0" layoutY="328.0" text="Player 2">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="presses2Label" layoutX="565.0" layoutY="460.0" text="0">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="player3Label" layoutX="778.0" layoutY="328.0" text="Player 3" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="presses3Label" layoutX="824.0" layoutY="460.0" text="0" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="player4Label" layoutX="976.0" layoutY="328.0" text="Player 4" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="presses4Label" layoutX="1022.0" layoutY="460.0" text="0" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
