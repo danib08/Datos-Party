@@ -10,12 +10,13 @@ import java.util.Random;
  */
 public final class Star {
     private static Star star;
-    private List path;
     private Square position;
-    private List[] listArray;
+    private final List[] listArray;
+    private boolean firstPosition;
 
     private Star(List[] listArray) {
         this.listArray = listArray;
+        this.firstPosition = false;
     }
 
     /**
@@ -33,20 +34,22 @@ public final class Star {
     }
 
     public void positionStar() {
+        if (this.firstPosition = false) {
+            this.firstPosition = true;
+        }
+
         Random random = new Random();
         int arrayIndex = random.nextInt(this.listArray.length - 1);
-        this.path = this.listArray[arrayIndex];
+        List path = this.listArray[arrayIndex];
+        int pathIndex;
 
-        int pathIndex = random.nextInt(this.path.getLength());
-        this.position = this.path.getElement(pathIndex);
-    }
-
-    /**
-     * Getter for the path attribute
-     * @return a List object that represents the path in which the Star is positioned
-     */
-    public List getPath() {
-        return this.path;
+        if (!this.firstPosition && path.getLength() == 36) {
+            pathIndex = random.nextInt(26) + 10;
+        }
+        else {
+            pathIndex = random.nextInt(path.getLength());
+        }
+        this.position = path.getElement(pathIndex);
     }
 
     /**

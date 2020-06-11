@@ -76,6 +76,8 @@ public class GameBoardController implements Initializable {
     int chooseMinigame;
     int currentMove;
 
+    ImageView starImage;
+
     ImageView playerImage1;
     ImageView playerImage2;
     ImageView playerImage3;
@@ -83,6 +85,7 @@ public class GameBoardController implements Initializable {
 
     ImageView[] imageArray;
     TextField[] coinsArray;
+    TextField[] starsArray;
 
     @FXML
     TextField playerID1;
@@ -112,7 +115,14 @@ public class GameBoardController implements Initializable {
     TextField coins3;
     @FXML
     TextField coins4;
-
+    @FXML
+    TextField stars1;
+    @FXML
+    TextField stars2;
+    @FXML
+    TextField stars3;
+    @FXML
+    TextField stars4;
 
     /**
      * This methods adds all of the Squares to each Path and creates the Event Stack
@@ -282,32 +292,38 @@ public class GameBoardController implements Initializable {
         this.playerArray = new Player[this.numberOfPlayers];
         this.imageArray = new ImageView[this.numberOfPlayers];
         this.coinsArray = new TextField[this.numberOfPlayers];
+        this.starsArray = new TextField[this.numberOfPlayers];
 
         this.playerArray[0] = new Player(name1, this.mainBoard.getHead(), this.eventHandler, this.star);
-        this.coinsArray[0] = coins1;
         this.playerID1.setText(this.playerName1);
+        this.coinsArray[0] = coins1;
+        this.starsArray[0] = stars1;
 
         this.playerArray[1] = new Player(name2, this.mainBoard.getHead(), this.eventHandler, this.star);
         this.playerID2.setText(this.playerName2);
         this.coinsArray[1] = coins2;
+        this.starsArray[1] = stars2;
 
         if (!name3.equals("")) {
             this.playerArray[2] = new Player(name3, this.mainBoard.getHead(), this.eventHandler, this.star);
             this.playerID3.setText(this.playerName3);
             this.coins3.setText("5");
             this.coinsArray[2] = coins3;
+            this.starsArray[2] = stars3;
 
             if (!name4.equals("")) {
                 this.playerArray[3] = new Player(name4, this.mainBoard.getHead(), this.eventHandler, this.star);
                 this.playerID4.setText(this.playerName4);
                 this.coins4.setText("5");
                 this.coinsArray[3] = coins4;
+                this.starsArray[3] = stars4;
             }
         }
-        this.loadImages();
+        this.star.positionStar();
         this.playerText.setText(this.playerName1);
         this.roundsText.setText(Integer.toString(this.roundsPlayed));
         this.moveButton.setLayoutY(-100);
+        this.loadImages();
     }
 
     /**
@@ -317,7 +333,7 @@ public class GameBoardController implements Initializable {
     public void loadImages() throws FileNotFoundException {
         FileInputStream inputStream1 = new FileInputStream("src/com/images/dino.png");
         Image image1 = new Image(inputStream1);
-        playerImage1 = new ImageView(image1);
+        this.playerImage1 = new ImageView(image1);
         playerImage1.setFitHeight(75);
         playerImage1.setFitWidth(75);
         imageArray[0] = playerImage1;
@@ -325,7 +341,7 @@ public class GameBoardController implements Initializable {
 
         FileInputStream inputStream2 = new FileInputStream("src/com/images/girl.png");
         Image image2 = new Image(inputStream2);
-        playerImage2 = new ImageView(image2);
+        this.playerImage2 = new ImageView(image2);
         playerImage2.setFitHeight(75);
         playerImage2.setFitWidth(75);
         imageArray[1] = playerImage2;
@@ -334,7 +350,7 @@ public class GameBoardController implements Initializable {
         if (this.numberOfPlayers >= 3) {
             FileInputStream inputStream3 = new FileInputStream("src/com/images/dog.png");
             Image image3 = new Image(inputStream3);
-            playerImage3 = new ImageView(image3);
+            this.playerImage3 = new ImageView(image3);
             playerImage3.setFitHeight(75);
             playerImage3.setFitWidth(75);
             imageArray[2] = playerImage3;
@@ -343,13 +359,24 @@ public class GameBoardController implements Initializable {
             if (this.numberOfPlayers == 4) {
                 FileInputStream inputStream4 = new FileInputStream("src/com/images/boy.png");
                 Image image4 = new Image(inputStream4);
-                playerImage4 = new ImageView(image4);
+                this.playerImage4 = new ImageView(image4);
                 playerImage4.setFitHeight(75);
                 playerImage4.setFitWidth(75);
                 imageArray[3] = playerImage4;
                 this.boardGrid.add(playerImage4, 0, 9);
             }
         }
+        FileInputStream inputStreamStar = new FileInputStream("src/com/images/star.png");
+        Image imageStar = new Image(inputStreamStar);
+        this.starImage = new ImageView(imageStar);
+        starImage.setFitHeight(75);
+        starImage.setFitWidth(75);
+
+        this.star.positionStar();
+        int starRow = this.star.getPosition().getRow();
+        int starCol = this.star.getPosition().getCol();
+        this.boardGrid.add(starImage, starCol, starRow);
+
     }
 
     /**
@@ -373,27 +400,11 @@ public class GameBoardController implements Initializable {
      */
     public void move() throws IOException {
         Player player = this.playerArray[currentPlayer];
-        if (this.currentMove > 1) {
-            System.out.println("normal");
-            //TODO star
+        if (this.currentMove >= 1) {
+            if (this.currentMove == 1) {
+                Square prevSquare = player.getPosition();
+            }
             if (player.getPosition().getPathLink() != null && !player.getPathChanged()) {
-                this.pathSel(player);
-            }
-            else if (player.getBackwards()) {
-                player.setPosition(player.getPosition().getPrev());
-                player.setPathChanged(false);
-            }
-            else {
-                player.setPosition(player.getPosition().getNext());
-                player.setPathChanged(false);
-            }
-            this.currentMove--;
-        }
-
-        else if (this.currentMove == 1) {
-            System.out.println("falta 1");
-            Square prevSquare = player.getPosition();
-            if (player.getPosition().getPathLink() != null) {
                 this.pathSel(player);
             }
             else if (player.getBackwards()) {
@@ -414,11 +425,14 @@ public class GameBoardController implements Initializable {
 
         rollLabel.setText(Integer.toString(currentMove));
 
-       if (this.currentMove == 0) {
-           System.out.println("finisheo");
-           //TODO star
-           //TODO duel check
+        if (this.star.getPosition() == player.getPosition()) {
+            this.starBuy(player, currentPlayer);
+        }
+
+        if (this.currentMove == 0) {
            this.moveButton.setLayoutY(-100);
+           
+           //TODO duel check
 
            switch (player.getPosition().getData()) {
                case 2:
@@ -518,9 +532,7 @@ public class GameBoardController implements Initializable {
      * @return The choice of the player as a boolean
      * @throws IOException if a file described in the loaders cannot be found/read/loaded
      */
-    public boolean starBuy() throws IOException{
-        int coins = 15;
-
+    public void starBuy(Player player, int currentPlayer) throws IOException{
         Stage starWindow = new Stage();
 
         FXMLLoader loader = new FXMLLoader();
@@ -528,12 +540,11 @@ public class GameBoardController implements Initializable {
         Parent starParent = loader.load();
         Scene starScene = new Scene(starParent);
 
-        // Accessing the Interface controller
         StarController controller = loader.getController();
-        controller.initData(coins);
+        controller.initData(player.getCoins());
 
         starWindow.initModality(Modality.APPLICATION_MODAL);
-        starWindow.setTitle("Buying a Star");
+        starWindow.setTitle("Star!");
         starWindow.setResizable(false);
 
         starWindow.setOnCloseRequest(Event::consume);
@@ -542,10 +553,16 @@ public class GameBoardController implements Initializable {
         starWindow.showAndWait();
 
         boolean response = controller.isResponse();
+        if (response) {
+            player.buyStar();
+            star.positionStar();
+            this.starsArray[currentPlayer].setText(Integer.toString(player.getStars()));
 
-        System.out.println(response);
-
-        return response;
+            int row = star.getPosition().getRow();
+            int col = star.getPosition().getCol();
+            this.boardGrid.getChildren().remove(this.starImage);
+            this.boardGrid.add(this.starImage, col, row);
+        }
     }
 
     /**
@@ -572,6 +589,7 @@ public class GameBoardController implements Initializable {
         bombWindow.setScene(bombScene);
 
     }
+
     public void startReactionGame() throws IOException{
         Stage reactWindow = new Stage();
 

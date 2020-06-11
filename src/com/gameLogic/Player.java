@@ -1,16 +1,15 @@
 package com.gameLogic;
 
 import com.structures.*;
-import java.util.Random;
 import java.util.Scanner;
 
 /** Represents a player.
  */
 public class Player {
-    private String name;
+    private final String name;
     private Square position;
     private Events eventHandler;
-    private Star star;
+    private final Star star;
     private int coins;
     private int stars;
     private int placement;
@@ -30,7 +29,7 @@ public class Player {
         this.position = position;
         this.eventHandler = eventHandler;
         this.star = star;
-        this.coins = 5;
+        this.coins = 20;
         this.stars = 0;
         this.placement = 1;
         this.backwards = false;
@@ -51,98 +50,90 @@ public class Player {
             this.coins += coins;
         }
     }
-//
-//    /**
-//     * Moves the player's position the number of squares rolled by the dice
-//     *
-//     * @param playerArray Array of players, is used to check if two players share a square.
-//     */
-//    public void move(int roll, Player[] playerArray) {
-//        while (roll > 1) {
-//            System.out.println("Remaining movement: " + roll);
-//
-//            if (this.star.getPosition() == this.position) {
-//                this.buyStar();
-//            }
-//
-//            if (this.position.getPathLink() != null && !pathChanged) {
-//                this.changePath();
-//            }
-//
-//            else if (this.backwards) {
-//                this.position = position.getPrev();
-//                this.pathChanged = false;
-//            }
-//
-//            else {
-//                this.position = position.getNext();
-//                this.pathChanged = false;
-//            }
-//            roll--;
-//        }
-//
-//        System.out.println("Remaining movement: " + roll);
-//        Square prevSquare = this.position;
-//
-//        if (this.position.getPathLink() != null) {
-//            this.changePath();
-//        } else if (this.backwards){
-//            this.position = this.position.getPrev();
-//            this.pathChanged = false;
-//        }
-//        else {
-//            this.position = this.position.getNext();
-//            this.pathChanged = false;
-//        }
-//        roll--;
-//        System.out.println("Remaining movement: " + roll);
-//
-//        if (this.star.getPosition() == this.position) {
-//            this.buyStar();
-//        }
-//
-//        for (Player player : playerArray) {
-//            if (player.getPosition() == this.position && !player.name.equals(this.name)) {
-//                System.out.println("Start Duel");
-//                duel(prevSquare, player);
-//            }
-//        }
-//
-//        switch (this.position.getData()) {
-//            case 1:
-//                System.out.println("Blue Square");
-//                break;
-//            case 2:
-//                System.out.println("Green Square");
-//                this.updateCoins(3);
-//                break;
-//            case 3:
-//                System.out.println("Red Square");
-//                this.updateCoins(-3);
-//                break;
-//            case 4:
-//                System.out.println("Yellow Square");
-//                this.eventHandler.eventSelecter(this);
-//                this.eventHandler.checkLength();
-//                break;
-//        }
-//    }
+
+    /**
+     * Moves the player's position the number of squares rolled by the dice
+     *
+     * @param playerArray Array of players, is used to check if two players share a square.
+     */
+    public void move(int roll, Player[] playerArray) {
+        while (roll > 1) {
+            System.out.println("Remaining movement: " + roll);
+
+            if (this.star.getPosition() == this.position) {
+                this.buyStar();
+            }
+
+            if (this.position.getPathLink() != null && !pathChanged) {
+                //this.changePath();
+            }
+
+            else if (this.backwards) {
+                this.position = position.getPrev();
+                this.pathChanged = false;
+            }
+
+            else {
+                this.position = position.getNext();
+                this.pathChanged = false;
+            }
+            roll--;
+        }
+
+        System.out.println("Remaining movement: " + roll);
+        Square prevSquare = this.position;
+
+        if (this.position.getPathLink() != null) {
+            //this.changePath();
+        } else if (this.backwards){
+            this.position = this.position.getPrev();
+            this.pathChanged = false;
+        }
+        else {
+            this.position = this.position.getNext();
+            this.pathChanged = false;
+        }
+        roll--;
+        System.out.println("Remaining movement: " + roll);
+
+        if (this.star.getPosition() == this.position) {
+            this.buyStar();
+        }
+
+        for (Player player : playerArray) {
+            if (player.getPosition() == this.position && !player.name.equals(this.name)) {
+                System.out.println("Start Duel");
+                duel(prevSquare, player);
+            }
+        }
+
+        switch (this.position.getData()) {
+            case 1:
+                System.out.println("Blue Square");
+                break;
+            case 2:
+                System.out.println("Green Square");
+                this.updateCoins(3);
+                break;
+            case 3:
+                System.out.println("Red Square");
+                this.updateCoins(-3);
+                break;
+            case 4:
+                System.out.println("Yellow Square");
+                this.eventHandler.eventSelecter(this);
+                this.eventHandler.checkLength();
+                break;
+        }
+    }
 
     /**
      * Checks if player has the money to buy a star, then asks if he wants to buy it
      * if the player says yes, a star is added and the star position gets changed.
      */
-    private void buyStar() {
-        Scanner scan = new Scanner(System.in);
-        if (this.coins >= 15) {
-            System.out.println("Do you want to buy a Star: YES/NO");
-            String response = scan.nextLine();
-            if (response.equals("YES")) {
-                this.updateCoins(-15);
-                this.stars++;
-                this.star.positionStar();
-            }
-        }
+    public void buyStar() {
+        this.updateCoins(-15);
+        this.stars++;
     }
 
     /**

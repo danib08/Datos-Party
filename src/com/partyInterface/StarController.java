@@ -17,12 +17,12 @@ public class StarController {
     public void initData(int coins){
         if (coins >= 15){
             buyText.setText("Do you want to buy it?");
-            buyText.setLayoutX(130);
+            buyText.setLayoutX(100);
             yesStarB.setDisable(false);
         }
         else {
-            buyText.setText("You don't have enough coins to buy it");
-            buyText.setLayoutX(120);
+            buyText.setText("You don't have enough coins.");
+            buyText.setLayoutX(75);
             yesStarB.setDisable(true);
         }
     }
