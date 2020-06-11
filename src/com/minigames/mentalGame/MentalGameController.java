@@ -1,7 +1,6 @@
 package com.minigames.mentalGame;
 
 import com.gameLogic.Player;
-import com.minigames.Minigame;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -104,7 +103,7 @@ public class MentalGameController implements Initializable {
     }
 
     public void startGameButton(ActionEvent event){
-        Task<Void> task = new Task<>() {
+        Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() {
                 timerButton.setLayoutX(2000);

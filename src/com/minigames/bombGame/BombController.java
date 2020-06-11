@@ -36,13 +36,15 @@ public class BombController{
      * @throws IOException if the file that the loader tries to access is not found or is corrupted.
      */
     public void startBombGame(ActionEvent buttonClick) throws IOException {
-
-        Parent minigameParent = FXMLLoader.load(getClass().getResource("bombGame2.fxml"));
+        FXMLLoader bombLoader = new FXMLLoader();
+        bombLoader.setLocation(getClass().getResource("bombGame2.fxml"));
+        Parent minigameParent = bombLoader.load();
         Scene bombScene = new Scene(minigameParent);
+        BombGame2 controller = bombLoader.getController();
+        controller.initData(players);
 
         // This gets the stage information to set the new scene.
         Stage window = (Stage) ((Node)buttonClick.getSource()).getScene().getWindow();
-
         //takes the obtained Stage and changes its Scene to the new fxml file.
         window.setScene(bombScene);
         window.show();
