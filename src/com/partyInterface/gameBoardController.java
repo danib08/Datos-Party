@@ -6,11 +6,15 @@ import com.gameLogic.Star;
 import com.minigames.bombGame.BombController;
 import com.structures.*;
 import com.structures.List;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -53,6 +57,7 @@ public class GameBoardController implements Initializable {
     Events eventHandler = new Events(this.playerArray, this.pathArray, this.eventStack, this.eventList);
 
     int numberOfPlayers;
+    int currentPlayer = 0;
     int numberOfRounds;
     int roundsPlayed = 0;
 
@@ -63,6 +68,19 @@ public class GameBoardController implements Initializable {
 
     int lastPlayed = 0;
     int chooseMinigame;
+
+    @FXML
+    TextField playerID1;
+    @FXML
+    TextField playerID2;
+    @FXML
+    TextField playerID3;
+    @FXML
+    TextField playerID4;
+    @FXML
+    Label roundsText;
+    @FXML
+    Label playerText;
 
     /**
      * This methods adds all of the Squares to each Path and creates the Event Stack
@@ -222,17 +240,24 @@ public class GameBoardController implements Initializable {
         this.playerArray = new Player[this.numberOfPlayers];
 
         this.playerArray[0] = new Player(name1, this.mainBoard.getHead(), this.eventHandler, this.star);
+        this.playerID1.setText(this.playerName1);
+
         this.playerArray[1] = new Player(name2, this.mainBoard.getHead(), this.eventHandler, this.star);
+        this.playerID2.setText(this.playerName2);
+
         if (!name3.equals("")) {
             this.playerArray[2] = new Player(name3, this.mainBoard.getHead(), this.eventHandler, this.star);
+            this.playerID3.setText(this.playerName3);
 
             if (!name4.equals("")) {
                 this.playerArray[3] = new Player(name4, this.mainBoard.getHead(), this.eventHandler, this.star);
+                this.playerID4.setText(this.playerName4);
             }
         }
-        this.mainGame();
-    }
 
+        this.playerText.setText(this.playerName1);
+    }
+    
     /**
      * This opens a new window so the player can make a choice to change directions
      * @return The choice of the player as a boolean
@@ -317,61 +342,5 @@ public class GameBoardController implements Initializable {
 
         bombWindow.setScene(bombScene);
 
-    }
-
-    public void mainGame() {
-        System.out.println("Main Game");
-        Scanner scanner = new Scanner(System.in);
-
-//        while (this.roundsPlayed < this.numberOfRounds ){
-//            for (Player player : playerArray){
-//
-//                // Player round logic goes here
-//                System.out.println(player.getName());
-//                System.out.println("Press enter to move");
-//                if (player == playerArray[0]){
-//                    scanner.nextLine();
-//                }
-//                scanner.nextLine();
-//
-//                // Rolls the die and moves the player accordingly
-//                player.move(playerArray);
-//            }
-//
-//            // Selects a random integer that will be the next minigame to be played.
-//            Random random = new Random();
-//            chooseMinigame = random.nextInt(6) + 1;
-//
-//            // Checks that the chosen minigame isn't the same that was last played.
-//            while (lastPlayed == chooseMinigame){
-//                System.out.println("Selecting another minigame");
-//                chooseMinigame = random.nextInt(6) + 1;
-//            }
-//
-//            lastPlayed = chooseMinigame;
-//
-//            // This is a switch to select the next minigame to be played.
-//            switch (chooseMinigame){
-//                case 1:
-//                    System.out.println("Play 1st Minigame");
-//                    break;
-//                case 2:
-//                    System.out.println("Play 2nd Minigame");
-//                    break;
-//                case 3:
-//                    System.out.println("Play 3rd Minigame");
-//                    break;
-//                case 4:
-//                    System.out.println("Play 4th Minigame");
-//                    break;
-//                case 5:
-//                    System.out.println("Play 5th Minigame");
-//                    break;
-//                case 6:
-//                    System.out.println("Play 6th Minigame");
-//                    break;
-//            }
-//            roundsPlayed++;
-//        }
     }
 }
