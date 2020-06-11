@@ -260,7 +260,6 @@ public class GameBoardController implements Initializable {
             }
         }
 
-        Ima
         this.boardGrid.add(new ImageView(playerImage1), 0, 9);
     }
 

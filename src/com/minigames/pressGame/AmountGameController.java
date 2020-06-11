@@ -148,7 +148,7 @@ public class AmountGameController implements Initializable {
         this.secondsFirstZero.setText("0");
         timerButton.setLayoutX(2000);
         this.startGame = true;
-        Task<Void> task = new Task<>() {
+        Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() {
                 for (int i = 1000; i > 0; i --) {
