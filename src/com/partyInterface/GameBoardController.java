@@ -4,6 +4,7 @@ import com.gameLogic.Events;
 import com.gameLogic.Player;
 import com.gameLogic.Star;
 import com.minigames.bombGame.BombController;
+import com.minigames.reactGame.reactGameController;
 import com.structures.*;
 import com.structures.List;
 import javafx.event.Event;
@@ -371,12 +372,12 @@ public class GameBoardController implements Initializable {
         Stage bombWindow = new Stage();
 
         FXMLLoader bombLoader = new FXMLLoader();
-        bombLoader.setLocation(getClass().getResource("minigames/bombGame.fxml"));
+        bombLoader.setLocation(getClass().getResource("com/minigames/bombGame/bombGame.fxml"));
         Parent bombParent = bombLoader.load();
         Scene bombScene = new Scene(bombParent);
 
         BombController bombController = bombLoader.getController();
-
+        bombController.initData(playerArray);
         //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
         //thus the players can only exit the window by playing the minigame.
         bombWindow.initModality(Modality.APPLICATION_MODAL);
@@ -385,6 +386,27 @@ public class GameBoardController implements Initializable {
         bombWindow.setOnCloseRequest(Event :: consume);
 
         bombWindow.setScene(bombScene);
+
+    }
+    public void startReactionGame() throws IOException{
+        Stage reactWindow = new Stage();
+
+        FXMLLoader reactLoader = new FXMLLoader();
+        reactLoader.setLocation(getClass().getResource("com/minigames/reactGame/reactGame.fxml"));
+        Parent reactParent = reactLoader.load();
+        Scene reactScene = new Scene(reactParent);
+
+        reactGameController reactController = reactLoader.getController();
+        reactController.initData(playerArray);
+
+        //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
+        //thus the players can only exit the window by playing the minigame.
+        reactWindow.initModality(Modality.APPLICATION_MODAL);
+        reactWindow.setTitle("Detonators Minigame");
+
+        reactWindow.setOnCloseRequest(Event :: consume);
+
+        reactWindow.setScene(reactScene);
 
     }
 }
