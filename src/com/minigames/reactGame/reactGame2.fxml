@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.minigames.reactGame.reactGame2Control"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minigames.reactGame.reactGame2Control">
+   <center>
+      <Label fx:id="labelMain" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="202.0" prefWidth="238.0" style="-fx-background-color: #ffffff;" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+   </center>
+   <left>
+      <VBox prefHeight="360.0" prefWidth="172.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="textField1" text="player 1">
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+            </TextField>
+            <Label fx:id="label1" maxWidth="1.7976931348623157E308" style="-fx-background-color: #00FF00;" />
+            <TextField fx:id="textField2" text="player 2">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </TextField>
+            <Label fx:id="label2" layoutX="10.0" layoutY="136.0" maxWidth="1.7976931348623157E308" style="-fx-background-color: #00FF00;" />
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox prefHeight="360.0" prefWidth="189.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="textField3" text="player 3">
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+            </TextField>
+            <Label fx:id="label3" maxWidth="1.7976931348623157E308" style="-fx-background-color: #00FF00;" />
+            <TextField fx:id="textField4" text="player 4">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </TextField>
+            <Label fx:id="label4" maxWidth="1.7976931348623157E308" style="-fx-background-color: #00FF00;" />
+         </children>
+      </VBox>
+   </right>
+   <bottom>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
