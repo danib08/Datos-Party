@@ -28,8 +28,13 @@ import java.util.ResourceBundle;
 
 public class AmountGameController implements Initializable {
 
+    // This attributes are used to update data in the interface.
     IntegerProperty milisecondsProperty = new SimpleIntegerProperty(this, "Miliseconds", 0);
     IntegerProperty secondsProperty = new SimpleIntegerProperty(this, "Seconds", 0);
+    IntegerProperty presses1 = new SimpleIntegerProperty(0);
+    IntegerProperty presses2 = new SimpleIntegerProperty(0);
+    IntegerProperty presses3 = new SimpleIntegerProperty(0);
+    IntegerProperty presses4 = new SimpleIntegerProperty(0);
 
     @FXML
     private Label secondsLabel;
@@ -62,18 +67,20 @@ public class AmountGameController implements Initializable {
     private boolean pressT;
     private boolean pressN;
     private boolean pressP;
-    private IntegerProperty presses1 = new SimpleIntegerProperty(0);
-    private IntegerProperty presses2 = new SimpleIntegerProperty(0);
-    private IntegerProperty presses3 = new SimpleIntegerProperty(0);
-    private IntegerProperty presses4 = new SimpleIntegerProperty(0);
     private Player[] playerArr;
-
     private boolean startGame;
 
+    /**
+     * Gets data from another interface
+     * @param playerArr the player array created in the game interface
+     */
     public void initData(Player[] playerArr){
         this.playerArr = playerArr;
     }
 
+    /**
+     * Initializer to set variables to their initial values
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.startGame = false;
@@ -108,6 +115,10 @@ public class AmountGameController implements Initializable {
 
     }
 
+    /**
+     * Handles the key pressed event, gets a time when a player press their assigned key.
+     * @param event JavaFX class called automatically when a key is pressed.
+     */
     public void keyPressed(KeyEvent event){
         if (event.getCode().equals(KeyCode.A) && !this.pressA && startGame){
             this.presses1.setValue(this.presses1.getValue() + 1);
@@ -130,6 +141,10 @@ public class AmountGameController implements Initializable {
         }
     }
 
+    /**
+     * Handles the key released event, gets a time when a player press their assigned key.
+     * @param event JavaFX class called automatically when a key is released.
+     */
     public void keyReleased(KeyEvent event){
         if (event.getCode().equals(KeyCode.A)){
             this.pressA = false;
@@ -144,6 +159,10 @@ public class AmountGameController implements Initializable {
         }
     }
 
+    /**
+     * Starts the game logic
+     * @param event JavaFX class called automatically when a button is pressed.
+     */
     public void startGameButton(ActionEvent event){
         this.secondsFirstZero.setText("0");
         timerButton.setLayoutX(2000);
@@ -176,6 +195,10 @@ public class AmountGameController implements Initializable {
         thread.start();
     }
 
+    /**
+     * Changes the scene and rewards the players.
+     * @param event JavaFX class called automatically when a button is pressed.
+     */
     public void finishedGameWindow(ActionEvent event){
 
         //Player[] winners = this.sortLowestIndex(this.playerArr, res);

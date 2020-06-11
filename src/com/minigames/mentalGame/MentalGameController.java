@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 public class MentalGameController implements Initializable {
 
-    // This classes are used to update data in the interface.
+    // This attributes are used to update data in the interface.
     IntegerProperty milisecondsProperty = new SimpleIntegerProperty(this, "Miliseconds", 0);
     IntegerProperty secondsProperty = new SimpleIntegerProperty(this, "Seconds", 0);
 
@@ -56,6 +56,7 @@ public class MentalGameController implements Initializable {
     private long time4;
     private Player[] playerArr;
     private int secondsToGo;
+    private boolean startGame;
 
     /**
      * Gets data from another interface
@@ -65,10 +66,10 @@ public class MentalGameController implements Initializable {
         this.playerArr = playerArr;
     }
 
-    @Override
     /**
-     * The player
+     * Initializer to set variables to their initial values
      */
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.pressA = false;
         this.pressN = false;
@@ -78,6 +79,7 @@ public class MentalGameController implements Initializable {
         this.time2 = 12;
         this.time3 = 12;
         this.time4 = 12;
+        this.startGame = false;
 
         this.milisecondsLabel.textProperty().bind((this.milisecondsProperty).asString());
         this.secondsLabel.textProperty().bind((this.secondsProperty).asString());
@@ -88,29 +90,38 @@ public class MentalGameController implements Initializable {
         this.secondsToGo *= 100;
     }
 
+    /**
+     * Handles the key pressed event, gets a time when a player press their assigned key.
+     * @param event JavaFX class called automatically when a key is pressed.
+     */
     public void keyPressed(KeyEvent event){
-        if (event.getCode().equals(KeyCode.A) && !this.pressA){
+        if (event.getCode().equals(KeyCode.A) && !this.pressA && this.startGame){
             this.time1 = System.currentTimeMillis()-this.startTime;
             System.out.println(this.time1);
             this.pressA = true;
         }
-        else if (event.getCode().equals(KeyCode.T) && !this.pressT){
+        else if (event.getCode().equals(KeyCode.T) && !this.pressT  && this.startGame){
             this.time2 = System.currentTimeMillis()-this.startTime;
             System.out.println(this.time2);
             this.pressT = true;
         }
-        else if (event.getCode().equals(KeyCode.N) && !this.pressN){
+        else if (event.getCode().equals(KeyCode.N) && !this.pressN  && this.startGame){
             this.time3 = System.currentTimeMillis()-this.startTime;
             System.out.println(this.time3);
             this.pressN = true;
-        } else if (event.getCode().equals(KeyCode.P) && !this.pressP) {
+        } else if (event.getCode().equals(KeyCode.P) && !this.pressP  && this.startGame) {
             this.time4 = System.currentTimeMillis() - this.startTime;
             System.out.println(this.time4);
             this.pressP = true;
         }
     }
 
+    /**
+     * Starts the game logic
+     * @param event JavaFX class called automatically when a button is pressed.
+     */
     public void startGameButton(ActionEvent event){
+        this.startGame = true;
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() {
@@ -135,6 +146,7 @@ public class MentalGameController implements Initializable {
                         secondsProperty.setValue(newSeconds);
                     });
                 }
+                startGame = false;
                 finishButton.setDisable(false);
                 finishButton.setVisible(true);
                 return null;
@@ -146,6 +158,10 @@ public class MentalGameController implements Initializable {
         thread.start();
     }
 
+    /**
+     * Changes the scene and rewards the players.
+     * @param event JavaFX class called automatically when a button is pressed.
+     */
     public void finishedGameWindow(ActionEvent event){
 
         long[] res = {time1, time2, time3, time4};
@@ -166,8 +182,14 @@ public class MentalGameController implements Initializable {
     }
 
     //TODO: Test this
-    public Player[] sortLowestIndex(Player[] playerArr,long[] res){
-        Player[] winners = new Player[playerArr.length];
+
+    /**
+     * Gets the index of the lowest time
+     * @param playerArr An array of players
+     * @param res An array of times
+     * @return The index of the lowest time.
+     */
+    public int sortLowestIndex(Player[] playerArr,long[] res){
         for (int i = 0; i < playerArr.length; i++) {
             long tmp = res[0];
             int j = 0;
@@ -177,9 +199,8 @@ public class MentalGameController implements Initializable {
                 }
                 j++;
             }
-            winners[i] = playerArr[j];
-            res[j] = 100;
+            res[j] = 1000000;
         }
-        return winners;
+        return 1;
     }
 }
