@@ -14,8 +14,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -67,6 +71,11 @@ public class GameBoardController implements Initializable {
 
     int lastPlayed = 0;
     int chooseMinigame;
+
+    Image playerImage1;
+    Image playerImage2;
+    Image playerImage3;
+    Image playerImage4;
 
     @FXML
     TextField playerID1;
@@ -229,14 +238,21 @@ public class GameBoardController implements Initializable {
         }
     }
 
-    public void move() {
-        System.out.println("Move");
-        if (this.roundsPlayed < this.numberOfPlayers) {
-            int roll = this.playerArray[0].roll();
-        }
+    public void loadImages() throws FileNotFoundException {
+        FileInputStream image1 = new FileInputStream("src/images/dino.png");
+        playerImage1 = new Image(image1);
+
+        FileInputStream image2 = new FileInputStream("src/images/girl.png");
+        playerImage2 = new Image(image2);
+
+        FileInputStream image3 = new FileInputStream("src/images/dog.png");
+        playerImage3 = new Image(image3);
+
+        FileInputStream image4 = new FileInputStream("src/images/boy.png");
+        playerImage4 = new Image(image4);
     }
 
-    public void initData(int numPlayers, int numRounds, String name1, String name2, String name3, String name4) {
+    public void initData(int numPlayers, int numRounds, String name1, String name2, String name3, String name4) throws FileNotFoundException {
         this.numberOfPlayers = numPlayers;
         this.numberOfRounds = numRounds;
         this.playerName1 = name1;
@@ -260,10 +276,17 @@ public class GameBoardController implements Initializable {
                 this.playerID4.setText(this.playerName4);
             }
         }
-
+        this.loadImages();
         this.playerText.setText(this.playerName1);
     }
-    
+
+    public void move() {
+        System.out.println("Move");
+        if (this.roundsPlayed < this.numberOfPlayers) {
+            int roll = this.playerArray[0].roll();
+        }
+    }
+
     /**
      * This opens a new window so the player can make a choice to change directions
      * @return The choice of the player as a boolean
