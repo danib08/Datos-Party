@@ -55,7 +55,7 @@
             </Button>
             <Button fx:id="stepButton" mnemonicParsing="false" onAction="#updateData" prefHeight="26.0" prefWidth="116.0" text="Show" />
             <Region prefHeight="100.0" prefWidth="251.0" />
-            <TextField fx:id="explodedText" prefHeight="26.0" prefWidth="255.0" />
+            <TextField fx:id="explodedText" editable="false" prefHeight="26.0" prefWidth="255.0" />
          </children>
       </HBox>
    </children>

@@ -38,6 +38,7 @@ public class BombController{
     public void startBombGame(ActionEvent buttonClick) throws IOException {
         FXMLLoader bombLoader = new FXMLLoader();
         bombLoader.setLocation(getClass().getResource("bombGame2.fxml"));
+
         Parent minigameParent = bombLoader.load();
         Scene bombScene = new Scene(minigameParent);
         BombGame2 controller = bombLoader.getController();
