@@ -75,10 +75,10 @@ public class GameBoardController implements Initializable {
     int lastPlayed = 0;
     int chooseMinigame;
 
-    Image playerImage1;
-    Image playerImage2;
-    Image playerImage3;
-    Image playerImage4;
+    ImageView playerImage1;
+    ImageView playerImage2;
+    ImageView playerImage3;
+    ImageView playerImage4;
 
     @FXML
     TextField playerID1;
@@ -244,23 +244,37 @@ public class GameBoardController implements Initializable {
     }
 
     public void loadImages() throws FileNotFoundException {
-        FileInputStream image1 = new FileInputStream("src/com/images/dino.png");
-        playerImage1 = new Image(image1);
+        FileInputStream inputStream1 = new FileInputStream("src/com/images/dino.png");
+        Image image1 = new Image(inputStream1);
+        playerImage1 = new ImageView(image1);
+        playerImage1.setFitHeight(75);
+        playerImage1.setFitWidth(75);
+        this.boardGrid.add(playerImage1, 0, 9);
 
-        FileInputStream image2 = new FileInputStream("src/com/images/girl.png");
-        playerImage2 = new Image(image2);
+        FileInputStream inputStream2 = new FileInputStream("src/com/images/girl.png");
+        Image image2 = new Image(inputStream2);
+        playerImage2 = new ImageView(image2);
+        playerImage2.setFitHeight(75);
+        playerImage2.setFitWidth(75);
+        this.boardGrid.add(playerImage2, 0, 9);
 
         if (this.numberOfPlayers >= 3) {
-            FileInputStream image3 = new FileInputStream("src/com/images/dog.png");
-            playerImage3 = new Image(image3);
+            FileInputStream inputStream3 = new FileInputStream("src/com/images/dog.png");
+            Image image3 = new Image(inputStream3);
+            playerImage3 = new ImageView(image3);
+            playerImage3.setFitHeight(75);
+            playerImage3.setFitWidth(75);
+            this.boardGrid.add(playerImage3, 0, 9);
 
             if (this.numberOfPlayers == 4) {
-                FileInputStream image4 = new FileInputStream("src/com/images/boy.png");
-                playerImage4 = new Image(image4);
+                FileInputStream inputStream4 = new FileInputStream("src/com/images/boy.png");
+                Image image4 = new Image(inputStream4);
+                playerImage4 = new ImageView(image4);
+                playerImage4.setFitHeight(75);
+                playerImage4.setFitWidth(75);
+                this.boardGrid.add(playerImage4, 0, 9);
             }
         }
-
-        this.boardGrid.add(new ImageView(playerImage1), 0, 9);
     }
 
     public void initData(int numPlayers, int numRounds, String name1, String name2, String name3, String name4) throws FileNotFoundException {
