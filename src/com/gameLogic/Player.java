@@ -30,7 +30,7 @@ public class Player {
         this.position = position;
         this.eventHandler = eventHandler;
         this.star = star;
-        this.coins = 0;
+        this.coins = 5;
         this.stars = 0;
         this.placement = 1;
         this.backwards = false;
@@ -44,7 +44,12 @@ public class Player {
      * @param coins The amount of coins to be added or substracted.
      */
     public void updateCoins(int coins) {
-        this.coins += coins;
+        if (coins < 0 && Math.abs(coins) > this.coins) {
+            this.coins = 0;
+        }
+        else {
+            this.coins += coins;
+        }
     }
 
     /**
@@ -95,9 +100,6 @@ public class Player {
         if (this.star.getPosition() == this.position) {
             this.buyStar();
         }
-
-        //System.out.println("PREV: " + tmp.getData());
-        //System.out.println("CURR: " + this.position.getData());
 
         for (Player player : playerArray) {
             if (player.getPosition() == this.position && !player.name.equals(this.name)) {
@@ -152,18 +154,6 @@ public class Player {
             this.position = this.position.getPathLink();
             this.pathChanged = true;
         }
-    }
-
-    /**
-     * Rolls two six-died dice adds them and returns the total.
-     *
-     * @return An integer containing the total of the roll.
-     */
-    public int roll() {
-        Random random = new Random();
-        int result = random.nextInt(6) + 1;
-        result += random.nextInt(6) + 1;
-        return result;
     }
 
     /**

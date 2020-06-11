@@ -25,7 +25,6 @@ public final class Star {
     public static synchronized Star getStar(List[] listArray) {
         if (star == null) {
             star = new Star(listArray);
-            System.out.println("Star instantiated");
         }
         else {
             System.out.println("Star already created");

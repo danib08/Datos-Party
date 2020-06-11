@@ -41,11 +41,26 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Button layoutX="547.0" layoutY="32.0" mnemonicParsing="false" onAction="#move" prefHeight="26.0" prefWidth="158.0" text="Move">
+                        <Button fx:id="moveButton" layoutX="617.0" layoutY="36.0" mnemonicParsing="false" onAction="#move" prefHeight="26.0" prefWidth="158.0" text="Move">
                            <font>
                               <Font name="Consolas Bold Italic" size="24.0" />
                            </font>
                         </Button>
+                        <Button fx:id="rollButton" layoutX="424.0" layoutY="35.0" mnemonicParsing="false" onAction="#roll" prefHeight="26.0" prefWidth="158.0" text="Roll">
+                           <font>
+                              <Font name="Consolas Bold Italic" size="24.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="798.0" layoutY="47.0" prefHeight="23.0" prefWidth="212.0" text="Remaining movement:" textFill="WHITE">
+                           <font>
+                              <Font name="Consolas Bold Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="rollLabel" layoutX="1014.0" layoutY="47.0" textFill="#fffdfd">
+                           <font>
+                              <Font name="Consolas Bold" size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <GridPane fx:id="playerDataList" gridLinesVisible="true">
@@ -97,27 +112,27 @@
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" promptText="0" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="coins1" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <TextField fx:id="coins2" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <TextField fx:id="coins3" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <TextField fx:id="coins4" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.columnIndex="1" GridPane.rowIndex="4">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" promptText="0" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <TextField editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
@@ -127,12 +142,12 @@
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <TextField editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.columnIndex="2" GridPane.rowIndex="3">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>
                         </TextField>
-                        <TextField editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                        <TextField editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.columnIndex="2" GridPane.rowIndex="4">
                             <font>
                                 <Font name="Consolas Italic" size="12.0" />
                             </font>

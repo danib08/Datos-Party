@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -20,7 +21,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -65,7 +65,7 @@ public class GameBoardController implements Initializable {
     int numberOfPlayers;
     int currentPlayer = 0;
     int numberOfRounds;
-    int roundsPlayed = 0;
+    int roundsPlayed = 1;
 
     String playerName1;
     String playerName2;
@@ -74,11 +74,15 @@ public class GameBoardController implements Initializable {
 
     int lastPlayed = 0;
     int chooseMinigame;
+    int currentMove;
 
     ImageView playerImage1;
     ImageView playerImage2;
     ImageView playerImage3;
     ImageView playerImage4;
+
+    ImageView[] imageArray;
+    TextField[] coinsArray;
 
     @FXML
     TextField playerID1;
@@ -94,6 +98,21 @@ public class GameBoardController implements Initializable {
     Label playerText;
     @FXML
     GridPane boardGrid;
+    @FXML
+    Label rollLabel;
+    @FXML
+    Button rollButton;
+    @FXML
+    Button moveButton;
+    @FXML
+    TextField coins1;
+    @FXML
+    TextField coins2;
+    @FXML
+    TextField coins3;
+    @FXML
+    TextField coins4;
+
 
     /**
      * This methods adds all of the Squares to each Path and creates the Event Stack
@@ -243,40 +262,16 @@ public class GameBoardController implements Initializable {
         }
     }
 
-    public void loadImages() throws FileNotFoundException {
-        FileInputStream inputStream1 = new FileInputStream("src/com/images/dino.png");
-        Image image1 = new Image(inputStream1);
-        playerImage1 = new ImageView(image1);
-        playerImage1.setFitHeight(75);
-        playerImage1.setFitWidth(75);
-        this.boardGrid.add(playerImage1, 0, 9);
-
-        FileInputStream inputStream2 = new FileInputStream("src/com/images/girl.png");
-        Image image2 = new Image(inputStream2);
-        playerImage2 = new ImageView(image2);
-        playerImage2.setFitHeight(75);
-        playerImage2.setFitWidth(75);
-        this.boardGrid.add(playerImage2, 0, 9);
-
-        if (this.numberOfPlayers >= 3) {
-            FileInputStream inputStream3 = new FileInputStream("src/com/images/dog.png");
-            Image image3 = new Image(inputStream3);
-            playerImage3 = new ImageView(image3);
-            playerImage3.setFitHeight(75);
-            playerImage3.setFitWidth(75);
-            this.boardGrid.add(playerImage3, 0, 9);
-
-            if (this.numberOfPlayers == 4) {
-                FileInputStream inputStream4 = new FileInputStream("src/com/images/boy.png");
-                Image image4 = new Image(inputStream4);
-                playerImage4 = new ImageView(image4);
-                playerImage4.setFitHeight(75);
-                playerImage4.setFitWidth(75);
-                this.boardGrid.add(playerImage4, 0, 9);
-            }
-        }
-    }
-
+    /**
+     * This method initializes some attributes of the GameBoardController class
+     * @param numPlayers The number of players in the game
+     * @param numRounds The number of rounds to be played
+     * @param name1 The name of the first player
+     * @param name2 The name of the second player
+     * @param name3 The name of the third player (empty if there isn't a third player)
+     * @param name4 The name of the fourth player (empty if there isn't a fourth player)
+     * @throws FileNotFoundException Signals that an attempt to open the file denoted by a specified pathname has failed
+     */
     public void initData(int numPlayers, int numRounds, String name1, String name2, String name3, String name4) throws FileNotFoundException {
         this.numberOfPlayers = numPlayers;
         this.numberOfRounds = numRounds;
@@ -285,35 +280,164 @@ public class GameBoardController implements Initializable {
         this.playerName3 = name3;
         this.playerName4 = name4;
         this.playerArray = new Player[this.numberOfPlayers];
+        this.imageArray = new ImageView[this.numberOfPlayers];
+        this.coinsArray = new TextField[this.numberOfPlayers];
 
         this.playerArray[0] = new Player(name1, this.mainBoard.getHead(), this.eventHandler, this.star);
+        this.coinsArray[0] = coins1;
         this.playerID1.setText(this.playerName1);
 
         this.playerArray[1] = new Player(name2, this.mainBoard.getHead(), this.eventHandler, this.star);
         this.playerID2.setText(this.playerName2);
+        this.coinsArray[1] = coins2;
 
         if (!name3.equals("")) {
             this.playerArray[2] = new Player(name3, this.mainBoard.getHead(), this.eventHandler, this.star);
             this.playerID3.setText(this.playerName3);
+            this.coins3.setText("5");
+            this.coinsArray[2] = coins3;
 
             if (!name4.equals("")) {
                 this.playerArray[3] = new Player(name4, this.mainBoard.getHead(), this.eventHandler, this.star);
                 this.playerID4.setText(this.playerName4);
+                this.coins4.setText("5");
+                this.coinsArray[3] = coins4;
             }
         }
         this.loadImages();
         this.playerText.setText(this.playerName1);
+        this.roundsText.setText(Integer.toString(this.roundsPlayed));
+        this.moveButton.setLayoutY(-100);
     }
 
-    public void move() {
-        System.out.println("Move");
-        if (this.roundsPlayed < this.numberOfPlayers) {
-            int roll = this.playerArray[0].roll();
+    /**
+     * Loads and shows all of the images of the players
+     * @throws FileNotFoundException Signals that an attempt to open the file denoted by a specified pathname has failed
+     */
+    public void loadImages() throws FileNotFoundException {
+        FileInputStream inputStream1 = new FileInputStream("src/com/images/dino.png");
+        Image image1 = new Image(inputStream1);
+        playerImage1 = new ImageView(image1);
+        playerImage1.setFitHeight(75);
+        playerImage1.setFitWidth(75);
+        imageArray[0] = playerImage1;
+        this.boardGrid.add(playerImage1, 0, 9);
+
+        FileInputStream inputStream2 = new FileInputStream("src/com/images/girl.png");
+        Image image2 = new Image(inputStream2);
+        playerImage2 = new ImageView(image2);
+        playerImage2.setFitHeight(75);
+        playerImage2.setFitWidth(75);
+        imageArray[1] = playerImage2;
+        this.boardGrid.add(playerImage2, 0, 9);
+
+        if (this.numberOfPlayers >= 3) {
+            FileInputStream inputStream3 = new FileInputStream("src/com/images/dog.png");
+            Image image3 = new Image(inputStream3);
+            playerImage3 = new ImageView(image3);
+            playerImage3.setFitHeight(75);
+            playerImage3.setFitWidth(75);
+            imageArray[2] = playerImage3;
+            this.boardGrid.add(playerImage3, 0, 9);
+
+            if (this.numberOfPlayers == 4) {
+                FileInputStream inputStream4 = new FileInputStream("src/com/images/boy.png");
+                Image image4 = new Image(inputStream4);
+                playerImage4 = new ImageView(image4);
+                playerImage4.setFitHeight(75);
+                playerImage4.setFitWidth(75);
+                imageArray[3] = playerImage4;
+                this.boardGrid.add(playerImage4, 0, 9);
+            }
         }
     }
 
     /**
-     * This opens a new window so the player can make a choice to change directions
+     * This method generates a random roll of two dice
+     */
+    public void roll() {
+        rollButton.setLayoutY(-100);
+        Random random = new Random();
+        int result = random.nextInt(6) + 1;
+        result += random.nextInt(6) + 1;
+
+        this.currentMove = result;
+        rollLabel.setText(Integer.toString(result));
+        this.moveButton.setLayoutY(36);
+    }
+
+    public void move() throws IOException {
+        Player player = this.playerArray[currentPlayer];
+        player.setPosition(player.getPosition().getNext());
+        this.currentMove--;
+
+        int row = player.getPosition().getRow();
+        int col = player.getPosition().getCol();
+        this.boardGrid.getChildren().remove(this.imageArray[currentPlayer]);
+        this.boardGrid.add(this.imageArray[currentPlayer], col, row);
+
+        rollLabel.setText(Integer.toString(currentMove));
+
+        if (this.currentMove == 0) {
+            this.moveButton.setLayoutY(-100);
+
+            switch (player.getPosition().getData()) {
+                case 1:
+                    System.out.println("Blue Square");
+                    break;
+                case 2:
+                    System.out.println("Green Square");
+                    this.changeCoins(true);
+                    player.updateCoins(3);
+                    this.coinsArray[this.currentPlayer].setText(Integer.toString(player.getCoins()));
+                    break;
+                case 3:
+                    System.out.println("Red Square");
+                    this.changeCoins(false);
+                    player.updateCoins(-3);
+                    this.coinsArray[this.currentPlayer].setText(Integer.toString(player.getCoins()));
+                    break;
+            }
+
+            if (this.currentPlayer == this.numberOfPlayers - 1) {
+                this.currentPlayer = 0;
+                this.roundsPlayed++;
+                this.roundsText.setText(Integer.toString(this.roundsPlayed));
+            }
+            else {
+                this.currentPlayer++;
+            }
+            this.playerText.setText(this.playerArray[currentPlayer].getName());
+            this.rollButton.setLayoutY(36);
+        }
+    }
+
+    /**
+     * Opens a new window that shows if the player lost or won coins
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
+     */
+    public void changeCoins(boolean obtain) throws IOException {
+        Stage coinsWindow = new Stage();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("WinCoins.fxml"));
+        Parent coinsParent = loader.load();
+        Scene starScene = new Scene(coinsParent);
+
+        // Accessing the Interface controller
+        WinCoinsController controller = loader.getController();
+        controller.initData(obtain);
+
+        coinsWindow.initModality(Modality.APPLICATION_MODAL);
+        coinsWindow.setTitle("Coins");
+        coinsWindow.setResizable(false);
+
+        coinsWindow.setScene(starScene);
+        coinsWindow.showAndWait();
+    }
+
+    /**
+     * Opens a new window so the player can make a choice to change directions
      * @return The choice of the player as a boolean
      * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
@@ -343,7 +467,7 @@ public class GameBoardController implements Initializable {
     }
 
     /**
-     * This opens a new window so the player can make a choice to buy a star
+     * Opens a new window so the player can make a choice to buy a star
      * @return The choice of the player as a boolean
      * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
