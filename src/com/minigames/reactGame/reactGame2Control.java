@@ -3,7 +3,6 @@ package com.minigames.reactGame;
 import com.gameLogic.Player;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -62,7 +61,6 @@ public class reactGame2Control implements Initializable {
         this.pressedT = false;
         this.pressedP = false;
         expectingPress = false;
-        //Thread keyThread = new Thread();
 
     }
 
@@ -89,7 +87,22 @@ public class reactGame2Control implements Initializable {
         }
     }
 
-    public void initData(Player[]players){
+    public void listenRelease(KeyEvent keyRelease){
+        if(keyRelease.getCode().equals(KeyCode.A) && this.pressedA && expectingPress) {
+            this.pressedA = false;
+        }
+        else if(keyRelease.getCode().equals(KeyCode.T) && this.pressedT && expectingPress) {
+            this.pressedT = false;
+        }
+        else if(keyRelease.getCode().equals(KeyCode.N) && this.pressedN && expectingPress) {
+            this.pressedN = false;
+        }
+        else if(keyRelease.getCode().equals(KeyCode.P) && this.pressedP && expectingPress) {
+            this.pressedP = false;
+        }
+    }
+
+    public void initData(Player[] players){
         this.players = players;
     }
 
