@@ -21,8 +21,11 @@ public class BombGame2 implements Initializable{
     @FXML ImageView player2bomb;
     @FXML ImageView player3bomb;
     @FXML ImageView player4bomb;
+
     @FXML Button createData;
     @FXML Button stepButton;
+    @FXML Button finishButton;
+
     @FXML TextField explodedText;
     Player[] players;
     Player[] toReward;
@@ -33,6 +36,7 @@ public class BombGame2 implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         stepButton.setVisible(false);
+        finishButton.setVisible(false);
         explodedText.setVisible(false);
         if (pAmount <=3){
             player4bomb.setVisible(false);
@@ -52,6 +56,7 @@ public class BombGame2 implements Initializable{
         Detonator[] detonators = new Detonator[pAmount];
         Detonator detonator1 = new Detonator(players[0]);
         Detonator detonator2 = new Detonator(players[1]);
+
         detonators[0] = detonator1;
         detonators[1] = detonator2;
 
@@ -85,23 +90,41 @@ public class BombGame2 implements Initializable{
     public void updateData(ActionEvent event) throws FileNotFoundException{
         FileInputStream image = new FileInputStream("src/com/images/explosion.png");
         Image xplode = new Image(image);
-        switch (call){
-            case 1:
-                player1bomb.setImage(xplode);
-                explodedText.setText("mamaste: " + toReward[pAmount-1].getName());
-                break;
-            case 2:
-                player2bomb.setImage(xplode);
-                explodedText.setText("mamaste: " + toReward[pAmount-2].getName());
-                break;
-            case 3:
-                player3bomb.setImage(xplode);
-                explodedText.setText("mamaste: " + toReward[pAmount-3].getName());
-                break;
-            case 4:
-                player4bomb.setImage(xplode);
-                explodedText.setText("mamaste: " + toReward[pAmount-4].getName());
-                break;
+            switch (call) {
+                case 1:
+                    player1bomb.setImage(xplode);
+                    explodedText.setText("detonated first: " + toReward[pAmount-1].getName());
+                    break;
+
+                case 2:
+                    player2bomb.setImage(xplode);
+                    explodedText.setText("detonated second: " + toReward[pAmount-2].getName());
+                    if (call ==pAmount){
+                        stepButton.setDisable(true);
+                        stepButton.setVisible(false);
+                        finishButton.setVisible(true);
+                    }
+                    break;
+
+                case 3:
+                    player3bomb.setImage(xplode);
+                    explodedText.setText("detonated third: " + toReward[pAmount-3].getName());
+                    if (call ==pAmount){
+                        stepButton.setDisable(true);
+                        stepButton.setVisible(false);
+                        finishButton.setVisible(true);
+                    }
+                    break;
+
+                case 4:
+                    player4bomb.setImage(xplode);
+                    explodedText.setText("detonated last: " + toReward[pAmount-4].getName());
+                    if (call ==pAmount){
+                        stepButton.setDisable(true);
+                        stepButton.setVisible(false);
+                        finishButton.setVisible(true);
+                    }
+                    break;
         }
         call++;
     }
@@ -115,15 +138,16 @@ public class BombGame2 implements Initializable{
             coins -= take;
         }
     }
-    public void initData(Player[] players){
+    public void initData(Player[] players) {
         this.players = players;
-//        pAmount = players.length;
-//        stepButton.setVisible(false);
-//        explodedText.setVisible(false);
-//        if (pAmount <=3){
-//            player4bomb.setVisible(false);
-//            if (pAmount == 2){
-//                player3bomb.setVisible(false);
-//            }
+        pAmount = players.length;
+        stepButton.setVisible(false);
+        explodedText.setVisible(false);
+        if (pAmount <= 3) {
+            player4bomb.setVisible(false);
+            if (pAmount == 2) {
+                player3bomb.setVisible(false);
+            }
         }
+    }
 }

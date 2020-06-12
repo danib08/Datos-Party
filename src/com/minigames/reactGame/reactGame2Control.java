@@ -2,22 +2,14 @@ package com.minigames.reactGame;
 
 import com.gameLogic.Player;
 import javafx.application.Platform;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-
 import java.net.URL;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.temporal.Temporal;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -35,17 +27,8 @@ public class reactGame2Control implements Initializable{
 
     @FXML Button startButton;
 
-    private IntegerProperty propertyPlayer1 = new SimpleIntegerProperty(0);
-    private IntegerProperty propertyPlayer2 = new SimpleIntegerProperty(0);
-    private IntegerProperty propertyPlayer3 = new SimpleIntegerProperty(0);
-    private IntegerProperty propertyPLayer4 = new SimpleIntegerProperty(0);
 
-    //private boolean pressedA;
-    //private boolean pressedT;
-    //private boolean pressedN;
-    //private boolean pressedP;
     private boolean expectingClick;
-    //private boolean expectingPress;
     private boolean isClicked;
 
     Player[] players;
@@ -55,25 +38,25 @@ public class reactGame2Control implements Initializable{
     long finish;
 
     int pAmount = 3;
-    //int aPoints;
-    //int tPoints;
-    //int nPoints;
-    //int pPoints;
     int i = 0;
     Random timestart;
 
 
+
+    /**
+     * Called to initialize a controller after its root element has been
+     * completely processed.
+     *
+     * @param location  The location used to resolve relative paths for the root object, or
+     *                  <tt>null</tt> if the location is not known.
+     * @param resources The resources used to localize the root object, or <tt>null</tt> if
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         textField1.setText("Player 1: ");
         textField2.setText("Player 2: ");
         textField3.setText("Player 3: ");
         textField4.setText("Player 4: ");
-
-        //this.label1.textProperty().bind(this.propertyPlayer1.asString());
-        //this.label2.textProperty().bind(this.propertyPlayer2.asString());
-        //this.label3.textProperty().bind(this.propertyPlayer3.asString());
-        //this.label4.textProperty().bind(this.propertyPLayer4.asString());
 
         this.labelMain.setDisable(true);
 
@@ -88,65 +71,16 @@ public class reactGame2Control implements Initializable{
         pTimes = new long[pAmount];
         labelMain.setStyle("-fx-background-color: gray");
     }
-    /*
-    public void listenPress(KeyEvent keyPress){
-        if(keyPress.getCode().equals(KeyCode.A) && !this.pressedA && expectingPress){
-            this.pressedA = true;
-            this.aPoints += 1;
-            this.propertyPlayer1.setValue(aPoints);
-        }
-        else if(keyPress.getCode().equals(KeyCode.T) && !this.pressedT && expectingPress){
-            this.pressedT = true;
-            this.tPoints += 1;
-            this.propertyPlayer1.setValue(tPoints);
-        }
-        else if(keyPress.getCode().equals(KeyCode.N) && !this.pressedN && expectingPress){
-            this.pressedN = true;
-            this.nPoints += 1;
-            this.propertyPlayer1.setValue(nPoints);
-        }
-        else if(keyPress.getCode().equals(KeyCode.P) && !this.pressedP && expectingPress){
-            this.pressedP = true;
-            this.pPoints += 1;
-            this.propertyPlayer1.setValue(pPoints);
-        }
-    }
-
-     */
-    /*
-    public void listenRelease(KeyEvent keyRelease){
-        if(keyRelease.getCode().equals(KeyCode.A) && this.pressedA && expectingPress) {
-            this.pressedA = false;
-        }
-        else if(keyRelease.getCode().equals(KeyCode.T) && this.pressedT && expectingPress) {
-            this.pressedT = false;
-        }
-        else if(keyRelease.getCode().equals(KeyCode.N) && this.pressedN && expectingPress) {
-            this.pressedN = false;
-        }
-        else if(keyRelease.getCode().equals(KeyCode.P) && this.pressedP && expectingPress) {
-            this.pressedP = false;
-        }
-    }
-
-     */
 
     public void initData(Player[] players){
         this.players = players;
-        //textField1.setText("Player 1: ");
-        //textField2.setText("Player 2: ");
-        //textField3.setText("Player 3: ");
-        //textField4.setText("Player 4: ");
-
-        //this.label1.textProperty().bind(this.propertyPlayer1.asString());
-        //this.label2.textProperty().bind(this.propertyPlayer2.asString());
-        //this.label3.textProperty().bind(this.propertyPlayer3.asString());
-        //this.label4.textProperty().bind(this.propertyPLayer4.asString());
-        //timestart = new Random();
-        //pTimes = new long[this.players.length];
-        //labelMain.setStyle("-fx-background-color: gray");
     }
 
+    /**
+     * this method, bound to the start button, starts counting time for the player in question to register their
+     * reaction time.
+     * @throws InterruptedException if the thread is suddenly interrupted by a higher-priority process.
+     */
     public void startRound() throws InterruptedException{
         Task<Void> task = new Task<Void>() {
             @Override
@@ -193,6 +127,10 @@ public class reactGame2Control implements Initializable{
         thread.start();
     }
 
+    /**
+     * method bound to the center label that listens for click events.
+     * @param click event caught by the MouseEvent.
+     */
     public void listenClick(MouseEvent click){
         System.out.println("clicked");
         if (expectingClick && !isClicked){
@@ -221,6 +159,10 @@ public class reactGame2Control implements Initializable{
         this.i++;
     }
 
+    /**
+     * method to reward the players according to their performance during the minigame
+     * @param players the player array that was reorganized according to the minigame results.
+     */
     public void reward(Player[] players){
         int coins = 12;
         int len = players.length;
@@ -230,6 +172,13 @@ public class reactGame2Control implements Initializable{
             coins -= take;
         }
     }
+
+    /**
+     * method to obtain the smallest value in a specific array, change it to a bigger value that on a next
+     * iteration, cannot be confused for a small value
+     * @param pTimes a long-type array containing the player registered times.
+     * @return the index-positional value for the smallest value in the ptimes array.
+     */
     public int getSmallest(long[] pTimes){
         int index = 0;
         int result = 0;
