@@ -4,13 +4,10 @@ import com.gameLogic.Player;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,57 +15,40 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Random;
-import java.util.ResourceBundle;
 
-public class AmountGameController implements Initializable {
+public class AmountGameController{
 
     // This attributes are used to update data in the interface.
-    IntegerProperty milisecondsProperty = new SimpleIntegerProperty(this, "Miliseconds", 0);
-    IntegerProperty secondsProperty = new SimpleIntegerProperty(this, "Seconds", 0);
-    IntegerProperty presses1 = new SimpleIntegerProperty(0);
-    IntegerProperty presses2 = new SimpleIntegerProperty(0);
-    IntegerProperty presses3 = new SimpleIntegerProperty(0);
-    IntegerProperty presses4 = new SimpleIntegerProperty(0);
+    protected IntegerProperty milisecondsProperty = new SimpleIntegerProperty(this, "Miliseconds", 0);
+    protected IntegerProperty secondsProperty = new SimpleIntegerProperty(this, "Seconds", 0);
+    protected IntegerProperty presses1 = new SimpleIntegerProperty(0);
+    protected IntegerProperty presses2 = new SimpleIntegerProperty(0);
+    protected IntegerProperty presses3 = new SimpleIntegerProperty(0);
+    protected IntegerProperty presses4 = new SimpleIntegerProperty(0);
 
-    @FXML
-    private Label secondsLabel;
-    @FXML
-    private Label milisecondsLabel;
-    @FXML
-    private Label secondsFirstZero;
-    @FXML
-    private Label player1Label;
-    @FXML
-    private Label player2Label;
-    @FXML
-    private Label player3Label;
-    @FXML
-    private Label player4Label;
-    @FXML
-    private Label presses1Label;
-    @FXML
-    private Label presses2Label;
-    @FXML
-    private Label presses3Label;
-    @FXML
-    private Label presses4Label;
-    @FXML
-    private Button timerButton;
-    @FXML
-    private Button finishButton;
+    @FXML protected Label secondsLabel;
+    @FXML protected Label milisecondsLabel;
+    @FXML protected Label secondsFirstZero;
+    @FXML protected Label player1Label;
+    @FXML protected Label player2Label;
+    @FXML protected Label player3Label;
+    @FXML protected Label player4Label;
+    @FXML protected Label presses1Label;
+    @FXML protected Label presses2Label;
+    @FXML protected Label presses3Label;
+    @FXML protected Label presses4Label;
+    @FXML protected Button timerButton;
+    @FXML protected Button finishButton;
 
-    private boolean pressA;
-    private boolean pressT;
-    private boolean pressN;
-    private boolean pressP;
-    private Player[] playerArr;
-    private boolean startGame;
+    protected boolean pressA;
+    protected boolean pressT;
+    protected boolean pressN;
+    protected boolean pressP;
+    protected Player[] playerArr;
+    protected boolean startGame;
 
     /**
      * Gets data from another interface
@@ -76,23 +56,15 @@ public class AmountGameController implements Initializable {
      */
     public void initData(Player[] playerArr){
         this.playerArr = playerArr;
-    }
-
-    /**
-     * Initializer to set variables to their initial values
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
         this.startGame = false;
-        int playAmo = 4;
-        //int playAmo = playerArr.length;
+        int playAmo = playerArr.length;
         this.pressA = false;
         this.pressN = false;
         this.pressT = false;
         this.pressP = false;
 
-        //this.player1Label.setText(playerArr[0].getName());
-        //this.player2Label.setText(playerArr[1].getName());
+        this.player1Label.setText(playerArr[0].getName());
+        this.player2Label.setText(playerArr[1].getName());
 
         this.presses1Label.textProperty().bind((this.presses1).asString());
         this.presses2Label.textProperty().bind((this.presses2).asString());
@@ -101,18 +73,17 @@ public class AmountGameController implements Initializable {
         this.secondsLabel.textProperty().bind((this.secondsProperty).asString());
 
         if (playAmo >= 3){
-            //this.player3Label.setText(playerArr[2].getName());
+            this.player3Label.setText(playerArr[2].getName());
             this.presses3Label.textProperty().bind((this.presses3).asString());
             this.player3Label.setVisible(true);
             this.presses3Label.setVisible(true);
             if (playAmo == 4){
-                //this.player4Label.setText(playerArr[3].getName());
+                this.player4Label.setText(playerArr[3].getName());
                 this.presses4Label.textProperty().bind((this.presses4).asString());
                 this.player4Label.setVisible(true);
                 this.presses4Label.setVisible(true);
             }
         }
-
     }
 
     /**
@@ -200,8 +171,6 @@ public class AmountGameController implements Initializable {
      * @param event JavaFX class called automatically when a button is pressed.
      */
     public void finishedGameWindow(ActionEvent event){
-
-        //Player[] winners = this.sortLowestIndex(this.playerArr, res);
 
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 

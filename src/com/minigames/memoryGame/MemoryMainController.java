@@ -1,4 +1,4 @@
-package com.minigames.mentalGame;
+package com.minigames.memoryGame;
 
 import com.gameLogic.Player;
 import javafx.event.ActionEvent;
@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MentalMainController {
+public class MemoryMainController {
 
     protected Player[] players;
 
@@ -29,24 +29,24 @@ public class MentalMainController {
      * @param event Receives a click on the button
      * @throws IOException
      */
-    public void changeToGame(ActionEvent event) throws IOException{
-        FXMLLoader mentalLoader = new FXMLLoader();
-        mentalLoader.setLocation(getClass().getResource("MentalGame.fxml"));
+    public void changeToGame(ActionEvent event) throws IOException {
+        FXMLLoader memoryLoader = new FXMLLoader();
+        memoryLoader.setLocation(getClass().getResource("MemoryGame.fxml"));
 
-        Parent minigameParent = mentalLoader.load();
-        Scene mentalScene = new Scene(minigameParent);
+        Parent minigameParent = memoryLoader.load();
+        Scene memoryScene = new Scene(minigameParent);
 
-        MentalGameController controller = mentalLoader.getController();
+        MemoryGameController controller = memoryLoader.getController();
         controller.initData(players);
 
         // This gets the stage information.
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         window.initModality(Modality.APPLICATION_MODAL);
 
         window.setOnCloseRequest(Event::consume);
 
-        window.setScene(mentalScene);
+        window.setScene(memoryScene);
         window.showAndWait();
     }
 }
