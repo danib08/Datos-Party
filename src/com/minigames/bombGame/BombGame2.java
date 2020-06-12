@@ -30,14 +30,6 @@ public class BombGame2 implements Initializable{
     int pAmount = 3;
     int call = 1;
 
-    /**
-     * Called to initialize a controller after its root element has been
-     * completely processed.
-     *
-     * @param location  The location used to resolve relative paths for the root object, or
-     *                  <tt>null</tt> if the location is not known.
-     * @param resources The resources used to localize the root object, or <tt>null</tt> if
-     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         stepButton.setVisible(false);
@@ -49,6 +41,7 @@ public class BombGame2 implements Initializable{
             }
         }
     }
+
 
 
     public void startGame(ActionEvent event) {
@@ -112,6 +105,7 @@ public class BombGame2 implements Initializable{
         }
         call++;
     }
+
     public void reward(Player[] players){
         int coins = 12;
         int len = players.length;
@@ -123,6 +117,13 @@ public class BombGame2 implements Initializable{
     }
     public void initData(Player[] players){
         this.players = players;
-    }
-
+//        pAmount = players.length;
+//        stepButton.setVisible(false);
+//        explodedText.setVisible(false);
+//        if (pAmount <=3){
+//            player4bomb.setVisible(false);
+//            if (pAmount == 2){
+//                player3bomb.setVisible(false);
+//            }
+        }
 }

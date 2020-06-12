@@ -25,7 +25,7 @@ public class reactGameController {
 
         Parent minigameParent = reactLoader.load();
         Scene reactScene = new Scene(minigameParent);
-        BombGame2 controller = reactLoader.getController();
+        reactGame2Control controller = reactLoader.getController();
         controller.initData(players);
 
         // This gets the stage information to set the new scene.
