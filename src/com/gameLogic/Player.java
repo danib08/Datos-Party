@@ -7,7 +7,6 @@ import com.structures.*;
 public class Player {
     private final String name;
     private Square position;
-    private Events eventHandler;
     private final Star star;
     private int coins;
     private int stars;
@@ -20,13 +19,11 @@ public class Player {
      * Creates a player
      * @param name The player's name in-game.
      * @param position The player's position (Square object)
-     * @param eventHandler The class that will handle all of the events
      * @param star A buyable star
      */
-    public Player(String name, Square position, Events eventHandler, Star star) {
+    public Player(String name, Square position, Star star) {
         this.name = name;
         this.position = position;
-        this.eventHandler = eventHandler;
         this.star = star;
         this.coins = 5;
         this.stars = 0;
@@ -120,7 +117,6 @@ public class Player {
                 break;
             case 4:
                 System.out.println("Yellow Square");
-                this.eventHandler.checkLength();
                 break;
         }
     }

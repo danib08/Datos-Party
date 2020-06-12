@@ -1,6 +1,5 @@
 package com.partyInterface;
 
-import com.gameLogic.Events;
 import com.gameLogic.Player;
 import com.gameLogic.Star;
 import com.minigames.bombGame.BombController;
@@ -25,10 +24,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 
 public class GameBoardController implements Initializable {
 
@@ -61,9 +57,6 @@ public class GameBoardController implements Initializable {
 
     // This array will contain all of the players
     Player[] playerArray;
-
-    // The EventHandler is declared
-    Events eventHandler = new Events(this.eventStack, this.eventList);
 
     int numberOfPlayers;
     int currentPlayer = 0;
@@ -279,18 +272,18 @@ public class GameBoardController implements Initializable {
         this.coinsArray = new TextField[this.numberOfPlayers];
         this.starsArray = new TextField[this.numberOfPlayers];
 
-        this.playerArray[0] = new Player(name1, this.mainBoard.getHead(), this.eventHandler, this.star);
+        this.playerArray[0] = new Player(name1, this.mainBoard.getHead(), this.star);
         this.playerID1.setText(this.playerName1);
         this.coinsArray[0] = coins1;
         this.starsArray[0] = stars1;
 
-        this.playerArray[1] = new Player(name2, this.mainBoard.getHead(), this.eventHandler, this.star);
+        this.playerArray[1] = new Player(name2, this.mainBoard.getHead(), this.star);
         this.playerID2.setText(this.playerName2);
         this.coinsArray[1] = coins2;
         this.starsArray[1] = stars2;
 
         if (!name3.equals("")) {
-            this.playerArray[2] = new Player(name3, this.mainBoard.getHead(), this.eventHandler, this.star);
+            this.playerArray[2] = new Player(name3, this.mainBoard.getHead(), this.star);
             this.playerID3.setText(this.playerName3);
             this.coins3.setText("5");
             this.stars3.setText("0");
@@ -298,7 +291,7 @@ public class GameBoardController implements Initializable {
             this.starsArray[2] = stars3;
 
             if (!name4.equals("")) {
-                this.playerArray[3] = new Player(name4, this.mainBoard.getHead(), this.eventHandler, this.star);
+                this.playerArray[3] = new Player(name4, this.mainBoard.getHead(), this.star);
                 this.playerID4.setText(this.playerName4);
                 this.coins4.setText("5");
                 this.stars4.setText("0");
@@ -375,8 +368,8 @@ public class GameBoardController implements Initializable {
         result += random.nextInt(6) + 1;
 
         this.currentMove = 10;
-        rollLabel.setText(Integer.toString(10));
-        this.moveButton.setLayoutY(36);
+        rollLabel.setText(Integer.toString(result));
+        this.moveButton.setLayoutY(result);
     }
 
     /**
@@ -435,7 +428,7 @@ public class GameBoardController implements Initializable {
                case 4:
                    //TODO complete event
                    this.eventSelecter(currentPlayer);
-                   //this.eventHandler.checkLength();
+                   this.checkLength();
                    break;
             }
             if (this.currentPlayer == this.numberOfPlayers - 1) {
@@ -571,35 +564,36 @@ public class GameBoardController implements Initializable {
      */
     public void eventSelecter(int currentPlayer) throws IOException {
         int event = this.eventStack.popHead();
-        switch (event) {
-            case 1:
-                System.out.println("duel");
-                break;
-            case 2:
-                this.stealCoins(currentPlayer);
-                break;
-            case 3:
-                this.donateCoins(currentPlayer);
-                break;
-            case 4:
-                this.loseStar(currentPlayer);
-                break;
-            case 5:
-                this.winStar(currentPlayer, 2);
-                break;
-            case 6:
-                this.winStar(currentPlayer, 5);
-                break;
-            case 7:
-                this.stealStar(currentPlayer);
-                break;
-            case 8:
-                System.out.println("teleport");
-                break;
-            case 9:
-                this.swap(currentPlayer);
-                break;
-        }
+        this.teleport(currentPlayer);
+//        switch (event) {
+//            case 1:
+//                System.out.println("duel");
+//                break;
+//            case 2:
+//                this.stealCoins(currentPlayer);
+//                break;
+//            case 3:
+//                this.donateCoins(currentPlayer);
+//                break;
+//            case 4:
+//                this.loseStar(currentPlayer);
+//                break;
+//            case 5:
+//                this.winStar(currentPlayer, 2);
+//                break;
+//            case 6:
+//                this.winStar(currentPlayer, 5);
+//                break;
+//            case 7:
+//                this.stealStar(currentPlayer);
+//                break;
+//            case 8:
+//                System.out.println("teleport");
+//                break;
+//            case 9:
+//                this.swap(currentPlayer);
+//                break;
+//        }
     }
 
     /**
@@ -894,6 +888,78 @@ public class GameBoardController implements Initializable {
 
         swapWindow.setScene(swapScene);
         swapWindow.showAndWait();
+    }
+
+    /**
+     * Teleports the player to a random position
+     * @param currentPlayer index of the current player
+     */
+    private void teleport(int currentPlayer) throws IOException {
+        Stage teleportWindow = new Stage();
+        Player playerUnleasher = this.playerArray[currentPlayer];
+
+        Random index = new Random();
+        int pathInd = index.nextInt(this.pathArray.length);
+        System.out.println(pathInd);
+        List destination = this.pathArray[pathInd];
+
+        int pos = index.nextInt(destination.getLength());
+        System.out.println(pos);
+        System.out.println("------------------");
+        Square newPos = destination.getElement(pos);
+        playerUnleasher.setPosition(newPos);
+
+        String path;
+        if (pathInd == 3 || pathInd == 4) {
+            path = "AskTeleport.fxml";
+        } else {
+            path = "Teleport.fxml";
+        }
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(path));
+        Parent teleportParent = loader.load();
+        Scene teleportScene = new Scene(teleportParent);
+
+        teleportWindow.initModality(Modality.APPLICATION_MODAL);
+        teleportWindow.setTitle("Teleport!");
+        teleportWindow.setResizable(false);
+
+        teleportWindow.setScene(teleportScene);
+        teleportWindow.showAndWait();
+
+        if (pathInd == 3 || pathInd == 4) {
+            TeleportController controller = loader.getController();
+            boolean answer = controller.getAnswer();
+            if (!answer) {
+                playerUnleasher.setBackwards(true);
+            }
+        }
+
+        int row = playerUnleasher.getPosition().getRow();
+        int col = playerUnleasher.getPosition().getCol();
+        this.boardGrid.getChildren().remove(this.imageArray[currentPlayer]);
+        this.boardGrid.add(this.imageArray[currentPlayer], col, row);
+    }
+
+    /**
+     * Checks if the event stack is empty, if it its it calls the stackRefill method.
+     */
+    public void checkLength(){
+        if (this.eventStack.getLength() == 0){
+            this.stackRefill();
+        }
+    }
+
+    /**
+     * Refills the events stack with a new randomized order of events.
+     */
+    public void stackRefill(){
+        Collections.shuffle(this.eventList);
+
+        for (Integer event : this.eventList) {
+            this.eventStack.prepend(event, 0 , 0);
+        }
     }
 
     /**
