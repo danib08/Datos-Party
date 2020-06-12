@@ -50,19 +50,6 @@ public class Events {
     }
 
     /**
-     * Swaps the positions of two players
-     * @param player1 One of the players that will be swapped
-     * @param player2 The other player that will be swapped
-     */
-    private void swap(Player player1, Player player2){
-        Square p1Pos= player1.getPosition();
-        Square p2Pos = player2.getPosition();
-        player1.setPosition(p2Pos);
-        player2.setPosition(p1Pos);
-        System.out.println("player1 n player2 swapped positions!");
-    }
-
-    /**
      * Checks if the stack is empty, if it its it calls the stackRefill method.
      */
     public void checkLength(){

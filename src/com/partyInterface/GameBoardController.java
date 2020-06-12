@@ -15,7 +15,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,7 +25,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.Collections;
+import java.util.Random;
 
 public class GameBoardController implements Initializable {
 
@@ -88,42 +90,24 @@ public class GameBoardController implements Initializable {
     TextField[] coinsArray;
     TextField[] starsArray;
 
-    @FXML
-    TextField playerID1;
-    @FXML
-    TextField playerID2;
-    @FXML
-    TextField playerID3;
-    @FXML
-    TextField playerID4;
-    @FXML
-    Label roundsText;
-    @FXML
-    Label playerText;
-    @FXML
-    GridPane boardGrid;
-    @FXML
-    Label rollLabel;
-    @FXML
-    Button rollButton;
-    @FXML
-    Button moveButton;
-    @FXML
-    TextField coins1;
-    @FXML
-    TextField coins2;
-    @FXML
-    TextField coins3;
-    @FXML
-    TextField coins4;
-    @FXML
-    TextField stars1;
-    @FXML
-    TextField stars2;
-    @FXML
-    TextField stars3;
-    @FXML
-    TextField stars4;
+    @FXML TextField playerID1;
+    @FXML TextField playerID2;
+    @FXML TextField playerID3;
+    @FXML TextField playerID4;
+    @FXML Label roundsText;
+    @FXML Label playerText;
+    @FXML GridPane boardGrid;
+    @FXML Label rollLabel;
+    @FXML Button rollButton;
+    @FXML Button moveButton;
+    @FXML TextField coins1;
+    @FXML TextField coins2;
+    @FXML TextField coins3;
+    @FXML TextField coins4;
+    @FXML TextField stars1;
+    @FXML TextField stars2;
+    @FXML TextField stars3;
+    @FXML TextField stars4;
 
     /**
      * This methods adds all of the Squares to each Path and creates the Event Stack
@@ -375,7 +359,6 @@ public class GameBoardController implements Initializable {
         starImage.setFitHeight(75);
         starImage.setFitWidth(75);
 
-        this.star.positionStar();
         int starRow = this.star.getPosition().getRow();
         int starCol = this.star.getPosition().getCol();
         this.boardGrid.add(starImage, starCol, starRow);
@@ -386,7 +369,6 @@ public class GameBoardController implements Initializable {
      * This method generates a random roll of two dice
      */
     public void roll() {
-        //TODO change roll
         rollButton.setLayoutY(-100);
         Random random = new Random();
         int result = random.nextInt(6) + 1;
@@ -615,7 +597,7 @@ public class GameBoardController implements Initializable {
                 System.out.println("teleport");
                 break;
             case 9:
-                System.out.println("swap");
+                this.swap(currentPlayer);
                 break;
         }
     }
@@ -791,7 +773,6 @@ public class GameBoardController implements Initializable {
         this.starsArray[currentPlayer].setText(Integer.toString(playerUnleasher.getStars()));
     }
 
-
     /**
      * The player that activated this event steals a star from another player
      * @param currentPlayer index of the current player
@@ -863,6 +844,56 @@ public class GameBoardController implements Initializable {
         }
        stealStarWindow.setScene(stealStarScene);
        stealStarWindow.showAndWait();
+    }
+
+    /**
+     * The player that activates this event swaps positions with other player
+     * @param currentPlayer index of the current player
+     */
+    public void swap(int currentPlayer) throws IOException {
+        Player playerUnleasher = this.playerArray[currentPlayer];
+        int targetIndex;
+        Player playerTarget;
+
+        Random random = new Random();
+        targetIndex = random.nextInt(playerArray.length);
+        playerTarget = playerArray[targetIndex];
+
+        while(playerTarget.getName().equals(playerUnleasher.getName())) {
+            targetIndex = random.nextInt(playerArray.length);
+        }
+        playerTarget = playerArray[targetIndex];
+
+        Stage swapWindow = new Stage();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Swap.fxml"));
+        Parent swapParent = loader.load();
+        Scene swapScene = new Scene(swapParent);
+
+        SwapController controller = loader.getController();
+        controller.initData(playerTarget.getName());
+
+        swapWindow.initModality(Modality.APPLICATION_MODAL);
+        swapWindow.setTitle("Star!");
+        swapWindow.setResizable(false);
+
+        Square pos1 = playerUnleasher.getPosition();
+        playerUnleasher.setPosition(playerTarget.getPosition());
+        playerTarget.setPosition(pos1);
+
+        int row1 = playerUnleasher.getPosition().getRow();
+        int col1 = playerUnleasher.getPosition().getCol();
+        this.boardGrid.getChildren().remove(this.imageArray[currentPlayer]);
+        this.boardGrid.add(this.imageArray[currentPlayer], col1, row1);
+
+        int row2 = playerTarget.getPosition().getRow();
+        int col2 = playerTarget.getPosition().getCol();
+        this.boardGrid.getChildren().remove(this.imageArray[targetIndex]);
+        this.boardGrid.add(this.imageArray[targetIndex], col2, row2);
+
+        swapWindow.setScene(swapScene);
+        swapWindow.showAndWait();
     }
 
     /**

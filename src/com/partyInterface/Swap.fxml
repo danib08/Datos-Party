@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="325.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.SwapController">
+   <children>
+      <Label layoutX="134.0" layoutY="58.0" prefHeight="28.0" prefWidth="75.0" text="Swap!">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="100.0" prefHeight="28.0" prefWidth="286.0" text="You swapped positions">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="133.0" prefHeight="28.0" prefWidth="67.0" text="with">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="targetText" layoutX="149.0" layoutY="134.0" prefHeight="28.0" prefWidth="113.0">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

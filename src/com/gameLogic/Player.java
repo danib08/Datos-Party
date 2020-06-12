@@ -1,7 +1,6 @@
 package com.gameLogic;
 
 import com.structures.*;
-import java.util.Scanner;
 
 /** Represents a player.
  */
