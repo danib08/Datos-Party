@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="325.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.StealCoinsController">
+   <children>
+      <Label layoutX="57.0" layoutY="98.0" prefHeight="28.0" prefWidth="44.0" text="You">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="changeText" layoutX="106.0" layoutY="99.0" prefHeight="28.0" prefWidth="66.0" text="stole">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="178.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/coin.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="216.0" layoutY="99.0" prefHeight="28.0" prefWidth="14.0" text="x">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="coinAmountText" layoutX="229.0" layoutY="99.0" prefHeight="28.0" prefWidth="14.0">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="changeText1" layoutX="100.0" layoutY="128.0" prefHeight="28.0" prefWidth="66.0" text="from">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="targetText" layoutX="159.0" layoutY="129.0" prefHeight="28.0" prefWidth="148.0">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

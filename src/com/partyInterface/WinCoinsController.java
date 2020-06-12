@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 public class WinCoinsController {
 
     @FXML
-    Label changeText;
+    private Label changeText;
 
     public void initData(boolean obtain){
         if (obtain){

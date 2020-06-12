@@ -29,7 +29,7 @@ public class Player {
         this.position = position;
         this.eventHandler = eventHandler;
         this.star = star;
-        this.coins = 20;
+        this.coins = 5;
         this.stars = 0;
         this.placement = 1;
         this.backwards = false;

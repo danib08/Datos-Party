@@ -395,7 +395,8 @@ public class GameBoardController implements Initializable {
 
     /**
      * This method manages the movement of the players, and the interface changes according
-     * to situations that happen if they land on a certain path, buy starts or change paths
+     * to situations that happen if they land on a certain path, buy starts or change paths.
+     * It basically works as the main game method
      * @throws IOException if a file described in the loaders cannot be found/read/loaded
      */
     public void move() throws IOException {
@@ -431,7 +432,7 @@ public class GameBoardController implements Initializable {
 
         if (this.currentMove == 0) {
            this.moveButton.setLayoutY(-100);
-           
+
            //TODO duel check
 
            switch (player.getPosition().getData()) {
@@ -445,11 +446,22 @@ public class GameBoardController implements Initializable {
                     player.updateCoins(-3);
                     this.coinsArray[this.currentPlayer].setText(Integer.toString(player.getCoins()));
                     break;
+               case 4:
+                   this.eventSelecter(currentPlayer);
+                   //this.eventHandler.checkLength();
+                   break;
             }
             if (this.currentPlayer == this.numberOfPlayers - 1) {
-                this.currentPlayer = 0;
-                this.roundsPlayed++;
-                this.roundsText.setText(Integer.toString(this.roundsPlayed));
+                if (this.roundsPlayed == this.numberOfRounds) {
+                    //TODO Finish game, show reward scene
+                    System.out.println("Minigame finished");
+                }
+                else {
+                    this.currentPlayer = 0;
+                    this.roundsPlayed++;
+                    //TODO play minigame
+                    this.roundsText.setText(Integer.toString(this.roundsPlayed));
+                }
             }
             else {
                 this.currentPlayer++;
@@ -563,6 +575,105 @@ public class GameBoardController implements Initializable {
             this.boardGrid.getChildren().remove(this.starImage);
             this.boardGrid.add(this.starImage, col, row);
         }
+    }
+
+    /**
+     * Grabs the first element in the stack and executes the corresponding event
+     * @param currentPlayer index of the current player
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded
+     */
+    public void eventSelecter(int currentPlayer) throws IOException {
+        int event = this.eventStack.popHead();
+
+        Random random = new Random();
+        int targetIndex = random.nextInt(this.playerArray.length);
+
+        while (currentPlayer == targetIndex) {
+            targetIndex = random.nextInt(playerArray.length);
+        }
+
+        this.stealCoins(currentPlayer, targetIndex);
+
+//        switch (event) {
+////            case 1:
+////                this.eventDuel(playerUnleasher, playerTarget);
+////                break;
+//            case 2:
+//                this.stealCoins(playerUnleasher, playerTarget);
+//                break;
+////            case 3:
+////                this.donateCoins(playerUnleasher, playerTarget);
+////                break;
+////            case 4:
+////                this.loseStar(playerUnleasher, playerTarget);
+////                break;
+////            case 5:
+////                this.winStars(playerUnleasher, 2);
+////                break;
+////            case 6:
+////                this.winStars(playerUnleasher, 5);
+////                break;
+////            case 7:
+////                this.stealStar(playerUnleasher, playerTarget);
+////                break;
+////            case 8:
+////                this.teleport(playerUnleasher, this.listArray);
+////                break;
+////            case 9:
+////                this.swap(playerUnleasher, playerTarget);
+////                break;
+//        }
+    }
+
+    /**
+     * The player that activated the event steals coin from another one
+     * @param currentPlayer index of the current player
+     * @param targetIndex index of the target player
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded
+     */
+    private void stealCoins(int currentPlayer, int targetIndex) throws IOException {
+        Player playerUnleasher = this.playerArray[currentPlayer];
+        Player playerTarget = this.playerArray[targetIndex];
+
+        Stage stealCoinsWindow = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        String path;
+
+        if (playerTarget.getCoins() > 0) {
+            path = "StealCoins.fxml";
+        }
+        else {
+            path = "NoStealCoins.fxml";
+            System.out.println(path);
+        }
+
+        loader.setLocation(getClass().getResource(path));
+        Parent stealCoinsParent = loader.load();
+        Scene stealCoinsScene = new Scene(stealCoinsParent);
+
+        stealCoinsWindow.initModality(Modality.APPLICATION_MODAL);
+        stealCoinsWindow.setTitle("Steal Coins Event");
+        stealCoinsWindow.setResizable(false);
+
+        if (playerTarget.getCoins() > 0) {
+            Random random = new Random();
+            int coins = random.nextInt(playerTarget.getCoins() / 2) + 1;
+
+            StealCoinsController controller = loader.getController();
+            controller.initData(coins, playerTarget.getName());
+
+            playerTarget.updateCoins(-coins);
+            playerUnleasher.updateCoins(coins);
+        }
+        else {
+            NoStealCoinsController controller = loader.getController();
+            controller.initData(playerTarget.getName());
+        }
+        stealCoinsWindow.setScene(stealCoinsScene);
+        stealCoinsWindow.showAndWait();
+
+        this.coinsArray[currentPlayer].setText(Integer.toString(playerUnleasher.getCoins()));
+        this.coinsArray[targetIndex].setText(Integer.toString(playerTarget.getCoins()));
     }
 
     /**

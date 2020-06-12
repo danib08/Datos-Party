@@ -11,9 +11,9 @@ import javafx.stage.Stage;
 public class PathSelController  {
     private boolean response;
     @FXML
-    Button yesButton;
+    private Button yesButton;
     @FXML
-    Button noButton;
+    private Button noButton;
 
     public void pressNo(ActionEvent event){
         response = false;
