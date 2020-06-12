@@ -7,7 +7,6 @@ import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,99 +19,97 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.ResourceBundle;
 
-public class MemoryGameController implements Initializable {
+public class MemoryGameController{
 
     // This attributes are used to update data in the interface.
     StringProperty playerNameProperty = new SimpleStringProperty("Player1");
 
-    @FXML private Button butt11;
-    @FXML private Button butt12;
-    @FXML private Button butt13;
-    @FXML private Button butt14;
-    @FXML private Button butt21;
-    @FXML private Button butt22;
-    @FXML private Button butt23;
-    @FXML private Button butt24;
-    @FXML private Button butt31;
-    @FXML private Button butt32;
-    @FXML private Button butt33;
-    @FXML private Button butt34;
+    @FXML protected Button butt11;
+    @FXML protected Button butt12;
+    @FXML protected Button butt13;
+    @FXML protected Button butt14;
+    @FXML protected Button butt21;
+    @FXML protected Button butt22;
+    @FXML protected Button butt23;
+    @FXML protected Button butt24;
+    @FXML protected Button butt31;
+    @FXML protected Button butt32;
+    @FXML protected Button butt33;
+    @FXML protected Button butt34;
 
 
     @FXML
-    private Label player1Label;
+    protected Label player1Label;
     @FXML
-    private Label player2Label;
+    protected Label player2Label;
     @FXML
-    private Label player3Label;
+    protected Label player3Label;
     @FXML
-    private Label player4Label;
+    protected Label player4Label;
     @FXML
-    private Button nextButton;
+    protected Button nextButton;
     @FXML
-    private Button finishButton;
+    protected Button finishButton;
     @FXML
-    private Label currentPlayer;
+    protected Label currentPlayer;
     @FXML
-    private ImageView image11;
+    protected ImageView image11;
     @FXML
-    private ImageView image12;
+    protected ImageView image12;
     @FXML
-    private ImageView image13;
+    protected ImageView image13;
     @FXML
-    private ImageView image14;
+    protected ImageView image14;
     @FXML
-    private ImageView image21;
+    protected ImageView image21;
     @FXML
-    private ImageView image22;
+    protected ImageView image22;
     @FXML
-    private ImageView image23;
+    protected ImageView image23;
     @FXML
-    private ImageView image24;
+    protected ImageView image24;
     @FXML
-    private ImageView image31;
+    protected ImageView image31;
     @FXML
-    private ImageView image32;
+    protected ImageView image32;
     @FXML
-    private ImageView image33;
+    protected ImageView image33;
     @FXML
-    private ImageView image34;
+    protected ImageView image34;
     @FXML
-    private ImageView playerImg3;
+    protected ImageView playerImg3;
     @FXML
-    private ImageView playerImg4;
+    protected ImageView playerImg4;
 
-    Image dinoImg;
-    Image girlImg;
-    Image dogImg;
-    Image boyImg;
-    Image cardImg;
+    protected Image dinoImg;
+    protected Image girlImg;
+    protected Image dogImg;
+    protected Image boyImg;
+    protected Image cardImg;
 
-    ImageView imageRow1;
-    ImageView imageRow2;
-    ImageView imageRow3;
-    Button buttonRow1;
-    Button buttonRow2;
-    Button buttonRow3;
+    protected ImageView imageRow1;
+    protected ImageView imageRow2;
+    protected ImageView imageRow3;
+    protected Button buttonRow1;
+    protected Button buttonRow2;
+    protected Button buttonRow3;
 
-    Player[] playerArr;
-    Player[] winnerArr;
-    int winnerInd;
-    private int row;
-    private int playerInt;
-    ArrayList<Integer> row1 = new ArrayList<>();
-    ArrayList<Integer> row2 = new ArrayList<>();
-    ArrayList<Integer> row3 = new ArrayList<>();
+    protected Player[] playerArr;
+    protected Player[] winnerArr;
+    protected int winnerInd;
+    protected int row;
+    protected int playerInt;
+    protected ArrayList<Integer> row1 = new ArrayList<>();
+    protected ArrayList<Integer> row2 = new ArrayList<>();
+    protected ArrayList<Integer> row3 = new ArrayList<>();
 
-    boolean play1done;
-    boolean play2done;
-    boolean play3done = true;
-    boolean play4done = true;
+    protected boolean play1done;
+    protected boolean play2done;
+    protected boolean play3done = true;
+    protected boolean play4done = true;
 
     /**
      * Gets data from another interface
@@ -120,13 +117,6 @@ public class MemoryGameController implements Initializable {
      */
     public void initData(Player[] playerArr){
         this.playerArr = playerArr;
-    }
-
-    /**
-     * Initializer to set variables to their initial values
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
         this.row1.add(1);
         this.row1.add(2);
         this.row1.add(3);
@@ -147,7 +137,6 @@ public class MemoryGameController implements Initializable {
         Collections.shuffle(row1);
         Collections.shuffle(row2);
         Collections.shuffle(row3);
-        System.out.println(row1 + "\n" + row2 + "\n" + row3);
         try {
             FileInputStream dinoFIS = new FileInputStream("src/com/images/dino.png");
             FileInputStream girlFIS = new FileInputStream("src/com/images/girl.png");
@@ -164,23 +153,22 @@ public class MemoryGameController implements Initializable {
             e.printStackTrace();
         }
         int row = 1;
-        int playAmo = 4;
-        //playAmo = playerArr.length;
+        int playAmo = playerArr.length;
         winnerArr = new Player[playAmo];
 
         this.currentPlayer.textProperty().bind(this.playerNameProperty);
 
-        //this.player1Label.setText(playerArr[0].getName());
-        //this.currentPlayer.setText(playerArr[0].getName());
-        //this.player2Label.setText(playerArr[1].getName());
+        this.player1Label.setText(playerArr[0].getName());
+        this.currentPlayer.setText(playerArr[0].getName());
+        this.player2Label.setText(playerArr[1].getName());
 
         if (playAmo >= 3){
-            //this.player3Label.setText(playerArr[2].getName());
+            this.player3Label.setText(playerArr[2].getName());
             this.player3Label.setVisible(true);
             this.playerImg3.setVisible(true);
             this.play3done = false;
             if (playAmo == 4){
-                //this.player4Label.setText(playerArr[3].getName());
+                this.player4Label.setText(playerArr[3].getName());
                 this.player4Label.setVisible(true);
                 this.playerImg4.setVisible(true);
                 this.play4done = false;
@@ -220,7 +208,6 @@ public class MemoryGameController implements Initializable {
                         this.imageRow1 = image14;
                         break;
                 }
-                System.out.println("Row 1: " + this.row1 + "\nIndex: " + index + "\nPlayer: " + playerInt);
                 this.buttonRow1 = but;
                 this.butt11.setDisable(true);
                 this.butt12.setDisable(true);
@@ -261,7 +248,6 @@ public class MemoryGameController implements Initializable {
                         this.imageRow2 = image24;
                         break;
                 }
-                System.out.println("Row 2: " + this.row2 + "\nIndex: " + index + "\nPlayer: " + playerInt);
                 this.buttonRow2 = but;
                 this.butt21.setDisable(true);
                 this.butt22.setDisable(true);
@@ -302,7 +288,6 @@ public class MemoryGameController implements Initializable {
                         this.imageRow3 = image34;
                         break;
                 }
-                System.out.println("Row 3: " + this.row3 + "\nIndex: " + index + "\nPlayer: " + playerInt);
                 this.buttonRow3 = but;
                 this.butt31.setDisable(true);
                 this.butt32.setDisable(true);
@@ -399,7 +384,7 @@ public class MemoryGameController implements Initializable {
         if (playerInt == 0){
             this.playerInt = 4;
         }
-        this.playerNameProperty.setValue("Player " + (playerInt));
+        this.playerNameProperty.setValue(playerArr[playerInt - 1].getName());
         this.butt11.setDisable(false);
         this.butt12.setDisable(false);
         this.butt13.setDisable(false);
@@ -428,8 +413,6 @@ public class MemoryGameController implements Initializable {
      * @param event JavaFX class called automatically when a button is pressed.
      */
     public void finishedGameWindow(ActionEvent event){
-
-        //Player[] winners = this.sortLowestIndex(this.playerArr, res);
 
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 

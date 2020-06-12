@@ -8,7 +8,6 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,43 +19,36 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Random;
-import java.util.ResourceBundle;
 
-public class MentalGameController implements Initializable {
+import java.util.Random;
+
+
+public class MentalGameController{
 
     // This attributes are used to update data in the interface.
-    IntegerProperty milisecondsProperty = new SimpleIntegerProperty(this, "Miliseconds", 0);
-    IntegerProperty secondsProperty = new SimpleIntegerProperty(this, "Seconds", 0);
+    protected IntegerProperty milisecondsProperty = new SimpleIntegerProperty(this, "Miliseconds", 0);
+    protected IntegerProperty secondsProperty = new SimpleIntegerProperty(this, "Seconds", 0);
 
-    @FXML
-    private Label secondsLabel;
-    @FXML
-    private Label milisecondsLabel;
-    @FXML
-    private Label timeSetLabel;
-    @FXML
-    private Label secondsFirstZero;
-    @FXML
-    private Button timerButton;
-    @FXML
-    private Button finishButton;
-    @FXML
-    private Text textTime;
+    @FXML protected Label secondsLabel;
+    @FXML protected Label milisecondsLabel;
+    @FXML protected Label timeSetLabel;
+    @FXML protected Label secondsFirstZero;
+    @FXML protected Button timerButton;
+    @FXML protected Button finishButton;
+    @FXML protected Text textTime;
 
-    private long startTime;
-    private boolean pressA;
-    private boolean pressT;
-    private boolean pressN;
-    private boolean pressP;
-    private long time1;
-    private long time2;
-    private long time3;
-    private long time4;
-    private Player[] playerArr;
-    private int secondsToGo;
-    private boolean startGame;
+    protected long startTime;
+    protected boolean pressA;
+    protected boolean pressT;
+    protected boolean pressN;
+    protected boolean pressP;
+    protected long time1;
+    protected long time2;
+    protected long time3;
+    protected long time4;
+    protected Player[] playerArr;
+    protected int secondsToGo;
+    protected boolean startGame;
 
     /**
      * Gets data from another interface
@@ -64,13 +56,6 @@ public class MentalGameController implements Initializable {
      */
     public void initData(Player[] playerArr){
         this.playerArr = playerArr;
-    }
-
-    /**
-     * Initializer to set variables to their initial values
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
         this.pressA = false;
         this.pressN = false;
         this.pressT = false;
@@ -97,21 +82,17 @@ public class MentalGameController implements Initializable {
     public void keyPressed(KeyEvent event){
         if (event.getCode().equals(KeyCode.A) && !this.pressA && this.startGame){
             this.time1 = System.currentTimeMillis()-this.startTime;
-            System.out.println(this.time1);
             this.pressA = true;
         }
         else if (event.getCode().equals(KeyCode.T) && !this.pressT  && this.startGame){
             this.time2 = System.currentTimeMillis()-this.startTime;
-            System.out.println(this.time2);
             this.pressT = true;
         }
         else if (event.getCode().equals(KeyCode.N) && !this.pressN  && this.startGame){
             this.time3 = System.currentTimeMillis()-this.startTime;
-            System.out.println(this.time3);
             this.pressN = true;
         } else if (event.getCode().equals(KeyCode.P) && !this.pressP  && this.startGame) {
             this.time4 = System.currentTimeMillis() - this.startTime;
-            System.out.println(this.time4);
             this.pressP = true;
         }
     }
@@ -164,10 +145,6 @@ public class MentalGameController implements Initializable {
      */
     public void finishedGameWindow(ActionEvent event){
 
-        long[] res = {time1, time2, time3, time4};
-
-        //Player[] winners = this.sortLowestIndex(this.playerArr, res);
-
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
         Parent mentalParent = null;
@@ -179,28 +156,5 @@ public class MentalGameController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    //TODO: Test this
-
-    /**
-     * Gets the index of the lowest time
-     * @param playerArr An array of players
-     * @param res An array of times
-     * @return The index of the lowest time.
-     */
-    public int sortLowestIndex(Player[] playerArr,long[] res){
-        for (int i = 0; i < playerArr.length; i++) {
-            long tmp = res[0];
-            int j = 0;
-            for (long time : res) {
-                if (Math.abs(time - secondsToGo * 1000) < Math.abs(tmp - secondsToGo * 1000)) {
-                    tmp = time;
-                }
-                j++;
-            }
-            res[j] = 1000000;
-        }
-        return 1;
     }
 }
