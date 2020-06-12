@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minigames.memoryGame.MemoryGameController">
+   <children>
+      <Label fx:id="player1Label" layoutX="140.0" layoutY="126.0" text="Player 1" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="player2Label" layoutX="140.0" layoutY="298.0" text="Player 2" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="player3Label" layoutX="140.0" layoutY="472.0" text="Player 3" textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="player4Label" layoutX="140.0" layoutY="660.0" text="Player 4" textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="121.0" fitWidth="97.0" layoutX="261.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/dino.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="121.0" fitWidth="97.0" layoutX="268.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/girl.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="playerImg3" fitHeight="121.0" fitWidth="97.0" layoutX="268.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../images/dog.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="playerImg4" fitHeight="121.0" fitWidth="97.0" layoutX="279.0" layoutY="613.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../images/boy.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image12" fitHeight="121.0" fitWidth="97.0" layoutX="779.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image22" fitHeight="121.0" fitWidth="97.0" layoutX="779.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image23" fitHeight="121.0" fitWidth="97.0" layoutX="919.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image32" fitHeight="121.0" fitWidth="97.0" layoutX="779.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image24" fitHeight="121.0" fitWidth="97.0" layoutX="1061.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image11" fitHeight="121.0" fitWidth="97.0" layoutX="635.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image21" fitHeight="121.0" fitWidth="97.0" layoutX="635.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image31" fitHeight="121.0" fitWidth="97.0" layoutX="635.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image14" fitHeight="121.0" fitWidth="97.0" layoutX="1061.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image33" fitHeight="121.0" fitWidth="97.0" layoutX="919.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image13" fitHeight="121.0" fitWidth="97.0" layoutX="919.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image34" fitHeight="121.0" fitWidth="97.0" layoutX="1061.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/card.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="butt11" layoutX="648.0" layoutY="295.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt12" layoutX="797.0" layoutY="295.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt13" layoutX="932.0" layoutY="295.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="827.0" layoutY="56.0" text="Find your card">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="722.0" layoutY="102.0" text="Current Player: " textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="currentPlayer" layoutX="944.0" layoutY="102.0" text="Player 1" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="butt14" layoutX="1074.0" layoutY="295.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt21" disable="true" layoutX="648.0" layoutY="469.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt22" disable="true" layoutX="797.0" layoutY="469.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt23" disable="true" layoutX="932.0" layoutY="469.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt24" disable="true" layoutX="1074.0" layoutY="469.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt31" disable="true" layoutX="648.0" layoutY="657.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt32" disable="true" layoutX="797.0" layoutY="660.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt33" disable="true" layoutX="932.0" layoutY="660.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt34" disable="true" layoutX="1074.0" layoutY="660.0" mnemonicParsing="false" onAction="#pressButton" text="Show">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="nextButton" disable="true" layoutX="1089.0" layoutY="99.0" mnemonicParsing="false" onAction="#nextPlayer" text="Next Player" visible="false">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="finishButton" disable="true" layoutX="1089.0" layoutY="99.0" mnemonicParsing="false" onAction="#finishedGameWindow" text="Finish Game" visible="false">
+         <font>
+            <Font name="Consolas" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
