@@ -16,32 +16,24 @@ import java.io.IOException;
 
 public class PreGameController {
 
-    int numberOfPlayers;
-    int numberOfRounds;
+    protected int numberOfPlayers;
+    protected int numberOfRounds;
 
-    String playerName1 = "";
-    String playerName2 = "";
-    String playerName3 = "";
-    String playerName4 = "";
+    protected String playerName1 = "";
+    protected String playerName2 = "";
+    protected String playerName3 = "";
+    protected String playerName4 = "";
 
-    boolean canChange = true;
+    protected boolean canChange = true;
 
-    @FXML
-    RadioButton radio2;
-    @FXML
-    RadioButton radio3;
-    @FXML
-    RadioButton radio4;
-    @FXML
-    TextField player1;
-    @FXML
-    TextField player2;
-    @FXML
-    TextField player3;
-    @FXML
-    TextField player4;
-    @FXML
-    private ComboBox<Integer> roundBox;
+    @FXML RadioButton radio2;
+    @FXML RadioButton radio3;
+    @FXML RadioButton radio4;
+    @FXML TextField player1;
+    @FXML TextField player2;
+    @FXML TextField player3;
+    @FXML TextField player4;
+    @FXML private ComboBox<Integer> roundBox;
 
     /**
      * This method check that all of the correct values are entered on the PreGame Menu and

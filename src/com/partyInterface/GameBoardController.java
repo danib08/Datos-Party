@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -60,7 +61,7 @@ public class GameBoardController implements Initializable {
     Player[] playerArray;
 
     // The EventHandler is declared
-    Events eventHandler = new Events(playerArray, this.pathArray, this.eventStack, this.eventList);
+    Events eventHandler = new Events(this.eventStack, this.eventList);
 
     int numberOfPlayers;
     int currentPlayer = 0;
@@ -308,6 +309,7 @@ public class GameBoardController implements Initializable {
             this.playerArray[2] = new Player(name3, this.mainBoard.getHead(), this.eventHandler, this.star);
             this.playerID3.setText(this.playerName3);
             this.coins3.setText("5");
+            this.stars3.setText("0");
             this.coinsArray[2] = coins3;
             this.starsArray[2] = stars3;
 
@@ -315,6 +317,7 @@ public class GameBoardController implements Initializable {
                 this.playerArray[3] = new Player(name4, this.mainBoard.getHead(), this.eventHandler, this.star);
                 this.playerID4.setText(this.playerName4);
                 this.coins4.setText("5");
+                this.stars4.setText("0");
                 this.coinsArray[3] = coins4;
                 this.starsArray[3] = stars4;
             }
@@ -383,13 +386,14 @@ public class GameBoardController implements Initializable {
      * This method generates a random roll of two dice
      */
     public void roll() {
+        //TODO change roll
         rollButton.setLayoutY(-100);
         Random random = new Random();
         int result = random.nextInt(6) + 1;
         result += random.nextInt(6) + 1;
 
-        this.currentMove = result;
-        rollLabel.setText(Integer.toString(result));
+        this.currentMove = 10;
+        rollLabel.setText(Integer.toString(10));
         this.moveButton.setLayoutY(36);
     }
 
@@ -447,6 +451,7 @@ public class GameBoardController implements Initializable {
                     this.coinsArray[this.currentPlayer].setText(Integer.toString(player.getCoins()));
                     break;
                case 4:
+                   //TODO complete event
                    this.eventSelecter(currentPlayer);
                    //this.eventHandler.checkLength();
                    break;
@@ -454,12 +459,13 @@ public class GameBoardController implements Initializable {
             if (this.currentPlayer == this.numberOfPlayers - 1) {
                 if (this.roundsPlayed == this.numberOfRounds) {
                     //TODO Finish game, show reward scene
-                    System.out.println("Minigame finished");
+                    System.out.println("Game finished");
                 }
                 else {
                     this.currentPlayer = 0;
                     this.roundsPlayed++;
                     //TODO play minigame
+                    System.out.println("Played minigame");
                     this.roundsText.setText(Integer.toString(this.roundsPlayed));
                 }
             }
@@ -541,7 +547,6 @@ public class GameBoardController implements Initializable {
 
     /**
      * Opens a new window so the player can make a choice to buy a star
-     * @return The choice of the player as a boolean
      * @throws IOException if a file described in the loaders cannot be found/read/loaded
      */
     public void starBuy(Player player, int currentPlayer) throws IOException{
@@ -584,96 +589,280 @@ public class GameBoardController implements Initializable {
      */
     public void eventSelecter(int currentPlayer) throws IOException {
         int event = this.eventStack.popHead();
-
-        Random random = new Random();
-        int targetIndex = random.nextInt(this.playerArray.length);
-
-        while (currentPlayer == targetIndex) {
-            targetIndex = random.nextInt(playerArray.length);
+        switch (event) {
+            case 1:
+                System.out.println("duel");
+                break;
+            case 2:
+                this.stealCoins(currentPlayer);
+                break;
+            case 3:
+                this.donateCoins(currentPlayer);
+                break;
+            case 4:
+                this.loseStar(currentPlayer);
+                break;
+            case 5:
+                this.winStar(currentPlayer, 2);
+                break;
+            case 6:
+                this.winStar(currentPlayer, 5);
+                break;
+            case 7:
+                this.stealStar(currentPlayer);
+                break;
+            case 8:
+                System.out.println("teleport");
+                break;
+            case 9:
+                System.out.println("swap");
+                break;
         }
-
-        this.stealCoins(currentPlayer, targetIndex);
-
-//        switch (event) {
-////            case 1:
-////                this.eventDuel(playerUnleasher, playerTarget);
-////                break;
-//            case 2:
-//                this.stealCoins(playerUnleasher, playerTarget);
-//                break;
-////            case 3:
-////                this.donateCoins(playerUnleasher, playerTarget);
-////                break;
-////            case 4:
-////                this.loseStar(playerUnleasher, playerTarget);
-////                break;
-////            case 5:
-////                this.winStars(playerUnleasher, 2);
-////                break;
-////            case 6:
-////                this.winStars(playerUnleasher, 5);
-////                break;
-////            case 7:
-////                this.stealStar(playerUnleasher, playerTarget);
-////                break;
-////            case 8:
-////                this.teleport(playerUnleasher, this.listArray);
-////                break;
-////            case 9:
-////                this.swap(playerUnleasher, playerTarget);
-////                break;
-//        }
     }
 
     /**
      * The player that activated the event steals coin from another one
      * @param currentPlayer index of the current player
-     * @param targetIndex index of the target player
      * @throws IOException if a file described in the loaders cannot be found/read/loaded
      */
-    private void stealCoins(int currentPlayer, int targetIndex) throws IOException {
+    private void stealCoins(int currentPlayer) throws IOException {
         Player playerUnleasher = this.playerArray[currentPlayer];
-        Player playerTarget = this.playerArray[targetIndex];
 
         Stage stealCoinsWindow = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        String path;
 
-        if (playerTarget.getCoins() > 0) {
-            path = "StealCoins.fxml";
-        }
-        else {
-            path = "NoStealCoins.fxml";
-            System.out.println(path);
-        }
-
-        loader.setLocation(getClass().getResource(path));
+        loader.setLocation(getClass().getResource("StealCoins.fxml"));
         Parent stealCoinsParent = loader.load();
         Scene stealCoinsScene = new Scene(stealCoinsParent);
 
         stealCoinsWindow.initModality(Modality.APPLICATION_MODAL);
         stealCoinsWindow.setTitle("Steal Coins Event");
         stealCoinsWindow.setResizable(false);
+        stealCoinsWindow.setOnCloseRequest(Event::consume);
 
-        if (playerTarget.getCoins() > 0) {
-            Random random = new Random();
-            int coins = random.nextInt(playerTarget.getCoins() / 2) + 1;
+        StealCoinsController controller = loader.getController();
+        controller.initData(currentPlayer, this.playerArray);
 
-            StealCoinsController controller = loader.getController();
-            controller.initData(coins, playerTarget.getName());
-
-            playerTarget.updateCoins(-coins);
-            playerUnleasher.updateCoins(coins);
-        }
-        else {
-            NoStealCoinsController controller = loader.getController();
-            controller.initData(playerTarget.getName());
-        }
         stealCoinsWindow.setScene(stealCoinsScene);
         stealCoinsWindow.showAndWait();
 
+        int targetIndex = controller.getPlayerTargetIndex();
+        Random random = new Random();
+        int coins = random.nextInt(this.playerArray[targetIndex].getCoins() / 2) + 1;
+
+        this.playerArray[currentPlayer].updateCoins(coins);
+        this.playerArray[targetIndex].updateCoins(-coins);
+
         this.coinsArray[currentPlayer].setText(Integer.toString(playerUnleasher.getCoins()));
-        this.coinsArray[targetIndex].setText(Integer.toString(playerTarget.getCoins()));
+        this.coinsArray[targetIndex].setText(Integer.toString(this.playerArray[targetIndex].getCoins()));
+    }
+
+    /**
+     * The player that activated the event gives coins to another one
+     * @param currentPlayer index of the current player
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded
+     */
+    private void donateCoins(int currentPlayer) throws IOException {
+        Player playerUnleasher = this.playerArray[currentPlayer];
+
+        Stage donateCoinsWindow = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        String path;
+
+        if (playerUnleasher.getCoins() / 2 >= this.numberOfPlayers - 1) {
+            path = "DonateCoins.fxml";
+        }
+        else {
+            path = "NoDonateCoins.fxml";
+        }
+
+        loader.setLocation(getClass().getResource(path));
+        Parent donateCoinsParent = loader.load();
+        Scene donateCoinsScene = new Scene(donateCoinsParent);
+
+        donateCoinsWindow.initModality(Modality.APPLICATION_MODAL);
+        donateCoinsWindow.setTitle("Donate Coins Event");
+        donateCoinsWindow.setResizable(false);
+
+        if (playerUnleasher.getCoins() / 2 >= (this.numberOfPlayers - 1)) {
+            Random random = new Random();
+            int coins = random.nextInt(playerUnleasher.getCoins() / 2) + 1;
+            while (coins % (this.numberOfPlayers - 1) != 0) {
+                coins = random.nextInt(playerUnleasher.getCoins() / 2) + 1;
+            }
+
+            DonateCoinsController controller = loader.getController();
+            controller.initData(coins);
+            int toGive = coins / this.numberOfPlayers;
+
+            playerUnleasher.updateCoins(-coins);
+            for (int i = 0; i < this.numberOfPlayers; i++) {
+                if (i != currentPlayer) {
+                    this.playerArray[i].updateCoins(toGive);
+                }
+            }
+            for (int i = 0; i < this.numberOfPlayers; i++) {
+                this.coinsArray[i].setText(Integer.toString(this.playerArray[i].getCoins()));
+            }
+        }
+        donateCoinsWindow.setScene(donateCoinsScene);
+        donateCoinsWindow.showAndWait();
+    }
+
+
+    /**
+     * The player that activated the event loses a star and gives it to another player
+     * @param currentPlayer index of the current player
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded
+     */
+    private void loseStar(int currentPlayer) throws IOException {
+        Player playerUnleasher = this.playerArray[currentPlayer];
+
+        Stage loseStarWindow = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        String path;
+
+        if (playerUnleasher.getStars() > 0) {
+            path = "LoseStar.fxml";
+        }
+        else {
+            path = "NoLoseStar.fxml";
+            System.out.println(path);
+        }
+
+        loader.setLocation(getClass().getResource(path));
+        Parent loseStarParent = loader.load();
+        Scene loseStarScene = new Scene(loseStarParent);
+
+        loseStarWindow.initModality(Modality.APPLICATION_MODAL);
+        loseStarWindow.setTitle("Lose Star Event");
+        loseStarWindow.setResizable(false);
+
+        if (playerUnleasher.getStars() > 0) {
+            Player playerTarget;
+            Random random = new Random();
+            int targetIndex = random.nextInt(playerArray.length);
+            playerTarget = playerArray[targetIndex];
+
+            while(playerTarget.getName().equals(playerUnleasher.getName())) {
+                targetIndex = random.nextInt(playerArray.length);
+                playerTarget = playerArray[targetIndex];
+            }
+
+           LoseStarController controller = loader.getController();
+           controller.initData(playerTarget.getName());
+
+            playerUnleasher.updateStars(-1);
+            playerTarget.updateStars(1);
+
+            this.starsArray[currentPlayer].setText(Integer.toString(playerUnleasher.getStars()));
+            this.starsArray[targetIndex].setText(Integer.toString(playerTarget.getStars()));
+        }
+        loseStarWindow.setScene(loseStarScene);
+        loseStarWindow.showAndWait();
+    }
+
+    /**
+     * The player that activated this event wins a certain amount of stars
+     * @param currentPlayer index of the current player
+     * @param stars stars The amount of stars that will be won
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded
+     */
+    private void winStar(int currentPlayer, int stars) throws IOException {
+        Player playerUnleasher = this.playerArray[currentPlayer];
+
+        Stage winStarWindow = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("WinStar.fxml"));
+        Parent winStarParent = loader.load();
+        Scene winStarScene = new Scene(winStarParent);
+
+        winStarWindow.initModality(Modality.APPLICATION_MODAL);
+        winStarWindow.setTitle("Win Star Event");
+        winStarWindow.setResizable(false);
+
+        WinStarController controller = loader.getController();
+        controller.initData(stars);
+
+        winStarWindow.setScene(winStarScene);
+        winStarWindow.showAndWait();
+
+        playerUnleasher.updateStars(stars);
+        this.starsArray[currentPlayer].setText(Integer.toString(playerUnleasher.getStars()));
+    }
+
+
+    /**
+     * The player that activated this event steals a star from another player
+     * @param currentPlayer index of the current player
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded
+     */
+    private void stealStar(int currentPlayer) throws IOException {
+        Player playerUnleasher = this.playerArray[currentPlayer];
+        int targetIndex;
+        Player playerTarget;
+
+        boolean allEmpty = true;
+        for (Player player : this.playerArray) {
+            if (player.getStars() > 0) {
+                allEmpty = false;
+                break;
+            }
+        }
+
+        if (!allEmpty) {
+            Random random = new Random();
+            targetIndex = random.nextInt(playerArray.length);
+            playerTarget = playerArray[targetIndex];
+
+            while(playerTarget.getName().equals(playerUnleasher.getName()) || playerTarget.getStars() == 0) {
+                targetIndex = random.nextInt(playerArray.length);
+            }
+        }
+        else {
+            if (currentPlayer != 0) {
+                targetIndex = currentPlayer--;
+            }
+            else {
+                targetIndex = 1;
+            }
+        }
+        playerTarget = playerArray[targetIndex];
+
+        Stage stealStarWindow = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+
+        String path;
+        if (!allEmpty) {
+            path = "StealStar.fxml";
+        }
+        else {
+            path = "NoStealStar.fxml";
+        }
+
+        loader.setLocation(getClass().getResource(path));
+        Parent stealStarParent = loader.load();
+        Scene stealStarScene = new Scene(stealStarParent);
+
+        stealStarWindow.initModality(Modality.APPLICATION_MODAL);
+        stealStarWindow.setTitle("Steal Star Event");
+        stealStarWindow.setResizable(false);
+
+        if (!allEmpty) {
+            StealStarController controller = loader.getController();
+            controller.initData(playerTarget.getName());
+
+            playerUnleasher.updateStars(1);
+            playerTarget.updateStars(-1);
+            this.starsArray[currentPlayer].setText(Integer.toString(playerUnleasher.getStars()));
+            this.starsArray[targetIndex].setText(Integer.toString(playerTarget.getStars()));
+        }
+        else {
+            NoStealStarController controller = loader.getController();
+            controller.initData(playerTarget.getName());
+        }
+       stealStarWindow.setScene(stealStarScene);
+       stealStarWindow.showAndWait();
     }
 
     /**

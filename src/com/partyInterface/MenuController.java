@@ -13,12 +13,9 @@ import java.io.IOException;
 
 public class MenuController {
 
-    @FXML
-    Button infoButton;
-    @FXML
-    Button basicsButton;
-    @FXML
-    Button gameButton;
+    protected @FXML Button infoButton;
+    protected @FXML Button basicsButton;
+    protected @FXML Button gameButton;
 
     /**
      * This method is called when the infoButton is clicked and shows the Info scene

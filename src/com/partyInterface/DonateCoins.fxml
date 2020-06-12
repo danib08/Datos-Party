@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="325.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.DonateCoinsController">
+   <children>
+      <Label layoutX="70.0" layoutY="68.0" prefHeight="28.0" prefWidth="115.0" text="You lost">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="190.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/coin.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="229.0" layoutY="70.0" prefHeight="28.0" prefWidth="14.0" text="x">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="coinAmountText" layoutX="242.0" layoutY="70.0" prefHeight="28.0" prefWidth="14.0">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="changeTet1" layoutX="45.0" layoutY="97.0" prefHeight="36.0" prefWidth="252.0" text="which were equally">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="targetText" layoutX="114.0" layoutY="163.0" prefHeight="28.0" prefWidth="148.0" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="127.0" prefHeight="36.0" prefWidth="308.0" text="divided and given to ">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="156.0" prefHeight="36.0" prefWidth="308.0" text="the other players.">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -121,7 +121,6 @@ public class Player {
                 break;
             case 4:
                 System.out.println("Yellow Square");
-                this.eventHandler.eventSelecter(this);
                 this.eventHandler.checkLength();
                 break;
         }
@@ -259,7 +258,6 @@ public class Player {
     public void setPathChanged(boolean pathChanged) {
         this.pathChanged = pathChanged;
     }
-
 
     /**
      * Gets the player onMain attribute

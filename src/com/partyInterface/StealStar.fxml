@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="297.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.StealStarController">
+   <children>
+      <Label layoutX="41.0" layoutY="73.0" prefHeight="28.0" prefWidth="135.0" text="You stole">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="56.0" fitWidth="59.0" layoutX="160.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/star.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="209.0" layoutY="72.0" prefHeight="28.0" prefWidth="23.0" text="x1">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="107.0" prefHeight="36.0" prefWidth="59.0" text="from">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="targetText" layoutX="144.0" layoutY="106.0" prefHeight="36.0" prefWidth="59.0">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
