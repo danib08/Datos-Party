@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onKeyPressed="#keyPressed" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minigames.potatoGame.PotatoGameController">
+   <children>
+      <Label layoutX="624.0" layoutY="56.0" text="Try not to explode!" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="p1Name" layoutX="240.0" layoutY="172.0" text="Player 1:" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="p2Name" layoutX="240.0" layoutY="294.0" text="Player 2:" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="p3Name" layoutX="240.0" layoutY="430.0" text="Player 3:" textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="p4Name" layoutX="240.0" layoutY="551.0" text="Player 4:" textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="p1Sta" layoutX="260.0" layoutY="231.0" text="Alive" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="p2Sta" layoutX="260.0" layoutY="370.0" text="Alive" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="p3Sta" layoutX="260.0" layoutY="494.0" text="Alive" textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="p4Sta" layoutX="260.0" layoutY="614.0" text="Alive" textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="potatoExplodedLabel" layoutX="703.0" layoutY="105.0" text="Round 1" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="83.0" fitWidth="145.0" layoutX="837.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <image>
+            <Image url="@../../images/arrow.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="83.0" fitWidth="145.0" layoutX="683.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/arrow.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="83.0" fitWidth="145.0" layoutX="683.0" layoutY="467.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+         <image>
+            <Image url="@../../images/arrow.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="83.0" fitWidth="145.0" layoutX="533.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true" rotate="270.0">
+         <image>
+            <Image url="@../../images/arrow.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p1Img" fitHeight="150.0" fitWidth="200.0" layoutX="534.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/dino.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p4Img" fitHeight="150.0" fitWidth="200.0" layoutX="556.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../images/boy.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p3Img" fitHeight="150.0" fitWidth="200.0" layoutX="846.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../images/dog.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="p2Img" fitHeight="150.0" fitWidth="200.0" layoutX="834.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/girl.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="starButt" layoutX="667.0" layoutY="398.0" mnemonicParsing="false" onAction="#startGameButton" text="StartRound">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Button>
+      <Label fx:id="onBombLabel" layoutX="696.0" layoutY="308.0" text="Player 1" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="finishButt" disable="true" layoutX="878.0" layoutY="97.0" mnemonicParsing="false" onAction="#finishedGameWindow" text="Finish Game" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
