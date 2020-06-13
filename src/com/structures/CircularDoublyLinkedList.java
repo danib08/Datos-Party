@@ -63,6 +63,11 @@ public class CircularDoublyLinkedList extends List {
         return this.head;
     }
 
+    /**
+     * Iterates the list until the entered index, and returns the Square in that index
+     * @param index The desired index
+     * @return a Square element in the desired index
+     */
     @Override
     public Square getElement(int index) {
         Square tmp = this.head;
@@ -70,13 +75,5 @@ public class CircularDoublyLinkedList extends List {
             tmp = tmp.getNext();
         }
         return tmp;
-    }
-
-    public static void main(String[] args) {
-        CircularDoublyLinkedList d = new CircularDoublyLinkedList();
-        d.append(0,0, 0);
-        d.append(1,0, 0);
-        d.append(2,0, 0);
-        System.out.println(d.getElement(0));
     }
 }
