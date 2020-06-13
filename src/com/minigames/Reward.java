@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-import javax.xml.soap.Text;
+//import javax.xml.soap.Text;
 
 public class Reward {
     @FXML GridPane minigameGrid;

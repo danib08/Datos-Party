@@ -19,6 +19,7 @@ public class DoubleSquare extends Square {
      * This method is used to access the prev attribute
      * @return A pointer to the previous Square
      */
+    @Override
     public DoubleSquare getPrev() {
         return this.prev;
     }

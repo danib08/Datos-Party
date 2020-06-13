@@ -11,8 +11,7 @@ public class CircularDoublyLinkedList extends List {
         DoubleSquare doubleSquare = new DoubleSquare(data, row, column);
         if (this.head == null) {
             this.head = this.tail = doubleSquare;
-        }
-        else {
+        } else {
             this.tail.setNext(doubleSquare);
             doubleSquare.setPrev(this.tail);
             this.tail = doubleSquare;
@@ -53,5 +52,14 @@ public class CircularDoublyLinkedList extends List {
         }
         list.append("]");
         System.out.println(list);
+    }
+
+    /**
+     * This method returns the first element in the list
+     * @return the head attribute
+     */
+    @Override
+    public Square getHead() {
+        return this.head;
     }
 }
