@@ -85,7 +85,7 @@ public class reactGame2Control implements Initializable{
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                Random timestart = new Random();
+                timestart = new Random();
                 if (i == pAmount - 1) {
                     int t = timestart.nextInt(4) + 1;
                     Thread.sleep(1000 * t);
@@ -137,7 +137,7 @@ public class reactGame2Control implements Initializable{
             expectingClick = false;
             isClicked = true;
         }
-        long finish = System.currentTimeMillis();
+        finish = System.currentTimeMillis();
         long time = finish-start;
         labelMain.setStyle("-fx-background-color: gray");
         labelMain.setDisable(true);
