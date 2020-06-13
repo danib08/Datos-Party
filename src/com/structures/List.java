@@ -9,7 +9,7 @@ public abstract class List {
     protected int length;
 
     /**
-     * Creates a List abstract class
+     * Creates an abstract class List instance
      */
     List() {
         this.length = 0;
@@ -21,6 +21,14 @@ public abstract class List {
      */
     public int getLength() {
         return this.length;
+    }
+
+    /**
+     * This method returns the first element in the list
+     * @return the head attribute
+     */
+    public Square getHead() {
+        return this.head;
     }
 
     /**
@@ -37,23 +45,12 @@ public abstract class List {
     }
 
     /**
-     * This method returns the first element in the list
-     * @return the head attribute
-     */
-    public Square getHead() {
-        return this.head;
-    }
-
-    /**
      * This abstract method will add an element to the back of the list
      * @param data The value that the new element will contain
+     * @param row The row in which the Square will be positioned on the gridPane of the GUI
+     * @param column The column in which the Square will be positioned on the gridPane of the GUI
      */
     public abstract void append(int data, int row, int column);
-
-    /**
-     * Shows the list in the console in an organized way
-     */
-    public abstract void printList();
 
     /**
      * This method is used to access the tail attribute

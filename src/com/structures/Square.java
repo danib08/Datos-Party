@@ -56,13 +56,6 @@ public class Square {
     }
 
     /**
-     * This method purpose is to make Square and DoubleSquare classes compatible
-     * @param square Square to be added by DoubleSquare classes
-     */
-    public void setPrev(Square square){
-    }
-
-    /**
      * Converts the data attribute from an integer to a String
      * @return A String that represents the data value
      */

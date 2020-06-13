@@ -26,41 +26,4 @@ public class DoublyLinkedList extends List {
         }
         this.length++;
     }
-
-    public void printList() {
-        StringBuilder list = new StringBuilder("[");
-        Square tmp = this.head;
-        while (tmp != null) {
-            list.append(tmp.convertToString());
-            if (tmp != this.tail) {
-                list.append(", ");
-            }
-            tmp = tmp.getNext();
-        }
-        list.append("]");
-        System.out.println(list);
-    }
-
-    @Override
-    public Square getTail() {
-        return this.tail;
-    }
-
-    /**
-     * Shows all of the elements that are the previous of another, as a list
-     * in the console in an organized way
-     */
-    public void printPrev() {
-        StringBuilder list = new StringBuilder("[");
-        Square tmp = this.head.getNext();
-        while (tmp != null) {
-            list.append(tmp.getPrev().convertToString());
-            if (tmp != this.tail) {
-                list.append(", ");
-            }
-            tmp = tmp.getNext();
-        }
-        list.append("]");
-        System.out.println(list);
-    }
 }

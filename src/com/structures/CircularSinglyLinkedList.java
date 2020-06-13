@@ -25,17 +25,4 @@ public class CircularSinglyLinkedList extends List {
         this.tail.setNext(this.head);
         this.length++;
     }
-
-    public void printList() {
-        StringBuilder list = new StringBuilder("[");
-        Square tmp = this.head;
-        while (tmp != this.tail) {
-            list.append(tmp.convertToString());
-            list.append(", ");
-            tmp = tmp.getNext();
-        }
-        list.append(tmp.convertToString());
-        list.append("]");
-        System.out.println(list);
-    }
 }

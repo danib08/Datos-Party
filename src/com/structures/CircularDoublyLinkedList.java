@@ -35,26 +35,6 @@ public class CircularDoublyLinkedList extends List {
     }
 
     /**
-     * Shows all of the elements that are the previous of another, as a list
-     * in the console in an organized way
-     */
-    public void printPrev() {
-        StringBuilder list = new StringBuilder("[");
-        list.append(this.head.getPrev().convertToString());
-        list.append(", ");
-        Square tmp = this.head.getNext();
-        while (tmp != this.head) {
-            list.append(tmp.getPrev().convertToString());
-            if (tmp != this.tail) {
-                list.append(", ");
-            }
-            tmp = tmp.getNext();
-        }
-        list.append("]");
-        System.out.println(list);
-    }
-
-    /**
      * This method returns the first element in the list
      * @return the head attribute
      */
