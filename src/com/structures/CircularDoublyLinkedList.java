@@ -62,4 +62,21 @@ public class CircularDoublyLinkedList extends List {
     public Square getHead() {
         return this.head;
     }
+
+    @Override
+    public Square getElement(int index) {
+        Square tmp = this.head;
+        for (int i = 0; i < index; i++) {
+            tmp = tmp.getNext();
+        }
+        return tmp;
+    }
+
+    public static void main(String[] args) {
+        CircularDoublyLinkedList d = new CircularDoublyLinkedList();
+        d.append(0,0, 0);
+        d.append(1,0, 0);
+        d.append(2,0, 0);
+        System.out.println(d.getElement(0));
+    }
 }
