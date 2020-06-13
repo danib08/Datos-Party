@@ -5,37 +5,45 @@ import com.structures.Square;
 import java.util.Random;
 
 /**
- * This class represents an in-game Star
- * The Singleton pattern is applied here
+ * This class represents an in-game Star. The Singleton pattern is applied here.
  */
 public final class Star {
+    // The Star instance is private to make sure it can't be accessed globally
     private static Star star;
     private Square position;
     private final List[] listArray;
-    private boolean firstPosition;
+    private boolean alreadyPositioned;
 
+    /**
+     * Constructor is private to prevent additional instances
+     * @param listArray an array with all of the paths in the game
+     */
     private Star(List[] listArray) {
         this.listArray = listArray;
-        this.firstPosition = false;
+        this.alreadyPositioned = false;
     }
 
     /**
      * Checks if a Star object is created. If it is, it does nothing. If not, it creates it.
+     * The static keyword lets the method be called without a Star instance already created.
+     * The synchronized keyword makes the Singleton pattern safe in multi-threaded environments.
      * @return the unique Star instance
      */
     public static synchronized Star getStar(List[] listArray) {
         if (star == null) {
             star = new Star(listArray);
         }
-        else {
-            System.out.println("Star already created");
-        }
         return star;
     }
 
+    /**
+     * Positions the star on a random path from the listArray, and on a random Square from the selected listArray.
+     * If it's the star's the first time being positioned, the first 10 Squares from the mainBoard are excluded from the
+     * possible locations.
+     */
     public void positionStar() {
-        if (this.firstPosition = false) {
-            this.firstPosition = true;
+        if (this.alreadyPositioned = false) {
+            this.alreadyPositioned = true;
         }
 
         Random random = new Random();
@@ -43,7 +51,7 @@ public final class Star {
         List path = this.listArray[arrayIndex];
         int pathIndex;
 
-        if (!this.firstPosition && path.getLength() == 36) {
+        if (!this.alreadyPositioned && path.getLength() == 36) {
             pathIndex = random.nextInt(26) + 10;
         }
         else {

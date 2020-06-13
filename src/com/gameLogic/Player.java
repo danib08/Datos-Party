@@ -1,6 +1,6 @@
 package com.gameLogic;
 
-import com.structures.*;
+import com.structures.Square;
 
 /** Represents a player.
  */

@@ -272,18 +272,18 @@ public class GameBoardController implements Initializable {
         this.coinsArray = new TextField[this.numberOfPlayers];
         this.starsArray = new TextField[this.numberOfPlayers];
 
-        this.playerArray[0] = new Player(name1, this.mainBoard.getHead(), this.star);
+        this.playerArray[0] = new Player(name1, this.mainBoard.getHead());
         this.playerID1.setText(this.playerName1);
         this.coinsArray[0] = coins1;
         this.starsArray[0] = stars1;
 
-        this.playerArray[1] = new Player(name2, this.mainBoard.getHead(), this.star);
+        this.playerArray[1] = new Player(name2, this.mainBoard.getHead());
         this.playerID2.setText(this.playerName2);
         this.coinsArray[1] = coins2;
         this.starsArray[1] = stars2;
 
         if (!name3.equals("")) {
-            this.playerArray[2] = new Player(name3, this.mainBoard.getHead(), this.star);
+            this.playerArray[2] = new Player(name3, this.mainBoard.getHead());
             this.playerID3.setText(this.playerName3);
             this.coins3.setText("5");
             this.stars3.setText("0");
@@ -291,7 +291,7 @@ public class GameBoardController implements Initializable {
             this.starsArray[2] = stars3;
 
             if (!name4.equals("")) {
-                this.playerArray[3] = new Player(name4, this.mainBoard.getHead(), this.star);
+                this.playerArray[3] = new Player(name4, this.mainBoard.getHead());
                 this.playerID4.setText(this.playerName4);
                 this.coins4.setText("5");
                 this.stars4.setText("0");
@@ -398,6 +398,8 @@ public class GameBoardController implements Initializable {
             this.currentMove--;
         }
 
+//        System.out.println(player.getPosition());
+//        System.out.println(player.getPosition().getRow());
         int row = player.getPosition().getRow();
         int col = player.getPosition().getCol();
         this.boardGrid.getChildren().remove(this.imageArray[currentPlayer]);
@@ -900,20 +902,26 @@ public class GameBoardController implements Initializable {
 
         Random index = new Random();
         int pathInd = index.nextInt(this.pathArray.length);
-        System.out.println(pathInd);
         List destination = this.pathArray[pathInd];
+        System.out.println(pathInd);
 
         int pos = index.nextInt(destination.getLength());
         System.out.println(pos);
-        System.out.println("------------------");
         Square newPos = destination.getElement(pos);
+        System.out.println("Indice path tp:");
+        System.out.println(pathInd);
+        System.out.println("Indice square tp:");
+        System.out.println(pos);
+        System.out.println("nueva position:");
+        System.out.println(newPos);
         playerUnleasher.setPosition(newPos);
 
-        String path;
-        if (pathInd == 3 || pathInd == 4) {
-            path = "AskTeleport.fxml";
-        } else {
-            path = "Teleport.fxml";
+        String path = "Teleport.fxml";
+        if (pathInd != 0) {
+            playerUnleasher.setOnMain(false);
+            if (pathInd == 3 || pathInd == 4) {
+                path = "AskTeleport.fxml";
+            }
         }
 
         FXMLLoader loader = new FXMLLoader();
