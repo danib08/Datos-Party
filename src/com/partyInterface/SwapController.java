@@ -3,6 +3,9 @@ package com.partyInterface;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+/**
+ * This class controls the Swap.fxml
+ */
 public class SwapController {
 
     @FXML protected Label targetText;

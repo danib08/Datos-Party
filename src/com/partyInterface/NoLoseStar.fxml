@@ -6,27 +6,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="325.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label layoutX="57.0" layoutY="78.0" prefHeight="28.0" prefWidth="251.0" text="You have no ">
-         <font>
-            <Font name="Consolas" size="24.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="68.0" fitWidth="75.0" layoutX="202.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/star.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="105.0" layoutY="110.0" prefHeight="28.0" prefWidth="131.0" text="to lose! ">
-         <font>
-            <Font name="Consolas" size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="27.0" layoutY="144.0" prefHeight="28.0" prefWidth="281.0" text="Lucky you... or not?">
-         <font>
-            <Font name="Consolas" size="24.0" />
-         </font>
-      </Label>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0"
+            prefWidth="325.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1"
+>
+   <Label layoutX="57.0" layoutY="78.0" prefHeight="28.0" prefWidth="251.0" text="You have no ">
+      <font>
+         <Font name="Consolas" size="24.0"/>
+      </font>
+   </Label>
+   <ImageView fitHeight="68.0" fitWidth="75.0" layoutX="202.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/star.png"/>
+   </ImageView>
+   <Label layoutX="105.0" layoutY="110.0" prefHeight="28.0" prefWidth="131.0" text="to lose! ">
+      <font>
+         <Font name="Consolas" size="24.0"/>
+      </font>
+   </Label>
+   <Label layoutX="27.0" layoutY="144.0" prefHeight="28.0" prefWidth="281.0" text="Lucky you... or not?">
+      <font>
+         <Font name="Consolas" size="24.0"/>
+      </font>
+   </Label>
 </AnchorPane>

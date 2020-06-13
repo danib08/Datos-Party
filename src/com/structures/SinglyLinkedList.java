@@ -25,20 +25,6 @@ public class SinglyLinkedList extends List {
         this.length++;
     }
 
-    public void printList() {
-        StringBuilder list = new StringBuilder("[");
-        Square tmp = this.head;
-        while (tmp != null) {
-            list.append(tmp.convertToString());
-            if (tmp != this.tail) {
-                list.append(", ");
-            }
-            tmp = tmp.getNext();
-        }
-        list.append("]");
-        System.out.println(list);
-    }
-
     /**
      * This method will add a new element to the top of the list
      * @param data The value that the new element will contain

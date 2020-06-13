@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class controls the PreGameMenu.fxml
+ */
 public class PreGameController {
 
     protected int numberOfPlayers;
@@ -37,9 +40,9 @@ public class PreGameController {
 
     /**
      * This method check that all of the correct values are entered on the PreGame Menu and
-     * loads the GameBoard scene
+     * loads the GameBoard scene.
      * @param event Receives a click on the button located in the PreGame Menu
-     * @throws IOException
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void startGame(ActionEvent event) throws IOException {
         if (!roundBox.getSelectionModel().isEmpty() && !player1.getText().equals("") && !player2.getText().equals("")){
@@ -80,8 +83,8 @@ public class PreGameController {
 
     /**
      * Changes the scene to the GameBoard one, and passes information to it
-     * @param event
-     * @throws IOException
+     * @param event a JavaFX class generated when a button is clicked
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void changeScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -101,7 +104,7 @@ public class PreGameController {
 
     /**
      * If the user does not enter the correct data, this method displays an alert window
-     * @throws IOException
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void showError() throws IOException {
         Stage errorWindow = new Stage();

@@ -4,8 +4,8 @@ package com.structures;
  * A list formed by DoubleSquare objects, in which the last element is linked to the first
  */
 public class CircularDoublyLinkedList extends List {
-    DoubleSquare head;
-    DoubleSquare tail;
+    private DoubleSquare head;
+    private DoubleSquare tail;
 
     public void append(int data, int row, int column) {
         DoubleSquare doubleSquare = new DoubleSquare(data, row, column);
@@ -19,19 +19,6 @@ public class CircularDoublyLinkedList extends List {
         this.tail.setNext(this.head);
         this.head.setPrev(this.tail);
         this.length++;
-    }
-
-    public void printList() {
-        StringBuilder list = new StringBuilder("[");
-        Square tmp = this.head;
-        while (tmp != this.tail) {
-            list.append(tmp.convertToString());
-            list.append(", ");
-            tmp = tmp.getNext();
-        }
-        list.append(tmp.convertToString());
-        list.append("]");
-        System.out.println(list);
     }
 
     /**

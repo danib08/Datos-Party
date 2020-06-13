@@ -15,262 +15,393 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="boardAnch" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.GameBoardController">
-   <children>
-      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="1366.0">
-         <top>
-            <HBox prefHeight="100.0" prefWidth="1020.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane prefHeight="100.0" prefWidth="1146.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="202.0" text="current round:" textFill="WHITE">
-                           <font>
-                              <Font name="Consolas Bold Italic" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="14.0" layoutY="61.0" prefHeight="28.0" prefWidth="216.0" text="current player:" textFill="#fffdfd">
-                           <font>
-                              <Font name="Consolas Bold Italic" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="roundsText" layoutX="216.0" layoutY="18.0" prefHeight="28.0" prefWidth="58.0" text="1" textFill="WHITE">
-                           <font>
-                              <Font name="Consolas Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="playerText" layoutX="230.0" layoutY="57.0" prefHeight="35.0" prefWidth="157.0" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="moveButton" layoutX="617.0" layoutY="36.0" mnemonicParsing="false" onAction="#move" prefHeight="26.0" prefWidth="158.0" text="Move">
-                           <font>
-                              <Font name="Consolas Bold Italic" size="24.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="rollButton" layoutX="424.0" layoutY="35.0" mnemonicParsing="false" onAction="#roll" prefHeight="26.0" prefWidth="158.0" text="Roll">
-                           <font>
-                              <Font name="Consolas Bold Italic" size="24.0" />
-                           </font>
-                        </Button>
-                        <Label layoutX="798.0" layoutY="47.0" prefHeight="23.0" prefWidth="212.0" text="Remaining movement:" textFill="WHITE">
-                           <font>
-                              <Font name="Consolas Bold Italic" size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="rollLabel" layoutX="1014.0" layoutY="47.0" textFill="#fffdfd">
-                           <font>
-                              <Font name="Consolas Bold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-                  <GridPane fx:id="playerDataList" gridLinesVisible="true">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.GameBoardController">
+    <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0"
+                prefWidth="1366.0">
+        <top>
+            <HBox prefHeight="100.0" prefWidth="1020.0" style="-fx-background-color: #000000;"
+                  BorderPane.alignment="CENTER">
+                <AnchorPane prefHeight="100.0" prefWidth="1146.0">
+                    <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="202.0"
+                           text="current round:" textFill="WHITE">
+                        <font>
+                            <Font name="Consolas Bold Italic" size="24.0"/>
+                        </font>
+                    </Label>
+                    <Label layoutX="14.0" layoutY="61.0" prefHeight="28.0" prefWidth="216.0"
+                           text="current player:" textFill="#fffdfd">
+                        <font>
+                            <Font name="Consolas Bold Italic" size="24.0"/>
+                        </font>
+                    </Label>
+                    <Label fx:id="roundsText" layoutX="216.0" layoutY="18.0" prefHeight="28.0" prefWidth="58.0"
+                           text="1" textFill="WHITE">
+                        <font>
+                            <Font name="Consolas Bold" size="24.0"/>
+                        </font>
+                    </Label>
+                    <Label fx:id="playerText" layoutX="230.0" layoutY="57.0" prefHeight="35.0" prefWidth="157.0"
+                           textFill="WHITE">
+                        <font>
+                            <Font name="System Bold" size="24.0"/>
+                        </font>
+                    </Label>
+                    <Button fx:id="moveButton" layoutX="617.0" layoutY="36.0" mnemonicParsing="false"
+                            onAction="#move" prefHeight="26.0" prefWidth="158.0" text="Move">
+                        <font>
+                            <Font name="Consolas Bold Italic" size="24.0"/>
+                        </font>
+                    </Button>
+                    <Button fx:id="rollButton" layoutX="424.0" layoutY="35.0" mnemonicParsing="false"
+                            onAction="#roll" prefHeight="26.0" prefWidth="158.0" text="Roll">
+                        <font>
+                            <Font name="Consolas Bold Italic" size="24.0"/>
+                        </font>
+                    </Button>
+                    <Label layoutX="798.0" layoutY="47.0" prefHeight="23.0" prefWidth="212.0"
+                           text="Remaining movement:" textFill="WHITE">
+                        <font>
+                            <Font name="Consolas Bold Italic" size="20.0"/>
+                        </font>
+                    </Label>
+                    <Label fx:id="rollLabel" layoutX="1014.0" layoutY="47.0" textFill="#fffdfd">
+                        <font>
+                            <Font name="Consolas Bold" size="20.0"/>
+                        </font>
+                    </Label>
+                </AnchorPane>
+                <GridPane gridLinesVisible="true">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
-                     <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player ID" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                           <font>
-                              <Font name="Consolas Bold Italic" size="14.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coins" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                           <font>
-                              <Font name="Consolas Bold Italic" size="14.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Stars" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                           <font>
-                              <Font name="Consolas Bold Italic" size="14.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="playerID1" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="Consolas Italic" size="12.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="playerID2" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.rowIndex="2">
-                            <font>
-                                <Font name="Consolas Italic" size="12.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="playerID3" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.rowIndex="3">
-                            <font>
-                                <Font name="Consolas Italic" size="12.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="playerID4" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.rowIndex="4">
-                            <font>
-                                <Font name="Consolas Italic" size="12.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="coins1" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                            <font>
-                                <Font name="Consolas Italic" size="12.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="coins2" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                            <font>
-                                <Font name="Consolas Italic" size="12.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="coins3" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                            <font>
-                                <Font name="Consolas Italic" size="12.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="coins4" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                            <font>
-                                <Font name="Consolas Italic" size="12.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="stars1" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                            <font>
-                                <Font name="Consolas Italic" size="12.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="stars2" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                            <font>
-                                <Font name="Consolas Italic" size="12.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="stars3" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                            <font>
-                                <Font name="Consolas Italic" size="12.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="stars4" editable="false" style="-fx-background-color: #000000; -fx-text-fill: floralwhite" GridPane.columnIndex="2" GridPane.rowIndex="4">
-                            <font>
-                                <Font name="Consolas Italic" size="12.0" />
-                            </font>
-                        </TextField>
-                     </children>
-                  </GridPane>
-               </children>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player ID"
+                          textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                          GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <font>
+                            <Font name="Consolas Bold Italic" size="14.0"/>
+                        </font>
+                    </Text>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coins"
+                          textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                          GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <font>
+                            <Font name="Consolas Bold Italic" size="14.0"/>
+                        </font>
+                    </Text>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Stars"
+                          textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                          GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <font>
+                            <Font name="Consolas Bold Italic" size="14.0"/>
+                        </font>
+                    </Text>
+                    <TextField fx:id="playerID1" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite"
+                               GridPane.rowIndex="1">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="playerID2" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite"
+                               GridPane.rowIndex="2">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="playerID3" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite"
+                               GridPane.rowIndex="3">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="playerID4" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite"
+                               GridPane.rowIndex="4">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="coins1" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="5"
+                               GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="coins2" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="5"
+                               GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="coins3" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite"
+                               GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="coins4" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite"
+                               GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="stars1" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="0"
+                               GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="stars2" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite" text="0"
+                               GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="stars3" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite"
+                               GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                    <TextField fx:id="stars4" editable="false"
+                               style="-fx-background-color: #000000; -fx-text-fill: floralwhite"
+                               GridPane.columnIndex="2" GridPane.rowIndex="4">
+                        <font>
+                            <Font name="Consolas Italic" size="12.0"/>
+                        </font>
+                    </TextField>
+                </GridPane>
             </HBox>
-         </top>
-         <center>
-            <GridPane fx:id="boardGrid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="313.0" prefWidth="600.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="127.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.20000381469725" minWidth="10.0" prefWidth="110.19999999999999" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.60000000000002" minWidth="0.0" prefWidth="114.19999999999999" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.60000000000002" minWidth="10.0" prefWidth="139.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label fx:id="lbl00" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" />
-                  <Label fx:id="lbl10" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="1" />
-                  <Label fx:id="lbl20" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="2" />
-                  <Label fx:id="lbl30" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="3" />
-                  <Label fx:id="lbl40" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="4" />
-                  <Label fx:id="lbl50" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="5" />
-                  <Label fx:id="lbl60" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="6" />
-                  <Label fx:id="lbl70" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="7" />
-                  <Label fx:id="lbl80" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="8" />
-                  <Label fx:id="lbl90" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="9" />
-                  <Label fx:id="lbl91" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-                  <Label fx:id="lbl92" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="2" />
-                  <Label fx:id="lbl93" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="3" />
-                  <Label fx:id="lbl94" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="4" />
-                  <Label fx:id="lbl95" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="5" />
-                  <Label fx:id="lbl96" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="6" />
-                  <Label fx:id="lbl97" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="7" />
-                  <Label fx:id="lbl98" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="8" />
-                  <Label fx:id="lbl99" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="9" GridPane.rowIndex="9" />
-                  <Label fx:id="lbl89" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="8" GridPane.rowIndex="9" />
-                  <Label fx:id="lbl79" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="7" GridPane.rowIndex="9" />
-                  <Label fx:id="lbl69" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="6" GridPane.rowIndex="9" />
-                  <Label fx:id="lbl59" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="5" GridPane.rowIndex="9" />
-                  <Label fx:id="lbl49" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="4" GridPane.rowIndex="9" />
-                  <Label fx:id="lbl39" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="9" />
-                  <Label fx:id="lbl29" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-                  <Label fx:id="lbl19" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                  <Label fx:id="lbl09" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.rowIndex="9" />
-                  <Label fx:id="lbl08" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.rowIndex="8" />
-                  <Label fx:id="lbl07" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.rowIndex="7" />
-                  <Label fx:id="lbl06" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.rowIndex="6" />
-                  <Label fx:id="lbl05" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.rowIndex="5" />
-                  <Label fx:id="lbl04" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.rowIndex="4" />
-                  <Label fx:id="lbl03" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.rowIndex="3" />
-                  <Label fx:id="lbl02" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.rowIndex="2" />
-                  <Label fx:id="lbl01" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.rowIndex="1" />
-                  <Label fx:id="lbl83" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="8" GridPane.rowIndex="3" />
-                  <Label fx:id="lbl73" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                  <Label fx:id="lbl63" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-                  <Label fx:id="lbl62" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-                  <Label fx:id="lbl61" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                  <Label fx:id="lbl32" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <Label fx:id="lbl42" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                  <Label fx:id="lbl33" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <Label fx:id="lbl43" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                  <Label fx:id="lbl17" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <Label fx:id="lbl27" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                  <Label fx:id="lbl37" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                  <Label fx:id="lbl38" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                  <Label fx:id="lbl14" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label fx:id="lbl24" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <Label fx:id="lbl35" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                  <Label fx:id="lbl45" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                  <Label fx:id="lbl55" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                  <Label fx:id="lbl56" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-                  <Label fx:id="lbl66" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-                  <Label fx:id="lbl76" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-                  <Label fx:id="lbl86" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="8" GridPane.rowIndex="6" />
-                  <Label fx:id="lbl25" maxHeight="500.0" maxWidth="500.0" style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                  <ImageView fitHeight="77.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" GridPane.columnIndex="8" GridPane.rowIndex="5">
-                     <image>
-                        <Image url="@../images/arrow.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="78.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" rotate="270.0" GridPane.columnIndex="4" GridPane.rowIndex="8">
-                     <image>
-                        <Image url="@../images/arrow.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="106.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <image>
-                        <Image url="@../images/arrow.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="79.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" GridPane.columnIndex="8" GridPane.rowIndex="2">
-                     <image>
-                        <Image url="@../images/arrow.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
+        </top>
+        <center>
+            <GridPane fx:id="boardGrid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                      prefHeight="313.0" prefWidth="600.0" style="-fx-background-color: #000000;"
+                      BorderPane.alignment="CENTER">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="127.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.20000381469725" minWidth="10.0"
+                                       prefWidth="110.19999999999999"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.60000000000002" minWidth="0.0"
+                                       prefWidth="114.19999999999999"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.60000000000002" minWidth="10.0"
+                                       prefWidth="139.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="124.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                </rowConstraints>
+                <BorderPane.margin>
+                    <Insets/>
+                </BorderPane.margin>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="1"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="2"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="3"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="4"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="5"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="6"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="7"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="8"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="9"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="9"
+                       GridPane.rowIndex="1"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="9"
+                       GridPane.rowIndex="2"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="9"
+                       GridPane.rowIndex="3"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="9"
+                       GridPane.rowIndex="4"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="9"
+                       GridPane.rowIndex="5"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="9"
+                       GridPane.rowIndex="6"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="9"
+                       GridPane.rowIndex="7"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="9"
+                       GridPane.rowIndex="8"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="9"
+                       GridPane.rowIndex="9"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="8"
+                       GridPane.rowIndex="9"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="7"
+                       GridPane.rowIndex="9"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="6"
+                       GridPane.rowIndex="9"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="5"
+                       GridPane.rowIndex="9"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="4"
+                       GridPane.rowIndex="9"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="3"
+                       GridPane.rowIndex="9"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="2"
+                       GridPane.rowIndex="9"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="1"
+                       GridPane.rowIndex="9"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.rowIndex="9"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.rowIndex="8"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.rowIndex="7"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.rowIndex="6"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.rowIndex="5"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.rowIndex="4"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.rowIndex="3"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.rowIndex="2"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.rowIndex="1"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="8"
+                       GridPane.rowIndex="3"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="7"
+                       GridPane.rowIndex="3"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="6"
+                       GridPane.rowIndex="3"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="6"
+                       GridPane.rowIndex="2"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="6"
+                       GridPane.rowIndex="1"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3"
+                       GridPane.rowIndex="2"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="4"
+                       GridPane.rowIndex="2"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3"
+                       GridPane.rowIndex="3"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="4"
+                       GridPane.rowIndex="3"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="1"
+                       GridPane.rowIndex="7"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="2"
+                       GridPane.rowIndex="7"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3"
+                       GridPane.rowIndex="7"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3"
+                       GridPane.rowIndex="8"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="1"
+                       GridPane.rowIndex="4"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="2"
+                       GridPane.rowIndex="4"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="3"
+                       GridPane.rowIndex="5"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00ff00; -fx-border-color: #000000;" GridPane.columnIndex="4"
+                       GridPane.rowIndex="5"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="5"
+                       GridPane.rowIndex="5"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FF0000; -fx-border-color: #000000;" GridPane.columnIndex="5"
+                       GridPane.rowIndex="6"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #FFFF00; -fx-border-color: #000000;" GridPane.columnIndex="6"
+                       GridPane.rowIndex="6"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="7"
+                       GridPane.rowIndex="6"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FFFF; -fx-border-color: #000000;" GridPane.columnIndex="8"
+                       GridPane.rowIndex="6"/>
+                <Label maxHeight="500.0" maxWidth="500.0"
+                       style="-fx-background-color: #00FF00; -fx-border-color: #000000;" GridPane.columnIndex="2"
+                       GridPane.rowIndex="5"/>
+                <ImageView fitHeight="77.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true" rotate="180.0"
+                           GridPane.columnIndex="8" GridPane.rowIndex="5">
+                    <Image url="@../images/arrow.png"/>
+                </ImageView>
+                <ImageView fitHeight="78.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" rotate="270.0"
+                           GridPane.columnIndex="4" GridPane.rowIndex="8">
+                    <Image url="@../images/arrow.png"/>
+                </ImageView>
+                <ImageView fitHeight="106.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true"
+                           GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <Image url="@../images/arrow.png"/>
+                </ImageView>
+                <ImageView fitHeight="79.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" rotate="180.0"
+                           GridPane.columnIndex="8" GridPane.rowIndex="2">
+                    <Image url="@../images/arrow.png"/>
+                </ImageView>
             </GridPane>
-         </center>
-      </BorderPane>
-   </children>
+        </center>
+    </BorderPane>
 </AnchorPane>

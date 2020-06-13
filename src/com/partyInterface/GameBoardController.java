@@ -367,9 +367,9 @@ public class GameBoardController implements Initializable {
         int result = random.nextInt(6) + 1;
         result += random.nextInt(6) + 1;
 
-        this.currentMove = 10;
+        this.currentMove = result;
         rollLabel.setText(Integer.toString(result));
-        this.moveButton.setLayoutY(result);
+        this.moveButton.setLayoutY(36);
     }
 
     /**
@@ -398,8 +398,6 @@ public class GameBoardController implements Initializable {
             this.currentMove--;
         }
 
-//        System.out.println(player.getPosition());
-//        System.out.println(player.getPosition().getRow());
         int row = player.getPosition().getRow();
         int col = player.getPosition().getCol();
         this.boardGrid.getChildren().remove(this.imageArray[currentPlayer]);
@@ -428,7 +426,6 @@ public class GameBoardController implements Initializable {
                     this.coinsArray[this.currentPlayer].setText(Integer.toString(player.getCoins()));
                     break;
                case 4:
-                   //TODO complete event
                    this.eventSelecter(currentPlayer);
                    this.checkLength();
                    break;
@@ -501,7 +498,7 @@ public class GameBoardController implements Initializable {
             pathWindow.setScene(pathScene);
             pathWindow.showAndWait();
 
-            boolean response = controller.isResponse();
+            boolean response = controller.getResponse();
             if (response) {
                 player.setPosition(player.getPosition().getPathLink());
                 if (player.getPosition().getData() == 3) {
@@ -546,7 +543,7 @@ public class GameBoardController implements Initializable {
         starWindow.setScene(starScene);
         starWindow.showAndWait();
 
-        boolean response = controller.isResponse();
+        boolean response = controller.getResponse();
         if (response) {
             player.buyStar();
             star.positionStar();
@@ -566,36 +563,35 @@ public class GameBoardController implements Initializable {
      */
     public void eventSelecter(int currentPlayer) throws IOException {
         int event = this.eventStack.popHead();
-        this.teleport(currentPlayer);
-//        switch (event) {
-//            case 1:
-//                System.out.println("duel");
-//                break;
-//            case 2:
-//                this.stealCoins(currentPlayer);
-//                break;
-//            case 3:
-//                this.donateCoins(currentPlayer);
-//                break;
-//            case 4:
-//                this.loseStar(currentPlayer);
-//                break;
-//            case 5:
-//                this.winStar(currentPlayer, 2);
-//                break;
-//            case 6:
-//                this.winStar(currentPlayer, 5);
-//                break;
-//            case 7:
-//                this.stealStar(currentPlayer);
-//                break;
-//            case 8:
-//                System.out.println("teleport");
-//                break;
-//            case 9:
-//                this.swap(currentPlayer);
-//                break;
-//        }
+        switch (event) {
+            case 1:
+                System.out.println("duel");
+                break;
+            case 2:
+                this.stealCoins(currentPlayer);
+                break;
+            case 3:
+                this.donateCoins(currentPlayer);
+                break;
+            case 4:
+                this.loseStar(currentPlayer);
+                break;
+            case 5:
+                this.winStar(currentPlayer, 2);
+                break;
+            case 6:
+                this.winStar(currentPlayer, 5);
+                break;
+            case 7:
+                this.stealStar(currentPlayer);
+                break;
+            case 8:
+                this.teleport(currentPlayer);
+                break;
+            case 9:
+                this.swap(currentPlayer);
+                break;
+        }
     }
 
     /**
@@ -603,7 +599,7 @@ public class GameBoardController implements Initializable {
      * @param currentPlayer index of the current player
      * @throws IOException if a file described in the loaders cannot be found/read/loaded
      */
-    private void stealCoins(int currentPlayer) throws IOException {
+    public void stealCoins(int currentPlayer) throws IOException {
         Player playerUnleasher = this.playerArray[currentPlayer];
 
         Stage stealCoinsWindow = new Stage();
@@ -640,7 +636,7 @@ public class GameBoardController implements Initializable {
      * @param currentPlayer index of the current player
      * @throws IOException if a file described in the loaders cannot be found/read/loaded
      */
-    private void donateCoins(int currentPlayer) throws IOException {
+    public void donateCoins(int currentPlayer) throws IOException {
         Player playerUnleasher = this.playerArray[currentPlayer];
 
         Stage donateCoinsWindow = new Stage();
@@ -693,7 +689,7 @@ public class GameBoardController implements Initializable {
      * @param currentPlayer index of the current player
      * @throws IOException if a file described in the loaders cannot be found/read/loaded
      */
-    private void loseStar(int currentPlayer) throws IOException {
+    public void loseStar(int currentPlayer) throws IOException {
         Player playerUnleasher = this.playerArray[currentPlayer];
 
         Stage loseStarWindow = new Stage();
@@ -705,7 +701,6 @@ public class GameBoardController implements Initializable {
         }
         else {
             path = "NoLoseStar.fxml";
-            System.out.println(path);
         }
 
         loader.setLocation(getClass().getResource(path));
@@ -746,7 +741,7 @@ public class GameBoardController implements Initializable {
      * @param stars stars The amount of stars that will be won
      * @throws IOException if a file described in the loaders cannot be found/read/loaded
      */
-    private void winStar(int currentPlayer, int stars) throws IOException {
+    public void winStar(int currentPlayer, int stars) throws IOException {
         Player playerUnleasher = this.playerArray[currentPlayer];
 
         Stage winStarWindow = new Stage();
@@ -774,14 +769,14 @@ public class GameBoardController implements Initializable {
      * @param currentPlayer index of the current player
      * @throws IOException if a file described in the loaders cannot be found/read/loaded
      */
-    private void stealStar(int currentPlayer) throws IOException {
+    public void stealStar(int currentPlayer) throws IOException {
         Player playerUnleasher = this.playerArray[currentPlayer];
         int targetIndex;
         Player playerTarget;
 
         boolean allEmpty = true;
         for (Player player : this.playerArray) {
-            if (player.getStars() > 0) {
+            if (player.getStars() > 0 && !player.getName().equals(playerUnleasher.getName())) {
                 allEmpty = false;
                 break;
             }
@@ -874,6 +869,14 @@ public class GameBoardController implements Initializable {
         swapWindow.setTitle("Star!");
         swapWindow.setResizable(false);
 
+        boolean onMain1 = playerUnleasher.getOnMain();
+        playerUnleasher.setOnMain(playerTarget.getOnMain());
+        playerTarget.setOnMain(onMain1);
+
+        boolean backwards1 = playerUnleasher.getBackwards();
+        playerUnleasher.setBackwards(playerTarget.getBackwards());
+        playerTarget.setBackwards(backwards1);
+
         Square pos1 = playerUnleasher.getPosition();
         playerUnleasher.setPosition(playerTarget.getPosition());
         playerTarget.setPosition(pos1);
@@ -896,25 +899,20 @@ public class GameBoardController implements Initializable {
      * Teleports the player to a random position
      * @param currentPlayer index of the current player
      */
-    private void teleport(int currentPlayer) throws IOException {
+    public void teleport(int currentPlayer) throws IOException {
         Stage teleportWindow = new Stage();
         Player playerUnleasher = this.playerArray[currentPlayer];
 
         Random index = new Random();
         int pathInd = index.nextInt(this.pathArray.length);
         List destination = this.pathArray[pathInd];
-        System.out.println(pathInd);
 
         int pos = index.nextInt(destination.getLength());
-        System.out.println(pos);
         Square newPos = destination.getElement(pos);
-        System.out.println("Indice path tp:");
-        System.out.println(pathInd);
-        System.out.println("Indice square tp:");
-        System.out.println(pos);
-        System.out.println("nueva position:");
-        System.out.println(newPos);
         playerUnleasher.setPosition(newPos);
+
+        playerUnleasher.setOnMain(true);
+        playerUnleasher.setBackwards(false);
 
         String path = "Teleport.fxml";
         if (pathInd != 0) {

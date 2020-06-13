@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
+/**
+ * This class controls the Teleport.fxml
+ */
 public class TeleportController {
 
     private boolean answer;

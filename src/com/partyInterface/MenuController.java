@@ -11,6 +11,9 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
+/**
+ * This class controls the MenuUI.fxml
+ */
 public class MenuController {
 
     protected @FXML Button infoButton;
@@ -20,10 +23,10 @@ public class MenuController {
     /**
      * This method is called when the infoButton is clicked and shows the Info scene
      * @param event Receives a click on the button
-     * @throws IOException
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void changeToInfo(ActionEvent event) throws IOException {
-        Parent infoParent = FXMLLoader.load(getClass().getResource("Info.fxml"));
+        Parent infoParent = FXMLLoader.load(getClass().getResource("..//view//Info.fxml"));
         Scene infoScene = new Scene(infoParent);
 
         // This gets the stage information.
@@ -36,10 +39,10 @@ public class MenuController {
     /**
      * This method is called when the basicsButton is clicked and shows the Basics scene
      * @param event Receives a click on the button
-     * @throws IOException
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void changeToBasic(ActionEvent event) throws IOException{
-        Parent basicParent = FXMLLoader.load(getClass().getResource("Basics.fxml"));
+        Parent basicParent = FXMLLoader.load(getClass().getResource("..//view//Basics.fxml"));
         Scene basicsScene = new Scene(basicParent);
 
         // This gets the stage information.
@@ -53,10 +56,10 @@ public class MenuController {
     /**
      * This method is called when the gameButton is clicked, and shows the PreGame scene
      * @param event Receives a click on the button
-     * @throws IOException
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void changeToPreGame(ActionEvent event) throws IOException{
-        Parent preGameParent = FXMLLoader.load(getClass().getResource("preGameMenu.fxml"));
+        Parent preGameParent = FXMLLoader.load(getClass().getResource("PreGameMenu.fxml"));
         Scene preGameScene = new Scene(preGameParent);
 
         // This gets the stage information.

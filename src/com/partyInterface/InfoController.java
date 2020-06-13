@@ -9,8 +9,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class controls the Info.fxml
+ */
 public class InfoController {
-
 
     /**
      * This method is called when the Return to Menu button is clicked, and shows the Menu scene

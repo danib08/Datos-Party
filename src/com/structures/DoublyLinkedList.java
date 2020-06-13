@@ -26,4 +26,13 @@ public class DoublyLinkedList extends List {
         }
         this.length++;
     }
+
+    /**
+     * Getter for the tail attribute
+     * @return a Double Square object
+     */
+    @Override
+    public DoubleSquare getTail() {
+        return this.tail;
+    }
 }

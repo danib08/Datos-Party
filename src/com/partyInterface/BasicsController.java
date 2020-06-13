@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class controlls the Basics.fxml
+ */
 public class BasicsController {
 
     /**

@@ -20,138 +20,122 @@
 <?import javafx.scene.text.Text?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.PreGameController">
-    <children>
-            <ToolBar prefHeight="43.0" prefWidth="649.0">
-              <items>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To be able to start, you must choose an amount of players first:" wrappingWidth="343.7366695404053">
-                     <font>
-                        <Font name="Consolas Bold Italic" size="15.0" />
-                     </font>
-                  </Text>
-                <Button fx:id="startGameButton" mnemonicParsing="false" onAction="#startGame" text="Start Game">
-                     <font>
-                        <Font name="Consolas Bold Italic" size="13.0" />
-                     </font>
-                  </Button>
-              </items>
-            </ToolBar>
-            <Pane>
-               <children>
-                  <RadioButton fx:id="radio2" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="2 players">
-                      <toggleGroup>
-                          <ToggleGroup fx:id="playerGroup" />
-                      </toggleGroup>
-                     <font>
-                        <Font name="Consolas Bold Italic" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </RadioButton>
-                  <RadioButton fx:id="radio3" layoutX="137.0" layoutY="14.0" mnemonicParsing="false" text="3 players" toggleGroup="$playerGroup">
-                     <font>
-                        <Font name="Consolas Bold Italic" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </RadioButton>
-                  <RadioButton fx:id="radio4" layoutX="261.0" layoutY="14.0" mnemonicParsing="false" text="4 players" toggleGroup="$playerGroup">
-                     <font>
-                        <Font name="Consolas Bold Italic" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </RadioButton>
-                  <Text layoutX="27.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make sure to mark an amount before starting!">
-                     <font>
-                        <Font name="Consolas Bold Italic" size="14.0" />
-                     </font>
-                  </Text>
-               </children>
-            </Pane>
-            <Region prefHeight="28.0" prefWidth="600.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Now, in these spaces, you must type in the player names!*">
-               <font>
-                  <Font name="Consolas Bold Italic" size="14.0" />
-               </font>
-            </Text>
-            <TextField fx:id="player1" prefHeight="26.0" prefWidth="221.0" promptText="player #1 name" />
-            <TextField fx:id="player2" promptText="player #2 name">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="player3" promptText="player #3 name">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="player4" promptText="player #4 name">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </TextField>
-      <ComboBox fx:id="roundBox" prefWidth="150.0" promptText="Number of Rounds">
-          <items>
-              <FXCollections fx:factory="observableArrayList">
-                  <Integer fx:value="10" />
-                  <Integer fx:value="20" />
-                  <Integer fx:value="30" />
-                  <Integer fx:value="40" />
-                  <Integer fx:value="50" />
-              </FXCollections>
-          </items>
-      </ComboBox>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="*NOTE: if you chose 2 players, you have to type their names in the corresponding field (player #1 and player #2 fields). Same if you choose three or four players." wrappingWidth="723.7367248535156">
-         <font>
+    <ToolBar prefHeight="43.0" prefWidth="649.0">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To be able to start, you must choose an amount of players first:" wrappingWidth="343.7366695404053">
+            <font>
+                <Font name="Consolas Bold Italic" size="15.0" />
+            </font>
+        </Text>
+        <Button mnemonicParsing="false" onAction="#startGame" text="Start Game">
+            <font>
+                <Font name="Consolas Bold Italic" size="13.0" />
+            </font>
+        </Button>
+    </ToolBar>
+    <Pane>
+        <RadioButton fx:id="radio2" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="2 players">
+            <toggleGroup>
+                <ToggleGroup fx:id="playerGroup" />
+            </toggleGroup>
+            <font>
+                <Font name="Consolas Bold Italic" size="14.0" />
+            </font>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </RadioButton>
+        <RadioButton fx:id="radio3" layoutX="137.0" layoutY="14.0" mnemonicParsing="false" text="3 players" toggleGroup="$playerGroup">
+            <font>
+                <Font name="Consolas Bold Italic" size="14.0" />
+            </font>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </RadioButton>
+        <RadioButton fx:id="radio4" layoutX="261.0" layoutY="14.0" mnemonicParsing="false" text="4 players" toggleGroup="$playerGroup">
+            <font>
+                <Font name="Consolas Bold Italic" size="14.0" />
+            </font>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </RadioButton>
+        <Text layoutX="27.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make sure to mark an amount before starting!">
+            <font>
+                <Font name="Consolas Bold Italic" size="14.0" />
+            </font>
+        </Text>
+    </Pane>
+    <Region prefHeight="28.0" prefWidth="600.0" />
+    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Now, in these spaces, you must type in the player names!*">
+        <font>
             <Font name="Consolas Bold Italic" size="14.0" />
-         </font>
-      </Text>
-      <AnchorPane prefHeight="220.0" prefWidth="766.0">
-         <children>
-            <ImageView fitHeight="123.0" fitWidth="108.0" layoutX="64.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/dino.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="116.0" fitWidth="108.0" layoutX="228.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/girl.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="128.0" fitWidth="104.0" layoutX="431.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/dog.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="627.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/boy.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="89.0" layoutY="170.0" text="Player 1" textAlignment="CENTER">
-               <font>
-                  <Font name="Consolas Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="255.0" layoutY="169.0" text="Player 2" textAlignment="CENTER">
-               <font>
-                  <Font name="Consolas Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="449.0" layoutY="169.0" text="Player 3" textAlignment="CENTER">
-               <font>
-                  <Font name="Consolas Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="635.0" layoutY="169.0" text="Player 4" textAlignment="CENTER">
-               <font>
-                  <Font name="Consolas Bold" size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-    </children>
+        </font>
+    </Text>
+    <TextField fx:id="player1" prefHeight="26.0" prefWidth="221.0" promptText="player #1 name" />
+    <TextField fx:id="player2" promptText="player #2 name">
+        <VBox.margin>
+            <Insets top="15.0" />
+        </VBox.margin>
+    </TextField>
+    <TextField fx:id="player3" promptText="player #3 name">
+        <VBox.margin>
+            <Insets top="15.0" />
+        </VBox.margin>
+    </TextField>
+    <TextField fx:id="player4" promptText="player #4 name">
+        <VBox.margin>
+            <Insets top="15.0" />
+        </VBox.margin>
+    </TextField>
+    <ComboBox fx:id="roundBox" prefWidth="150.0" promptText="Number of Rounds">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Integer fx:value="10" />
+                <Integer fx:value="20" />
+                <Integer fx:value="30" />
+                <Integer fx:value="40" />
+                <Integer fx:value="50" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="*NOTE: if you chose 2 players, you have to type their names in the corresponding field (player #1 and player #2 fields). Same if you choose three or four players." wrappingWidth="723.7367248535156">
+        <font>
+          <Font name="Consolas Bold Italic" size="14.0" />
+        </font>
+    </Text>
+    <AnchorPane prefHeight="220.0" prefWidth="766.0">
+        <ImageView fitHeight="123.0" fitWidth="108.0" layoutX="64.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/dino.png" />
+        </ImageView>
+        <ImageView fitHeight="116.0" fitWidth="108.0" layoutX="228.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/girl.png" />
+        </ImageView>
+        <ImageView fitHeight="128.0" fitWidth="104.0" layoutX="431.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/dog.png" />
+        </ImageView>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="627.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/boy.png" />
+        </ImageView>
+        <Label layoutX="89.0" layoutY="170.0" text="Player 1" textAlignment="CENTER">
+            <font>
+                <Font name="Consolas Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="255.0" layoutY="169.0" text="Player 2" textAlignment="CENTER">
+            <font>
+                <Font name="Consolas Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="449.0" layoutY="169.0" text="Player 3" textAlignment="CENTER">
+            <font>
+                <Font name="Consolas Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="635.0" layoutY="169.0" text="Player 4" textAlignment="CENTER">
+            <font>
+                <Font name="Consolas Bold" size="14.0" />
+            </font>
+        </Label>
+    </AnchorPane>
 </VBox>

@@ -4,17 +4,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="325.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.SwapController">
-   <children>
-      <Label layoutX="108.0" layoutY="85.0" prefHeight="28.0" prefWidth="116.0" text="You have">
-         <font>
-            <Font name="Consolas" size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="94.0" layoutY="111.0" prefHeight="28.0" prefWidth="160.0" text="teleported!">
-         <font>
-            <Font name="Consolas" size="24.0" />
-         </font>
-      </Label>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0"
+            prefWidth="325.0" scaleShape="false" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.partyInterface.SwapController">
+   <Label layoutX="108.0" layoutY="85.0" prefHeight="28.0" prefWidth="116.0" text="You have">
+      <font>
+         <Font name="Consolas" size="24.0"/>
+      </font>
+   </Label>
+   <Label layoutX="94.0" layoutY="111.0" prefHeight="28.0" prefWidth="160.0" text="teleported!">
+      <font>
+         <Font name="Consolas" size="24.0"/>
+      </font>
+   </Label>
 </AnchorPane>

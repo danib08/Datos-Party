@@ -7,6 +7,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+ * This class controls the StealCoins.fxml
+ */
 public class StealCoinsController {
 
     @FXML protected Button button1;

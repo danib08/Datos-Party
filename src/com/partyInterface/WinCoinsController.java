@@ -3,6 +3,9 @@ package com.partyInterface;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+/**
+ * This class controls the WinCoins.fxml
+ */
 public class WinCoinsController {
 
     @FXML private Label changeText;

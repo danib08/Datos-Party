@@ -3,6 +3,9 @@ package com.partyInterface;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+/**
+ * This class conatins the DonateCoins.fxml
+ */
 public class DonateCoinsController {
 
     protected int coinAmount;

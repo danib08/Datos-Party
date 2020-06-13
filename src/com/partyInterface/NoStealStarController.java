@@ -3,6 +3,9 @@ package com.partyInterface;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+/**
+ * This class controls the NoStealStar.fxml
+ */
 public class NoStealStarController {
 
     @FXML protected Label targetText;
