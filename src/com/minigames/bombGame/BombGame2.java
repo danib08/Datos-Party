@@ -1,22 +1,29 @@
 package com.minigames.bombGame;
 
 import com.gameLogic.Player;
+import com.minigames.Reward;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class BombGame2 implements Initializable{
+public class BombGame2{
     @FXML ImageView player1bomb;
     @FXML ImageView player2bomb;
     @FXML ImageView player3bomb;
@@ -30,26 +37,14 @@ public class BombGame2 implements Initializable{
     Player[] players;
     Player[] toReward;
     int i;
-    int pAmount = 3;
+    int pAmount;
     int call = 1;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        stepButton.setVisible(false);
-        finishButton.setVisible(false);
-        explodedText.setVisible(false);
-        if (pAmount <=3){
-            player4bomb.setVisible(false);
-            if (pAmount == 2){
-                player3bomb.setVisible(false);
-            }
-        }
-    }
 
 
 
-    public void startGame(ActionEvent event) {
-        //this.pAmount = this.players.length;
+    public void startGame(){
+        this.pAmount = this.players.length;
         createData.setVisible(false);
         stepButton.setVisible(true);
         explodedText.setVisible(true);
@@ -72,18 +67,15 @@ public class BombGame2 implements Initializable{
         Random toBlowUp;
         toBlowUp = new Random();
         this.i = pAmount-1;
-        while (i > -1){
+        while (i >= 0){
             int x = toBlowUp.nextInt(pAmount);
-            if (x == pAmount-1){
-                x = pAmount;
-            }
+
             if (!detonators[x].detonated()){
                 detonators[x].setExploded(true);
                 toReward[i] = detonators[x].getSelector();
+                i--;
             }
-            i--;
         }
-        this.reward(toReward);
 
     }
 
@@ -129,25 +121,30 @@ public class BombGame2 implements Initializable{
         call++;
     }
 
-    public void reward(Player[] players){
-        int coins = 12;
-        int len = players.length;
-        int take = coins / len;
-        for (Player player : players){
-            player.updateCoins(coins);
-            coins -= take;
-        }
-    }
     public void initData(Player[] players) {
         this.players = players;
-        pAmount = players.length;
+        this.pAmount = players.length;
         stepButton.setVisible(false);
+        finishButton.setVisible(false);
         explodedText.setVisible(false);
-        if (pAmount <= 3) {
+        if (pAmount <=3){
             player4bomb.setVisible(false);
-            if (pAmount == 2) {
+            if (pAmount == 2){
                 player3bomb.setVisible(false);
             }
         }
+    }
+    public void goReward(ActionEvent buttonClick) throws IOException {
+        FXMLLoader rewardLoader = new FXMLLoader();
+        rewardLoader.setLocation(getClass().getResource("/com/minigames/reward.fxml"));
+
+        Parent rewardParent = rewardLoader.load();
+        Scene rewardScene = new Scene(rewardParent);
+        Reward controller = rewardLoader.getController();
+        controller.initData(toReward);
+        Stage window = (Stage) ((Node)buttonClick.getSource()).getScene().getWindow();
+        //takes the obtained Stage and changes its Scene to the new fxml file.
+        window.setScene(rewardScene);
+        window.show();
     }
 }

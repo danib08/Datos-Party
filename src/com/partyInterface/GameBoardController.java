@@ -446,6 +446,7 @@ public class GameBoardController implements Initializable {
                     while (lastPlayed == i){
                         i = random.nextInt(6);
                     }
+                    i = 2;
                     switch (i){
                         case 0:
                             this.startBombGame();
@@ -468,6 +469,9 @@ public class GameBoardController implements Initializable {
                     }
                     System.out.println("Played minigame");
                     this.roundsText.setText(Integer.toString(this.roundsPlayed));
+                    for (int j = 0; j<= this.numberOfPlayers-1; j++) {
+                        this.coinsArray[j].setText(Integer.toString(this.playerArray[j].getCoins()));
+                    }
                 }
             }
             else {
@@ -595,27 +599,35 @@ public class GameBoardController implements Initializable {
                 System.out.println("duel");
                 break;
             case 2:
+                System.out.println(2);
                 this.stealCoins(currentPlayer);
                 break;
             case 3:
+                System.out.println(3);
                 this.donateCoins(currentPlayer);
                 break;
             case 4:
+                System.out.println(4);
                 this.loseStar(currentPlayer);
                 break;
             case 5:
+                System.out.println(5);
                 this.winStar(currentPlayer, 2);
                 break;
             case 6:
+                System.out.println(6);
                 this.winStar(currentPlayer, 5);
                 break;
             case 7:
+                System.out.println(7);
                 this.stealStar(currentPlayer);
                 break;
             case 8:
+                System.out.println(8);
                 this.teleport(currentPlayer);
                 break;
             case 9:
+                System.out.println(9);
                 this.swap(currentPlayer);
                 break;
         }
@@ -879,8 +891,8 @@ public class GameBoardController implements Initializable {
 
         while(playerTarget.getName().equals(playerUnleasher.getName())) {
             targetIndex = random.nextInt(playerArray.length);
+            playerTarget = playerArray[targetIndex];
         }
-        playerTarget = playerArray[targetIndex];
 
         Stage swapWindow = new Stage();
 

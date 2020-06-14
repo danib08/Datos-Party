@@ -60,15 +60,11 @@ public class Reward {
             }
         }
 
-
-
         playerGrid1.setText(name1);
         playerGrid2.setText(name2);
 
         fxTextFields[0] = prizeGrid1;
         fxTextFields[1] = prizeGrid2;
-        fxTextFields[2] = prizeGrid3;
-        fxTextFields[3] = prizeGrid4;
 
         if (pAmount <= 3){
             playerGrid4.setVisible(false);
@@ -103,9 +99,11 @@ public class Reward {
         int currCoins;
         for (int i = 0; i < pAmount; i++) {
             prevCoins = toReward[i].getCoins();
-            toReward[i].updateCoins(take);
+            toReward[i].updateCoins(coins);
             currCoins = toReward[i].getCoins();
             minigamePrize[i] = currCoins - prevCoins;
+            coins -= take;
+
         }
     }
 

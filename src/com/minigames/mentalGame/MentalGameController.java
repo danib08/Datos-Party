@@ -1,6 +1,7 @@
 package com.minigames.mentalGame;
 
 import com.gameLogic.Player;
+import com.minigames.Reward;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -141,20 +142,18 @@ public class MentalGameController{
 
     /**
      * Changes the scene and rewards the players.
-     * @param event JavaFX class called automatically when a button is pressed.
+     * @param buttonClick JavaFX class called automatically when a button is pressed.
      */
-    public void finishedGameWindow(ActionEvent event){
-
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-        Parent mentalParent = null;
-        try {
-            mentalParent = FXMLLoader.load(getClass().getResource("MentalMain.fxml"));
-            Scene mentalScene = new Scene(mentalParent);
-            window.setScene(mentalScene);
-            window.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void finishedGameWindow(ActionEvent buttonClick) throws IOException{
+        FXMLLoader rewardLoader = new FXMLLoader();
+        rewardLoader.setLocation(getClass().getResource("/com/minigames/reward.fxml"));
+        Parent rewardParent = rewardLoader.load();
+        Scene rewardScene = new Scene(rewardParent);
+        Reward controller = rewardLoader.getController();
+        controller.initData(winnerArr);
+        Stage window = (Stage) ((Node)buttonClick.getSource()).getScene().getWindow();
+        //takes the obtained Stage and changes its Scene to the new fxml file.
+        window.setScene(rewardScene);
+        window.show();
     }
 }

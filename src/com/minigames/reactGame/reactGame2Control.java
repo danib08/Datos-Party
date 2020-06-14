@@ -37,7 +37,7 @@ public class reactGame2Control implements Initializable{
     long start;
     long finish;
 
-    int pAmount = 3;
+    int pAmount;
     int i = 0;
     Random timestart;
 
@@ -53,14 +53,19 @@ public class reactGame2Control implements Initializable{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        textField1.setText("Player 1: ");
-        textField2.setText("Player 2: ");
-        textField3.setText("Player 3: ");
-        textField4.setText("Player 4: ");
+        textField1.setText(players[0].getName());
+        textField2.setText(players[1].getName());
+
+        if (pAmount >=3 ){
+            textField3.setText(players[2].getName());
+            if (pAmount == 4){
+                textField4.setText(players[3].getName());
+            }
+        }
 
         this.labelMain.setDisable(true);
 
-        if (pAmount>= 3){
+        if (pAmount <= 3){
             textField4.setVisible(false);
             label4.setVisible(false);
             if (pAmount == 2){
@@ -101,11 +106,10 @@ public class reactGame2Control implements Initializable{
                 } else if (i == pAmount) {
                     startButton.setDisable(true);
                     Player[] toReward = new Player[pAmount];
-                    //TODO finish playerArray logic to reward the players.
-                    //for (int j = 0; j < pAmount; j++) {
-                    //toReward[j] = players[getSmallest(pTimes)];
+                    for (int j = 0; j < pAmount; j++) {
+                    toReward[j] = players[getSmallest(pTimes)];
                     //reward(toReward);
-                    //}
+                    }
                 } else {
                     int t = timestart.nextInt(4) + 1;
                     labelMain.setDisable(true);
@@ -159,19 +163,6 @@ public class reactGame2Control implements Initializable{
         this.i++;
     }
 
-    /**
-     * method to reward the players according to their performance during the minigame
-     * @param players the player array that was reorganized according to the minigame results.
-     */
-    public void reward(Player[] players){
-        int coins = 12;
-        int len = players.length;
-        int take = coins / len;
-        for (Player player : players){
-            player.updateCoins(coins);
-            coins -= take;
-        }
-    }
 
     /**
      * method to obtain the smallest value in a specific array, change it to a bigger value that on a next

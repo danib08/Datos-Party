@@ -2,6 +2,8 @@ package com.minigames.memoryGame;
 
 import com.gameLogic.Player;
 
+import com.minigames.Reward;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -158,7 +160,7 @@ public class MemoryGameController{
         this.currentPlayer.textProperty().bind(this.playerNameProperty);
 
         this.player1Label.setText(playerArr[0].getName());
-        this.currentPlayer.setText(playerArr[0].getName());
+        this.playerNameProperty.setValue(playerArr[0].getName());
         this.player2Label.setText(playerArr[1].getName());
 
         if (playAmo >= 3){
@@ -295,7 +297,6 @@ public class MemoryGameController{
                 boolean done = false;
                 if (row3.get(index) == this.playerInt){
                     done = true;
-                    System.out.println("Aqui");
                     this.buttonRow1.setVisible(false);
                     this.buttonRow2.setVisible(false);
                     this.buttonRow3.setVisible(false);
@@ -317,6 +318,7 @@ public class MemoryGameController{
                             this.winnerArr[winnerInd] = playerArr[3];
                             break;
                     }
+                    winnerInd++;
                 }
                 if (play1done && play2done && play3done && play4done) {
                     this.finishButton.setDisable(false);
@@ -344,7 +346,7 @@ public class MemoryGameController{
      */
     private void showImage(int index, ArrayList<Integer> row, ImageView imgView){
         int intImage = row.get(index);
-        System.out.println("Imagen: " + intImage);
+
         switch (intImage){
             case 1:
                 imgView.setImage(dinoImg);
@@ -409,20 +411,19 @@ public class MemoryGameController{
 
     /**
      * Changes the scene and rewards the players.
-     * @param event JavaFX class called automatically when a button is pressed.
+     * @param buttonClick JavaFX class called automatically when a button is pressed.
      */
-    public void finishedGameWindow(ActionEvent event){
+    public void finishedGameWindow(ActionEvent buttonClick)throws IOException {
+        FXMLLoader rewardLoader = new FXMLLoader();
+        rewardLoader.setLocation(getClass().getResource("/com/minigames/reward.fxml"));
 
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-        Parent mentalParent = null;
-        try {
-            mentalParent = FXMLLoader.load(getClass().getResource("MemoryMain.fxml"));
-            Scene mentalScene = new Scene(mentalParent);
-            window.setScene(mentalScene);
-            window.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Parent rewardParent = rewardLoader.load();
+        Scene rewardScene = new Scene(rewardParent);
+        Reward controller = rewardLoader.getController();
+        controller.initData(winnerArr);
+        Stage window = (Stage) ((Node)buttonClick.getSource()).getScene().getWindow();
+        //takes the obtained Stage and changes its Scene to the new fxml file.
+        window.setScene(rewardScene);
+        window.show();
     }
 }

@@ -41,12 +41,7 @@ public class MemoryMainController {
 
         // This gets the stage information.
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        window.initModality(Modality.APPLICATION_MODAL);
-
-        window.setOnCloseRequest(Event::consume);
-
         window.setScene(memoryScene);
-        window.showAndWait();
+        window.show();
     }
 }
