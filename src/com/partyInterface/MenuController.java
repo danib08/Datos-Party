@@ -26,7 +26,7 @@ public class MenuController {
      * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void changeToInfo(ActionEvent event) throws IOException {
-        Parent infoParent = FXMLLoader.load(getClass().getResource("..//view//Info.fxml"));
+        Parent infoParent = FXMLLoader.load(getClass().getResource("Info.fxml"));
         Scene infoScene = new Scene(infoParent);
 
         // This gets the stage information.
@@ -42,7 +42,7 @@ public class MenuController {
      * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void changeToBasic(ActionEvent event) throws IOException{
-        Parent basicParent = FXMLLoader.load(getClass().getResource("..//view//Basics.fxml"));
+        Parent basicParent = FXMLLoader.load(getClass().getResource("Basics.fxml"));
         Scene basicsScene = new Scene(basicParent);
 
         // This gets the stage information.
