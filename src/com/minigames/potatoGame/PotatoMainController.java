@@ -43,10 +43,6 @@ public class PotatoMainController {
         // This gets the stage information.
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-        //window.initModality(Modality.APPLICATION_MODAL);
-
-
-
         window.setScene(potatoScene);
         window.show();
     }
