@@ -152,7 +152,6 @@ public class MemoryGameController{
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        int row = 1;
         int playAmo = playerArr.length;
         winnerArr = new Player[playAmo];
 
@@ -303,19 +302,19 @@ public class MemoryGameController{
                     switch (this.playerInt){
                         case 1:
                             this.play1done = true;
-                            //this.winnerArr[winnerInd] = playerArr[0];
+                            this.winnerArr[winnerInd] = playerArr[0];
                             break;
                         case 2:
                             this.play2done = true;
-                            //this.winnerArr[winnerInd] = playerArr[0];
+                            this.winnerArr[winnerInd] = playerArr[1];
                             break;
                         case 3:
                             this.play3done = true;
-                            //this.winnerArr[winnerInd] = playerArr[0];
+                            this.winnerArr[winnerInd] = playerArr[2];
                             break;
                         case 4:
                             this.play4done = true;
-                            //this.winnerArr[winnerInd] = playerArr[0];
+                            this.winnerArr[winnerInd] = playerArr[3];
                             break;
                     }
                 }
