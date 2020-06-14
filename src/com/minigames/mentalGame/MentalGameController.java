@@ -150,7 +150,7 @@ public class MentalGameController{
         Parent rewardParent = rewardLoader.load();
         Scene rewardScene = new Scene(rewardParent);
         Reward controller = rewardLoader.getController();
-        controller.initData(winnerArr);
+        //controller.initData(winnerArr);
         Stage window = (Stage) ((Node)buttonClick.getSource()).getScene().getWindow();
         //takes the obtained Stage and changes its Scene to the new fxml file.
         window.setScene(rewardScene);

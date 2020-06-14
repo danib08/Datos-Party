@@ -15,13 +15,15 @@ import java.io.IOException;
 public class AmountMainController {
 
     protected Player[] players;
+    private boolean isDuel;
 
     /**
      * Sets the initial data for the controller.
      * @param players Player array
      */
-    public void initData(Player[] players){
+    public void initData(Player[] players, boolean isDuel){
         this.players = players;
+        this.isDuel = isDuel;
     }
     /**
      * This method is called when the Start Game button is clicked, and shows the minigame scene

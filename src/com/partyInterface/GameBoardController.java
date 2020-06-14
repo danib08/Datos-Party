@@ -461,7 +461,7 @@ public class GameBoardController implements Initializable {
                             this.startPotatoGame();
                             break;
                         case 4:
-                            this.startPressGame();
+                            this.startPressGame(this.playerArray, false);
                             break;
                         case 5:
                             this.startReactionGame();
@@ -596,7 +596,8 @@ public class GameBoardController implements Initializable {
         int event = this.eventStack.popHead();
         switch (event) {
             case 1:
-                System.out.println("duel");
+                //TODO duel
+                this.duel(currentPlayer);
                 break;
             case 2:
                 System.out.println(2);
@@ -631,6 +632,31 @@ public class GameBoardController implements Initializable {
                 this.swap(currentPlayer);
                 break;
         }
+    }
+
+    /**
+     * This method activates a duel between two players
+     * @param currentPlayer the index of the player that activated the duel
+     * @throws IOException if the file to load couldn't be lodead/read
+     */
+    public void duel(int currentPlayer) throws IOException {
+        Player[] duelArray = new Player[2];
+        Player playerUnleasher = this.playerArray[currentPlayer];
+        Player playerTarget;
+
+        Random random = new Random();
+        int targetIndex = random.nextInt(3);
+        playerTarget = this.playerArray[targetIndex];
+
+        while (playerTarget.getName().equals(playerUnleasher.getName())) {
+            targetIndex = random.nextInt(3);
+            playerTarget = this.playerArray[targetIndex];
+        }
+
+        duelArray[0] = playerUnleasher;
+        duelArray[1] = playerTarget;
+
+        this.startPressGame(duelArray, true);
     }
 
     /**
@@ -1125,7 +1151,7 @@ public class GameBoardController implements Initializable {
         potatoWindow.showAndWait();
     }
 
-    public void startPressGame() throws IOException{
+    public void startPressGame(Player[] playerArray, boolean isDuel) throws IOException{
         Stage pressWindow = new Stage();
 
         FXMLLoader pressLoader = new FXMLLoader();
@@ -1134,7 +1160,7 @@ public class GameBoardController implements Initializable {
         Scene pressScene = new Scene(pressParent);
 
         AmountMainController pressController = pressLoader.getController();
-        pressController.initData(playerArray);
+        pressController.initData(playerArray, isDuel);
 
         //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
         //thus the players can only exit the window by playing the minigame.
