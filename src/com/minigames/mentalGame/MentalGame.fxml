@@ -28,12 +28,12 @@
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="timerButton" layoutX="594.0" layoutY="416.0" mnemonicParsing="false" onAction="#startGameButton" text="Start Timer">
+      <Button fx:id="timerButton" layoutX="594.0" layoutY="582.0" mnemonicParsing="false" onAction="#startGameButton" text="Start Timer">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="finishButton" disable="true" layoutX="594.0" layoutY="416.0" mnemonicParsing="false" onAction="#finishedGameWindow" text="Finish Game" visible="false">
+      <Button fx:id="finishButton" disable="true" layoutX="594.0" layoutY="582.0" mnemonicParsing="false" onAction="#finishedGameWindow" text="Finish Game" visible="false">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
@@ -43,5 +43,45 @@
             <Font name="Consolas" size="24.0" />
          </font>
       </Text>
+      <Label fx:id="p1Name" layoutX="189.0" layoutY="288.0" prefHeight="58.0" prefWidth="116.0" text="Player 1">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="time1Label" layoutX="182.0" layoutY="387.0" prefHeight="58.0" prefWidth="116.0" text="Time1">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="p2Name" layoutX="426.0" layoutY="290.0" prefHeight="58.0" prefWidth="116.0" text="Player 2">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="time2Label" layoutX="426.0" layoutY="402.0" prefHeight="58.0" prefWidth="116.0" text="Time2">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="time3Label" layoutX="877.0" layoutY="416.0" prefHeight="58.0" prefWidth="116.0" text="Time3" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="p3Name" layoutX="877.0" layoutY="290.0" prefHeight="58.0" prefWidth="116.0" text="Player 3" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="p4Name" layoutX="1156.0" layoutY="290.0" prefHeight="58.0" prefWidth="116.0" text="Player 4" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="time4Label" layoutX="1156.0" layoutY="416.0" prefHeight="58.0" prefWidth="116.0" text="Time4" visible="false">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
