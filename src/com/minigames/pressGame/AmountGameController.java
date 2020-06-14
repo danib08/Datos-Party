@@ -1,6 +1,7 @@
 package com.minigames.pressGame;
 
 import com.gameLogic.Player;
+import com.minigames.Reward;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -87,33 +88,29 @@ public class AmountGameController{
     }
 
     /**
-     * Handles the key pressed event, gets a time when a player press their assigned key.
+     * Handles the key pressed event
      * @param event JavaFX class called automatically when a key is pressed.
      */
     public void keyPressed(KeyEvent event){
         if (event.getCode().equals(KeyCode.A) && !this.pressA && startGame){
             this.presses1.setValue(this.presses1.getValue() + 1);
-            System.out.println("Player 1: " + this.presses1.getValue());
             this.pressA = true;
         }
         else if (event.getCode().equals(KeyCode.T) && !this.pressT && startGame){
             this.presses2.setValue(this.presses2.getValue() + 1);
-            System.out.println("Player 2: " + this.presses2.getValue());
             this.pressT = true;
         }
         else if (event.getCode().equals(KeyCode.N) && !this.pressN && startGame){
             this.presses3.setValue(this.presses3.getValue() + 1);
-            System.out.println("Player 3: " + this.presses3.getValue());
             this.pressN = true;
         } else if (event.getCode().equals(KeyCode.P) && !this.pressP && startGame) {
             this.presses4.setValue(this.presses4.getValue() + 1);
-            System.out.println("Player 4: " + this.presses4.getValue());
             this.pressP = true;
         }
     }
 
     /**
-     * Handles the key released event, gets a time when a player press their assigned key.
+     * Handles the key released event
      * @param event JavaFX class called automatically when a key is released.
      */
     public void keyReleased(KeyEvent event){
@@ -125,16 +122,16 @@ public class AmountGameController{
         }
         else if (event.getCode().equals(KeyCode.N)){
             this.pressN = false;
-        } else if (event.getCode().equals(KeyCode.P)) {
+        }
+        else if (event.getCode().equals(KeyCode.P)) {
             this.pressP = false;
         }
     }
 
     /**
      * Starts the game logic
-     * @param event JavaFX class called automatically when a button is pressed.
      */
-    public void startGameButton(ActionEvent event){
+    public void startGameButton(){
         this.secondsFirstZero.setText("0");
         timerButton.setLayoutX(2000);
         this.startGame = true;
@@ -170,18 +167,45 @@ public class AmountGameController{
      * Changes the scene and rewards the players.
      * @param event JavaFX class called automatically when a button is pressed.
      */
-    public void finishedGameWindow(ActionEvent event){
+    public void finishedGameWindow(ActionEvent event) throws IOException {
+        Player[] winnerArr = new Player[playerArr.length];
 
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        int times1 = presses1.getValue();
+        int times2 = presses2.getValue();
+        int times3 = presses3.getValue();
+        int times4 = presses4.getValue();
 
-        Parent amountParent = null;
-        try {
-            amountParent = FXMLLoader.load(getClass().getResource("AmountMain.fxml"));
-            Scene mentalScene = new Scene(amountParent);
-            window.setScene(mentalScene);
-            window.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        int[] timesPressed = {times1, times2, times3, times4};
+
+        int index;
+        for (int i = 0; i < playerArr.length; i++) {
+            index = this.biggestIndex(timesPressed);
+            winnerArr[i] = playerArr[index];
         }
+
+        FXMLLoader rewardLoader = new FXMLLoader();
+        rewardLoader.setLocation(getClass().getResource("/com/minigames/reward.fxml"));
+        Parent rewardParent = rewardLoader.load();
+        Scene rewardScene = new Scene(rewardParent);
+        Reward controller = rewardLoader.getController();
+        controller.initData(winnerArr);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        //takes the obtained Stage and changes its Scene to the new fxml file.
+        window.setScene(rewardScene);
+        window.show();
+    }
+
+    private int biggestIndex(int[] timesPressed) {
+        int biggest = 0;
+        int tmp = timesPressed[0];
+
+        for (int i = 1; i < timesPressed.length; i++) {
+            if (timesPressed[i] > tmp) {
+                biggest = i;
+                tmp = timesPressed[i];
+            }
+        }
+        timesPressed[biggest] = -1;
+        return biggest;
     }
 }
