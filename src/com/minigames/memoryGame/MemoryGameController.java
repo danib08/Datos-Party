@@ -152,7 +152,6 @@ public class MemoryGameController{
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        int row = 1;
         int playAmo = playerArr.length;
         winnerArr = new Player[playAmo];
 

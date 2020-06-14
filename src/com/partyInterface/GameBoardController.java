@@ -1003,7 +1003,7 @@ public class GameBoardController implements Initializable {
         Stage bombWindow = new Stage();
 
         FXMLLoader bombLoader = new FXMLLoader();
-        bombLoader.setLocation(getClass().getResource("com//minigames//bombGame//bombGame.fxml"));
+        bombLoader.setLocation(getClass().getResource("/com/minigames/bombGame/bombGame.fxml"));
         Parent bombParent = bombLoader.load();
         Scene bombScene = new Scene(bombParent);
 
@@ -1013,6 +1013,7 @@ public class GameBoardController implements Initializable {
         //thus the players can only exit the window by playing the minigame
         bombWindow.initModality(Modality.APPLICATION_MODAL);
         bombWindow.setTitle("Detonators Minigame");
+        bombWindow.setResizable(false);
 
         bombWindow.setOnCloseRequest(Event :: consume);
 
@@ -1024,7 +1025,7 @@ public class GameBoardController implements Initializable {
         Stage reactWindow = new Stage();
 
         FXMLLoader reactLoader = new FXMLLoader();
-        reactLoader.setLocation(getClass().getResource("com//minigames//reactGame//reactGame.fxml"));
+        reactLoader.setLocation(getClass().getResource("/com/minigames/reactGame/reactGame.fxml"));
         Parent reactParent = reactLoader.load();
         Scene reactScene = new Scene(reactParent);
 
@@ -1035,6 +1036,7 @@ public class GameBoardController implements Initializable {
         //thus the players can only exit the window by playing the minigame.
         reactWindow.initModality(Modality.APPLICATION_MODAL);
         reactWindow.setTitle("Reaction Minigame");
+        reactWindow.setResizable(false);
 
         reactWindow.setOnCloseRequest(Event :: consume);
 
@@ -1046,7 +1048,7 @@ public class GameBoardController implements Initializable {
         Stage memoryWindow = new Stage();
 
         FXMLLoader memoryLoader = new FXMLLoader();
-        memoryLoader.setLocation(getClass().getResource("com//minigames//memoryGame//MemoryMain.fxml"));
+        memoryLoader.setLocation(getClass().getResource("/com/minigames/memoryGame/MemoryMain.fxml"));
         Parent memoryParent = memoryLoader.load();
         Scene memoryScene = new Scene(memoryParent);
 
@@ -1057,6 +1059,7 @@ public class GameBoardController implements Initializable {
         //thus the players can only exit the window by playing the minigame.
         memoryWindow.initModality(Modality.APPLICATION_MODAL);
         memoryWindow.setTitle("Memory Minigame");
+        memoryWindow.setResizable(false);
 
         memoryWindow.setOnCloseRequest(Event :: consume);
 
@@ -1068,7 +1071,7 @@ public class GameBoardController implements Initializable {
         Stage memtalWindow = new Stage();
 
         FXMLLoader mentalLoader = new FXMLLoader();
-        mentalLoader.setLocation(getClass().getResource("com//minigames//mentalGame//MentalMain.fxml"));
+        mentalLoader.setLocation(getClass().getResource("/com/minigames/mentalGame/MentalMain.fxml"));
         Parent mentalParent = mentalLoader.load();
         Scene mentalScene = new Scene(mentalParent);
 
@@ -1079,6 +1082,7 @@ public class GameBoardController implements Initializable {
         //thus the players can only exit the window by playing the minigame.
         memtalWindow.initModality(Modality.APPLICATION_MODAL);
         memtalWindow.setTitle("Mental Clock Minigame");
+        memtalWindow.setResizable(false);
 
         memtalWindow.setOnCloseRequest(Event :: consume);
 
@@ -1090,7 +1094,7 @@ public class GameBoardController implements Initializable {
         Stage potatoWindow = new Stage();
 
         FXMLLoader potatoLoader = new FXMLLoader();
-        potatoLoader.setLocation(getClass().getResource("com//minigames//potatoGame//PotatoMain.fxml"));
+        potatoLoader.setLocation(getClass().getResource("/com/minigames/potatoGame/PotatoMain.fxml"));
         Parent potatoParent = potatoLoader.load();
         Scene potatoScene = new Scene(potatoParent);
 
@@ -1101,6 +1105,7 @@ public class GameBoardController implements Initializable {
         //thus the players can only exit the window by playing the minigame.
         potatoWindow.initModality(Modality.APPLICATION_MODAL);
         potatoWindow.setTitle("Hot Potato Minigame");
+        potatoWindow.setResizable(false);
 
         potatoWindow.setOnCloseRequest(Event :: consume);
 
@@ -1112,7 +1117,7 @@ public class GameBoardController implements Initializable {
         Stage pressWindow = new Stage();
 
         FXMLLoader pressLoader = new FXMLLoader();
-        pressLoader.setLocation(getClass().getResource("com//minigames//pressGame//AmountMain.fxml"));
+        pressLoader.setLocation(getClass().getResource("/com/minigames/pressGame/AmountMain.fxml"));
         Parent pressParent = pressLoader.load();
         Scene pressScene = new Scene(pressParent);
 
@@ -1123,6 +1128,7 @@ public class GameBoardController implements Initializable {
         //thus the players can only exit the window by playing the minigame.
         pressWindow.initModality(Modality.APPLICATION_MODAL);
         pressWindow.setTitle("Press the key Minigame");
+        pressWindow.setResizable(false);
 
         pressWindow.setOnCloseRequest(Event :: consume);
 
