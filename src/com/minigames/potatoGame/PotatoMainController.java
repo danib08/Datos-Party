@@ -38,7 +38,7 @@ public class PotatoMainController {
         Scene potatoScene = new Scene(minigameParent);
 
         PotatoGameController controller = potatoLoader.getController();
-        controller.initData(new Player[4]);
+        controller.initData(this.players);
 
         // This gets the stage information.
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();

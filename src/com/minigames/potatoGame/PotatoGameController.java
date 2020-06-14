@@ -1,6 +1,7 @@
 package com.minigames.potatoGame;
 
 import com.gameLogic.Player;
+import com.minigames.Reward;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -63,6 +64,7 @@ public class PotatoGameController {
     protected boolean p2alive;
     protected boolean p3alive;
     protected boolean p4alive;
+    protected Player[] winnerArr;
 
     protected boolean gameStarted;
     protected boolean potatoExploded;
@@ -73,6 +75,7 @@ public class PotatoGameController {
      */
     public void initData(Player[] players){
         this.players = players;
+        this.winnerArr = new Player[players.length];
         this.currentPlayer = "Player 1";
         this.p1alive = true;
         this.p2alive = true;
@@ -80,17 +83,17 @@ public class PotatoGameController {
         this.p4alive = false;
         this.playersAlive = players.length;
 
-//        this.p1Name.setText(players[0].getName());
-//        this.p2Name.setText(players[1].getName());
+        this.p1Name.setText(players[0].getName());
+        this.p2Name.setText(players[1].getName());
 
         if (players.length >= 3) {
-//            this.p3Name.setText(players[2].getName());
+            this.p3Name.setText(players[2].getName());
             this.p3Name.setVisible(true);
             this.p3Sta.setVisible(true);
             this.p3alive = true;
             this.p3Img.setVisible(true);
             if (players.length == 4) {
-//                this.p4Name.setText(players[3].getName());
+                this.p4Name.setText(players[3].getName());
                 this.p4Name.setVisible(true);
                 this.p4alive = true;
                 this.p4Sta.setVisible(true);
@@ -228,21 +231,34 @@ public class PotatoGameController {
 
     /**
      * Changes the scene and rewards the players.
-     * @param event JavaFX class called automatically when a button is pressed.
+     * @param buttonClick JavaFX class called automatically when a button is pressed.
      */
-    public void finishedGameWindow(ActionEvent event){
+    public void finishedGameWindow(ActionEvent buttonClick) throws IOException {
 
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
-        Parent amountParent = null;
-        try {
-            amountParent = FXMLLoader.load(getClass().getResource("PotatoMain.fxml"));
-            Scene mentalScene = new Scene(amountParent);
-            window.setScene(mentalScene);
-            window.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (p1alive){
+            winnerArr[0] = players[0];
         }
+        else if (p2alive){
+            winnerArr[0] = players[1];
+        }
+        else if (p3alive){
+            winnerArr[0] = players[2];
+        }
+        else if (p4alive){
+            winnerArr[0] = players[3];
+        }
+
+        FXMLLoader rewardLoader = new FXMLLoader();
+        rewardLoader.setLocation(getClass().getResource("/com/minigames/reward.fxml"));
+
+        Parent rewardParent = rewardLoader.load();
+        Scene rewardScene = new Scene(rewardParent);
+        Reward controller = rewardLoader.getController();
+        controller.initData(this.winnerArr);
+        Stage window = (Stage) ((Node)buttonClick.getSource()).getScene().getWindow();
+        //takes the obtained Stage and changes its Scene to the new fxml file.
+        window.setScene(rewardScene);
+        window.show();
     }
 
     public void bombExplosion(){
@@ -253,6 +269,7 @@ public class PotatoGameController {
                     this.p1Sta.setText("Dead");
                     this.p1Img.setVisible(false);
                 });
+                this.winnerArr[playersAlive] = players[0];
                 break;
             case "Player 2":
                 this.p2alive = false;
@@ -260,6 +277,7 @@ public class PotatoGameController {
                     this.p2Sta.setText("Dead");
                     this.p2Img.setVisible(false);
                 });
+                this.winnerArr[playersAlive] = players[1];
                 break;
             case "Player 3":
                 this.p3alive = false;
@@ -267,6 +285,7 @@ public class PotatoGameController {
                     this.p3Sta.setText("Dead");
                     this.p3Img.setVisible(false);
                 });
+                this.winnerArr[playersAlive] = players[2];
                 break;
             case "Player 4":
                 this.p4alive = false;
@@ -274,7 +293,9 @@ public class PotatoGameController {
                     this.p4Sta.setText("Dead");
                     this.p4Img.setVisible(false);
                 });
+                this.winnerArr[playersAlive] = players[3];
                 break;
         }
+
     }
 }
