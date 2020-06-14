@@ -3,6 +3,10 @@ package com.partyInterface;
 import com.gameLogic.Player;
 import com.gameLogic.Star;
 import com.minigames.bombGame.BombController;
+import com.minigames.memoryGame.MemoryMainController;
+import com.minigames.mentalGame.MentalMainController;
+import com.minigames.potatoGame.PotatoMainController;
+import com.minigames.pressGame.AmountMainController;
 import com.minigames.reactGame.reactGameController;
 import com.structures.*;
 import com.structures.List;
@@ -68,8 +72,7 @@ public class GameBoardController implements Initializable {
     String playerName3;
     String playerName4;
 
-    int lastPlayed = 0;
-    int chooseMinigame;
+    int lastPlayed = 7;
     int currentMove;
 
     ImageView starImage;
@@ -438,7 +441,31 @@ public class GameBoardController implements Initializable {
                 else {
                     this.currentPlayer = 0;
                     this.roundsPlayed++;
-                    //TODO play minigame
+                    Random random = new Random();
+                    int i = random.nextInt(6);
+                    while (lastPlayed == i){
+                        i = random.nextInt(6);
+                    }
+                    switch (i){
+                        case 0:
+                            this.startBombGame();
+                            break;
+                        case 1:
+                            this.startMemoryGame();
+                            break;
+                        case 2:
+                            this.startMentalGame();
+                            break;
+                        case 3:
+                            this.startPotatoGame();
+                            break;
+                        case 4:
+                            this.startPressGame();
+                            break;
+                        case 5:
+                            this.startReactionGame();
+                            break;
+                    }
                     System.out.println("Played minigame");
                     this.roundsText.setText(Integer.toString(this.roundsPlayed));
                 }
@@ -976,7 +1003,7 @@ public class GameBoardController implements Initializable {
         Stage bombWindow = new Stage();
 
         FXMLLoader bombLoader = new FXMLLoader();
-        bombLoader.setLocation(getClass().getResource("com/minigames/bombGame/bombGame.fxml"));
+        bombLoader.setLocation(getClass().getResource("com//minigames//bombGame//bombGame.fxml"));
         Parent bombParent = bombLoader.load();
         Scene bombScene = new Scene(bombParent);
 
@@ -990,14 +1017,14 @@ public class GameBoardController implements Initializable {
         bombWindow.setOnCloseRequest(Event :: consume);
 
         bombWindow.setScene(bombScene);
-
+        bombWindow.showAndWait();
     }
 
     public void startReactionGame() throws IOException{
         Stage reactWindow = new Stage();
 
         FXMLLoader reactLoader = new FXMLLoader();
-        reactLoader.setLocation(getClass().getResource("com/minigames/reactGame/reactGame.fxml"));
+        reactLoader.setLocation(getClass().getResource("com//minigames//reactGame//reactGame.fxml"));
         Parent reactParent = reactLoader.load();
         Scene reactScene = new Scene(reactParent);
 
@@ -1007,11 +1034,99 @@ public class GameBoardController implements Initializable {
         //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
         //thus the players can only exit the window by playing the minigame.
         reactWindow.initModality(Modality.APPLICATION_MODAL);
-        reactWindow.setTitle("Detonators Minigame");
+        reactWindow.setTitle("Reaction Minigame");
 
         reactWindow.setOnCloseRequest(Event :: consume);
 
         reactWindow.setScene(reactScene);
+        reactWindow.showAndWait();
+    }
 
+    public void startMemoryGame() throws IOException{
+        Stage memoryWindow = new Stage();
+
+        FXMLLoader memoryLoader = new FXMLLoader();
+        memoryLoader.setLocation(getClass().getResource("com//minigames//memoryGame//MemoryMain.fxml"));
+        Parent memoryParent = memoryLoader.load();
+        Scene memoryScene = new Scene(memoryParent);
+
+        MemoryMainController memoryController = memoryLoader.getController();
+        memoryController.initData(playerArray);
+
+        //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
+        //thus the players can only exit the window by playing the minigame.
+        memoryWindow.initModality(Modality.APPLICATION_MODAL);
+        memoryWindow.setTitle("Memory Minigame");
+
+        memoryWindow.setOnCloseRequest(Event :: consume);
+
+        memoryWindow.setScene(memoryScene);
+        memoryWindow.showAndWait();
+    }
+
+    public void startMentalGame() throws IOException{
+        Stage memtalWindow = new Stage();
+
+        FXMLLoader mentalLoader = new FXMLLoader();
+        mentalLoader.setLocation(getClass().getResource("com//minigames//mentalGame//MentalMain.fxml"));
+        Parent mentalParent = mentalLoader.load();
+        Scene mentalScene = new Scene(mentalParent);
+
+        MentalMainController mentalController = mentalLoader.getController();
+        mentalController.initData(playerArray);
+
+        //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
+        //thus the players can only exit the window by playing the minigame.
+        memtalWindow.initModality(Modality.APPLICATION_MODAL);
+        memtalWindow.setTitle("Mental Clock Minigame");
+
+        memtalWindow.setOnCloseRequest(Event :: consume);
+
+        memtalWindow.setScene(mentalScene);
+        memtalWindow.showAndWait();
+    }
+
+    public void startPotatoGame() throws IOException{
+        Stage potatoWindow = new Stage();
+
+        FXMLLoader potatoLoader = new FXMLLoader();
+        potatoLoader.setLocation(getClass().getResource("com//minigames//potatoGame//PotatoMain.fxml"));
+        Parent potatoParent = potatoLoader.load();
+        Scene potatoScene = new Scene(potatoParent);
+
+        PotatoMainController potatoController = potatoLoader.getController();
+        potatoController.initData(playerArray);
+
+        //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
+        //thus the players can only exit the window by playing the minigame.
+        potatoWindow.initModality(Modality.APPLICATION_MODAL);
+        potatoWindow.setTitle("Hot Potato Minigame");
+
+        potatoWindow.setOnCloseRequest(Event :: consume);
+
+        potatoWindow.setScene(potatoScene);
+        potatoWindow.showAndWait();
+    }
+
+    public void startPressGame() throws IOException{
+        Stage pressWindow = new Stage();
+
+        FXMLLoader pressLoader = new FXMLLoader();
+        pressLoader.setLocation(getClass().getResource("com//minigames//pressGame//AmountMain.fxml"));
+        Parent pressParent = pressLoader.load();
+        Scene pressScene = new Scene(pressParent);
+
+        AmountMainController pressController = pressLoader.getController();
+        pressController.initData(playerArray);
+
+        //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
+        //thus the players can only exit the window by playing the minigame.
+        pressWindow.initModality(Modality.APPLICATION_MODAL);
+        pressWindow.setTitle("Press the key Minigame");
+
+        pressWindow.setOnCloseRequest(Event :: consume);
+
+        pressWindow.setScene(pressScene);
+        pressWindow.showAndWait();
     }
 }
