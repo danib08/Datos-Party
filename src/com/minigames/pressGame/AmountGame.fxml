@@ -48,7 +48,7 @@
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="presses1Label" layoutX="376.0" layoutY="446.0" prefHeight="0.0" prefWidth="0.0" text="0">
+      <Label fx:id="presses1Label" layoutX="376.0" layoutY="460.0" prefHeight="0.0" prefWidth="0.0" text="0">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>

@@ -43,12 +43,12 @@
             <Font name="Consolas" size="24.0" />
          </font>
       </Text>
-      <Label fx:id="p1Name" layoutX="189.0" layoutY="288.0" prefHeight="58.0" prefWidth="116.0" text="Player 1">
+      <Label fx:id="p1Name" layoutX="189.0" layoutY="293.0" prefHeight="58.0" prefWidth="116.0" text="Player 1">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="time1Label" layoutX="182.0" layoutY="387.0" prefHeight="58.0" prefWidth="116.0" text="Time1">
+      <Label fx:id="time1Label" layoutX="173.0" layoutY="400.0" prefHeight="58.0" prefWidth="116.0" text="Time1">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
@@ -58,12 +58,12 @@
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="time2Label" layoutX="426.0" layoutY="402.0" prefHeight="58.0" prefWidth="116.0" text="Time2">
+      <Label fx:id="time2Label" layoutX="426.0" layoutY="400.0" prefHeight="58.0" prefWidth="116.0" text="Time2">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="time3Label" layoutX="877.0" layoutY="416.0" prefHeight="58.0" prefWidth="116.0" text="Time3" visible="false">
+      <Label fx:id="time3Label" layoutX="877.0" layoutY="400.0" prefHeight="58.0" prefWidth="116.0" text="Time3" visible="false">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
@@ -78,7 +78,7 @@
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="time4Label" layoutX="1156.0" layoutY="416.0" prefHeight="58.0" prefWidth="116.0" text="Time4" visible="false">
+      <Label fx:id="time4Label" layoutX="1156.0" layoutY="400.0" prefHeight="58.0" prefWidth="116.0" text="Time4" visible="false">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
