@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * This class controlls the Basics.fxml
+ * This class controls the Basics.fxml
  */
 public class BasicsController {
 
