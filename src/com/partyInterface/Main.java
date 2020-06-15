@@ -6,13 +6,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * this class starts the Stage with the MenuUI.fxml as the initial scene/view.
+ */
 public class Main extends Application {
-
+    /**
+     * main method set to launch the start method in a JavaFX application.
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
+    /**
+     * this method is automatically launched by the main method, as a norm for Application extensions.
+     */
     public void start(Stage stage) throws Exception {
         // Creating the loader, the pane and all details
         Parent menu = FXMLLoader.load(getClass().getResource("MenuUI.fxml"));

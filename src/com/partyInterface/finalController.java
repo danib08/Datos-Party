@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * this class controls the finalWindow.fxml file.
+ */
 public class finalController {
     //name fields
     @FXML TextField p1nameField;
@@ -38,6 +41,10 @@ public class finalController {
 
     int[] playerIndexes;
 
+    /**
+     * main method for the controller class, called to initialize fields to their respective value.
+     * @param playerArr a player array carrying the original Player-type instances that will be used in this class.
+     */
     public void initData(Player[] playerArr){
         this.pAmount = playerArr.length;
         this.playerArr =playerArr;
@@ -97,12 +104,20 @@ public class finalController {
         }
     }
 
+    /**
+     * method bound to a button that closes the window when capturing a button click event.
+     * @param buttonClick the caught event used to get resources from the window in which the event happened.
+     */
     public void closeWindow(ActionEvent buttonClick){
         //obtains the Stage(window) in which the scene is loaded.
         Stage window = (Stage) ((Node)buttonClick.getSource()).getScene().getWindow();
         window.close();
     }
 
+    /**
+     * method invoked by initData() to get a 'key' of sorted indexes in the form of an array.
+     * @param stars the star array containing a copy of each player's star amount value.
+     */
     private void sortArray(int[] stars) {
         playerIndexes = new int[pAmount];
         for (int i = 0; i < pAmount; i++) {
@@ -110,6 +125,14 @@ public class finalController {
         }
     }
 
+    /**
+     * method that gets invoked to get the index for the largest values in a int-typed array.
+     * @param starArray the integer array containing a copy of each player's star values.
+     * @param call carries the integer value for the iteration counter that tells any method calls
+     *             on which iteration it currently places itself.
+     * @return integer value for the index in which the largest star value is located. If the star amount
+     * happens to be the same, it compares with the coin amount.
+     */
     private int getLargest(int[] starArray,int call){
         int [] values = {-1,-2,-3,-4};
         int tempStar = starArray[0];
@@ -130,6 +153,13 @@ public class finalController {
         starArray[index] = values[call];
         return index;
     }
+
+    /**
+     * this method checks the amount of coins the two players have, and returns a value depending on the result.
+     * @param p1 a first Player instance to be a part of the comparison.
+     * @param p2 the second Player instance that gets compared by the method.
+     * @return boolean value 'false' if the first player has more coins, 'true' if it's the second one.
+     */
     private boolean checkCoins(Player p1, Player p2){
         if (p1.getCoins() > p2.getCoins()){
             return false;

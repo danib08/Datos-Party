@@ -10,12 +10,10 @@ import com.minigames.potatoGame.PotatoMainController;
 import com.minigames.pressGame.AmountMainController;
 import com.minigames.reactGame.reactGameController;
 import com.structures.*;
-import com.structures.List;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,7 +28,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+import java.util.ResourceBundle;
 
 public class GameBoardController implements Initializable {
 
@@ -381,7 +382,7 @@ public class GameBoardController implements Initializable {
      * This method manages the movement of the players, and the interface changes according
      * to situations that happen if they land on a certain path, buy starts or change paths.
      * It basically works as the main game method
-     * @throws IOException if a file described in the loaders cannot be found/read/loaded
+     * @throws IOException if a file described in the loaders cannot be found/read/loaded.
      */
     public void move() throws IOException {
         Player player = this.playerArray[currentPlayer];
@@ -1109,6 +1110,7 @@ public class GameBoardController implements Initializable {
 
         BombController bombController = bombLoader.getController();
         bombController.initData(playerArray);
+
         //this modality is meant to transform the minigame window into the only interaction-allowed one for the user
         //thus the players can only exit the window by playing the minigame
         bombWindow.initModality(Modality.APPLICATION_MODAL);

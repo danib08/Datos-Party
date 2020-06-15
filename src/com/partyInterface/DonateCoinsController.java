@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 /**
- * This class conatins the DonateCoins.fxml
+ * This class contains the DonateCoins.fxml
  */
 public class DonateCoinsController {
 
