@@ -14,6 +14,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
+/**
+ * This class controlls the Duel.fxml
+ */
 public class DuelController{
 
     // This attributes are used to update data in the interface.

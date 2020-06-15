@@ -23,7 +23,9 @@ import java.io.IOException;
 
 import java.util.Random;
 
-
+/**
+ * This class controlls the MentalGame.fxml
+ */
 public class MentalGameController{
 
     // This attributes are used to update data in the interface.
@@ -196,6 +198,11 @@ public class MentalGameController{
         window.show();
     }
 
+    /**
+     * Gets the index of the smallest time
+     * @param times LongArray of times
+     * @return index of the smallest time
+     */
     public int smallestIndex(long[] times){
         int smallest = 0;
         long tmp = Math.abs(times[0] - secondsToGo*10);

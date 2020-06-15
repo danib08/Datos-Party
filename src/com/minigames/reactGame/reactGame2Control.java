@@ -7,22 +7,20 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Arrays;
 import java.util.Random;
-import java.util.ResourceBundle;
 
+/**
+ * This class controlls the reactGame.fxml
+ */
 public class reactGame2Control{
     @FXML Label label1;
     @FXML Label label2;
@@ -49,6 +47,10 @@ public class reactGame2Control{
     int i = 0;
     Random timestart;
 
+    /**
+     * Sets the initial data for the controller.
+     * @param players Player array
+     */
     public void initData(Player[] players){
         this.players = players;
         this.pAmount = players.length;
@@ -191,10 +193,20 @@ public class reactGame2Control{
         this.pTimes[index] = 5000;
         return index;
     }
+
+    /**
+     * Updates the reward attribute
+     * @param toRewardUpdate the array that is updated.
+     */
     public void updateReward(Player[] toRewardUpdate){
         this.toReward = toRewardUpdate;
     }
 
+    /**
+     * Opens the reward window
+     * @param buttonClick JavaFX class that is called when pressing a button
+     * @throws IOException
+     */
     public void goReward(ActionEvent buttonClick) throws IOException {
         FXMLLoader rewardLoader = new FXMLLoader();
         rewardLoader.setLocation(getClass().getResource("/com/minigames/reward.fxml"));

@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * This class controlls the MemoryGame.fxml
+ */
 public class MemoryGameController{
 
     // This attributes are used to update data in the interface.

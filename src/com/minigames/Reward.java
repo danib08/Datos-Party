@@ -9,7 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-
+/**
+ * This class controlls the reward.fxml
+ */
 public class Reward {
     @FXML GridPane minigameGrid;
 
@@ -107,6 +109,10 @@ public class Reward {
         }
     }
 
+    /**
+     * Closes the window
+     * @param event JavaFX class called by pressing the button.
+     */
     public void exfil(ActionEvent event){
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.close();

@@ -14,14 +14,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
+/**
+ * This class controlls the BombController.fxml
+ */
 public class BombController{
     @FXML Button helpButton;
     @FXML Button startButton;
     @FXML TextArea helpText;
     private Player[] players;
 
-    public void showHelp(ActionEvent buttonClick){
+    /**
+     * Shows additional help when pressing the button
+     */
+    public void showHelp(){
         if (!helpText.isVisible()){
             helpText.setVisible(true);
         }
@@ -51,6 +56,10 @@ public class BombController{
         window.show();
     }
 
+    /**
+     * Sets the initial data for the controller.
+     * @param players Player array
+     */
     public void initData(Player[] players){
         this.players = players;
     }

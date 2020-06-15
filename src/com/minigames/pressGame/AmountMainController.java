@@ -2,16 +2,17 @@ package com.minigames.pressGame;
 
 import com.gameLogic.Player;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class controlls the AmountMain.fxml
+ */
 public class AmountMainController {
 
     protected Player[] players;

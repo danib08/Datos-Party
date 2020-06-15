@@ -20,6 +20,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class controlls the AmountGame.fxml
+ */
 public class AmountGameController{
 
     // This attributes are used to update data in the interface.
@@ -195,6 +198,11 @@ public class AmountGameController{
         window.show();
     }
 
+    /**
+     * Gets the index of the biggest time
+     * @param timesPressed LongArray of times
+     * @return index of the biggest time
+     */
     private int biggestIndex(int[] timesPressed) {
         int biggest = 0;
         int tmp = timesPressed[0];

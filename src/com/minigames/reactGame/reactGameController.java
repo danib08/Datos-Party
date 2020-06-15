@@ -1,7 +1,6 @@
 package com.minigames.reactGame;
 
 import com.gameLogic.Player;
-import com.minigames.bombGame.BombGame2;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +12,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class controlls the reactGame.fxml
+ */
 public class reactGameController {
     Player[] players;
 

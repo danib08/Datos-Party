@@ -5,7 +5,6 @@ import com.minigames.Reward;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,11 +17,11 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.Random;
-import java.util.ResourceBundle;
 
+/**
+ * This class controlls the bombGame2.fxml
+ */
 public class BombGame2{
     @FXML ImageView player1bomb;
     @FXML ImageView player2bomb;
