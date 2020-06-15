@@ -69,16 +69,13 @@ public class finalController {
         p2starsField.setText(Integer.toString(players[1].getStars()));
         p2coinsField.setText(Integer.toString(players[1].getCoins()));
 
-        //in case that there are only two players, sets the Textfields for p3 and p4 as hidden.
-        if (pAmount == 2){
-            p3nameField.setVisible(false);
-            p3coinsField.setVisible(false);
-            p3starsField.setVisible(false);
+        p3nameField.setVisible(false);
+        p3coinsField.setVisible(false);
+        p3starsField.setVisible(false);
 
-            p4nameField.setVisible(false);
-            p4starsField.setVisible(false);
-            p4coinsField.setVisible(false);
-        }
+        p4nameField.setVisible(false);
+        p4starsField.setVisible(false);
+        p4coinsField.setVisible(false);
 
         if (pAmount >= 3){
             p3nameField.setText(players[2].getName());
