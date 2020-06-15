@@ -31,8 +31,6 @@ public class DuelController{
     @FXML protected Label presses2Label;
     @FXML protected Button timerButton;
     @FXML protected Button finishButton;
-    @FXML protected Label winnerLabel;
-    @FXML protected Label winnerName;
 
     protected boolean pressA;
     protected boolean pressT;
@@ -116,18 +114,6 @@ public class DuelController{
                 startGame = false;
                 finishButton.setDisable(false);
                 finishButton.setVisible(true);
-                Platform.runLater(() -> {
-                    winnerLabel.setVisible(true);
-                    int times1 = presses1.getValue();
-                    int times2 = presses2.getValue();
-                    if (times1 > times2){
-                        winnerName.setText(playerArr[0].getName());
-                    }
-                    else {
-                        winnerName.setText(playerArr[1].getName());
-                    }
-                    winnerName.setVisible(true);
-                });
                 return null;
             }
         };

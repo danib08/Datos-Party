@@ -28,7 +28,7 @@
                 <Font name="Consolas" size="24.0" />
             </font>
         </Label>
-        <Button fx:id="timerButton" layoutX="600.0" layoutY="597.0" mnemonicParsing="false" onAction="#startGameButton" text="Start Timer">
+        <Button fx:id="timerButton" layoutX="621.0" layoutY="597.0" mnemonicParsing="false" onAction="#startGameButton" text="Start Timer">
             <font>
                 <Font name="Consolas" size="24.0" />
             </font>
@@ -63,5 +63,15 @@
                 <Font name="Consolas" size="24.0" />
             </font>
         </Label>
+      <Label fx:id="player1Label1" layoutX="438.0" layoutY="278.0" text="Press A">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="player1Label11" layoutX="896.0" layoutY="278.0" text="Press T">
+         <font>
+            <Font name="Consolas" size="24.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
