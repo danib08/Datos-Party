@@ -3,6 +3,7 @@ package com.partyInterface;
 import com.gameLogic.Player;
 import com.gameLogic.Star;
 import com.minigames.bombGame.BombController;
+import com.minigames.duelGame.DuelController;
 import com.minigames.memoryGame.MemoryMainController;
 import com.minigames.mentalGame.MentalMainController;
 import com.minigames.potatoGame.PotatoMainController;
@@ -383,9 +384,10 @@ public class GameBoardController implements Initializable {
      */
     public void move() throws IOException {
         Player player = this.playerArray[currentPlayer];
+        Square prevSquare = null;
         if (this.currentMove >= 1) {
             if (this.currentMove == 1) {
-                Square prevSquare = player.getPosition();
+                prevSquare = player.getPosition();
             }
             if (player.getPosition().getPathLink() != null && !player.getPathChanged()) {
                 this.pathSel(player);
@@ -415,7 +417,11 @@ public class GameBoardController implements Initializable {
         if (this.currentMove == 0) {
            this.moveButton.setLayoutY(-100);
 
-           //TODO duel check
+            for (Player playerTarget : playerArray) {
+                if (playerTarget.getPosition() == player.getPosition() && !playerTarget.getName().equals(player.getName())){
+                    samePos(player, playerTarget, prevSquare);
+                }
+            }
 
            switch (player.getPosition().getData()) {
                case 2:
@@ -461,7 +467,7 @@ public class GameBoardController implements Initializable {
                             this.startPotatoGame();
                             break;
                         case 4:
-                            this.startPressGame(this.playerArray, false);
+                            this.startPressGame(this.playerArray);
                             break;
                         case 5:
                             this.startReactionGame();
@@ -504,6 +510,44 @@ public class GameBoardController implements Initializable {
 
         coinsWindow.setScene(starScene);
         coinsWindow.showAndWait();
+    }
+
+    /**
+     * This method handles when two players are in the same Square
+     * @param playerUnleasher the player that activated the event
+     * @param triggerPlayer the player that is in the same Square as currentPlayer
+     * @param prevSquare the Square behind the current Square
+     */
+    public void samePos(Player playerUnleasher, Player triggerPlayer, Square prevSquare) throws IOException {
+        Player[] duelArray = new Player[2];
+
+        duelArray[0] = playerUnleasher;
+        duelArray[1] = triggerPlayer;
+
+        Player winner = startDuelGame(duelArray);
+        Player loser;
+
+        if (winner == playerUnleasher){
+            loser = triggerPlayer;
+        }
+        else {
+            loser = playerUnleasher;
+        }
+
+        int index = 0;
+        for (int i = 0; i < numberOfPlayers; i++) {
+            if (loser == this.playerArray[i]){
+                index = i;
+                break;
+            }
+        }
+
+        loser.setPosition(prevSquare);
+        int row = loser.getPosition().getRow();
+        int col = loser.getPosition().getCol();
+        this.boardGrid.getChildren().remove(this.imageArray[index]);
+        this.boardGrid.add(this.imageArray[index], col, row);
+
     }
 
     /**
@@ -596,7 +640,6 @@ public class GameBoardController implements Initializable {
         int event = this.eventStack.popHead();
         switch (event) {
             case 1:
-                //TODO duel
                 this.duel(currentPlayer);
                 break;
             case 2:
@@ -656,7 +699,22 @@ public class GameBoardController implements Initializable {
         duelArray[0] = playerUnleasher;
         duelArray[1] = playerTarget;
 
-        this.startPressGame(duelArray, true);
+        Player winner = this.startDuelGame(duelArray);
+
+        Player loser;
+
+        if (winner == playerUnleasher){
+            loser = playerTarget;
+        }
+        else {
+            loser = playerUnleasher;
+        }
+
+        winner.updateCoins(5);
+        loser.updateCoins(-5);
+
+        this.coinsArray[currentPlayer].setText(Integer.toString(playerUnleasher.getCoins()));
+        this.coinsArray[targetIndex].setText(Integer.toString(this.playerArray[targetIndex].getCoins()));
     }
 
     /**
@@ -1059,6 +1117,10 @@ public class GameBoardController implements Initializable {
         bombWindow.showAndWait();
     }
 
+    /**
+     * This opens a new window when the react minigame is executed
+     * @throws IOException if the file to load cannot be accessed
+     */
     public void startReactionGame() throws IOException{
         Stage reactWindow = new Stage();
 
@@ -1082,6 +1144,10 @@ public class GameBoardController implements Initializable {
         reactWindow.showAndWait();
     }
 
+    /**
+     * This opens a new window when the memory minigame is executed
+     * @throws IOException if the file to load cannot be accessed
+     */
     public void startMemoryGame() throws IOException{
         Stage memoryWindow = new Stage();
 
@@ -1105,6 +1171,10 @@ public class GameBoardController implements Initializable {
         memoryWindow.showAndWait();
     }
 
+    /**
+     * This opens a new window when the mental minigame is executed
+     * @throws IOException if the file to load cannot be accessed
+     */
     public void startMentalGame() throws IOException{
         Stage memtalWindow = new Stage();
 
@@ -1128,6 +1198,10 @@ public class GameBoardController implements Initializable {
         memtalWindow.showAndWait();
     }
 
+    /**
+     * This opens a new window when the potato minigame is executed
+     * @throws IOException if the file to load cannot be accessed
+     */
     public void startPotatoGame() throws IOException{
         Stage potatoWindow = new Stage();
 
@@ -1151,7 +1225,11 @@ public class GameBoardController implements Initializable {
         potatoWindow.showAndWait();
     }
 
-    public void startPressGame(Player[] playerArray, boolean isDuel) throws IOException{
+    /**
+     * This opens a new window when the press minigame is executed
+     * @throws IOException if the file to load cannot be accessed
+     */
+    public void startPressGame(Player[] playerArray) throws IOException{
         Stage pressWindow = new Stage();
 
         FXMLLoader pressLoader = new FXMLLoader();
@@ -1160,7 +1238,7 @@ public class GameBoardController implements Initializable {
         Scene pressScene = new Scene(pressParent);
 
         AmountMainController pressController = pressLoader.getController();
-        pressController.initData(playerArray, isDuel);
+        pressController.initData(playerArray);
 
         //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
         //thus the players can only exit the window by playing the minigame.
@@ -1172,5 +1250,34 @@ public class GameBoardController implements Initializable {
 
         pressWindow.setScene(pressScene);
         pressWindow.showAndWait();
+    }
+
+    /**
+     * This opens a new window when the duel minigame is executed
+     * @throws IOException if the file to load cannot be accessed
+     */
+    public Player startDuelGame(Player[] playerArray) throws IOException{
+        Stage duelWindow = new Stage();
+
+        FXMLLoader duelLoader = new FXMLLoader();
+        duelLoader.setLocation(getClass().getResource("/com/minigames/duelGame/Duel.fxml"));
+        Parent duelParent = duelLoader.load();
+        Scene duelScene = new Scene(duelParent);
+
+        DuelController duelController = duelLoader.getController();
+        duelController.initData(playerArray);
+
+        //this modality is meant to transform the minigame window into the only interaction-allowed one for the user.
+        //thus the players can only exit the window by playing the minigame.
+        duelWindow.initModality(Modality.APPLICATION_MODAL);
+        duelWindow.setTitle("Duel");
+        duelWindow.setResizable(false);
+
+        duelWindow.setOnCloseRequest(Event :: consume);
+
+        duelWindow.setScene(duelScene);
+        duelWindow.showAndWait();
+
+        return duelController.getWinner();
     }
 }
