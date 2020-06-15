@@ -15,6 +15,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -441,8 +442,19 @@ public class GameBoardController implements Initializable {
             }
             if (this.currentPlayer == this.numberOfPlayers - 1) {
                 if (this.roundsPlayed == this.numberOfRounds) {
-                    //TODO Finish game, show reward scene
-                    System.out.println("Game finished");
+
+                    Stage finishWindow = (Stage) moveButton.getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("finalWindow.fxml"));
+                    Parent finalParent = loader.load();
+                    Scene finalScene = new Scene(finalParent);
+
+                    // Accessing the Interface controller
+                    finalController controller = loader.getController();
+                    controller.initData(this.playerArray);
+
+                    finishWindow.setScene(finalScene);
+                    finishWindow.show();
                 }
                 else {
                     this.currentPlayer = 0;
@@ -452,7 +464,6 @@ public class GameBoardController implements Initializable {
                     while (lastPlayed == i){
                         i = random.nextInt(6);
                     }
-                    i = 2;
                     switch (i){
                         case 0:
                             this.startBombGame();
@@ -473,7 +484,6 @@ public class GameBoardController implements Initializable {
                             this.startReactionGame();
                             break;
                     }
-                    System.out.println("Played minigame");
                     this.roundsText.setText(Integer.toString(this.roundsPlayed));
                     for (int j = 0; j<= this.numberOfPlayers-1; j++) {
                         this.coinsArray[j].setText(Integer.toString(this.playerArray[j].getCoins()));
@@ -623,7 +633,7 @@ public class GameBoardController implements Initializable {
             player.buyStar();
             star.positionStar();
             this.starsArray[currentPlayer].setText(Integer.toString(player.getStars()));
-
+            this.coinsArray[currentPlayer].setText(Integer.toString(player.getCoins()));
             int row = star.getPosition().getRow();
             int col = star.getPosition().getCol();
             this.boardGrid.getChildren().remove(this.starImage);
@@ -643,35 +653,28 @@ public class GameBoardController implements Initializable {
                 this.duel(currentPlayer);
                 break;
             case 2:
-                System.out.println(2);
+
                 this.stealCoins(currentPlayer);
                 break;
             case 3:
-                System.out.println(3);
                 this.donateCoins(currentPlayer);
                 break;
             case 4:
-                System.out.println(4);
                 this.loseStar(currentPlayer);
                 break;
             case 5:
-                System.out.println(5);
                 this.winStar(currentPlayer, 2);
                 break;
             case 6:
-                System.out.println(6);
                 this.winStar(currentPlayer, 5);
                 break;
             case 7:
-                System.out.println(7);
                 this.stealStar(currentPlayer);
                 break;
             case 8:
-                System.out.println(8);
                 this.teleport(currentPlayer);
                 break;
             case 9:
-                System.out.println(9);
                 this.swap(currentPlayer);
                 break;
         }
@@ -790,7 +793,7 @@ public class GameBoardController implements Initializable {
 
             DonateCoinsController controller = loader.getController();
             controller.initData(coins);
-            int toGive = coins / this.numberOfPlayers;
+            int toGive = coins / (this.numberOfPlayers-1);
 
             playerUnleasher.updateCoins(-coins);
             for (int i = 0; i < this.numberOfPlayers; i++) {
@@ -912,6 +915,7 @@ public class GameBoardController implements Initializable {
 
             while(playerTarget.getName().equals(playerUnleasher.getName()) || playerTarget.getStars() == 0) {
                 targetIndex = random.nextInt(playerArray.length);
+                playerTarget = this.playerArray[targetIndex];
             }
         }
         else {

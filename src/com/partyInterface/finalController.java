@@ -30,14 +30,26 @@ public class finalController {
     @FXML Button closeButton;
 
     Player[] players;
+    Player[] playerArr;
 
-    Player[] sorted;
     int pAmount;
 
+    int[] starArr;
+
+    int[] playerIndexes;
+
     public void initData(Player[] playerArr){
-        sortArray(playerArr);
-        this.players = sorted;
-        this.pAmount = this.players.length;
+        this.pAmount = playerArr.length;
+        this.playerArr =playerArr;
+        this.players = new Player[pAmount];
+        this.starArr = new int[pAmount];
+        for (int i = 0; i < pAmount; i++) {
+            starArr[i] = playerArr[i].getStars();
+        }
+        sortArray(starArr);
+        for (int j = 0; j <pAmount; j++) {
+            players[j] = playerArr[playerIndexes[j]];
+        }
 
         //setting the name values
         p1nameField.setText(players[0].getName());
@@ -91,51 +103,37 @@ public class finalController {
         window.close();
     }
 
-    private void sortArray(Player[] playerArr){
-        this.sorted = new Player[playerArr.length];
-        for (int i = 0; i < playerArr.length; i++) {
-            sorted[i] = playerArr[getStarIndex(playerArr)];
-        }
-        for (int j = 0; j < playerArr.length -1; j++) {
-            if (sorted[j].getStars() == sorted[j+1].getStars()){
-                if (sorted[j] != getCoinIndex(sorted[j], sorted[j+1])){
-                    Player temporal = sorted[j];
-                    sorted[j] = sorted[j+1];
-                    sorted[j+1] = temporal;
-                }
-            }
+    private void sortArray(int[] stars) {
+        playerIndexes = new int[pAmount];
+        for (int i = 0; i < pAmount; i++) {
+            playerIndexes[i] = getLargest(stars,i);
         }
     }
 
-    private int getStarIndex(Player[] playerArr){
-        int tempStar = playerArr[0].getStars();
+    private int getLargest(int[] starArray,int call){
+        int [] values = {-1,-2,-3,-4};
+        int tempStar = starArray[0];
         int index = 0;
-        for (int i = 1; i < playerArr.length; i++) {
-            if (!foundinSorted(playerArr[i])) {
-                if (tempStar < playerArr[i].getStars()) {
-                    index = i;
-                    tempStar = playerArr[i].getStars();
-                }
+        for (int i = 1; i < starArray.length; i++) {
+            if (starArray[i] > tempStar) {
+                tempStar = starArray[i];
+                index = i;
+            }
+            else if (starArray[i] == tempStar){
+                 boolean changedIndex = checkCoins(this.playerArr[index],this.playerArr[i]);
+                 if (changedIndex){
+                     tempStar = starArray[i];
+                     index = i;
+                 }
             }
         }
+        starArray[index] = values[call];
         return index;
     }
-    private Player getCoinIndex(Player p1, Player p2){
-        int p1Coins = p1.getCoins();
-        int p2Coins = p2.getCoins();
-        if (p1Coins > p2Coins){
-            return p1;
+    private boolean checkCoins(Player p1, Player p2){
+        if (p1.getCoins() > p2.getCoins()){
+            return false;
         }
-        return p2;
+        return true;
     }
-
-    public boolean foundinSorted(Player toCheckPlayer){
-        for (Player player: this.sorted) {
-            if (toCheckPlayer == player){
-                return true;
-            }
-        }
-        return false;
-    }
-
 }
