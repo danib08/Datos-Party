@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minigames.bombGame.BombController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minigames.bombGame.BombController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
          <items>
@@ -19,14 +16,14 @@
             </Button>
          </items>
       </ToolBar>
-      <TextArea editable="false" prefHeight="733.0" prefWidth="1366.0" text="                                           Bomb Detonators!&#10;&#10;This is the bomb detonator minigame! The players have fallen in to a dark pit that took them to an &#10;unknown dungeon, and a foreign character has given each one of you a detonator that  &#10;belongs to a bomb, which is also handed to you. &#10;&#10;You all must face an already set destiny, but you will have to show&#10;your bravery and see if you have the guts to accept your fate.&#10;&#10;Player keys:&#10;Player 1: A&#10;Player 2: T&#10;Player 3: J&#10;Player 4: L">
+      <TextArea editable="false" prefHeight="351.0" prefWidth="1366.0" text="                                           Bomb Detonators!&#10;&#10;This is the bomb detonator minigame! The players have fallen in to a dark pit that took them to an &#10;unknown dungeon, and a foreign character has given each one of you a detonator that  &#10;belongs to a bomb, which is also handed to you. &#10;&#10;You all must face an already set destiny, but you will have to show&#10;your bravery and see if you have the guts to accept your fate.&#10;">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
       </TextArea>
       <TextArea fx:id="helpText" editable="false" prefHeight="390.0" prefWidth="1366.0" text="Additional help: the bomb timers are randomly predetermined when the game starts.&#10;&#10;The player interaction only shows the result to give the game an element of surprise.&#10;&#10;The last player to have their bomb detonanted will be 1st place, the rest will follow." visible="false">
          <font>
-            <Font name="Consolas Bold" size="12.0" />
+            <Font name="Consolas Bold" size="18.0" />
          </font>
       </TextArea>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
