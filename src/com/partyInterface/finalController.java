@@ -29,11 +29,14 @@ public class finalController {
 
     @FXML Button closeButton;
 
-    Player [] players;
+    Player[] players;
+
+    Player[] sorted;
     int pAmount;
 
     public void initData(Player[] playerArr){
-        this.players = playerArr;
+        sortArray(playerArr);
+        this.players = sorted;
         this.pAmount = this.players.length;
 
         //setting the name values
@@ -86,6 +89,53 @@ public class finalController {
         //obtains the Stage(window) in which the scene is loaded.
         Stage window = (Stage) ((Node)buttonClick.getSource()).getScene().getWindow();
         window.close();
+    }
+
+    private void sortArray(Player[] playerArr){
+        this.sorted = new Player[playerArr.length];
+        for (int i = 0; i < playerArr.length; i++) {
+            sorted[i] = playerArr[getStarIndex(playerArr)];
+        }
+        for (int j = 0; j < playerArr.length -1; j++) {
+            if (sorted[j].getStars() == sorted[j+1].getStars()){
+                if (sorted[j] != getCoinIndex(sorted[j], sorted[j+1])){
+                    Player temporal = sorted[j];
+                    sorted[j] = sorted[j+1];
+                    sorted[j+1] = temporal;
+                }
+            }
+        }
+    }
+
+    private int getStarIndex(Player[] playerArr){
+        int tempStar = playerArr[0].getStars();
+        int index = 0;
+        for (int i = 1; i < playerArr.length; i++) {
+            if (!foundinSorted(playerArr[i])) {
+                if (tempStar < playerArr[i].getStars()) {
+                    index = i;
+                    tempStar = playerArr[i].getStars();
+                }
+            }
+        }
+        return index;
+    }
+    private Player getCoinIndex(Player p1, Player p2){
+        int p1Coins = p1.getCoins();
+        int p2Coins = p2.getCoins();
+        if (p1Coins > p2Coins){
+            return p1;
+        }
+        return p2;
+    }
+
+    public boolean foundinSorted(Player toCheckPlayer){
+        for (Player player: this.sorted) {
+            if (toCheckPlayer == player){
+                return true;
+            }
+        }
+        return false;
     }
 
 }
